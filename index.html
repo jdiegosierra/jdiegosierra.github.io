@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
-	<title>Satner Portfolio</title>
+	<title>Sierra Portfolio</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
@@ -26,7 +26,8 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+					<!-- <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a> -->
+					<h1 class="text-uppercase navbar-brand logo_h" style="font-size: 15px !important">Updated 27/06/2019</h1>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -37,10 +38,11 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav justify-content-end">
 							<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-							<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-							<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-							<li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-							<li class="nav-item submenu dropdown">
+							<li class="nav-item"><a class="nav-link" href="#">Experience</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Proyects</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Knowledge</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+							<!-- <li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Pages</a>
 								<ul class="dropdown-menu">
@@ -55,8 +57,8 @@
 									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
 									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
 								</ul>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							</li> -->
+							<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -73,11 +75,26 @@
 					<div class="col-lg-7">
 						<div class="banner_content">
 							<h3 class="text-uppercase">Hell0</h3>
-							<h1 class="text-uppercase">I am rahi satner</h1>
-							<h5 class="text-uppercase">senior wordpress developer</h5>
+							<h1 class="text-uppercase">I am Diego Sierra</h1>
+							<h5 class="text-uppercase">Software Developer</h5>
 							<div class="d-flex align-items-center">
-								<a class="primary_btn" href="#"><span>Hire Me</span></a>
-								<a class="primary_btn tr-bg" href="#"><span>Get CV</span></a>
+								<a class="primary_btn" href="#" data-toggle="modal" data-target="#myModal"><span>Contact</span></a>
+								<a class="primary_btn tr-bg" href="./cv/jdiego_cv.png" download>
+									<span>CV</span>
+								</a>
+								<a class="primary_btn tr-bg" href="https://github.com/jdiegosierra">
+									<span>Github</span>
+								</a>
+
+
+							</div>
+							<div class="d-flex align-items-center" style="margin-top: 15px">
+								<a class="primary_btn tr-bg" href="https://www.linkedin.com/in/jdiegosierra">
+									<span>Linkedin</span>
+								</a>
+								<a class="primary_btn tr-bg" href="https://medium.com/@jdiegosierra">
+									<span>Medium</span>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -91,14 +108,42 @@
 		</div>
 	</section>
 	<!--================ End Home Banner Area =================-->
+	<!--================ Start Modal =================-->
 
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog vertical-align-center">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-body">
+							<div class="col-lg-3">
+									<div class="contact_info">
+										<div class="info_item">
+											<i class="lnr lnr-phone-handset"></i>
+											<h5>+34_646_898_881</h5>
+										</div>
+										<div class="info_item">
+											<i class="lnr lnr-envelope"></i>
+											<h5>jdiego.sierra@hotmail.com</h5>
+										</div>
+									</div>
+								</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--================ End Modal =================-->
 	<!--================ Start About Us Area =================-->
-	<section class="about_area section_gap">
+	<!-- <section class="about_area section_gap">
 		<div class="container">
 			<div class="row justify-content-start align-items-center">
 				<div class="col-lg-5">
 					<div class="about_img">
-						<img class="" src="img/about-us.png" alt="">
+						<img class="" src="img/about-us2.png" alt="">
 					</div>
 				</div>
 
@@ -108,24 +153,75 @@
 							Introduce about <br>
 							myself</h2>
 						<p>
-							Whose given. Were gathered. There first subdue greater. Bearing you Whales heaven 
-							midst their. Beast creepeth. Fish days.
+							Under construction!
 						</p>
-						<p>
-							Is give may shall likeness made yielding spirit a itself together created after sea 
-							is in beast beginning signs open god you're gathering whose gathered cattle let. 
-							Creature whales fruit unto meat the life beginning all in under give two.
-						</p>
-						<a class="primary_btn" href="#"><span>Download CV</span></a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
+	<div class="testimonial_area section_gap_bottom">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8 text-center">
+						<div class="main_title">
+							<h2>My Experience (+3 years)</h2>
+							<p>I've been developing since I was 22 years old. Before that, I founded a music events company.</p>
+							<p>In the last years, I've been working for a while in two companies (also have worked in Accenture and DXC Technology a few months) and I've founded an open source proyect which already has 5 members.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="testi_slider owl-carousel">
+						<div class="testi_item">
+							<div class="row">
+								<div class="col-lg-4">
+									<img src="img/exprecience/blocknitive.jpg" alt="">
+								</div>
+								<div class="col-lg-8">
+									<div class="testi_text">
+										<h4>Blocknitive (Startup) (January 2017 - September 2018)</h4>
+										<p>Here started my laboral and blockchain experience. A startup is a good place to be a big developer.
+											I worked in proyects with Ethereum & Hyperledger.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="testi_item">
+							<div class="row">
+								<div class="col-lg-4">
+									<img src="img/exprecience/altair.png" alt="">
+								</div>
+								<div class="col-lg-8">
+									<div class="testi_text">
+										<h4>Altair Engineering (September 2018 - Currently)</h4>
+										<p>I'm so proud to work in this company. Here I'm developing software for IoT proyects.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="testi_item">
+								<div class="row">
+									<div class="col-lg-4">
+										<img src="img/exprecience/vikyngo.png" alt="">
+									</div>
+									<div class="col-lg-8">
+										<div class="testi_text">
+											<h4>VIKYNGO (Startup) (January 2018 - Currently)</h4>
+											<p>Yeah! This is my personal proyect which we are developing a traceability platform using Blockchain & IoT.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	<!--================ End About Us Area =================-->
 
 	<!--================ Srart Brand Area =================-->
-	<section class="brand_area section_gap_bottom">
+	<!-- <section class="brand_area section_gap_bottom">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
@@ -214,7 +310,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!--================ End Brand Area =================-->
 
 	<!--================ Start Features Area =================-->
@@ -223,11 +319,11 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
 					<div class="main_title">
-						<h2>service offers </h2>
+						<h2>Knowledge </h2>
 						<p>
-							Is give may shall likeness made yielding spirit a itself togeth created 
-							after sea <br> is in beast beginning signs open god you're gathering ithe
+							I always say: "Time is the currency in which we should invest to be better engineers". 
 						</p>
+						<p>So I'm always learning 🤓.</p>
 					</div>
 				</div>
 			</div>
@@ -235,29 +331,36 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="feature_item">
 						<img src="img/services/s1.png" alt="">
-						<h4>Wp developing</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
+						<h4>Blockchain</h4>
+						<b>Tools:</b> <p>Ethereum, Hyperledger (Fabric, Burrow, Composer), BigchainDB, Quorum, Bitcoin</p>
+						<b>Protocols:</b> <p>Tendermint, Interledger, RPC</p>
+						<b>Languajes:</b> <p>JavaScript, Solidity, TypeScript, Go Lang</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="feature_item">
 						<img src="img/services/s2.png" alt="">
-						<h4>UI/ux design</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
+						<h4>Internet Of Things</h4>
+						<b>Tools:</b> <p>Mosquitto, RabbitMQ, Altium</p>
+						<b>Protocols:</b> <p>MQTT, Bluetooth, Lora, Sigfox</p>
+						<b>Devices:</b> <p>Raspberry Pi, Spartan 3, Arduino</p>
+						<b>Languajes:</b> <p>C/C++, Matlab, R</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="feature_item">
 						<img src="img/services/s3.png" alt="">
-						<h4>Web design</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
+						<h4>Software development</h4>
+						<b>Tools:</b> <p>Express, MongoDB, PostgreSQL, Django, Docker, Angular, React</p>
+						<b>Protocols:</b> <p>Microservices, REST, JWT, GraphQL, gRPC </p>
+						<b>Languajes:</b> <p>NodeJS, Python</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="feature_item">
 						<img src="img/services/s4.png" alt="">
-						<h4>seo optimize</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
+						<h4>What I'm learning now</h4>
+						<p>Rust Lang</p>
 					</div>
 				</div>
 			</div>
@@ -271,173 +374,176 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="main_title text-left">
-						<h2>quality work <br>
-							Recently done project </h2>
+						<h2>Proyects</h2>
 					</div>
 				</div>
 			</div>
 			<div class="filters portfolio-filter">
 				<ul>
-					<li class="active" data-filter="*">all</li>
-					<li data-filter=".popular">popular</li>
-					<li data-filter=".latest"> latest</li>
-					<li data-filter=".following">following</li>
-					<li data-filter=".upcoming">upcoming</li>
+					<li class="active" data-filter="*">All</li>
+					<li data-filter=".latest">Latest</li>
+					<li data-filter=".software">Software</li>
+					<li data-filter=".blockchain">Blockchain</li>
+					<li data-filter=".iot">Internet Of Things (IoT)</li>
+					<li data-filter=".telecomunications">Telecomunications</li>
+					<li data-filter=".presentations">Presentations</li>
+					<!-- <li data-filter=".upcoming">Upcoming</li> -->
 				</ul>
 			</div>
 	
 			<div class="filters-content">
 				<div class="row portfolio-grid justify-content-center">
-					<div class="col-lg-4 col-md-6 all latest">
+					<div class="col-lg-4 col-md-6 all blockchain iot latest">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p1.jpg" alt="">
+								<img class="img-fluid w-100" src="img/proyects/vikyngo.png" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p1.jpg" class="img-gal">
+								<a href="https://github.com/v-i-k-y-n-g-o">
 									<div class="icon">
-										<span class="lnr lnr-cross"></span>
+										<span class="lnr lnr-eye"></span>
 									</div>
 								</a>
 							</div>
 							<div class="short_info">
-								<h4><a href="portfolio-details.html">minimal design</a></h4>
-								<p>Animated, portfolio</p>
+								<h4><a href="https://github.com/v-i-k-y-n-g-o">VIKYNGO</a></h4>
+								<p>Supply Chain Platform</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 all popular">
+					<div class="col-lg-4 col-md-6 all software latest">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p2.jpg" alt="">
+								<img class="img-fluid w-100" src="img/proyects/nodeserver-logo.png" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p2.jpg" class="img-gal">
+								<a href="https://github.com/jdiegosierra/nodejs-backend-structure">
 									<div class="icon">
-										<span class="lnr lnr-cross"></span>
+										<span class="lnr lnr-eye"></span>
 									</div>
 								</a>
 							</div>
 							<div class="short_info">
-								<h4><a href="portfolio-details.html">Paint wall</a></h4>
-								<p>Animated, portfolio</p>
+								<h4><a href="https://github.com/jdiegosierra/nodejs-backend-structure">NodeJS Back-End Structure</a></h4>
+								<p>Basic server to start any API service</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 all latest">
+					<div class="col-lg-4 col-md-6 all telecomunications">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p3.jpg" alt="">
+								<img class="img-fluid w-100" src="img/proyects/antennas.png" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p3.jpg" class="img-gal">
+								<a href="https://github.com/jdiegosierra/antennas">
 									<div class="icon">
-										<span class="lnr lnr-cross"></span>
+										<span class="lnr lnr-eye"></span>
 									</div>
 								</a>
 							</div>
 							<div class="short_info">
-								<h4><a href="portfolio-details.html">female light</a></h4>
-								<p>Animated, portfolio</p>
+								<h4><a href="https://github.com/jdiegosierra/antennas">Radio Frecquency Antennas</a></h4>
+								<p>Some antennas that I've designed</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 all popular">
+					<div class="col-lg-4 col-md-6 all blockchain software">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p4.jpg" alt="">
+								<img class="img-fluid w-100" src="img/proyects/eblockfy-logo.png" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p4.jpg" class="img-gal">
+								<a href="https://github.com/blocknitive/eblockfy-app">
 									<div class="icon">
-										<span class="lnr lnr-cross"></span>
+										<span class="lnr lnr-eye"></span>
 									</div>
 								</a>
 							</div>
 							<div class="short_info">
-								<h4><a href="portfolio-details.html">fourth air</a></h4>
-								<p>Animated, portfolio</p>
+								<h4><a href="https://github.com/blocknitive/eblockfy-app">eBlockfy</a></h4>
+								<p>A Blockchain dAPP for academic certificates</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 all following">
+					<div class="col-lg-4 col-md-6 all software iot">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p6.jpg" alt="">
+								<img class="img-fluid w-100" src="img/proyects/Node-red-icon.png" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p5.jpg" class="img-gal">
+								<a href="https://github.com/jdiegosierra/node-red">
 									<div class="icon">
-										<span class="lnr lnr-cross"></span>
+										<span class="lnr lnr-eye"></span>
 									</div>
 								</a>
 							</div>
 							<div class="short_info">
-								<h4><a href="portfolio-details.html">together sign</a></h4>
-								<p>Animated, portfolio</p>
+								<h4><a href="https://github.com/jdiegosierra/node-red">Node-RED Fork</a></h4>
+								<p>A visual tool for wiring the Internet of Things</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 all upcoming">
+					<div class="col-lg-4 col-md-6 all presentations">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p5.jpg" alt="">
+								<img class="img-fluid w-100" src="img/proyects/eps-talks.jpg" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p6.jpg" class="img-gal">
+								<a href="https://github.com/jdiegosierra/EPStalks">
 									<div class="icon">
-										<span class="lnr lnr-cross"></span>
+										<span class="lnr lnr-eye"></span>
 									</div>
 								</a>
 							</div>
 							<div class="short_info">
-								<h4><a href="portfolio-details.html">multiply fowl</a></h4>
-								<p>Animated, portfolio</p>
+								<h4><a href="https://github.com/jdiegosierra/EPStalks">EPS TAlks</a></h4>
+								<p>
+									A proposal of talks for my university (Universidad Autónoma de Madrid)</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 all upcoming following">
+					<div class="col-lg-4 col-md-6 all software">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p7.jpg" alt="">
+								<img class="img-fluid w-100" src="img/proyects/cryptobot.jpg" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p7.jpg" class="img-gal">
+								<a href="img/portfolio/p7.jpg">
 									<div class="icon">
-										<span class="lnr lnr-cross"></span>
+										<span class="lnr lnr-eye"></span>
 									</div>
 								</a>
 							</div>
 							<div class="short_info">
-								<h4><a href="portfolio-details.html">green heaven</a></h4>
+								<h4><a href="portfolio-details.html">CryptoBot</a></h4>
 								<p>Animated, portfolio</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 all following">
+					<div class="col-lg-4 col-md-6 all software">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p8.jpg" alt="">
+								<img class="img-fluid w-100" src="img/proyects/telegram3spotify.jpg" alt="">
 								<div class="overlay"></div>
 								<a href="img/portfolio/p8.jpg" class="img-gal">
 									<div class="icon">
-										<span class="lnr lnr-cross"></span>
+										<span class="lnr lnr-eye"></span>
 									</div>
 								</a>
 							</div>
 							<div class="short_info">
-								<h4>fly male</h4>
-								<p>Animated, portfolio</p>
+								<h4>Telegram2Spotify</h4>
+								<p>Control your Spotify account with Telegram</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 all upcoming">
+					<div class="col-lg-4 col-md-6 all software iot">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p9.jpg" alt="">
+								<img class="img-fluid w-100" src="img/proyects/watson-iot.jpg" alt="">
 								<div class="overlay"></div>
 								<a href="img/portfolio/p9.jpg" class="img-gal">
 									<div class="icon">
-										<span class="lnr lnr-cross"></span>
+										<span class="lnr lnr-eye"></span>
 									</div>
 								</a>
 							</div>
 							<div class="short_info">
-								<h4><a href="portfolio-details.html">season face</a></h4>
-								<p>Animated, portfolio</p>
+								<h4><a href="portfolio-details.html">IBM Watson & IoT</a></h4>
+								<p>How to plot temperature of a Raspberry Pi in IBM Cloud</p>
 							</div>
 						</div>
 					</div>
@@ -448,7 +554,7 @@
 	<!--================End Portfolio Area =================-->
 
 	<!--================ Start Testimonial Area =================-->
-	<div class="testimonial_area section_gap_bottom">
+	<!-- <div class="testimonial_area section_gap_bottom">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
@@ -542,34 +648,24 @@
         		</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!--================ End Testimonial Area =================-->
 
 	<!--================ Start Newsletter Area =================-->
-	<section class="newsletter_area">
-		<div class="container">
-			<div class="row justify-content-center align-items-center">
-				<div class="col-lg-12">
-					<div class="subscription_box text-center">
-						<h2 class="text-uppercase text-white">get update from anywhere</h2>
-						<p class="text-white">
-							Bearing Void gathering light light his eavening unto dont afraid. 
-						</p>
-						<div class="subcribe-form" id="mc_embed_signup">
-							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative">
-								<input name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required="" type="email">
-								<div style="position: absolute; left: -5000px;">
-									<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-								</div>
-								<button class="primary-btn hover d-inline">Get Started</button>
-								<div class="info"></div>
-							</form>
-						</div>
+    <section class="banner_area">
+			<div class="banner_inner d-flex align-items-center">
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Blog</h2>
+						<h4>Under construction</h4>
+						<!-- <div class="page_link">
+							<a href="index.html">Home</a>
+							<a href="blog.html">Our Blog</a>
+						</div> -->
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 	<!--================ End Newsletter Area =================-->
 
 	<!--================Footer Area =================-->
@@ -579,7 +675,7 @@
 				<div class="col-lg-12">
 					<div class="footer_top flex-column">
 						<div class="footer_logo">
-							<a href="#">
+							<!-- <a href="#">
 								<img src="img/logo.png" alt="">
 							</a>
 							<h4>Follow Me</h4>
@@ -589,14 +685,14 @@
 							<a href="#"><i class="fa fa-twitter"></i></a>
 							<a href="#"><i class="fa fa-dribbble"></i></a>
 							<a href="#"><i class="fa fa-behance"></i></a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
 			<div class="row footer_bottom justify-content-center">
 				<p class="col-lg-8 col-sm-12 footer-text">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 			</div>
 		</div>

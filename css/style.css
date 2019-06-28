@@ -344,7 +344,7 @@ button:focus {
 ============================================================================================ */
 .home_banner_area {
   z-index: 1;
-  background: url(../img/banner/home-banner.png) no-repeat top center;
+  /* background: url(../img/banner/banner3.png) no-repeat top center; */
   background-position: center;
   background-size: cover; }
   .home_banner_area .banner_inner {
@@ -1153,7 +1153,9 @@ button:focus {
 
 .contact_info .info_item {
   position: relative;
-  padding-left: 45px; }
+  padding-left: 45px;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important; }
   .contact_info .info_item i {
     position: absolute;
     left: 0;
@@ -3304,3 +3306,24 @@ h6 {
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
+
+.modal {
+}
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 30%;
+    margin: auto;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
