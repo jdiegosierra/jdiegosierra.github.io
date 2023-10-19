@@ -272,13 +272,13 @@ button:hover,
   filter: brightness(90%);
 }
 
-/* Gitlab */
-.button.button-gitlab {
+/* meeting */
+.button.button-meeting {
   color: #ffffff;
   background-color: #6151b2;
 }
-.button.button-gitlab:hover,
-.button.button-gitlab:focus {
+.button.button-meeting:hover,
+.button.button-meeting:focus {
   filter: brightness(90%);
 }
 
