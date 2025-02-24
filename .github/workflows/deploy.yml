@@ -106,13 +106,23 @@ jobs:
         working-directory: ${{ env.AI_PATH }}
         run: $PACKAGE_MANAGER run build
 
+      - name: Prepare artifact
+        run: |
+          mkdir -p ./dist
+          cp -r css ./dist
+          cp -r fonts ./dist
+          cp -r images ./dist
+          cp index ./dist
+          mkdir -p ./dist/ai-portfolio/dist
+          cp -r ./ai-portfolio/dist ./dist/ai-portfolio/dist
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         id: deployment
