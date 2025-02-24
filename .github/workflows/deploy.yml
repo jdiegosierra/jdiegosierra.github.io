@@ -112,7 +112,7 @@ jobs:
           cp -r css ./dist
           cp -r fonts ./dist
           cp -r images ./dist
-          cp index ./dist
+          cp index.html ./dist
           mkdir -p ./dist/ai-portfolio/dist
           cp -r ./ai-portfolio/dist ./dist/ai-portfolio/dist
 
