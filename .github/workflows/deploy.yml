@@ -15,9 +15,9 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  node-version: "23.5.0"
-  package-manager: "npm"
-  path: "./ai-portfolio"
+  NODE_VERSION: "23.5.0"
+  PACKAGE_MANAGER: "npm"
+  PATH: "./ai-portfolio"
 
 jobs:
   deploy:
@@ -31,9 +31,9 @@ jobs:
 
       - name: Check lockfiles
         shell: "bash"
-        working-directory: ${{ inputs.path }}
+        working-directory: ${{ PATH }}
         env:
-          INPUT_PM: ${{ inputs.package-manager }}
+          INPUT_PM: ${{ PACKAGE_MANAGER }}
         run: |
           len=`echo $INPUT_PM | wc -c`
           if [ $len -gt 1 ]; then
@@ -74,7 +74,7 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: ${{ env.VERSION }}
-          package_json_file: "${{ inputs.path }}/package.json"
+          package_json_file: "${{ PATH }}/package.json"
 
       - name: Setup Bun
         if: ${{ env.PACKAGE_MANAGER == 'bun' }}
@@ -86,24 +86,24 @@ jobs:
         uses: actions/setup-node@v4
         if: ${{ env.PACKAGE_MANAGER != 'bun' }}
         with:
-          node-version: ${{ inputs.node-version }}
+          node-version: ${{ NODE_VERSION}}
           cache: ${{ env.PACKAGE_MANAGER }}
-          cache-dependency-path: "${{ inputs.path }}/${{ env.LOCKFILE }}"
+          cache-dependency-path: "${{ PATH }}/${{ env.LOCKFILE }}"
 
       - name: Setup Node (Bun)
         uses: actions/setup-node@v4
         if: ${{ env.PACKAGE_MANAGER == 'bun' }}
         with:
-          node-version: ${{ inputs.node-version }}
+          node-version: ${{ NODE_VERSION }}
 
       - name: Install
         shell: "bash"
-        working-directory: ${{ inputs.path }}
+        working-directory: ${{ PATH }}
         run: $PACKAGE_MANAGER install
 
       - name: Build
         shell: "bash"
-        working-directory: ${{ inputs.path }}
+        working-directory: ${{ PATH }}
         run: $PACKAGE_MANAGER run build
 
       - name: Setup Pages
