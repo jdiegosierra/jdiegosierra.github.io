@@ -31,9 +31,9 @@ jobs:
 
       - name: Check lockfiles
         shell: "bash"
-        working-directory: $PATH
+        working-directory: ${{ env.PATH }}
         env:
-          INPUT_PM: ${{ PACKAGE_MANAGER }}
+          INPUT_PM: ${{ env.PACKAGE_MANAGER }}
         run: |
           len=`echo $INPUT_PM | wc -c`
           if [ $len -gt 1 ]; then
@@ -86,24 +86,24 @@ jobs:
         uses: actions/setup-node@v4
         if: ${{ env.PACKAGE_MANAGER != 'bun' }}
         with:
-          node-version: ${{ NODE_VERSION}}
+          node-version: ${{ env.NODE_VERSION }}
           cache: ${{ env.PACKAGE_MANAGER }}
-          cache-dependency-path: "${{ PATH }}/${{ env.LOCKFILE }}"
+          cache-dependency-path: "${{ env.PATH }}/${{ env.LOCKFILE }}"
 
       - name: Setup Node (Bun)
         uses: actions/setup-node@v4
         if: ${{ env.PACKAGE_MANAGER == 'bun' }}
         with:
-          node-version: ${{ NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install
         shell: "bash"
-        working-directory: ${{ PATH }}
+        working-directory: ${{ env.PATH }}
         run: $PACKAGE_MANAGER install
 
       - name: Build
         shell: "bash"
-        working-directory: ${{ PATH }}
+        working-directory: ${{ env.PATH }}
         run: $PACKAGE_MANAGER run build
 
       - name: Setup Pages
