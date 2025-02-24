@@ -31,7 +31,7 @@ jobs:
 
       - name: Check lockfiles
         shell: "bash"
-        working-directory: ${{ PATH }}
+        working-directory: $PATH
         env:
           INPUT_PM: ${{ PACKAGE_MANAGER }}
         run: |
