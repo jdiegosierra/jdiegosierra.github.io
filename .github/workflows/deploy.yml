@@ -23,11 +23,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
-        with:
-          path: ./ai-portfolio
-          node-version: 23.5.0
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
