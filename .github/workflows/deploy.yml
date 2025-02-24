@@ -17,7 +17,7 @@ concurrency:
 env:
   NODE_VERSION: "23.5.0"
   PACKAGE_MANAGER: "npm"
-  PATH: "./ai-portfolio"
+  AI_PATH: "./ai-portfolio"
 
 jobs:
   deploy:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Check lockfiles
         shell: "bash"
-        working-directory: ${{ env.PATH }}
+        working-directory: ${{ env.AI_PATH }}
         env:
           INPUT_PM: ${{ env.PACKAGE_MANAGER }}
         run: |
@@ -74,7 +74,7 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: ${{ env.VERSION }}
-          package_json_file: "${{ env.PATH }}/package.json"
+          package_json_file: "${{ env.AI_PATH }}/package.json"
 
       - name: Setup Bun
         if: ${{ env.PACKAGE_MANAGER == 'bun' }}
@@ -88,7 +88,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: ${{ env.PACKAGE_MANAGER }}
-          cache-dependency-path: "${{ env.PATH }}/${{ env.LOCKFILE }}"
+          cache-dependency-path: "${{ env.AI_PATH }}/${{ env.LOCKFILE }}"
 
       - name: Setup Node (Bun)
         uses: actions/setup-node@v4
@@ -98,12 +98,12 @@ jobs:
 
       - name: Install
         shell: "bash"
-        working-directory: ${{ env.PATH }}
+        working-directory: ${{ env.AI_PATH }}
         run: $PACKAGE_MANAGER install
 
       - name: Build
         shell: "bash"
-        working-directory: ${{ env.PATH }}
+        working-directory: ${{ env.AI_PATH }}
         run: $PACKAGE_MANAGER run build
 
       - name: Setup Pages
