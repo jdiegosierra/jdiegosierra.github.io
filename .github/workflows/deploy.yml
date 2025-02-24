@@ -74,7 +74,7 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: ${{ env.VERSION }}
-          package_json_file: "${{ PATH }}/package.json"
+          package_json_file: "${{ env.PATH }}/package.json"
 
       - name: Setup Bun
         if: ${{ env.PACKAGE_MANAGER == 'bun' }}
