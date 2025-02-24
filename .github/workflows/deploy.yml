@@ -14,19 +14,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-inputs:
-  node-version:
-    description: "The node version to use"
-    required: false
-    default: "23.5.0"
-  package-manager:
-    description: "You may specify your preferred package manager (one of `npm | yarn | pnpm | bun` and an optional `@<version>` tag). Otherwise, the package manager will be automatically detected."
-    required: false
-    default: "npm"
-  path:
-    description: "Path of the directory containing your site"
-    required: false
-    default: "./ai-portfolio"
+env:
+  node-version: "23.5.0"
+  package-manager: "npm"
+  path: "./ai-portfolio"
 
 jobs:
   deploy:
