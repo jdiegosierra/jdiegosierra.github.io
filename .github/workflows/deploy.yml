@@ -15,19 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
-        with:
-          path: ./ai-portfolio
-          node-version: 23.5.0
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -35,13 +23,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
+        with:
+          path: ./ai-portfolio
+          node-version: 23.5.0
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-          name: 'ai-portfolio-${{ github.run_id }}'
+          name: '${{ github.run_id }}'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
