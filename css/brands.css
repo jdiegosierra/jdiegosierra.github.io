@@ -466,7 +466,7 @@
 /* Stack Overflow */
 .button-stack-overflow {
 	--button-text:#000000;
-  background-image:linear-gradient(90deg, #3a3a3a, #e5a86d);
+  --button-background:white;
 	--button-border:1px solid #FF4500;
 }
 
