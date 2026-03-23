@@ -142,33 +142,11 @@ html.export-pdf .no-print {
   align-items: center;
   justify-content: center;
   width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 999px;
-  background: rgba(126, 166, 217, 0.18);
-  color: var(--text-main);
-  font-size: 0.62rem;
-  font-weight: 700;
   flex: 0 0 auto;
+  font-size: 0.92rem;
+  line-height: 1;
 }
 
-.resume-meta__open {
-  margin-top: 0.65rem;
-  padding-top: 0.65rem;
-  border-top: 1px solid rgba(126, 166, 217, 0.14);
-}
-
-.resume-meta__open p {
-  margin-bottom: 0.18rem;
-  font-size: 0.84rem;
-}
-
-.resume-meta__label {
-  color: var(--accent) !important;
-  font-size: 0.72rem !important;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
 
 .resume-highlights {
   display: flex;
@@ -451,8 +429,7 @@ html.export-pdf .no-print {
 
   .resume-meta p,
   .resume-entry__meta,
-  .resume-tech,
-  .resume-meta__open p {
+  .resume-tech {
     font-size: 0.72rem;
   }
 
