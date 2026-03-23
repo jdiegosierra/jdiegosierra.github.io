@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="theme-auto" lang="en">
+<html class="theme-light" lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -26,12 +26,27 @@
 
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script>
+    (function () {
+      var storedTheme = localStorage.getItem('theme-preference');
+      var theme = storedTheme === 'dark' ? 'theme-dark' : 'theme-light';
+      document.documentElement.classList.remove('theme-light', 'theme-dark');
+      document.documentElement.classList.add(theme);
+    })();
+  </script>
 </head>
 
 <body>
 
 <div class="container">
   <div class="column">
+    <div class="theme-toggle-wrap">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+        <span class="theme-toggle__icon" aria-hidden="true">◐</span>
+        <span class="theme-toggle__label">Dark mode</span>
+      </button>
+    </div>
+
     <img class="avatar avatar--rounded" src="images/avatar.jpeg" srcset="images/avatar.png 2x" alt="Portrait of Diego Sierra">
 
     <p class="eyebrow">Platform Engineering Lead | SRE | AI Enablement</p>
@@ -71,7 +86,7 @@
         <li><b>Availability:</b> Open to high-leverage engineering leadership roles.</li>
         <li><b>Target roles:</b> Head of Platform Engineering, Platform Engineering Lead, Infrastructure and AI Engineering Lead, Staff, Principal, or equivalent high-impact technical leadership roles.</li>
         <li><b>Work model:</b> Remote or hybrid from Madrid, Spain.</li>
-        <li><b>Compensation:</b> Around 110K EUR depending on scope and impact.</li>
+        <li><b>Compensation:</b> Between 110K and 120K EUR plus equity, depending on scope and impact.</li>
       </ul>
     </section>
 
@@ -96,6 +111,35 @@
     </div>
   </div>
 </div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById('theme-toggle');
+
+    if (!toggle) {
+      return;
+    }
+
+    function applyTheme(theme) {
+      var isDark = theme === 'dark';
+      root.classList.remove('theme-light', 'theme-dark');
+      root.classList.add(isDark ? 'theme-dark' : 'theme-light');
+      toggle.setAttribute('aria-pressed', String(isDark));
+      toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      toggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Light mode' : 'Dark mode';
+    }
+
+    var currentTheme = root.classList.contains('theme-dark') ? 'dark' : 'light';
+    applyTheme(currentTheme);
+
+    toggle.addEventListener('click', function () {
+      currentTheme = root.classList.contains('theme-dark') ? 'light' : 'dark';
+      localStorage.setItem('theme-preference', currentTheme);
+      applyTheme(currentTheme);
+    });
+  })();
+</script>
 
 </body>
 
