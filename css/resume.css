@@ -286,6 +286,10 @@ html.export-pdf .no-print {
   background: rgba(255, 255, 255, 0.22);
 }
 
+.resume-section--card .resume-list--grid li::before {
+  top: 0.48rem;
+}
+
 .theme-dark .resume-section--card .resume-list--grid li {
   background: rgba(57, 68, 89, 0.42);
 }
