@@ -232,14 +232,14 @@ b {
 }
 
 .theme-toggle__icon::before {
-	content:"☀";
+	content:"☾";
 	display:inline-block;
 	font-size:1rem;
 	line-height:1;
 }
 
 .theme-dark .theme-toggle__icon::before {
-	content:"☾";
+	content:"☀";
 }
 
 .sr-only {
