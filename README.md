@@ -12,6 +12,7 @@ This site presents Diego Sierra's profile across platform engineering, SRE, clou
 - added stronger professional messaging for production AI workflows
 - improved visual hierarchy, layout, and metadata for sharing
 - kept the site simple to host on GitHub Pages
+- removed the separate AI subsite in favor of a sharper single-page portfolio
 
 ## Local preview
 

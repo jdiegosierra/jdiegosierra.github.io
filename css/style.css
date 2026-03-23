@@ -202,6 +202,10 @@ b {
 	gap:1rem;
 }
 
+.grid--two {
+	grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
 .card {
 	padding:1.1rem;
 	border-radius:1rem;
@@ -272,10 +276,33 @@ ul {
 	color:var(--text-main);
 }
 
+.button-groups {
+	display:grid;
+	gap:1.5rem;
+	text-align:left;
+}
+
+.button-group {
+	padding:1.2rem;
+	border-radius:1rem;
+	background:rgba(255, 255, 255, 0.03);
+	border:1px solid rgba(255, 255, 255, 0.08);
+}
+
+.button-group-title {
+	margin:0 0 0.85rem;
+	font-size:0.9rem;
+	font-weight:700;
+	letter-spacing:0.12em;
+	text-transform:uppercase;
+	color:var(--accent);
+}
+
 .button-stack {
 	display:flex;
 	flex-direction:column;
-	align-items:center;
+	align-items:flex-start;
+	gap:0.25rem;
 }
 
 hr {
@@ -416,8 +443,16 @@ section {
 		grid-template-columns:1fr;
 	}
 
+	.grid--two {
+		grid-template-columns:1fr;
+	}
+
 	.spotlight {
 		padding:1.15rem;
+	}
+
+	.button-group {
+		padding:1rem;
 	}
 }
 
