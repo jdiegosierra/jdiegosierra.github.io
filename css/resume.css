@@ -226,6 +226,20 @@ html.export-pdf .no-print {
   margin-top: 0.9rem;
 }
 
+.resume-promoted {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-left: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.resume-entry__subrole {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed rgba(126, 166, 217, 0.25);
+}
+
 .resume-entry {
   position: relative;
   margin-top: 1rem;
