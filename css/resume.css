@@ -30,6 +30,14 @@ html.export-pdf .resume-sheet {
   border-radius: 0;
   box-shadow: none;
   padding: 10mm;
+  background: none;
+}
+
+html.export-pdf .resume-entry,
+html.export-pdf .resume-section--card,
+html.export-pdf .resume-meta,
+html.export-pdf .resume-section--card .resume-list--grid li {
+  background: none;
 }
 
 .resume-toolbar {
