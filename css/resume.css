@@ -116,11 +116,58 @@ html.export-pdf .no-print {
 
 .resume-meta {
   align-self: end;
+  padding: 0.8rem 0.9rem;
+  border-radius: 1rem;
+  background: rgba(126, 166, 217, 0.1);
+  border: 1px solid rgba(126, 166, 217, 0.12);
+}
+
+.theme-dark .resume-meta {
+  background: rgba(52, 65, 88, 0.6);
 }
 
 .resume-meta p {
   margin-bottom: 0.28rem;
   font-size: 0.88rem;
+}
+
+.resume-meta__item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.resume-meta__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  background: rgba(126, 166, 217, 0.18);
+  color: var(--text-main);
+  font-size: 0.62rem;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.resume-meta__open {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(126, 166, 217, 0.14);
+}
+
+.resume-meta__open p {
+  margin-bottom: 0.18rem;
+  font-size: 0.84rem;
+}
+
+.resume-meta__label {
+  color: var(--accent) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .resume-highlights {
@@ -249,6 +296,14 @@ html.export-pdf .no-print {
   line-height: 1.45;
 }
 
+.resume-tech strong,
+.resume-section strong,
+.resume-list strong,
+.resume-meta strong {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
 .resume-list {
   margin: 0;
   padding-left: 0;
@@ -327,6 +382,10 @@ html.export-pdf .no-print {
     margin-bottom: 0.75rem;
   }
 
+  .resume-meta {
+    margin-top: 0.85rem;
+  }
+
   .resume-sheet {
     padding: 1.25rem;
   }
@@ -392,7 +451,8 @@ html.export-pdf .no-print {
 
   .resume-meta p,
   .resume-entry__meta,
-  .resume-tech {
+  .resume-tech,
+  .resume-meta__open p {
     font-size: 0.72rem;
   }
 
@@ -474,6 +534,14 @@ html.export-pdf .no-print {
 
   .resume-entry,
   .resume-section {
+    break-inside: avoid;
+  }
+
+  .resume-meta,
+  .resume-header,
+  .resume-highlights,
+  .resume-entry__header,
+  .resume-tech {
     break-inside: avoid;
   }
 }
