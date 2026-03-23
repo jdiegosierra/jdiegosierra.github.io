@@ -302,15 +302,7 @@ html.export-pdf .no-print {
 }
 
 .resume-entry::before {
-  content: "";
-  position: absolute;
-  top: 0.15rem;
-  left: 0.45rem;
-  width: 0.18rem;
-  height: calc(100% - 0.3rem);
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--accent), rgba(126, 166, 217, 0));
-  opacity: 0.7;
+  display: none;
 }
 
 .resume-entry__company {
