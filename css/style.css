@@ -259,6 +259,19 @@ ul {
 	margin:2rem 0;
 }
 
+.meta-links {
+	margin:-0.5rem 0 1.75rem;
+	font-size:0.95rem;
+}
+
+.meta-links a {
+	color:var(--text-muted);
+}
+
+.meta-links a:hover {
+	color:var(--text-main);
+}
+
 .button-stack {
 	display:flex;
 	flex-direction:column;

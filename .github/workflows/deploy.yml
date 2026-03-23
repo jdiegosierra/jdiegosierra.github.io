@@ -76,7 +76,12 @@ jobs:
       - name: Install dependencies
         shell: "bash"
         working-directory: ${{ env.AI_PATH }}
-        run: $PACKAGE_MANAGER install
+        run: |
+          if [ "$PACKAGE_MANAGER" = "npm" ]; then
+            npm ci
+          else
+            $PACKAGE_MANAGER install
+          fi
 
       - name: Build project
         shell: "bash"
