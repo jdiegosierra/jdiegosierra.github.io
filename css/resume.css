@@ -18,6 +18,7 @@ html.export-pdf body {
 
 html.export-pdf .resume-page {
   padding: 0;
+  min-height: auto;
 }
 
 html.export-pdf .resume-shell {
@@ -28,6 +29,7 @@ html.export-pdf .resume-sheet {
   border: none;
   border-radius: 0;
   box-shadow: none;
+  padding: 10mm;
 }
 
 .resume-toolbar {
