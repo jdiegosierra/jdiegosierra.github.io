@@ -217,13 +217,25 @@ html.export-pdf .no-print {
 
 .resume-list {
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 0;
+  list-style: none;
 }
 
 .resume-list li {
+  position: relative;
+  padding-left: 0.95rem;
   margin-bottom: 0.38rem;
   color: var(--text-main);
   line-height: 1.45;
+}
+
+.resume-list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .resume-list--grid {
@@ -357,7 +369,7 @@ html.export-pdf .no-print {
   }
 
   .resume-list {
-    padding-left: 0.92rem;
+    padding-left: 0;
   }
 
   .resume-list li {
