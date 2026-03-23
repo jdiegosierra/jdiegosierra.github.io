@@ -14,9 +14,16 @@
   <link rel="stylesheet" href="css/resume.css">
   <script>
     (function () {
-      var storedTheme = localStorage.getItem('theme-preference');
+      var params = new URLSearchParams(window.location.search);
+      var forcedTheme = params.get('theme');
+      var storedTheme = null;
+      try {
+        storedTheme = localStorage.getItem('theme-preference');
+      } catch (error) {
+        storedTheme = null;
+      }
       var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = storedTheme ? storedTheme : (prefersDark ? 'dark' : 'light');
+      var theme = forcedTheme || storedTheme || (prefersDark ? 'dark' : 'light');
       document.documentElement.classList.remove('theme-light', 'theme-dark');
       document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
     })();
@@ -33,7 +40,7 @@
             <span class="theme-toggle__icon" aria-hidden="true"></span>
             <span class="sr-only theme-toggle__label">Switch theme</span>
           </button>
-          <button class="resume-toolbar__button" type="button" onclick="window.print()">Download PDF</button>
+          <a class="resume-toolbar__button" href="resume.pdf" download>Download PDF</a>
         </div>
       </div>
 
@@ -118,6 +125,7 @@
     (function () {
       var root = document.documentElement;
       var toggle = document.getElementById('theme-toggle');
+      var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
       if (!toggle) {
         return;
@@ -138,9 +146,25 @@
 
       toggle.addEventListener('click', function () {
         currentTheme = root.classList.contains('theme-dark') ? 'light' : 'dark';
-        localStorage.setItem('theme-preference', currentTheme);
+        try {
+          localStorage.setItem('theme-preference', currentTheme);
+        } catch (error) {}
         applyTheme(currentTheme);
       });
+
+      if (media) {
+        media.addEventListener('change', function (event) {
+          var storedTheme = null;
+          try {
+            storedTheme = localStorage.getItem('theme-preference');
+          } catch (error) {
+            storedTheme = null;
+          }
+          if (!storedTheme) {
+            applyTheme(event.matches ? 'dark' : 'light');
+          }
+        });
+      }
     })();
   </script>
 </body>

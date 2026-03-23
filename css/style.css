@@ -32,23 +32,33 @@
 	--page-bg-image:radial-gradient(circle at top left, rgba(181, 216, 255, 0.75), transparent 34%), radial-gradient(circle at top right, rgba(211, 244, 225, 0.7), transparent 28%), radial-gradient(circle at bottom left, rgba(255, 214, 225, 0.55), transparent 24%), linear-gradient(160deg, #f9f1f5 0%, #f6f1fb 48%, #eef6fb 100%);
 	--link-color:#6d8fc0;
 	--link-hover:#5678ac;
+	--panel-bg:rgba(255, 255, 255, 0.56);
+	--group-bg:rgba(255, 255, 255, 0.46);
+	--pill-bg:rgba(255, 255, 255, 0.68);
+	--toggle-bg:rgba(255, 255, 255, 0.56);
+	--panel-muted-bg:linear-gradient(180deg, rgba(181, 216, 255, 0.36), rgba(255, 255, 255, 0.42));
 	--shadow-soft:0 22px 60px rgba(142, 154, 175, 0.18);
 	--shadow-button:0 8px 20px rgba(142, 154, 175, 0.12);
 	--shadow-button-hover:0 12px 24px rgba(142, 154, 175, 0.18);
 }
 
 :root.theme-dark {
-	--surface:rgba(16, 24, 39, 0.78);
-	--surface-soft:rgba(255, 255, 255, 0.08);
-	--text-main:#edf2ff;
-	--text-muted:#b7c2d9;
-	--accent:#9dc2ff;
-	--accent-strong:#8fdcc4;
-	--divider:rgba(157, 194, 255, 0.18);
-	--page-bg:#0d1422;
-	--page-bg-image:radial-gradient(circle at top left, rgba(84, 112, 168, 0.45), transparent 34%), radial-gradient(circle at top right, rgba(70, 125, 110, 0.34), transparent 28%), radial-gradient(circle at bottom left, rgba(126, 86, 122, 0.28), transparent 24%), linear-gradient(160deg, #0d1422 0%, #111a2b 48%, #172235 100%);
-	--link-color:#a9c4f0;
-	--link-hover:#c9dcfb;
+	--surface:rgba(22, 29, 44, 0.82);
+	--surface-soft:rgba(40, 50, 71, 0.76);
+	--text-main:#e4e9f7;
+	--text-muted:#bbc4db;
+	--accent:#a8c5ef;
+	--accent-strong:#92cdbc;
+	--divider:rgba(162, 186, 223, 0.2);
+	--page-bg:#121827;
+	--page-bg-image:radial-gradient(circle at top left, rgba(83, 105, 150, 0.34), transparent 34%), radial-gradient(circle at top right, rgba(78, 121, 110, 0.22), transparent 28%), radial-gradient(circle at bottom left, rgba(117, 84, 109, 0.2), transparent 24%), linear-gradient(160deg, #121827 0%, #171f31 48%, #1b2438 100%);
+	--link-color:#b7cff5;
+	--link-hover:#d2e0fb;
+	--panel-bg:rgba(45, 54, 72, 0.88);
+	--group-bg:rgba(56, 65, 84, 0.86);
+	--pill-bg:rgba(46, 56, 76, 0.88);
+	--toggle-bg:rgba(45, 54, 72, 0.92);
+	--panel-muted-bg:linear-gradient(180deg, rgba(133, 164, 214, 0.18), rgba(45, 54, 72, 0.92));
 	--shadow-soft:0 22px 60px rgba(4, 8, 20, 0.34);
 	--shadow-button:0 8px 20px rgba(4, 8, 20, 0.26);
 	--shadow-button-hover:0 12px 24px rgba(4, 8, 20, 0.32);
@@ -196,23 +206,19 @@ b {
 .theme-toggle {
 	display:inline-flex;
 	align-items:center;
-	gap:0.55rem;
+	justify-content:center;
 	min-height:auto;
-	width:auto;
+	width:2.75rem;
 	max-width:none;
 	margin:0;
-	padding:0.6rem 0.9rem;
+	padding:0.6rem;
 	border-radius:999px;
 	border:1px solid var(--divider);
-	background:rgba(255, 255, 255, 0.44);
+	background:var(--toggle-bg);
 	color:var(--text-main);
 	font-size:0.95rem;
 	font-weight:700;
 	box-shadow:none;
-}
-
-.theme-dark .theme-toggle {
-	background:rgba(255, 255, 255, 0.08);
 }
 
 .theme-toggle:hover {
@@ -221,20 +227,19 @@ b {
 }
 
 .theme-toggle__icon {
-	font-size:1rem;
+	font-size:1.1rem;
 	line-height:1;
 }
 
 .theme-toggle__icon::before {
-	content:"sun";
+	content:"☀";
 	display:inline-block;
-	font-size:0.78rem;
-	text-transform:uppercase;
-	letter-spacing:0.08em;
+	font-size:1rem;
+	line-height:1;
 }
 
 .theme-dark .theme-toggle__icon::before {
-	content:"moon";
+	content:"☾";
 }
 
 .sr-only {
@@ -261,7 +266,7 @@ b {
 	padding:0.55rem 0.9rem;
 	border:1px solid rgba(126, 166, 217, 0.24);
 	border-radius:999px;
-	background:rgba(255, 255, 255, 0.68);
+	background:var(--pill-bg);
 	color:var(--text-main);
 	font-size:0.95rem;
 	font-weight:600;
@@ -271,13 +276,13 @@ b {
 	margin:2rem 0;
 	padding:1.5rem;
 	border-radius:1.2rem;
-	background:rgba(255, 255, 255, 0.5);
+	background:var(--panel-bg);
 	border:1px solid rgba(126, 166, 217, 0.16);
 	text-align:left;
 }
 
 .spotlight--muted {
-	background:linear-gradient(180deg, rgba(181, 216, 255, 0.36), rgba(255, 255, 255, 0.42));
+	background:var(--panel-muted-bg);
 }
 
 .spotlight--compact {
@@ -367,7 +372,7 @@ ul {
 .button-group {
 	padding:1.2rem;
 	border-radius:1rem;
-	background:rgba(255, 255, 255, 0.45);
+	background:var(--group-bg);
 	border:1px solid rgba(126, 166, 217, 0.16);
 }
 

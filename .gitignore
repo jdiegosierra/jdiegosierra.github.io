@@ -1,3 +1,5 @@
 .DS_Store
 .idea
 .devcontainer
+node_modules
+dist

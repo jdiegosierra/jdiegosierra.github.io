@@ -474,6 +474,54 @@
 	--button-border:1px solid #f0b89a;
 }
 
+:root.theme-dark .button-calendly {
+	--button-text:#eef3ff;
+	--button-background:#5b6f97;
+	--button-border:1px solid #89a1cb;
+}
+
+:root.theme-dark .button-github {
+	--button-text:#eef3ff;
+	--button-background:#625c86;
+	--button-border:1px solid #958db6;
+}
+
+:root.theme-dark .button-kick-alt {
+	--button-text:#eef3ff;
+	--button-background:#557666;
+	--button-border:1px solid #83b09b;
+}
+
+:root.theme-dark .button-linked {
+	--button-text:#eef3ff;
+	--button-background:#59719a;
+	--button-border:1px solid #8fb2de;
+}
+
+:root.theme-dark .button-medium {
+	--button-text:#eef3ff;
+	--button-background:#6b627f;
+	--button-border:1px solid #9c8fb4;
+}
+
+:root.theme-dark .button-onlyfans {
+	--button-text:#eef3ff;
+	--button-background:#57788b;
+	--button-border:1px solid #89b4ca;
+}
+
+:root.theme-dark .button-spotify-alt {
+	--button-text:#eef3ff;
+	--button-background:#4f7360;
+	--button-border:1px solid #7fb195;
+}
+
+:root.theme-dark .button-stack-overflow {
+	--button-text:#eef3ff;
+	--button-background:#8d6453;
+	--button-border:1px solid #d49b80;
+}
+
 /* Steam */
 .button-steam {
 	--button-text:#ffffff;

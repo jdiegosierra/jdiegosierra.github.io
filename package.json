@@ -1,0 +1,10 @@
+{
+  "name": "jdiegosierra.github.io",
+  "private": true,
+  "scripts": {
+    "build:resume-pdf": "node scripts/generate-resume-pdf.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.53.0"
+  }
+}
