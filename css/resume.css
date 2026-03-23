@@ -5,8 +5,12 @@
 }
 
 .resume-shell {
-  width: min(100%, 72rem);
+  width: min(100%, 210mm);
   margin: 0 auto;
+}
+
+html.export-pdf .resume-shell {
+  width: 186mm;
 }
 
 .resume-toolbar {
@@ -84,6 +88,10 @@ html.export-pdf .no-print {
   font-size: 2.1rem;
 }
 
+.resume-header__intro {
+  min-width: 0;
+}
+
 .resume-kicker {
   margin-bottom: 0.5rem;
   color: var(--accent);
@@ -113,6 +121,31 @@ html.export-pdf .no-print {
 .resume-meta p {
   margin-bottom: 0.28rem;
   font-size: 0.88rem;
+}
+
+.resume-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.8rem;
+}
+
+.resume-highlight {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.34rem 0.58rem;
+  border-radius: 999px;
+  background: rgba(126, 166, 217, 0.12);
+  border: 1px solid rgba(126, 166, 217, 0.16);
+  color: var(--text-main);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.theme-dark .resume-highlight {
+  background: rgba(109, 132, 178, 0.14);
+  border-color: rgba(162, 186, 223, 0.22);
 }
 
 .resume-section {
@@ -199,6 +232,7 @@ html.export-pdf .no-print {
 
 .resume-entry__company {
   font-size: 0.92rem;
+  margin-bottom: 0;
 }
 
 .resume-entry__meta {
@@ -246,6 +280,16 @@ html.export-pdf .no-print {
   row-gap: 0.15rem;
 }
 
+.resume-section--card .resume-list--grid li {
+  padding: 0.44rem 0.55rem 0.44rem 1.15rem;
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.theme-dark .resume-section--card .resume-list--grid li {
+  background: rgba(57, 68, 89, 0.42);
+}
+
 .resume-section p {
   margin-bottom: 0.8rem;
   font-size: 0.9rem;
@@ -283,6 +327,10 @@ html.export-pdf .no-print {
     padding: 1.25rem;
   }
 
+  .resume-highlights {
+    margin-bottom: 0.25rem;
+  }
+
   .resume-section--card,
   .resume-entry {
     padding-left: 0.9rem;
@@ -300,6 +348,11 @@ html.export-pdf .no-print {
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
   html,
   body {
     background: #f9f1f5 !important;
@@ -314,6 +367,7 @@ html.export-pdf .no-print {
 
   .resume-page {
     padding: 0;
+    font-size: 0.84rem;
   }
 
   .resume-sheet {
@@ -323,50 +377,47 @@ html.export-pdf .no-print {
     padding: 0;
   }
 
-  .resume-page {
-    font-size: 0.86rem;
-  }
-
   .resume-header h1 {
-    font-size: 1.72rem;
+    font-size: 1.56rem;
+    margin-bottom: 0.35rem;
   }
 
   .resume-role {
-    font-size: 0.9rem;
+    font-size: 0.82rem;
   }
 
   .resume-meta p,
   .resume-entry__meta,
   .resume-tech {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
   }
 
   .resume-entry h3 {
-    font-size: 0.93rem;
+    font-size: 0.86rem;
   }
 
   .resume-section h2 {
-    font-size: 0.9rem;
-    margin-bottom: 0.55rem;
+    font-size: 0.78rem;
+    margin-bottom: 0.42rem;
   }
 
   .resume-section p,
   .resume-list li {
-    font-size: 0.8rem;
-    line-height: 1.34;
+    font-size: 0.72rem;
+    line-height: 1.24;
   }
 
   .resume-section {
-    margin-top: 0.75rem;
+    margin-top: 0.52rem;
   }
 
   .resume-section--card {
-    padding: 0.65rem 0.8rem;
+    padding: 0.48rem 0.62rem;
   }
 
   .resume-entry {
-    margin-top: 0.72rem;
-    padding: 0.58rem 0.72rem 0.55rem 0.92rem;
+    margin-top: 0.48rem;
+    padding: 0.42rem 0.56rem 0.42rem 0.78rem;
   }
 
   .resume-list {
@@ -374,11 +425,31 @@ html.export-pdf .no-print {
   }
 
   .resume-list li {
-    margin-bottom: 0.24rem;
+    margin-bottom: 0.16rem;
+    padding-left: 0.72rem;
   }
 
   .resume-entry__header {
-    margin-bottom: 0.45rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .resume-highlights {
+    gap: 0.25rem;
+    margin-top: 0.45rem;
+  }
+
+  .resume-highlight {
+    padding: 0.22rem 0.38rem;
+    font-size: 0.62rem;
+  }
+
+  .resume-entry::before {
+    left: 0.3rem;
+    width: 0.12rem;
+  }
+
+  .resume-section--card .resume-list--grid li {
+    padding: 0.28rem 0.34rem 0.28rem 0.82rem;
   }
 
   .resume-header,
