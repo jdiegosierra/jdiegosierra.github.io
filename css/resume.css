@@ -9,8 +9,25 @@
   margin: 0 auto;
 }
 
+html.export-pdf,
+html.export-pdf body {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html.export-pdf .resume-page {
+  padding: 0;
+}
+
 html.export-pdf .resume-shell {
-  width: 186mm;
+  width: 100%;
+}
+
+html.export-pdf .resume-sheet {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .resume-toolbar {
