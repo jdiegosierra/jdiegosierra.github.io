@@ -230,12 +230,13 @@ html.export-pdf .no-print {
 }
 
 .resume-list li::before {
-  content: "-";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);
-  font-weight: 700;
+	content: "•";
+	position: absolute;
+	left: 0;
+	top: 0.02rem;
+	color: var(--accent);
+	font-weight: 700;
+	font-size: 0.95em;
 }
 
 .resume-list--grid {
