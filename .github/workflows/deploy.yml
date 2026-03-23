@@ -15,9 +15,10 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  NODE_VERSION: "23.5.0"
+  NODE_VERSION: "24"
   PACKAGE_MANAGER: "npm"
   AI_PATH: "./ai-portfolio"
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   build:
