@@ -276,26 +276,11 @@ ul {
 	color:var(--text-main);
 }
 
-.button-groups {
-	display:grid;
-	gap:1.5rem;
-	text-align:left;
-}
-
 .button-group {
 	padding:1.2rem;
 	border-radius:1rem;
 	background:rgba(255, 255, 255, 0.03);
 	border:1px solid rgba(255, 255, 255, 0.08);
-}
-
-.button-group-title {
-	margin:0 0 0.85rem;
-	font-size:0.9rem;
-	font-weight:700;
-	letter-spacing:0.12em;
-	text-transform:uppercase;
-	color:var(--accent);
 }
 
 .button-stack {
