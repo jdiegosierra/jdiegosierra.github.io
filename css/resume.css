@@ -42,12 +42,28 @@
   box-shadow: none;
 }
 
+.resume-toolbar__button--primary {
+  background: #f3c7c7;
+  border-color: #df9b9b;
+  color: #6f3640;
+}
+
+.theme-dark .resume-toolbar__button--primary {
+  background: #7a4d57;
+  border-color: #b5808a;
+  color: #fff0f2;
+}
+
 .resume-sheet {
   background: var(--surface);
   border: 1px solid var(--divider);
   border-radius: 1.6rem;
   box-shadow: var(--shadow-soft);
   padding: 2rem;
+}
+
+.resume-sheet a {
+  color: var(--link-color);
 }
 
 .resume-header {
@@ -104,6 +120,16 @@
   font-size: 1.05rem;
 }
 
+.resume-entry--compact {
+  margin-top: 1.1rem;
+}
+
+.resume-tech {
+  margin-top: 0.85rem;
+  color: var(--text-muted);
+  font-size: 0.97rem;
+}
+
 .resume-list {
   margin: 0;
   padding-left: 1.1rem;
@@ -148,8 +174,10 @@
 @media print {
   html,
   body {
-    background: #ffffff !important;
-    color: #111827 !important;
+    background: #f9f1f5 !important;
+    color: #31435b !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .no-print {
@@ -162,8 +190,8 @@
 
   .resume-sheet {
     box-shadow: none;
-    border: none;
-    background: #ffffff;
+    border: 1px solid rgba(126, 166, 217, 0.18);
+    background: rgba(255, 250, 252, 0.94) !important;
     padding: 0;
   }
 
@@ -173,12 +201,18 @@
   .resume-entry__company,
   .resume-entry__meta,
   .resume-list li,
-  .resume-section p {
-    color: #111827 !important;
+  .resume-section p,
+  .resume-tech {
+    color: #31435b !important;
   }
 
   a {
-    color: #111827 !important;
+    color: #5678ac !important;
     text-decoration: none;
+  }
+
+  .resume-entry,
+  .resume-section {
+    break-inside: avoid;
   }
 }

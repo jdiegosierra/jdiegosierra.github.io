@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Diego Sierra | Resume</title>
   <link rel="icon" type="image/x-icon" href="images/avatar.png">
-  <meta name="description" content="Resume of Diego Sierra, focused on platform engineering, SRE, and AI-enabled software delivery.">
+  <meta name="description" content="Resume of Diego Sierra, focused on platform engineering, SRE, cloud architecture, and AI-enabled software delivery.">
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
@@ -40,7 +40,8 @@
             <span class="theme-toggle__icon" aria-hidden="true"></span>
             <span class="sr-only theme-toggle__label">Switch theme</span>
           </button>
-          <a class="resume-toolbar__button" href="resume.pdf" download>Download PDF</a>
+          <a class="resume-toolbar__button resume-toolbar__button--primary" href="resume.pdf" download>Download PDF (Light)</a>
+          <a class="resume-toolbar__button" href="resume-dark.pdf" download>Dark PDF</a>
         </div>
       </div>
 
@@ -48,11 +49,13 @@
         <header class="resume-header">
           <div>
             <p class="resume-kicker">Resume</p>
-            <h1>Diego Sierra</h1>
-            <p class="resume-role">Platform Engineering Lead | SRE | AI Enablement</p>
+            <h1>Juan Diego Sierra Fernandez</h1>
+            <p class="resume-role">Platform Engineering Lead | SRE / DevOps | Cloud Architect | AI Enablement</p>
           </div>
           <div class="resume-meta">
-            <p>Madrid, Spain</p>
+            <p>Madrid, Spain (UTC+2)</p>
+            <p>Remote · Hybrid · On-site</p>
+            <p><a href="mailto:juandiegosierrafernandez@gmail.com">juandiegosierrafernandez@gmail.com</a></p>
             <p><a href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener">linkedin.com/in/jdiegosierra</a></p>
             <p><a href="https://github.com/jdiegosierra" target="_blank" rel="noopener">github.com/jdiegosierra</a></p>
             <p><a href="https://jdiegosierra.github.io/">jdiegosierra.github.io</a></p>
@@ -60,52 +63,155 @@
         </header>
 
         <section class="resume-section">
-          <h2>Profile</h2>
-          <p>I lead platform and infrastructure work with a strong focus on AI-enabled software delivery. My background spans SRE, platform engineering, cloud infrastructure, CI/CD, Kubernetes, observability, and production AI tooling. I focus on turning engineering systems into force multipliers for speed, quality, and reliability.</p>
-          <p>I have worked hands-on with LiteLLM, Claude Code, OpenCode, and OpenClaw in production, building custom agents, plugins, skills, and commands for engineering and DevOps teams. I care about making LLM usage dependable in practice through caching, fallbacks, routing, cost awareness, and operational resilience.</p>
+          <h2>Summary</h2>
+          <p>Infrastructure, platform, and reliability engineer with 10+ years of experience building and operating scalable systems across on-premises and cloud environments. Strong background in automation, CI/CD, Kubernetes, Terraform, observability, and developer platforms, combined with hands-on experience integrating AI into engineering workflows.</p>
+          <p>I have worked with LiteLLM, Claude Code, OpenCode, and OpenClaw in production, building internal agents, plugins, skills, and commands that improve engineering velocity and delivery quality. I care about making LLM usage dependable in practice through routing, caching, fallbacks, cost awareness, and operational resilience.</p>
         </section>
 
         <section class="resume-section">
           <h2>Core strengths</h2>
           <ul class="resume-list resume-list--grid">
             <li>Platform engineering and developer experience</li>
-            <li>SRE, observability, and production operations</li>
+            <li>SRE, DevOps, and cloud architecture</li>
             <li>AI-enabled SDLC and internal engineering tooling</li>
-            <li>LLM routing, caching, fallbacks, and resilience</li>
-            <li>Kubernetes, EKS, Helm, and GitOps workflows</li>
-            <li>GitHub Actions, Terraform, and Pulumi</li>
-            <li>SOC 2 and ISO 27001 readiness</li>
-            <li>Technical leadership and cross-team execution</li>
+            <li>LLM routing, caching, fallbacks, and resiliency</li>
+            <li>Kubernetes, EKS, Helm, ArgoCD, and GitOps</li>
+            <li>GitHub Actions, GitLab CI, Terraform, and Pulumi</li>
+            <li>Observability with Prometheus, Tempo, Grafana, and OpenTelemetry</li>
+            <li>Security, governance, SOC 2, and ISO 27001 readiness</li>
           </ul>
         </section>
 
         <section class="resume-section">
           <h2>Experience</h2>
+
           <div class="resume-entry">
             <div class="resume-entry__header">
               <div>
-                <h3>Infrastructure / Platform Leadership</h3>
-                <p class="resume-entry__company">Maisa</p>
+                <h3>Infrastructure Team Lead</h3>
+                <p class="resume-entry__company">Maisa AI</p>
               </div>
-              <p class="resume-entry__meta">Current</p>
+              <p class="resume-entry__meta">May 2025 - Present</p>
             </div>
             <ul class="resume-list">
-              <li>Lead the Infrastructure team of 6 engineers, reporting directly to the CTO.</li>
-              <li>Drive AI adoption across the SDLC to improve engineering speed, developer productivity, and delivery quality.</li>
-              <li>Build production-grade AI workflows, agents, skills, plugins, and commands for internal engineering use cases.</li>
-              <li>Operate platform and cloud foundations across CI/CD, Kubernetes, observability, and infrastructure as code.</li>
-              <li>Support security and compliance initiatives including SOC 2 and ISO 27001.</li>
+              <li>Lead the infrastructure team and communicate directly with the CTO.</li>
+              <li>Drive AI adoption across the SDLC, improving engineering speed, developer productivity, and delivery quality.</li>
+              <li>Implement security and compliance standards including SOC 2 and ISO 27001.</li>
+              <li>Collaborate with developers to design and operate the full CI/CD lifecycle with GitHub Actions.</li>
+              <li>Release and maintain a public Helm chart and manage production EKS workloads.</li>
+              <li>Provision infrastructure with Terraform and Pulumi using a GitOps approach.</li>
+              <li>Build and operate monitoring and observability with Grafana Tanka, Prometheus, Tempo, and OpenTelemetry.</li>
+            </ul>
+            <p class="resume-tech">Tech stack: Kubernetes, Helm, ArgoCD, Prometheus, Docker, OpenTelemetry, GitHub Actions, Terraform, Pulumi, Java, Maven.</p>
+          </div>
+
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <div>
+                <h3>Site Reliability Engineer</h3>
+                <p class="resume-entry__company">The Workshop</p>
+              </div>
+              <p class="resume-entry__meta">Dec 2023 - May 2025</p>
+            </div>
+            <ul class="resume-list">
+              <li>Standardized CI/CD processes across seven product verticals, improving consistency and deployment quality.</li>
+              <li>Managed and maintained more than 50 Kubernetes clusters supporting large-scale production workloads.</li>
+              <li>Created and maintained Docker images, Helm charts, GitLab pipelines, and Ansible playbooks for scalable platform operations.</li>
+            </ul>
+            <p class="resume-tech">Tech stack: Kubernetes, Helm, ArgoCD, Prometheus, Docker, OpenTelemetry, Bamboo, GitLab, Terraform, Ansible, Java, Maven.</p>
+          </div>
+
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <div>
+                <h3>Site Reliability Engineer</h3>
+                <p class="resume-entry__company">Mindcurv</p>
+              </div>
+              <p class="resume-entry__meta">Jul 2021 - Dec 2023</p>
+            </div>
+            <ul class="resume-list">
+              <li>Improved the cloud infrastructure powering auxmoney.com, increasing reliability, scalability, and performance.</li>
+              <li>Managed more than 30 AWS accounts, ensuring governance, security, and automation standards.</li>
+            </ul>
+            <p class="resume-tech">Tech stack: AWS, Azure, Kubernetes (EKS), Docker, Ansible, GitLab, Terraform, PostgreSQL (RDS), Grafana, EC2 (Linux), PHP, WordPress.</p>
+          </div>
+
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <div>
+                <h3>Site Reliability Engineer</h3>
+                <p class="resume-entry__company">Bdeo</p>
+              </div>
+              <p class="resume-entry__meta">Jul 2019 - Mar 2021</p>
+            </div>
+            <ul class="resume-list">
+              <li>Designed and maintained cloud-native and serverless architectures on AWS.</li>
+              <li>Managed the company AWS estate, including CloudFormation, API Gateway, Lambda, CloudFront, Route 53, EC2, DynamoDB, RDS, and Fargate.</li>
+              <li>Drove DevOps culture adoption across teams, improving CI/CD workflows with GitLab pipelines and internal tooling.</li>
+              <li>Designed and developed horizontal platform services to accelerate product development.</li>
+              <li>Worked closely with support and engineering teams to diagnose incidents and unblock delivery.</li>
+            </ul>
+          </div>
+
+          <div class="resume-entry resume-entry--compact">
+            <div class="resume-entry__header">
+              <div>
+                <h3>Senior Software Developer</h3>
+                <p class="resume-entry__company">Bdeo</p>
+              </div>
+              <p class="resume-entry__meta">Mar 2018 - Jul 2019</p>
+            </div>
+            <ul class="resume-list">
+              <li>Worked as a senior developer in the product team, performing reviews, designing services, and improving legacy code.</li>
+              <li>Designed, deployed, and maintained AWS infrastructure supporting core product services.</li>
+            </ul>
+          </div>
+
+          <div class="resume-entry resume-entry--compact">
+            <div class="resume-entry__header">
+              <div>
+                <h3>Senior Blockchain Developer</h3>
+                <p class="resume-entry__company">Airbus Defence & Space</p>
+              </div>
+              <p class="resume-entry__meta">Jun 2016 - Mar 2018</p>
+            </div>
+            <ul class="resume-list">
+              <li>Led and developed international blockchain projects with teams across Germany, Italy, Spain, and France.</li>
+              <li>Designed and implemented a custom blockchain from scratch using Python and LevelDB.</li>
+              <li>Served as team lead on a Port of Cartagena project using Hyperledger Fabric within the Alastria Network.</li>
+            </ul>
+          </div>
+
+          <div class="resume-entry resume-entry--compact">
+            <div class="resume-entry__header">
+              <div>
+                <h3>Embedded Software Developer (Intern)</h3>
+                <p class="resume-entry__company">Altair</p>
+              </div>
+              <p class="resume-entry__meta">Jan 2016 - Jun 2016</p>
+            </div>
+            <ul class="resume-list">
+              <li>Developed a customized fork of Node-RED using Node.js.</li>
+              <li>Built software for IoT devices in C/C++.</li>
+              <li>Worked with Bluetooth, RabbitMQ, ThingWorx, Sigfox, LoRa, RFID, and WiFi protocols and technologies.</li>
             </ul>
           </div>
         </section>
 
         <section class="resume-section">
-          <h2>Selected impact</h2>
+          <h2>Open source and community</h2>
           <ul class="resume-list">
-            <li>Introduced AI-assisted workflows for review, troubleshooting, and delivery so teams could move faster while keeping a high quality bar.</li>
-            <li>Built and operated internal AI tooling for real delivery work rather than isolated demos.</li>
-            <li>Owned platform and cloud operations across GitHub Actions, Terraform, Pulumi, EKS, Helm, Grafana Tanka, Prometheus, and Tempo.</li>
-            <li>Balanced delivery speed with operational clarity, security posture, and compliance requirements.</li>
+            <li>Contributor to open-source projects such as OpenTelemetry, Pulumi, and Helm.</li>
+            <li>Active participant in the Stack Overflow community.</li>
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2>Certifications</h2>
+          <ul class="resume-list resume-list--grid">
+            <li>Certified Kubernetes Administrator (CKA)</li>
+            <li>AWS Certified Solutions Architect - Associate</li>
+            <li>FinOps Certified Engineer</li>
           </ul>
         </section>
 
