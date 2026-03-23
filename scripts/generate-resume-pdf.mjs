@@ -12,7 +12,7 @@ const browser = await chromium.launch({ headless: true });
 
 async function buildPdf(theme, fileName) {
   const page = await browser.newPage({ colorScheme: theme });
-  const resumeUrl = `${pathToFileURL(resumePath).href}?theme=${theme}`;
+  const resumeUrl = `${pathToFileURL(resumePath).href}?theme=${theme}&pdf=1`;
 
   await page.goto(resumeUrl, { waitUntil: 'load' });
   await page.emulateMedia({ media: 'screen', colorScheme: theme });

@@ -16,6 +16,7 @@
     (function () {
       var params = new URLSearchParams(window.location.search);
       var forcedTheme = params.get('theme');
+      var isPdfExport = params.get('pdf') === '1';
       var storedTheme = null;
       try {
         storedTheme = localStorage.getItem('theme-preference');
@@ -26,6 +27,9 @@
       var theme = forcedTheme || storedTheme || (prefersDark ? 'dark' : 'light');
       document.documentElement.classList.remove('theme-light', 'theme-dark');
       document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
+      if (isPdfExport) {
+        document.documentElement.classList.add('export-pdf');
+      }
     })();
   </script>
 </head>
@@ -40,8 +44,7 @@
             <span class="theme-toggle__icon" aria-hidden="true"></span>
             <span class="sr-only theme-toggle__label">Switch theme</span>
           </button>
-          <a class="resume-toolbar__button resume-toolbar__button--primary" href="resume.pdf" download>Download PDF (Light)</a>
-          <a class="resume-toolbar__button" href="resume-dark.pdf" download>Dark PDF</a>
+          <a class="resume-toolbar__button resume-toolbar__button--primary" id="resume-download" href="resume.pdf" download>Download PDF</a>
         </div>
       </div>
 
@@ -239,12 +242,18 @@
 
       function applyTheme(theme) {
         var isDark = theme === 'dark';
+        var downloadLink = document.getElementById('resume-download');
         root.classList.remove('theme-light', 'theme-dark');
         root.classList.add(isDark ? 'theme-dark' : 'theme-light');
         toggle.setAttribute('aria-pressed', String(isDark));
         toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
         toggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
         toggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+        if (downloadLink) {
+          downloadLink.setAttribute('href', isDark ? 'resume-dark.pdf' : 'resume.pdf');
+          downloadLink.setAttribute('download', isDark ? 'diego-sierra-resume-dark.pdf' : 'diego-sierra-resume.pdf');
+          downloadLink.textContent = isDark ? 'Download PDF (Dark)' : 'Download PDF';
+        }
       }
 
       var currentTheme = root.classList.contains('theme-dark') ? 'dark' : 'light';
