@@ -226,18 +226,62 @@ html.export-pdf .no-print {
   margin-top: 0.9rem;
 }
 
-.resume-promoted {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-left: 0.4rem;
-  letter-spacing: 0.02em;
+.resume-entry--grouped {
+  padding-left: 0.95rem;
 }
 
-.resume-entry__subrole {
-  margin-top: 0.8rem;
-  padding-top: 0.8rem;
-  border-top: 1px dashed rgba(126, 166, 217, 0.25);
+.resume-entry--grouped::before {
+  display: none;
+}
+
+.resume-entry__group-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.resume-entry__group-header .resume-entry__company {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.resume-timeline {
+  position: relative;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(126, 166, 217, 0.3);
+}
+
+.theme-dark .resume-timeline {
+  border-left-color: rgba(162, 186, 223, 0.25);
+}
+
+.resume-timeline__role {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.resume-timeline__role:last-child {
+  padding-bottom: 0;
+}
+
+.resume-timeline__role::before {
+  content: "";
+  position: absolute;
+  left: -1rem;
+  top: 0.45rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateX(calc(-50% + 1px));
+  box-shadow: 0 0 0 3px var(--surface);
+}
+
+.resume-timeline__role + .resume-timeline__role {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
 }
 
 .resume-entry {
