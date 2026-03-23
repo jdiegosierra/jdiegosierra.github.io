@@ -27,8 +27,7 @@ jobs:
           cp -r css dist
           cp -r fonts dist
           cp -r images dist
-          cp index.html dist
-          cp privacy.html dist
+          cp *.html dist
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v7

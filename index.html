@@ -29,9 +29,10 @@
   <script>
     (function () {
       var storedTheme = localStorage.getItem('theme-preference');
-      var theme = storedTheme === 'dark' ? 'theme-dark' : 'theme-light';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = storedTheme ? storedTheme : (prefersDark ? 'dark' : 'light');
       document.documentElement.classList.remove('theme-light', 'theme-dark');
-      document.documentElement.classList.add(theme);
+      document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
     })();
   </script>
 </head>
@@ -41,9 +42,9 @@
 <div class="container">
   <div class="column">
     <div class="theme-toggle-wrap">
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
-        <span class="theme-toggle__icon" aria-hidden="true">◐</span>
-        <span class="theme-toggle__label">Dark mode</span>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme" aria-pressed="false" title="Switch theme">
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+        <span class="sr-only theme-toggle__label">Switch theme</span>
       </button>
     </div>
 
@@ -98,7 +99,7 @@
 
     <div class="button-group" role="navigation" aria-label="Profile links">
       <div class="button-stack">
-        <a class="button button-kick-alt" href="images/cv.pdf" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/cv.png" alt="Curriculum Vitae Icon">Curriculum Vitae</a>
+        <a class="button button-kick-alt" href="resume.html" role="button"><img class="icon" aria-hidden="true" src="images/icons/cv.png" alt="Resume Icon">Resume</a>
         <a class="button button-linked" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/linkedin.svg" alt="LinkedIn Logo">LinkedIn</a>
         <a class="button button-calendly" href="#" target="_blank" rel="noopener" role="button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1'});return false;"><img class="icon" aria-hidden="true" src="images/icons/calendly.svg" alt="Calendly Logo">Book a video call</a>
         <a class="button button-github" href="https://github.com/jdiegosierra" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/github.svg" alt="GitHub Logo">GitHub</a>
@@ -127,7 +128,8 @@
       root.classList.add(isDark ? 'theme-dark' : 'theme-light');
       toggle.setAttribute('aria-pressed', String(isDark));
       toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-      toggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Light mode' : 'Dark mode';
+      toggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      toggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Switch to light theme' : 'Switch to dark theme';
     }
 
     var currentTheme = root.classList.contains('theme-dark') ? 'dark' : 'light';

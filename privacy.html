@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="theme-auto" lang="en">
+<html class="theme-light" lang="en">
 
   <head>
     <meta charset="utf-8">
@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/brands.css">
+    <script>
+      (function () {
+        var storedTheme = localStorage.getItem('theme-preference');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = storedTheme ? storedTheme : (prefersDark ? 'dark' : 'light');
+        document.documentElement.classList.remove('theme-light', 'theme-dark');
+        document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
+      })();
+    </script>
   </head>
 
   <body>

@@ -1,0 +1,184 @@
+.resume-page {
+  min-height: 100vh;
+  padding: 2rem 1rem 3rem;
+}
+
+.resume-shell {
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+.resume-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.resume-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.resume-toolbar__link,
+.resume-toolbar__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: auto;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--divider);
+  background: var(--surface-soft);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: none;
+}
+
+.resume-sheet {
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: 1.6rem;
+  box-shadow: var(--shadow-soft);
+  padding: 2rem;
+}
+
+.resume-header {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--divider);
+}
+
+.resume-kicker {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.resume-role,
+.resume-meta p,
+.resume-entry__company,
+.resume-entry__meta {
+  color: var(--text-muted);
+}
+
+.resume-meta {
+  align-self: end;
+}
+
+.resume-meta p {
+  margin-bottom: 0.5rem;
+}
+
+.resume-section {
+  margin-top: 1.6rem;
+}
+
+.resume-section h2 {
+  margin-bottom: 0.9rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.resume-entry__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.resume-entry h3 {
+  margin-bottom: 0.3rem;
+  font-size: 1.05rem;
+}
+
+.resume-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.resume-list li {
+  margin-bottom: 0.6rem;
+  color: var(--text-main);
+}
+
+.resume-list--grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.5rem;
+}
+
+@media (max-width: 760px) {
+  .resume-page {
+    padding: 1rem 0.75rem 2rem;
+  }
+
+  .resume-toolbar,
+  .resume-toolbar__actions,
+  .resume-header,
+  .resume-entry__header,
+  .resume-list--grid {
+    display: block;
+  }
+
+  .resume-toolbar__link,
+  .resume-toolbar__button,
+  .resume-toolbar .theme-toggle {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+
+  .resume-sheet {
+    padding: 1.25rem;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-page {
+    padding: 0;
+  }
+
+  .resume-sheet {
+    box-shadow: none;
+    border: none;
+    background: #ffffff;
+    padding: 0;
+  }
+
+  .resume-header,
+  .resume-role,
+  .resume-meta p,
+  .resume-entry__company,
+  .resume-entry__meta,
+  .resume-list li,
+  .resume-section p {
+    color: #111827 !important;
+  }
+
+  a {
+    color: #111827 !important;
+    text-decoration: none;
+  }
+}
