@@ -1,0 +1,124 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: "23.5.0"
+  PACKAGE_MANAGER: "npm"
+  AI_PATH: "./ai-portfolio"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check lockfiles
+        shell: "bash"
+        working-directory: ${{ env.AI_PATH }}
+        env:
+          INPUT_PM: ${{ env.PACKAGE_MANAGER }}
+        run: |
+          len=`echo $INPUT_PM | wc -c`
+          if [ $len -gt 1 ]; then
+            PACKAGE_MANAGER=$(echo "$INPUT_PM" | grep -o '^[^@]*')
+            VERSION=$(echo "$INPUT_PM" | { grep -o '@.*' || true; } | sed 's/^@//')
+            if [ -z "$VERSION" ]; then
+                VERSION="latest"
+            fi
+            echo "PACKAGE_MANAGER=$PACKAGE_MANAGER" >> $GITHUB_ENV
+          elif [ $(find "." -maxdepth 1 -name "pnpm-lock.yaml") ]; then
+              echo "PACKAGE_MANAGER=pnpm" >> $GITHUB_ENV
+              echo "LOCKFILE=pnpm-lock.yaml" >> $GITHUB_ENV
+          elif [ $(find "." -maxdepth 1 -name "yarn.lock") ]; then
+              echo "PACKAGE_MANAGER=yarn" >> $GITHUB_ENV
+              echo "LOCKFILE=yarn.lock" >> $GITHUB_ENV
+          elif [ $(find "." -maxdepth 1 -name "package-lock.json") ]; then
+              VERSION="latest"
+              echo "PACKAGE_MANAGER=npm" >> $GITHUB_ENV
+              echo "LOCKFILE=package-lock.json" >> $GITHUB_ENV
+          elif [ $(find "." -maxdepth 1 -name "bun.lock") ]; then
+              VERSION="latest"
+              echo "PACKAGE_MANAGER=bun" >> $GITHUB_ENV
+              echo "LOCKFILE=bun.lock" >> $GITHUB_ENV
+          elif [ $(find "." -maxdepth 1 -name "bun.lockb") ]; then
+              VERSION="latest"
+              echo "PACKAGE_MANAGER=bun" >> $GITHUB_ENV
+              echo "LOCKFILE=bun.lockb" >> $GITHUB_ENV
+          else
+              echo "No lockfile found.
+          Please specify your preferred \"package-manager\" in the action configuration."
+              exit 1
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: ${{ env.PACKAGE_MANAGER }}
+          cache-dependency-path: "${{ env.AI_PATH }}/${{ env.LOCKFILE }}"
+
+      - name: Install dependencies
+        shell: "bash"
+        working-directory: ${{ env.AI_PATH }}
+        run: $PACKAGE_MANAGER install
+
+      - name: Build project
+        shell: "bash"
+        working-directory: ${{ env.AI_PATH }}
+        run: $PACKAGE_MANAGER run build
+
+      - name: Prepare artifact
+        run: |
+          mkdir -p ./dist
+          cp -r css ./dist
+          cp -r fonts ./dist
+          cp -r images ./dist
+          cp index.html ./dist
+          mkdir -p ./dist/ai-portfolio
+          cp -r ./ai-portfolio/dist/* ./dist/ai-portfolio
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: ./dist
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
