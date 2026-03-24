@@ -64,7 +64,7 @@ html.export-pdf .resume-section--card .resume-list--grid li {
   max-width: none;
   margin: 0;
   padding: 0.7rem 1rem;
-  border-radius: 999px;
+  border-radius: 0.5rem;
   border: 1px solid var(--divider);
   background: var(--surface-soft);
   color: var(--text-main);
@@ -75,21 +75,21 @@ html.export-pdf .resume-section--card .resume-list--grid li {
 }
 
 .resume-toolbar__button--primary {
-  background: #f3c7c7;
-  border-color: #df9b9b;
-  color: #6f3640;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
 }
 
 .theme-dark .resume-toolbar__button--primary {
-  background: #7a4d57;
-  border-color: #b5808a;
-  color: #fff0f2;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
 }
 
 .resume-sheet {
   background: var(--surface);
   border: 1px solid var(--divider);
-  border-radius: 1.6rem;
+  border-radius: 0.75rem;
   box-shadow: var(--shadow-soft);
   padding: 1.45rem;
 }
@@ -144,13 +144,13 @@ html.export-pdf .no-print {
 .resume-meta {
   align-self: end;
   padding: 0.8rem 0.9rem;
-  border-radius: 1rem;
-  background: rgba(126, 166, 217, 0.1);
-  border: 1px solid rgba(126, 166, 217, 0.12);
+  border-radius: 0.5rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--divider);
 }
 
 .theme-dark .resume-meta {
-  background: rgba(52, 65, 88, 0.6);
+  background: var(--surface-soft);
 }
 
 .resume-meta p {
@@ -186,9 +186,9 @@ html.export-pdf .no-print {
   display: inline-flex;
   align-items: center;
   padding: 0.34rem 0.58rem;
-  border-radius: 999px;
-  background: rgba(126, 166, 217, 0.12);
-  border: 1px solid rgba(126, 166, 217, 0.16);
+  border-radius: 0.35rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--divider);
   color: var(--text-main);
   font-size: 0.78rem;
   font-weight: 700;
@@ -196,8 +196,8 @@ html.export-pdf .no-print {
 }
 
 .theme-dark .resume-highlight {
-  background: rgba(109, 132, 178, 0.14);
-  border-color: rgba(162, 186, 223, 0.22);
+  background: var(--surface-soft);
+  border-color: var(--divider);
 }
 
 .resume-section {
@@ -206,13 +206,13 @@ html.export-pdf .no-print {
 
 .resume-section--card {
   padding: 0.9rem 1rem;
-  border: 1px solid rgba(126, 166, 217, 0.16);
-  border-radius: 1rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.18));
+  border: 1px solid var(--divider);
+  border-radius: 0.5rem;
+  background: var(--surface-soft);
 }
 
 .theme-dark .resume-section--card {
-  background: linear-gradient(180deg, rgba(76, 89, 116, 0.34), rgba(43, 53, 73, 0.34));
+  background: var(--surface-soft);
 }
 
 .resume-section h2 {
@@ -231,8 +231,8 @@ html.export-pdf .no-print {
   width: 0.8rem;
   height: 0.8rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  box-shadow: 0 0 0 0.25rem rgba(126, 166, 217, 0.12);
+  background: var(--accent);
+  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.1);
 }
 
 .resume-entry__header {
@@ -277,11 +277,11 @@ html.export-pdf .no-print {
 .resume-timeline {
   position: relative;
   padding-left: 1rem;
-  border-left: 2px solid rgba(126, 166, 217, 0.3);
+  border-left: 2px solid var(--divider);
 }
 
 .theme-dark .resume-timeline {
-  border-left-color: rgba(162, 186, 223, 0.25);
+  border-left-color: var(--divider);
 }
 
 .resume-timeline__role {
@@ -315,13 +315,13 @@ html.export-pdf .no-print {
   position: relative;
   margin-top: 1rem;
   padding: 0.8rem 0.95rem 0.75rem 1.2rem;
-  border-radius: 0.95rem;
-  background: linear-gradient(180deg, rgba(126, 166, 217, 0.1), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(126, 166, 217, 0.12);
+  border-radius: 0.5rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--divider);
 }
 
 .theme-dark .resume-entry {
-  background: linear-gradient(180deg, rgba(109, 132, 178, 0.12), rgba(40, 50, 71, 0.14));
+  background: var(--surface-soft);
 }
 
 .resume-entry:first-of-type {
@@ -392,8 +392,8 @@ html.export-pdf .no-print {
 
 .resume-section--card .resume-list--grid li {
   padding: 0.44rem 0.55rem 0.44rem 1.15rem;
-  border-radius: 0.7rem;
-  background: rgba(255, 255, 255, 0.22);
+  border-radius: 0.35rem;
+  background: var(--surface);
 }
 
 .resume-section--card .resume-list--grid li::before {
@@ -401,7 +401,7 @@ html.export-pdf .no-print {
 }
 
 .theme-dark .resume-section--card .resume-list--grid li {
-  background: rgba(57, 68, 89, 0.42);
+  background: var(--surface);
 }
 
 .resume-section p {
@@ -473,8 +473,8 @@ html.export-pdf .no-print {
 
   html,
   body {
-    background: #f9f1f5 !important;
-    color: #31435b !important;
+    background: #f8f9fa !important;
+    color: #1a1a2e !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -490,8 +490,8 @@ html.export-pdf .no-print {
 
   .resume-sheet {
     box-shadow: none;
-    border: 1px solid rgba(126, 166, 217, 0.18);
-    background: rgba(255, 250, 252, 0.94) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff !important;
     padding: 0;
   }
 
@@ -578,11 +578,11 @@ html.export-pdf .no-print {
   .resume-list li,
   .resume-section p,
   .resume-tech {
-    color: #31435b !important;
+    color: #1a1a2e !important;
   }
 
   a {
-    color: #5678ac !important;
+    color: #3b82f6 !important;
     text-decoration: none;
   }
 
