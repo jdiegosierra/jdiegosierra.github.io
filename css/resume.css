@@ -1,11 +1,19 @@
 .resume-page {
   min-height: 100vh;
-  padding: 2rem 1rem 3rem;
-  font-size: 0.95rem;
+  padding: 2rem 5% 3rem;
+  font-size: 1.05rem;
+}
+
+@media (min-width: 48rem) {
+  .resume-page {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
 .resume-shell {
-  width: min(100%, 210mm);
+  width: 100%;
+  max-width: var(--page-max-width);
   margin: 0 auto;
 }
 
@@ -22,7 +30,8 @@ html.export-pdf .resume-page {
 }
 
 html.export-pdf .resume-shell {
-  width: 100%;
+  width: 210mm;
+  max-width: 210mm;
 }
 
 html.export-pdf .resume-sheet {
@@ -41,9 +50,9 @@ html.export-pdf .resume-section--card .resume-list--grid li {
 }
 
 .resume-toolbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 12rem 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -51,11 +60,40 @@ html.export-pdf .resume-section--card .resume-list--grid li {
 .resume-toolbar__actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.75rem;
+  min-width: 0;
+}
+
+.language-switcher {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem;
+  width: 6rem;
+  padding: 0.25rem;
+  border: 1px solid var(--divider);
+  border-radius: 999px;
+  background: var(--surface-soft);
+}
+
+.language-switcher .resume-toolbar__link {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.language-switcher .resume-toolbar__link[aria-current="page"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
 }
 
 .resume-toolbar__link,
 .resume-toolbar__button {
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -72,6 +110,11 @@ html.export-pdf .resume-section--card .resume-list--grid li {
   font-size: 0.95rem;
   font-weight: 700;
   box-shadow: none;
+}
+
+.resume-toolbar__link--back {
+  width: 100%;
+  white-space: nowrap;
 }
 
 .resume-toolbar__button--primary {
@@ -431,6 +474,10 @@ html.export-pdf .no-print {
 @media (max-width: 760px) {
   .resume-page {
     padding: 1rem 0.75rem 2rem;
+  }
+
+  .language-switcher {
+    width: 100%;
   }
 
   .resume-toolbar,
