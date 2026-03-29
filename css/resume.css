@@ -51,7 +51,7 @@ html.export-pdf .resume-section--card .resume-list--grid li {
 
 .resume-toolbar {
   display: grid;
-  grid-template-columns: 12rem 1fr;
+  grid-template-columns: max-content 1fr;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
@@ -91,6 +91,10 @@ html.export-pdf .resume-section--card .resume-list--grid li {
   color: #ffffff;
 }
 
+.theme-dark .language-switcher .resume-toolbar__link[aria-current="page"] {
+  color: #203049;
+}
+
 .resume-toolbar__link,
 .resume-toolbar__button {
   box-sizing: border-box;
@@ -113,7 +117,8 @@ html.export-pdf .resume-section--card .resume-list--grid li {
 }
 
 .resume-toolbar__link--back {
-  width: 100%;
+  width: auto;
+  justify-self: start;
   white-space: nowrap;
 }
 
