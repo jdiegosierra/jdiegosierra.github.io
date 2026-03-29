@@ -348,6 +348,13 @@
 	--button-border:1px solid #FFFFFF;
 }
 
+/* Manifesto */
+.button-manifesto {
+	--button-text:#5b4518;
+	--button-background:#fce8c8;
+	--button-border:1px solid #e4c48a;
+}
+
 /* Medium */
 .button-medium {
 	--button-text:#31435b;
@@ -467,6 +474,13 @@
 	--button-background:#006AFF;
 }
 
+/* Sponsors */
+.button-sponsors {
+	--button-text:#6b3044;
+	--button-background:#f8d7e0;
+	--button-border:1px solid #e4a8b8;
+}
+
 /* Stack Overflow */
 .button-stack-overflow {
 	--button-text:#31435b;
@@ -498,6 +512,12 @@
 	--button-border:1px solid #8fb2de;
 }
 
+:root.theme-dark .button-manifesto {
+	--button-text:#fce8c8;
+	--button-background:#7a6338;
+	--button-border:1px solid #b89a5c;
+}
+
 :root.theme-dark .button-medium {
 	--button-text:#eef3ff;
 	--button-background:#6b627f;
@@ -508,6 +528,12 @@
 	--button-text:#eef3ff;
 	--button-background:#57788b;
 	--button-border:1px solid #89b4ca;
+}
+
+:root.theme-dark .button-sponsors {
+	--button-text:#f8d7e0;
+	--button-background:#7a4458;
+	--button-border:1px solid #b5768e;
 }
 
 :root.theme-dark .button-spotify-alt {

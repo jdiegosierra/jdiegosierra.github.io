@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html class="theme-light" lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diego's Manifesto | Diego Sierra</title>
+    <link rel="icon" type="image/x-icon" href="images/avatar.png">
+    <meta name="description" content="How I believe an engineering department should work. Principles on platform engineering, reliability, AI adoption, and team culture.">
+    <meta property="og:title" content="Diego's Manifesto | Diego Sierra">
+    <meta property="og:description" content="How I believe an engineering department should work.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jdiegosierra.github.io/manifesto.html">
+    <meta property="og:image" content="https://jdiegosierra.github.io/images/avatar.png">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/brands.css">
+    <script>
+      (function () {
+        var storedTheme = localStorage.getItem('theme-preference');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = storedTheme ? storedTheme : (prefersDark ? 'dark' : 'light');
+        document.documentElement.classList.remove('theme-light', 'theme-dark');
+        document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div class="container-left" role="main">
+      <div class="column">
+        <nav role="navigation">
+          <a href="index.html" aria-label="Back to homepage">&larr; Back to main page</a>
+        </nav>
+
+        <h1>Diego's Manifesto</h1>
+        <p class="lead">How I believe an engineering department should work.</p>
+
+        <section aria-labelledby="platform-heading">
+          <h2 id="platform-heading">Platform is a product</h2>
+          <p>Internal teams are your users. If your platform slows them down, it has failed — no matter how elegant the architecture is. Developer experience is not a nice-to-have; it is the metric that determines whether your infrastructure investment pays off.</p>
+        </section>
+
+        <section aria-labelledby="ai-heading">
+          <h2 id="ai-heading">AI belongs in the workflow, not in the pitch deck</h2>
+          <p>I integrate LLMs where they create measurable leverage: faster reviews, fewer incidents, better delivery consistency. If it does not save time or reduce errors, it does not ship. AI adoption should be driven by engineering outcomes, not by hype cycles.</p>
+        </section>
+
+        <section aria-labelledby="reliability-heading">
+          <h2 id="reliability-heading">Reliability is a feature</h2>
+          <p>Teams that move fast without operational discipline are just generating future incidents. SLOs, observability, and incident response are not overhead — they are what lets you keep shipping. Speed without reliability is just recklessness with a sprint board.</p>
+        </section>
+
+        <section aria-labelledby="toil-heading">
+          <h2 id="toil-heading">Automate the toil, protect the craft</h2>
+          <p>Engineers should spend their time on design and problem-solving, not on repetitive deployments, manual checks, or fighting their own tooling. Every hour of toil eliminated is an hour returned to engineering work that actually moves the product forward.</p>
+        </section>
+
+        <section aria-labelledby="shipping-heading">
+          <h2 id="shipping-heading">Ship small, ship often, ship safely</h2>
+          <p>CI/CD is not a pipeline — it is a culture. Small changes, fast feedback, automated quality gates, and the confidence to deploy on a Friday. If your release process requires a war room, your release process is the problem.</p>
+        </section>
+
+        <section aria-labelledby="security-heading">
+          <h2 id="security-heading">Security and compliance enable speed</h2>
+          <p>When built into the platform from the start, they remove friction instead of adding it. Guardrails should be invisible until you need them. The goal is not to slow teams down with gates, but to make the safe path the easiest path.</p>
+        </section>
+
+        <section aria-labelledby="ownership-heading">
+          <h2 id="ownership-heading">Ownership over tickets</h2>
+          <p>The best engineering teams do not wait for someone to tell them what to fix. They own their services end-to-end: build it, run it, improve it. Ownership creates accountability, and accountability creates quality.</p>
+        </section>
+
+        <section aria-labelledby="simplicity-heading">
+          <h2 id="simplicity-heading">Simplicity is a discipline</h2>
+          <p>Every abstraction, every tool, every process should earn its place. Complexity is easy; clarity takes effort. The right solution is the simplest one that actually works in production — not the one with the most impressive architecture diagram.</p>
+        </section>
+
+        <footer>
+          <p>Last updated: March 2026.</p>
+        </footer>
+      </div>
+    </div>
+  </body>
+
+</html>

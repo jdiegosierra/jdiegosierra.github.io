@@ -404,6 +404,20 @@ html.export-pdf .no-print {
   background: rgba(57, 68, 89, 0.42);
 }
 
+.resume-annotation {
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+  padding-left: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.resume-annotation a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .resume-section p {
   margin-bottom: 0.8rem;
   font-size: 0.9rem;
