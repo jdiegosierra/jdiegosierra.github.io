@@ -17,6 +17,16 @@ async function buildPdf(theme, fileName) {
   await page.goto(resumeUrl, { waitUntil: 'load' });
   await page.emulateMedia({ media: 'screen', colorScheme: theme });
 
+  await page.$$eval('a[href]', (links) => {
+    const base = 'https://jdiegosierra.github.io/';
+    links.forEach((a) => {
+      const href = a.getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('#')) {
+        a.setAttribute('href', base + href);
+      }
+    });
+  });
+
   await page.pdf({
     path: path.join(outputDir, fileName),
     format: 'A4',
