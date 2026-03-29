@@ -143,6 +143,7 @@ h2 {
 	font-size:var(--scale-3);
 	font-weight:700;
 	margin-bottom:var(--spacing-m);
+	scroll-margin-top:1.25rem;
 }
 
 .section-anchor {
