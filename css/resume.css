@@ -42,6 +42,15 @@ html.export-pdf .resume-sheet {
   background: none;
 }
 
+html.export-pdf .resume-updated {
+  margin-top: 0.8rem;
+  padding-top: 0.45rem;
+}
+
+html.export-pdf .resume-updated p {
+  font-size: 0.72rem;
+}
+
 html.export-pdf .resume-entry,
 html.export-pdf .resume-section--card,
 html.export-pdf .resume-meta,
@@ -250,6 +259,18 @@ html.export-pdf .no-print {
 
 .resume-section {
   margin-top: 1rem;
+}
+
+.resume-updated {
+  margin-top: 1.2rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--divider);
+}
+
+.resume-updated p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
 }
 
 .resume-section--card {
@@ -593,6 +614,17 @@ html.export-pdf .no-print {
 
   .resume-section {
     margin-top: 0.52rem;
+  }
+
+  .resume-updated {
+    margin-top: 0.62rem;
+    padding-top: 0.38rem;
+    break-inside: avoid;
+  }
+
+  .resume-updated p {
+    font-size: 0.68rem;
+    color: #31435b !important;
   }
 
   .resume-section--card {
