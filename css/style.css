@@ -1120,7 +1120,17 @@ b {
 .hero-video {
 	position:relative;
 	text-align:center;
-	width:10rem;
+	width:12rem;
+}
+
+.music-embed-panel--compact {
+	margin-top:0.8rem;
+	padding:0.7rem;
+}
+
+.music-embed-panel--compact h3 {
+	font-size:0.88rem;
+	margin-bottom:0.5rem;
 }
 
 .hero-main {
