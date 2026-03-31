@@ -833,6 +833,48 @@ b {
 	text-transform:uppercase;
 }
 
+.role-tags {
+	display:flex;
+	flex-wrap:wrap;
+	gap:0.5rem;
+	margin-bottom:1rem;
+}
+
+.role-tag {
+	display:inline-flex;
+	align-items:center;
+	padding:0.35rem 0.7rem;
+	border-radius:999px;
+	font-size:0.85rem;
+	font-weight:600;
+	line-height:1.2;
+	border:1px solid transparent;
+}
+
+.role-tag--peach {
+	background:rgba(var(--tone-peach-rgb), 0.3);
+	border-color:rgba(var(--tone-peach-rgb), 0.4);
+	color:var(--text-main);
+}
+
+.role-tag--rose {
+	background:rgba(var(--tone-rose-rgb), 0.28);
+	border-color:rgba(var(--tone-rose-rgb), 0.38);
+	color:var(--text-main);
+}
+
+.role-tag--sage {
+	background:rgba(var(--tone-sage-rgb), 0.28);
+	border-color:rgba(var(--tone-sage-rgb), 0.36);
+	color:var(--text-main);
+}
+
+.role-tag--lilac {
+	background:rgba(var(--tone-lilac-rgb), 0.28);
+	border-color:rgba(var(--tone-lilac-rgb), 0.38);
+	color:var(--text-main);
+}
+
 .lead {
 	font-size:var(--scale-2);
 	font-weight:600;
@@ -1293,7 +1335,7 @@ b {
 .music-embed-panel {
 	padding:1rem;
 	border-radius:1.35rem;
-	background:linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(var(--tone-lilac-rgb), 0.18));
+	background:linear-gradient(145deg, rgba(var(--tone-sage-rgb), 0.2), rgba(var(--tone-lilac-rgb), 0.18), rgba(255, 255, 255, 0.68));
 	border:1px solid rgba(var(--accent-rgb), 0.16);
 	box-shadow:0 12px 28px rgba(157, 111, 124, 0.08);
 	text-align:left;
@@ -1415,6 +1457,19 @@ b {
 	padding:1.7rem;
 	background:linear-gradient(145deg, rgba(var(--tone-rose-rgb), 0.18), rgba(var(--tone-peach-rgb), 0.2), rgba(var(--tone-sage-rgb), 0.16), rgba(255, 255, 255, 0.28));
 	animation:rise-in 700ms ease both;
+}
+
+.current-role-card {
+	padding:1.3rem;
+	border-radius:1.1rem;
+	background:linear-gradient(145deg, rgba(var(--tone-rose-rgb), 0.18), rgba(var(--tone-peach-rgb), 0.2), rgba(var(--tone-sage-rgb), 0.16), rgba(255, 255, 255, 0.28));
+	border:1px solid rgba(var(--accent-rgb), 0.16);
+	box-shadow:0 8px 20px rgba(157, 111, 124, 0.06);
+}
+
+:root.theme-dark .current-role-card {
+	background:linear-gradient(145deg, rgba(var(--tone-rose-rgb), 0.1), rgba(var(--tone-peach-rgb), 0.08), rgba(var(--tone-sage-rgb), 0.08), rgba(255, 255, 255, 0.04));
+	box-shadow:0 8px 20px rgba(0, 0, 0, 0.14);
 }
 
 .column--landing > .spotlight:not(.spotlight--feature) {
