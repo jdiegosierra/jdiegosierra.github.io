@@ -883,7 +883,6 @@ b {
 }
 
 .annotation {
-	max-width:44rem;
 	font-style:italic;
 	font-size:1.05rem;
 	color:var(--accent);
