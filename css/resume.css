@@ -170,6 +170,17 @@ html.export-pdf .no-print {
   border-bottom: 1px solid var(--divider);
 }
 
+.resume-header--stacked {
+  display: block;
+}
+
+.resume-summary-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
 .resume-header h1 {
   margin-bottom: 0.55rem;
   font-size: 2.1rem;
@@ -561,6 +572,7 @@ html.export-pdf .no-print {
   .resume-toolbar,
   .resume-toolbar__actions,
   .resume-header,
+  .resume-summary-grid,
   .resume-list--grid {
     display: block;
   }
