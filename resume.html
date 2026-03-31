@@ -26,8 +26,7 @@
       } catch (error) {
         storedTheme = null;
       }
-      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = forcedTheme || storedTheme || (prefersDark ? 'dark' : 'light');
+      var theme = forcedTheme || storedTheme || 'light';
       document.documentElement.classList.remove('theme-light', 'theme-dark');
       document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
       if (isPdfExport) {
@@ -101,10 +100,6 @@
       <div class="resume-toolbar no-print">
         <a class="resume-toolbar__link" href="index.html">Back to portfolio</a>
         <div class="resume-toolbar__actions">
-          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme" aria-pressed="false" title="Switch theme">
-            <span class="theme-toggle__icon" aria-hidden="true"></span>
-            <span class="sr-only theme-toggle__label">Switch theme</span>
-          </button>
           <a class="resume-toolbar__button resume-toolbar__button--primary" id="resume-download" href="resume.pdf" download>Download PDF</a>
         </div>
       </div>
@@ -291,7 +286,6 @@
   <script>
     (function () {
       var root = document.documentElement;
-      var toggle = document.getElementById('theme-toggle');
       var sunToggle = document.getElementById('theme-toggle-sun');
       var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
@@ -300,12 +294,6 @@
         var downloadLink = document.getElementById('resume-download');
         root.classList.remove('theme-light', 'theme-dark');
         root.classList.add(isDark ? 'theme-dark' : 'theme-light');
-        if (toggle) {
-          toggle.setAttribute('aria-pressed', String(isDark));
-          toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-          toggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-          toggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Switch to light theme' : 'Switch to dark theme';
-        }
         if (sunToggle) {
           sunToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
           sunToggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
@@ -328,7 +316,6 @@
       var currentTheme = root.classList.contains('theme-dark') ? 'dark' : 'light';
       applyTheme(currentTheme);
 
-      if (toggle) { toggle.addEventListener('click', switchTheme); }
       if (sunToggle) { sunToggle.addEventListener('click', switchTheme); }
 
       if (media) {

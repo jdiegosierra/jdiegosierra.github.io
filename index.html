@@ -37,8 +37,7 @@
       } catch (error) {
         storedTheme = null;
       }
-      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = storedTheme ? storedTheme : (prefersDark ? 'dark' : 'light');
+      var theme = storedTheme ? storedTheme : 'light';
       document.documentElement.classList.remove('theme-light', 'theme-dark');
       document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
     })();

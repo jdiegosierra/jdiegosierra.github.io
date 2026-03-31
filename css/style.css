@@ -2527,15 +2527,15 @@ section {
 	}
 
 	.landscape-scene__sun {
-		top:3.8rem;
-		right:6%;
-		width:5.4rem;
-		height:5.4rem;
+		top:0.6rem;
+		right:0.6rem;
+		width:4.2rem;
+		height:4.2rem;
 	}
 
 	:root.theme-dark .landscape-scene__sun {
-		width:4.4rem;
-		height:4.4rem;
+		width:3.6rem;
+		height:3.6rem;
 	}
 
 	.landscape-scene__cloud--2,
