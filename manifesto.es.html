@@ -21,7 +21,12 @@
     <link rel="stylesheet" href="css/resume.css">
     <script>
       (function () {
-        var storedTheme = localStorage.getItem('theme-preference');
+        var storedTheme = null;
+        try {
+          storedTheme = localStorage.getItem('theme-preference');
+        } catch (error) {
+          storedTheme = null;
+        }
         var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         var theme = storedTheme ? storedTheme : (prefersDark ? 'dark' : 'light');
         document.documentElement.classList.remove('theme-light', 'theme-dark');
@@ -31,6 +36,64 @@
   </head>
 
   <body>
+    <button class="landscape-scene__sun" id="theme-toggle" type="button" aria-label="Cambiar tema" title="Cambiar tema"></button>
+    <div class="landscape-scene" aria-hidden="true">
+      <div class="landscape-scene__cloud landscape-scene__cloud--1"></div>
+      <div class="landscape-scene__cloud landscape-scene__cloud--2"></div>
+      <div class="landscape-scene__cloud landscape-scene__cloud--3"></div>
+      <div class="landscape-scene__cloud landscape-scene__cloud--4"></div>
+      <div class="landscape-scene__cloud landscape-scene__cloud--5"></div>
+      <div class="landscape-scene__cloud landscape-scene__cloud--6"></div>
+      <div class="landscape-scene__cloud landscape-scene__cloud--7"></div>
+      <div class="landscape-scene__birds landscape-scene__birds--1"></div>
+      <div class="landscape-scene__birds landscape-scene__birds--2"></div>
+      <div class="landscape-scene__birds landscape-scene__birds--3"></div>
+
+      <div class="landscape-scene__balloon"></div>
+      <span class="landscape-scene__shooting-star"></span>
+      <div class="landscape-scene__hill landscape-scene__hill--back"></div>
+      <div class="landscape-scene__hill landscape-scene__hill--mid"></div>
+      <div class="landscape-scene__hill landscape-scene__hill--front"></div>
+      <div class="landscape-scene__path"></div>
+      <div class="landscape-scene__tree landscape-scene__tree--left"></div>
+      <div class="landscape-scene__tree landscape-scene__tree--mid"></div>
+      <div class="landscape-scene__tree landscape-scene__tree--right"></div>
+      <div class="landscape-scene__grass landscape-scene__grass--1"></div>
+      <div class="landscape-scene__grass landscape-scene__grass--2"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--1"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--2"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--3"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--4"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--5"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--6"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--7"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--8"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--9"></div>
+      <div class="landscape-scene__flowers landscape-scene__flowers--10"></div>
+      <div class="landscape-scene__mist landscape-scene__mist--1"></div>
+      <div class="landscape-scene__mist landscape-scene__mist--2"></div>
+      <span class="landscape-scene__butterfly landscape-scene__butterfly--1"></span>
+      <span class="landscape-scene__butterfly landscape-scene__butterfly--2"></span>
+      <span class="landscape-scene__butterfly landscape-scene__butterfly--3"></span>
+      <span class="landscape-scene__butterfly landscape-scene__butterfly--4"></span>
+      <span class="landscape-scene__butterfly landscape-scene__butterfly--5"></span>
+      <span class="landscape-scene__leaf landscape-scene__leaf--1"></span>
+      <span class="landscape-scene__leaf landscape-scene__leaf--2"></span>
+      <span class="landscape-scene__leaf landscape-scene__leaf--3"></span>
+      <span class="landscape-scene__leaf landscape-scene__leaf--4"></span>
+      <span class="landscape-scene__leaf landscape-scene__leaf--5"></span>
+      <span class="landscape-scene__leaf landscape-scene__leaf--6"></span>
+      <span class="landscape-scene__leaf landscape-scene__leaf--7"></span>
+      <span class="landscape-scene__leaf landscape-scene__leaf--8"></span>
+      <span class="landscape-scene__firefly landscape-scene__firefly--1"></span>
+      <span class="landscape-scene__firefly landscape-scene__firefly--2"></span>
+      <span class="landscape-scene__firefly landscape-scene__firefly--3"></span>
+      <span class="landscape-scene__firefly landscape-scene__firefly--4"></span>
+      <span class="landscape-scene__firefly landscape-scene__firefly--5"></span>
+      <span class="landscape-scene__firefly landscape-scene__firefly--6"></span>
+      <span class="landscape-scene__firefly landscape-scene__firefly--7"></span>
+      <span class="landscape-scene__firefly landscape-scene__firefly--8"></span>
+    </div>
     <div class="container-left" role="main">
       <div class="resume-toolbar">
         <a class="resume-toolbar__link resume-toolbar__link--back" href="index.html" aria-label="Volver al portfolio" title="Volver al portfolio">&larr; Portfolio</a>
@@ -39,10 +102,6 @@
             <a class="resume-toolbar__link" href="manifesto.html" lang="en" hreflang="en">EN</a>
             <a class="resume-toolbar__link" href="manifesto.es.html" lang="es" hreflang="es" aria-current="page">ES</a>
           </div>
-          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="false" title="Cambiar tema">
-            <span class="theme-toggle__icon" aria-hidden="true"></span>
-            <span class="sr-only theme-toggle__label">Cambiar tema</span>
-          </button>
         </div>
       </div>
       <div class="column">
@@ -198,30 +257,28 @@
       var toggle = document.getElementById('theme-toggle');
       var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
-      if (!toggle) {
-        return;
-      }
-
       function applyTheme(theme) {
         var isDark = theme === 'dark';
         root.classList.remove('theme-light', 'theme-dark');
         root.classList.add(isDark ? 'theme-dark' : 'theme-light');
-        toggle.setAttribute('aria-pressed', String(isDark));
-        toggle.setAttribute('aria-label', isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
-        toggle.setAttribute('title', isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
-        toggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro';
+        if (toggle) {
+          toggle.setAttribute('aria-label', isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+          toggle.setAttribute('title', isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+        }
       }
 
       var currentTheme = root.classList.contains('theme-dark') ? 'dark' : 'light';
       applyTheme(currentTheme);
 
-      toggle.addEventListener('click', function () {
-        currentTheme = root.classList.contains('theme-dark') ? 'light' : 'dark';
-        try {
-          localStorage.setItem('theme-preference', currentTheme);
-        } catch (error) {}
-        applyTheme(currentTheme);
-      });
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          currentTheme = root.classList.contains('theme-dark') ? 'light' : 'dark';
+          try {
+            localStorage.setItem('theme-preference', currentTheme);
+          } catch (error) {}
+          applyTheme(currentTheme);
+        });
+      }
 
       if (media) {
         media.addEventListener('change', function (event) {

@@ -9,8 +9,8 @@
   <link rel="icon" type="image/x-icon" href="images/avatar.png">
   <meta name="description" content="Resume of Diego Sierra, focused on platform engineering, SRE, cloud architecture, and AI-enabled software delivery.">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#f6eef4" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#121827" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f7eee8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1d1620" media="(prefers-color-scheme: dark)">
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
@@ -38,6 +38,64 @@
 </head>
 
 <body>
+  <button class="landscape-scene__sun" id="theme-toggle-sun" type="button" aria-label="Switch theme" title="Switch theme"></button>
+  <div class="landscape-scene" aria-hidden="true">
+    <div class="landscape-scene__cloud landscape-scene__cloud--1"></div>
+    <div class="landscape-scene__cloud landscape-scene__cloud--2"></div>
+    <div class="landscape-scene__cloud landscape-scene__cloud--3"></div>
+    <div class="landscape-scene__cloud landscape-scene__cloud--4"></div>
+    <div class="landscape-scene__cloud landscape-scene__cloud--5"></div>
+    <div class="landscape-scene__cloud landscape-scene__cloud--6"></div>
+    <div class="landscape-scene__cloud landscape-scene__cloud--7"></div>
+    <div class="landscape-scene__birds landscape-scene__birds--1"></div>
+    <div class="landscape-scene__birds landscape-scene__birds--2"></div>
+    <div class="landscape-scene__birds landscape-scene__birds--3"></div>
+
+    <div class="landscape-scene__balloon"></div>
+    <span class="landscape-scene__shooting-star"></span>
+    <div class="landscape-scene__hill landscape-scene__hill--back"></div>
+    <div class="landscape-scene__hill landscape-scene__hill--mid"></div>
+    <div class="landscape-scene__hill landscape-scene__hill--front"></div>
+    <div class="landscape-scene__path"></div>
+    <div class="landscape-scene__tree landscape-scene__tree--left"></div>
+    <div class="landscape-scene__tree landscape-scene__tree--mid"></div>
+    <div class="landscape-scene__tree landscape-scene__tree--right"></div>
+    <div class="landscape-scene__grass landscape-scene__grass--1"></div>
+    <div class="landscape-scene__grass landscape-scene__grass--2"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--1"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--2"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--3"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--4"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--5"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--6"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--7"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--8"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--9"></div>
+    <div class="landscape-scene__flowers landscape-scene__flowers--10"></div>
+    <div class="landscape-scene__mist landscape-scene__mist--1"></div>
+    <div class="landscape-scene__mist landscape-scene__mist--2"></div>
+    <span class="landscape-scene__butterfly landscape-scene__butterfly--1"></span>
+    <span class="landscape-scene__butterfly landscape-scene__butterfly--2"></span>
+    <span class="landscape-scene__butterfly landscape-scene__butterfly--3"></span>
+    <span class="landscape-scene__butterfly landscape-scene__butterfly--4"></span>
+    <span class="landscape-scene__butterfly landscape-scene__butterfly--5"></span>
+    <span class="landscape-scene__leaf landscape-scene__leaf--1"></span>
+    <span class="landscape-scene__leaf landscape-scene__leaf--2"></span>
+    <span class="landscape-scene__leaf landscape-scene__leaf--3"></span>
+    <span class="landscape-scene__leaf landscape-scene__leaf--4"></span>
+    <span class="landscape-scene__leaf landscape-scene__leaf--5"></span>
+    <span class="landscape-scene__leaf landscape-scene__leaf--6"></span>
+    <span class="landscape-scene__leaf landscape-scene__leaf--7"></span>
+    <span class="landscape-scene__leaf landscape-scene__leaf--8"></span>
+    <span class="landscape-scene__firefly landscape-scene__firefly--1"></span>
+    <span class="landscape-scene__firefly landscape-scene__firefly--2"></span>
+    <span class="landscape-scene__firefly landscape-scene__firefly--3"></span>
+    <span class="landscape-scene__firefly landscape-scene__firefly--4"></span>
+    <span class="landscape-scene__firefly landscape-scene__firefly--5"></span>
+    <span class="landscape-scene__firefly landscape-scene__firefly--6"></span>
+    <span class="landscape-scene__firefly landscape-scene__firefly--7"></span>
+    <span class="landscape-scene__firefly landscape-scene__firefly--8"></span>
+  </div>
   <main class="resume-page">
     <div class="resume-shell">
       <div class="resume-toolbar no-print">
@@ -57,12 +115,6 @@
             <p class="resume-kicker">Resume</p>
             <h1>Juan Diego Sierra Fernández</h1>
             <p class="resume-role">Platform Engineering Lead | SRE / DevOps | Cloud Architect | AI Enablement</p>
-            <div class="resume-highlights" aria-label="Career highlights">
-              <span class="resume-highlight">10+ years in infrastructure and software</span>
-              <span class="resume-highlight">Team lead for 6 engineers</span>
-              <span class="resume-highlight">AI tools in production</span>
-              <span class="resume-highlight">Open-source contributor</span>
-            </div>
           </div>
           <div class="resume-meta">
             <p class="resume-meta__item"><span class="resume-meta__icon" aria-hidden="true">📍</span>Madrid, Spain (UTC+2)</p>
@@ -76,10 +128,31 @@
 
         <section class="resume-section">
           <h2>Summary</h2>
+          <p><strong>Infrastructure, platform, and site reliability engineer</strong> with 10+ years of experience building and operating scalable systems, and a track record of <strong>leading engineering teams</strong>. I have put <strong>AI tooling into production</strong> to improve how teams build and ship software, worked at <strong>early-stage startups</strong> where I standardized processes from scratch, and at <strong>large corporate environments</strong> with strict procedures and compliance requirements.</p>
+          <p>Interested in leadership positions such as <strong>Staff Engineer</strong>, <strong>Principal Engineer</strong>, or <strong>Head of Platform</strong>.</p>
           <p class="resume-annotation"><em>Want to know how I think about engineering teams? <a href="manifesto.html">Read my manifesto</a>. It might help you figure out if I am the right fit for your company.</em></p>
-          <p><strong>Infrastructure, platform, and site reliability engineer</strong> with 10+ years of experience building and operating scalable systems across on-premises and cloud environments, and a track record of <strong>leading engineering teams</strong>. Strong background in <strong>automation, CI/CD, Kubernetes, Terraform, observability, developer platforms, and DevOps culture</strong>, combined with hands-on experience <strong>integrating AI</strong> into engineering workflows.</p>
-          <p>I have worked with <strong>LiteLLM, Claude Code, OpenCode, and OpenClaw</strong> in production, building agents, plugins, skills, and commands that help teams move faster and ship better code. I care about making LLM usage actually reliable: <strong>routing, caching, fallbacks</strong>, cost control, and the kind of operational resilience you need before trusting AI in real workflows.</p>
-          <p>I like solving hard operational problems, making developer tooling that people actually want to use, and turning AI into something that works in production, not just in demos. When I use open-source tools and find bugs, I try to contribute back with fixes instead of just working around them.</p>
+        </section>
+
+        <section class="resume-section">
+          <h2>Open Source</h2>
+          <div class="resume-oss-split">
+            <div class="resume-oss-card">
+              <h3>Contributions</h3>
+              <p>Selected public repositories with merged code contributions:</p>
+              <ul class="resume-list">
+                <li><a href="https://github.com/davila7/claude-code-templates" target="_blank" rel="noopener"><strong>claude-code-templates</strong></a></li>
+                <li><a href="https://github.com/helm-unittest/helm-unittest" target="_blank" rel="noopener"><strong>helm-unittest</strong></a></li>
+                <li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts" target="_blank" rel="noopener"><strong>opentelemetry-helm-charts</strong></a></li>
+                <li><a href="https://github.com/openfga/helm-charts" target="_blank" rel="noopener"><strong>openfga/helm-charts</strong></a></li>
+              </ul>
+            </div>
+            <div class="resume-oss-card">
+              <h3>My Project</h3>
+              <h3><a href="https://github.com/jdiegosierra/contributor-report" target="_blank" rel="noopener">contributor-report</a></h3>
+              <p>GitHub Action that evaluates contributor quality and helps teams catch spammy AI-generated PRs with objective signals.</p>
+              <p class="resume-oss-meta"><strong>63 stars</strong> · <a href="https://github.com/jdiegosierra/contributor-report" target="_blank" rel="noopener">View repository</a></p>
+            </div>
+          </div>
         </section>
 
         <section class="resume-section">
@@ -103,7 +176,7 @@
               <li>Collaborate with developers to design and operate the full <strong>CI/CD lifecycle with GitHub Actions</strong>.</li>
               <li>Release and maintain a public <strong>Helm chart</strong>, manage production <strong>Kubernetes</strong> and <strong>OpenShift</strong> workloads with <strong>Karpenter</strong>, and operate <strong>ArgoCD</strong> for continuous delivery.</li>
               <li>Provision infrastructure with <strong>Terraform</strong>, <strong>Terragrunt</strong>, <strong>Pulumi</strong>, and <strong>Crossplane</strong> using a GitOps approach.</li>
-              <li>Build and operate monitoring and observability with <strong>Grafana Tanka, Prometheus, Tempo, and OpenTelemetry</strong>.</li>
+              <li>Build and operate monitoring and observability with <strong>Grafana, Mimir, Loki, Tempo, and OpenTelemetry</strong>.</li>
             </ul>
           </div>
 
@@ -219,21 +292,24 @@
     (function () {
       var root = document.documentElement;
       var toggle = document.getElementById('theme-toggle');
+      var sunToggle = document.getElementById('theme-toggle-sun');
       var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-
-      if (!toggle) {
-        return;
-      }
 
       function applyTheme(theme) {
         var isDark = theme === 'dark';
         var downloadLink = document.getElementById('resume-download');
         root.classList.remove('theme-light', 'theme-dark');
         root.classList.add(isDark ? 'theme-dark' : 'theme-light');
-        toggle.setAttribute('aria-pressed', String(isDark));
-        toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-        toggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-        toggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+        if (toggle) {
+          toggle.setAttribute('aria-pressed', String(isDark));
+          toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+          toggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+          toggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+        }
+        if (sunToggle) {
+          sunToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+          sunToggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+        }
         if (downloadLink) {
           downloadLink.setAttribute('href', isDark ? 'resume-dark.pdf' : 'resume.pdf');
           downloadLink.setAttribute('download', isDark ? 'diego-sierra-resume-dark.pdf' : 'diego-sierra-resume.pdf');
@@ -241,16 +317,19 @@
         }
       }
 
+      function switchTheme() {
+        var current = root.classList.contains('theme-dark') ? 'light' : 'dark';
+        try {
+          localStorage.setItem('theme-preference', current);
+        } catch (error) {}
+        applyTheme(current);
+      }
+
       var currentTheme = root.classList.contains('theme-dark') ? 'dark' : 'light';
       applyTheme(currentTheme);
 
-      toggle.addEventListener('click', function () {
-        currentTheme = root.classList.contains('theme-dark') ? 'light' : 'dark';
-        try {
-          localStorage.setItem('theme-preference', currentTheme);
-        } catch (error) {}
-        applyTheme(currentTheme);
-      });
+      if (toggle) { toggle.addEventListener('click', switchTheme); }
+      if (sunToggle) { sunToggle.addEventListener('click', switchTheme); }
 
       if (media) {
         media.addEventListener('change', function (event) {

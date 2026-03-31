@@ -132,9 +132,9 @@
 
 /* Calendly */
 .button-calendly {
-	--button-text:#31435b;
-	--button-background:#bfd7ff;
-	--button-border:1px solid #9ab7e8;
+	--button-text:#5f4151;
+	--button-background:#f3ddd2;
+	--button-border:1px solid #ddb3a4;
 }
 
 /* Cash App */
@@ -217,9 +217,9 @@
 
 /* GitHub */
 .button-github {
-	--button-text:#31435b;
-	--button-background:#d9d6ec;
-	--button-border:1px solid #b4afd7;
+	--button-text:#46384c;
+	--button-background:#eadff1;
+	--button-border:1px solid #cfbddc;
 }
 
 /* GitLab */
@@ -284,7 +284,7 @@
 
 /* Kick Alt */
 .button-kick-alt {
-	--button-text:#31435b;
+	--button-text:#46384c;
 	--button-background:#d7f1e4;
 	--button-border:1px solid #a7d4bf;
 }
@@ -330,9 +330,9 @@
 
 /* LinkedIn */
 .button-linked {
-	--button-text:#31435b;
-	--button-background:#c9ddf7;
-	--button-border:1px solid #9dbce2;
+	--button-text:#46384c;
+	--button-background:#f1dde6;
+	--button-border:1px solid #d7b3c2;
 }
 
 /* Mailchimp */
@@ -350,16 +350,16 @@
 
 /* Manifesto */
 .button-manifesto {
-	--button-text:#5b4518;
-	--button-background:#fce8c8;
-	--button-border:1px solid #e4c48a;
+	--button-text:#62442f;
+	--button-background:#f8e2c6;
+	--button-border:1px solid #ddb688;
 }
 
 /* Medium */
 .button-medium {
-	--button-text:#31435b;
-	--button-background:#ece7f2;
-	--button-border:1px solid #cbc0da;
+	--button-text:#46384c;
+	--button-background:#ece2ea;
+	--button-border:1px solid #cfbfd2;
 }
 
 /* Microsoft */
@@ -385,9 +385,9 @@
 
 /* OnlyFans */
 .button-onlyfans {
-	--button-text:#31435b;
-	--button-background:#cfe8f2;
-	--button-border:1px solid #a7c9d6;
+	--button-text:#46384c;
+	--button-background:#e4f0e6;
+	--button-border:1px solid #bfd4c3;
 }
 
 /* Patreon */
@@ -463,9 +463,9 @@
 
 /* Spotify Alt */
 .button-spotify-alt {
-	--button-text:#31435b;
-	--button-background:#d6efda;
-	--button-border:1px solid #a4caa9;
+	--button-text:#46384c;
+	--button-background:#dff0dd;
+	--button-border:1px solid #b5cfb1;
 }
 
 /* Square */
@@ -483,21 +483,21 @@
 
 /* Stack Overflow */
 .button-stack-overflow {
-	--button-text:#31435b;
-	--button-background:#ffe9dc;
-	--button-border:1px solid #f0b89a;
+	--button-text:#46384c;
+	--button-background:#fae3d5;
+	--button-border:1px solid #ebba9e;
 }
 
 :root.theme-dark .button-calendly {
-	--button-text:#eef3ff;
-	--button-background:#5b6f97;
-	--button-border:1px solid #89a1cb;
+	--button-text:#f4e9f0;
+	--button-background:#7a4e58;
+	--button-border:1px solid #c98d9d;
 }
 
 :root.theme-dark .button-github {
-	--button-text:#eef3ff;
-	--button-background:#625c86;
-	--button-border:1px solid #958db6;
+	--button-text:#f4e9f0;
+	--button-background:#6f5876;
+	--button-border:1px solid #b798c4;
 }
 
 :root.theme-dark .button-kick-alt {
@@ -507,27 +507,27 @@
 }
 
 :root.theme-dark .button-linked {
-	--button-text:#eef3ff;
-	--button-background:#59719a;
-	--button-border:1px solid #8fb2de;
+	--button-text:#f4e9f0;
+	--button-background:#7c5566;
+	--button-border:1px solid #cc9fb1;
 }
 
 :root.theme-dark .button-manifesto {
 	--button-text:#fce8c8;
-	--button-background:#7a6338;
-	--button-border:1px solid #b89a5c;
+	--button-background:#7a5a45;
+	--button-border:1px solid #c59a72;
 }
 
 :root.theme-dark .button-medium {
-	--button-text:#eef3ff;
-	--button-background:#6b627f;
-	--button-border:1px solid #9c8fb4;
+	--button-text:#f4e9f0;
+	--button-background:#705b6d;
+	--button-border:1px solid #b799ac;
 }
 
 :root.theme-dark .button-onlyfans {
-	--button-text:#eef3ff;
-	--button-background:#57788b;
-	--button-border:1px solid #89b4ca;
+	--button-text:#f4e9f0;
+	--button-background:#51695b;
+	--button-border:1px solid #8cb198;
 }
 
 :root.theme-dark .button-sponsors {
@@ -537,9 +537,9 @@
 }
 
 :root.theme-dark .button-spotify-alt {
-	--button-text:#eef3ff;
-	--button-background:#4f7360;
-	--button-border:1px solid #7fb195;
+	--button-text:#f4e9f0;
+	--button-background:#536a57;
+	--button-border:1px solid #8caf91;
 }
 
 :root.theme-dark .button-stack-overflow {
