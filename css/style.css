@@ -270,9 +270,8 @@ body {
 }
 
 :root.theme-dark .landscape-scene__sun {
-	width:5.6rem;
-	height:5.6rem;
-	top:4.2rem;
+	width:7.5rem;
+	height:7.5rem;
 	background:radial-gradient(circle at 34% 34%, rgba(255, 255, 255, 0.98) 0%, rgba(var(--scene-glow-rgb), 0.92) 48%, rgba(var(--scene-glow-rgb), 0.18) 66%, rgba(var(--scene-glow-rgb), 0) 74%);
 	box-shadow:0 0 48px rgba(var(--scene-glow-rgb), 0.2);
 }
@@ -582,6 +581,35 @@ html.export-pdf .landscape-scene {
 	height:16vh;
 	animation-duration:11s;
 	animation-delay:-1s;
+}
+
+/* ── Fruits ── */
+
+.landscape-scene__fruit {
+	position:absolute;
+	bottom:64%;
+	left:50%;
+	transform:translateX(-50%);
+	width:0.5rem;
+	height:0.5rem;
+	border-radius:50%;
+	background:rgba(228, 42, 36, 0.94);
+	box-shadow:
+		1.4rem -1.2rem 0 0 rgba(228, 42, 36, 0.92),
+		-1.8rem 0.3rem 0 0 rgba(245, 160, 30, 0.93),
+		2rem 0.9rem 0 0 rgba(228, 42, 36, 0.88),
+		-0.6rem 1.6rem 0 -0.02rem rgba(245, 160, 30, 0.9),
+		0.6rem -2.8rem 0 0 rgba(228, 42, 36, 0.86),
+		-2.2rem -1.5rem 0 -0.02rem rgba(245, 160, 30, 0.85),
+		1.8rem -2.4rem 0 0 rgba(245, 160, 30, 0.84);
+	animation:fruit-bob 3.5s ease-in-out infinite alternate;
+	z-index:1;
+	pointer-events:none;
+	filter:drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+}
+
+:root.theme-dark .landscape-scene__fruit {
+	opacity:0.25;
 }
 
 .landscape-scene__grass {
@@ -1112,7 +1140,7 @@ b {
 	display:grid;
 	grid-template-columns:auto minmax(0, 1fr);
 	gap:1.4rem 2rem;
-	align-items:start;
+	align-items:stretch;
 	animation:rise-in 560ms ease both;
 }
 
@@ -1120,6 +1148,8 @@ b {
 	position:relative;
 	text-align:center;
 	width:22rem;
+	display:flex;
+	flex-direction:column;
 }
 
 .music-embed-panel--compact {
@@ -1134,6 +1164,12 @@ b {
 
 .hero-main {
 	text-align:left;
+	display:flex;
+	flex-direction:column;
+}
+
+.hero-main > .annotation {
+	margin-top:auto;
 }
 
 .lead--hero {
@@ -1202,8 +1238,11 @@ b {
 
 .avatar--video {
 	display:block;
+	flex:1;
+	min-height:0;
 	height:auto;
 	background:#0f1418;
+	object-fit:cover;
 }
 
 .oss-split {
@@ -1250,7 +1289,7 @@ b {
 
 .oss-grid {
 	display:grid;
-	grid-template-columns:repeat(auto-fill, minmax(14rem, 1fr));
+	grid-template-columns:repeat(2, 1fr);
 	gap:1rem;
 }
 
@@ -2009,6 +2048,45 @@ ul {
 	opacity:0.5;
 }
 
+/* ── Wind streaks ── */
+
+.landscape-scene__wind {
+	position:absolute;
+	height:1.5px;
+	border-radius:999px;
+	background:linear-gradient(90deg, transparent, rgba(255,255,255,0.22), rgba(255,255,255,0.12), transparent);
+	pointer-events:none;
+	opacity:0;
+	animation:wind-gust 7s ease-in-out infinite;
+}
+
+.landscape-scene__wind--1 {
+	top:26%;
+	left:-20%;
+	width:18rem;
+	animation-duration:6s;
+}
+
+.landscape-scene__wind--2 {
+	top:40%;
+	left:-25%;
+	width:22rem;
+	animation-duration:8s;
+	animation-delay:-3s;
+}
+
+.landscape-scene__wind--3 {
+	top:54%;
+	left:-15%;
+	width:15rem;
+	animation-duration:7s;
+	animation-delay:-5s;
+}
+
+:root.theme-dark .landscape-scene__wind {
+	background:linear-gradient(90deg, transparent, rgba(160,180,210,0.1), rgba(160,180,210,0.06), transparent);
+}
+
 .landscape-scene__butterfly {
 	position:absolute;
 	width:0.9rem;
@@ -2298,11 +2376,12 @@ ul {
 	}
 
 	50% {
+		transform:translate(2.5rem, 21vh) rotate(120deg);
 		opacity:0.55;
 	}
 
 	100% {
-		transform:translate(3rem, 42vh) rotate(220deg);
+		transform:translate(5.5rem, 42vh) rotate(220deg);
 		opacity:0;
 	}
 }
@@ -2314,11 +2393,12 @@ ul {
 	}
 
 	50% {
+		transform:translate(1.5rem, 24vh) rotate(-90deg);
 		opacity:0.5;
 	}
 
 	100% {
-		transform:translate(-2rem, 48vh) rotate(-180deg);
+		transform:translate(4rem, 48vh) rotate(-180deg);
 		opacity:0;
 	}
 }
@@ -2330,11 +2410,12 @@ ul {
 	}
 
 	50% {
+		transform:translate(3rem, 22vh) rotate(150deg);
 		opacity:0.45;
 	}
 
 	100% {
-		transform:translate(2.5rem, 44vh) rotate(260deg);
+		transform:translate(6.5rem, 44vh) rotate(260deg);
 		opacity:0;
 	}
 }
@@ -2361,11 +2442,11 @@ ul {
 
 @keyframes tree-sway {
 	from {
-		transform:rotate(-1.4deg);
+		transform:rotate(-2deg);
 	}
 
 	to {
-		transform:rotate(1.8deg);
+		transform:rotate(2.8deg);
 	}
 }
 
@@ -2423,6 +2504,37 @@ ul {
 	}
 }
 
+@keyframes wind-gust {
+	0% {
+		transform:translateX(0) scaleX(0.3);
+		opacity:0;
+	}
+
+	15% {
+		opacity:0.5;
+		transform:translateX(15vw) scaleX(1);
+	}
+
+	85% {
+		opacity:0.35;
+	}
+
+	100% {
+		transform:translateX(120vw) scaleX(0.6);
+		opacity:0;
+	}
+}
+
+@keyframes fruit-bob {
+	from {
+		transform:translateX(-50%) translateY(0);
+	}
+
+	to {
+		transform:translateX(-50%) translateY(0.12rem);
+	}
+}
+
 @media (prefers-reduced-motion:reduce) {
 	.hero-shell,
 	.column--landing > .spotlight,
@@ -2438,12 +2550,14 @@ ul {
 	.landscape-scene__balloon,
 	.landscape-scene__shooting-star,
 	.landscape-scene__mist,
+	.landscape-scene__wind,
 	.landscape-scene__butterfly,
 	.landscape-scene__butterfly::before,
 	.landscape-scene__butterfly::after,
 	.landscape-scene__leaf,
 	.landscape-scene__hill,
 	.landscape-scene__grass,
+	.landscape-scene__fruit,
 	.landscape-scene__firefly {
 		animation:none;
 	}
