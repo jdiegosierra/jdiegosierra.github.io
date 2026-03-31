@@ -1180,6 +1180,66 @@ b {
 	background:linear-gradient(145deg, rgba(var(--tone-lilac-rgb), 0.14), rgba(var(--tone-butter-rgb), 0.1), rgba(255, 255, 255, 0.06));
 }
 
+.oss-group-title {
+	font-size:1.15rem;
+	font-weight:700;
+	color:var(--text-main);
+	margin:1.6rem 0 0.8rem;
+}
+
+.oss-group-title:first-of-type {
+	margin-top:0;
+}
+
+.oss-grid {
+	display:grid;
+	grid-template-columns:repeat(auto-fill, minmax(14rem, 1fr));
+	gap:1rem;
+}
+
+.oss-grid__card {
+	display:flex;
+	flex-direction:column;
+	text-align:left;
+	padding:1.1rem 1.2rem;
+	border-radius:1.1rem;
+	background:linear-gradient(145deg, rgba(var(--tone-sage-rgb), 0.18), rgba(var(--tone-peach-rgb), 0.14), rgba(255, 255, 255, 0.68));
+	border:1px solid rgba(var(--accent-rgb), 0.16);
+	box-shadow:0 8px 20px rgba(157, 111, 124, 0.06);
+}
+
+.oss-grid__card h4 {
+	font-size:1.02rem;
+	font-weight:700;
+	margin:0 0 0.35rem;
+}
+
+.oss-grid__card h4 a {
+	color:var(--text-main);
+	text-decoration:none;
+}
+
+.oss-grid__card h4 a:hover,
+.oss-grid__card h4 a:focus-visible {
+	text-decoration:underline;
+}
+
+.oss-grid__card .stat-pill {
+	margin-bottom:0.45rem;
+}
+
+.oss-grid__card p {
+	font-size:0.88rem;
+	line-height:1.45;
+	color:var(--text-muted);
+	margin:0;
+}
+
+:root.theme-dark .oss-grid__card {
+	background:linear-gradient(145deg, rgba(var(--tone-sage-rgb), 0.12), rgba(var(--tone-peach-rgb), 0.08), rgba(255, 255, 255, 0.06));
+	box-shadow:0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
 .music-embed-panel {
 	padding:1rem;
 	border-radius:1.35rem;
@@ -2400,7 +2460,8 @@ section {
 @media (max-width:62rem) {
 	.hero-shell,
 	.open-source-layout,
-	.oss-split {
+	.oss-split,
+	.oss-grid {
 		grid-template-columns:1fr;
 	}
 
