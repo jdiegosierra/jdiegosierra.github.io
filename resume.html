@@ -20,7 +20,9 @@
       var params = new URLSearchParams(window.location.search);
       var forcedTheme = params.get('theme');
       var isPdfExport = params.get('pdf') === '1';
-      var theme = forcedTheme || 'light';
+      var storedTheme = null;
+      try { storedTheme = localStorage.getItem('theme-preference'); } catch (e) {}
+      var theme = forcedTheme || storedTheme || 'light';
       document.documentElement.classList.remove('theme-light', 'theme-dark');
       document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
       if (isPdfExport) {
@@ -159,6 +161,7 @@
               <li><strong>Lead</strong> a team of 6 infrastructure engineers and report directly to the CTO.</li>
               <li>Drive <strong>AI adoption</strong> across the SDLC, improving engineering speed, developer productivity, and delivery quality.</li>
               <li>Build production-grade AI workflows, <strong>agents</strong>, <strong>skills</strong>, and <strong>plugins</strong> for internal engineering use cases.</li>
+              <li>Operate the platform on <strong>AWS</strong>, supporting both Maisa's own <strong>SaaS product</strong> and customer-deployed <strong>Helm chart</strong> installations.</li>
               <li>Drive <strong>FinOps</strong> and cloud cost optimization: keeping spend visible, cutting waste, and making sure infrastructure costs actually make sense.</li>
               <li>Administer <strong>Jira</strong> across the organization, including project configuration, workflows, automations, and board management.</li>
               <li>Implement security and compliance standards including <strong>SOC 2</strong> and <strong>ISO 27001</strong>.</li>
