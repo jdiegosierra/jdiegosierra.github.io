@@ -20,13 +20,7 @@
       var params = new URLSearchParams(window.location.search);
       var forcedTheme = params.get('theme');
       var isPdfExport = params.get('pdf') === '1';
-      var storedTheme = null;
-      try {
-        storedTheme = localStorage.getItem('theme-preference');
-      } catch (error) {
-        storedTheme = null;
-      }
-      var theme = forcedTheme || storedTheme || 'light';
+      var theme = forcedTheme || 'light';
       document.documentElement.classList.remove('theme-light', 'theme-dark');
       document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
       if (isPdfExport) {
@@ -318,7 +312,6 @@
 
       if (sunToggle) { sunToggle.addEventListener('click', switchTheme); }
 
-      }
     })();
   </script>
 </body>

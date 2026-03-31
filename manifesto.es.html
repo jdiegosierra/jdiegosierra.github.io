@@ -21,15 +21,8 @@
     <link rel="stylesheet" href="css/resume.css">
     <script>
       (function () {
-        var storedTheme = null;
-        try {
-          storedTheme = localStorage.getItem('theme-preference');
-        } catch (error) {
-          storedTheme = null;
-        }
-        var theme = storedTheme ? storedTheme : 'light';
         document.documentElement.classList.remove('theme-light', 'theme-dark');
-        document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
+        document.documentElement.classList.add('theme-light');
       })();
     </script>
   </head>
