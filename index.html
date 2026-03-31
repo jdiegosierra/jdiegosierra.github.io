@@ -314,19 +314,6 @@
       });
     }
 
-    if (media) {
-      media.addEventListener('change', function (event) {
-        var storedTheme = null;
-        try {
-          storedTheme = localStorage.getItem('theme-preference');
-        } catch (error) {
-          storedTheme = null;
-        }
-        if (!storedTheme) {
-          applyTheme(event.matches ? 'dark' : 'light');
-        }
-      });
-    }
   })();
 </script>
 
