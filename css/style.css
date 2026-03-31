@@ -1206,22 +1206,29 @@ b {
 	background:linear-gradient(145deg, rgba(var(--tone-sage-rgb), 0.18), rgba(var(--tone-peach-rgb), 0.14), rgba(255, 255, 255, 0.68));
 	border:1px solid rgba(var(--accent-rgb), 0.16);
 	box-shadow:0 8px 20px rgba(157, 111, 124, 0.06);
+	text-decoration:none;
+	color:inherit;
+	cursor:pointer;
+	transition:transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.oss-grid__card:hover,
+.oss-grid__card:focus-visible {
+	transform:translateY(-3px);
+	box-shadow:0 14px 32px rgba(157, 111, 124, 0.14);
+	border-color:rgba(var(--accent-rgb), 0.32);
+}
+
+:root.theme-dark .oss-grid__card:hover,
+:root.theme-dark .oss-grid__card:focus-visible {
+	box-shadow:0 14px 32px rgba(0, 0, 0, 0.28);
 }
 
 .oss-grid__card h4 {
 	font-size:1.02rem;
 	font-weight:700;
 	margin:0 0 0.35rem;
-}
-
-.oss-grid__card h4 a {
 	color:var(--text-main);
-	text-decoration:none;
-}
-
-.oss-grid__card h4 a:hover,
-.oss-grid__card h4 a:focus-visible {
-	text-decoration:underline;
 }
 
 .oss-grid__card .stat-pill {
