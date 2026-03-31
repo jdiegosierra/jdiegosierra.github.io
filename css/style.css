@@ -1113,13 +1113,14 @@ b {
 	display:grid;
 	grid-template-columns:auto minmax(0, 1fr);
 	gap:1.4rem 2rem;
-	align-items:center;
+	align-items:start;
 	animation:rise-in 560ms ease both;
 }
 
 .hero-video {
 	position:relative;
 	text-align:center;
+	width:10rem;
 }
 
 .hero-main {
@@ -1687,10 +1688,11 @@ ul {
 	grid-template-columns:repeat(3, minmax(0, 1fr));
 	grid-auto-rows:minmax(4.2rem, auto);
 	gap:0.7rem;
-	padding:0.7rem;
+	padding:1rem;
 	overflow:hidden;
-	border-radius:1.8rem;
-	background:linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.34));
+	border-radius:1.2rem;
+	background:linear-gradient(145deg, rgba(var(--tone-peach-rgb), 0.14), rgba(var(--tone-lilac-rgb), 0.16), rgba(var(--tone-sage-rgb), 0.12), rgba(255, 255, 255, 0.58));
+	border:1px solid rgba(var(--accent-rgb), 0.16);
 }
 
 .playground-shell::before,
