@@ -1111,10 +1111,15 @@ b {
 
 .hero-shell {
 	display:grid;
-	grid-template-columns:minmax(0, 1.2fr) minmax(17rem, 0.9fr);
+	grid-template-columns:auto minmax(0, 1fr);
 	gap:1.4rem 2rem;
-	align-items:start;
+	align-items:center;
 	animation:rise-in 560ms ease both;
+}
+
+.hero-video {
+	position:relative;
+	text-align:center;
 }
 
 .hero-main {
@@ -2572,6 +2577,11 @@ section {
 
 	.portrait-panel {
 		max-width:25rem;
+		margin:0 auto;
+	}
+
+	.hero-video {
+		max-width:14rem;
 		margin:0 auto;
 	}
 
