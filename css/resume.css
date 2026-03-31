@@ -518,6 +518,13 @@ html.export-pdf .no-print {
   color: var(--text-muted);
 }
 
+.resume-star-count {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 .resume-annotation {
   font-style: italic;
   font-size: 0.92rem;
