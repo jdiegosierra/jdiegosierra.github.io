@@ -25,84 +25,15 @@
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/brands.css">
 
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" defer></script>
-  <script>
-    (function () {
-      var stored = null;
-      try { stored = localStorage.getItem('theme-preference'); } catch (e) {}
-      var theme = stored || 'light';
-      document.documentElement.classList.remove('theme-light', 'theme-dark');
-      document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
-    })();
-  </script>
+  <script src="scripts/theme-boot.js"></script>
 </head>
 
 <body>
 
-<button class="landscape-scene__sun" id="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme"></button>
-<div class="landscape-scene" aria-hidden="true">
-  <div class="landscape-scene__cloud landscape-scene__cloud--1"></div>
-  <div class="landscape-scene__cloud landscape-scene__cloud--2"></div>
-  <div class="landscape-scene__cloud landscape-scene__cloud--3"></div>
-  <div class="landscape-scene__cloud landscape-scene__cloud--4"></div>
-  <div class="landscape-scene__cloud landscape-scene__cloud--5"></div>
-  <div class="landscape-scene__cloud landscape-scene__cloud--6"></div>
-  <div class="landscape-scene__cloud landscape-scene__cloud--7"></div>
-  <div class="landscape-scene__birds landscape-scene__birds--1"></div>
-  <div class="landscape-scene__birds landscape-scene__birds--2"></div>
-  <div class="landscape-scene__birds landscape-scene__birds--3"></div>
-
-  <div class="landscape-scene__balloon"></div>
-  <span class="landscape-scene__shooting-star"></span>
-  <div class="landscape-scene__hill landscape-scene__hill--back"></div>
-  <div class="landscape-scene__hill landscape-scene__hill--mid"></div>
-  <div class="landscape-scene__hill landscape-scene__hill--front"></div>
-  <div class="landscape-scene__path"></div>
-  <div class="landscape-scene__tree landscape-scene__tree--left"><span class="landscape-scene__fruit"></span></div>
-  <div class="landscape-scene__tree landscape-scene__tree--mid"><span class="landscape-scene__fruit"></span></div>
-  <div class="landscape-scene__tree landscape-scene__tree--right"><span class="landscape-scene__fruit"></span></div>
-  <div class="landscape-scene__grass landscape-scene__grass--1"></div>
-  <div class="landscape-scene__grass landscape-scene__grass--2"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--1"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--2"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--3"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--4"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--5"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--6"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--7"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--8"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--9"></div>
-  <div class="landscape-scene__flowers landscape-scene__flowers--10"></div>
-  <div class="landscape-scene__mist landscape-scene__mist--1"></div>
-  <div class="landscape-scene__mist landscape-scene__mist--2"></div>
-  <span class="landscape-scene__wind landscape-scene__wind--1"></span>
-  <span class="landscape-scene__wind landscape-scene__wind--2"></span>
-  <span class="landscape-scene__wind landscape-scene__wind--3"></span>
-  <span class="landscape-scene__butterfly landscape-scene__butterfly--1"></span>
-  <span class="landscape-scene__butterfly landscape-scene__butterfly--2"></span>
-  <span class="landscape-scene__butterfly landscape-scene__butterfly--3"></span>
-  <span class="landscape-scene__butterfly landscape-scene__butterfly--4"></span>
-  <span class="landscape-scene__butterfly landscape-scene__butterfly--5"></span>
-  <span class="landscape-scene__leaf landscape-scene__leaf--1"></span>
-  <span class="landscape-scene__leaf landscape-scene__leaf--2"></span>
-  <span class="landscape-scene__leaf landscape-scene__leaf--3"></span>
-  <span class="landscape-scene__leaf landscape-scene__leaf--4"></span>
-  <span class="landscape-scene__leaf landscape-scene__leaf--5"></span>
-  <span class="landscape-scene__leaf landscape-scene__leaf--6"></span>
-  <span class="landscape-scene__leaf landscape-scene__leaf--7"></span>
-  <span class="landscape-scene__leaf landscape-scene__leaf--8"></span>
-  <span class="landscape-scene__firefly landscape-scene__firefly--1"></span>
-  <span class="landscape-scene__firefly landscape-scene__firefly--2"></span>
-  <span class="landscape-scene__firefly landscape-scene__firefly--3"></span>
-  <span class="landscape-scene__firefly landscape-scene__firefly--4"></span>
-  <span class="landscape-scene__firefly landscape-scene__firefly--5"></span>
-  <span class="landscape-scene__firefly landscape-scene__firefly--6"></span>
-  <span class="landscape-scene__firefly landscape-scene__firefly--7"></span>
-  <span class="landscape-scene__firefly landscape-scene__firefly--8"></span>
-</div>
+<script src="scripts/site-shell.js"></script>
 
 <div class="container">
   <div class="column column--landing">
@@ -111,7 +42,7 @@
         <video class="avatar avatar--rounded avatar--hero avatar--video" autoplay muted loop playsinline preload="metadata" poster="images/avatar.jpeg" aria-label="Portrait video of Diego Sierra">
           <source src="images/video-nocturno-generado.mp4" type="video/mp4">
         </video>
-        <iframe class="music-embed-frame" src="https://open.spotify.com/embed/playlist/25ECPn33x0QD3oW3Webn7M?utm_source=generator&amp;theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify playlist 2026"></iframe>
+        <iframe class="music-embed-frame" src="https://open.spotify.com/embed/playlist/25ECPn33x0QD3oW3Webn7M?utm_source=generator&amp;theme=1" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify playlist 2026"></iframe>
       </div>
 
       <div class="hero-main current-role-card">
@@ -199,47 +130,47 @@
     <section class="spotlight">
       <p class="eyebrow">Links</p>
       <div class="playground-shell" role="navigation" aria-label="Profile links">
-        <a class="button playground-card playground-card--resume button-manifesto" href="resume.html" role="button">
+        <a class="button playground-card playground-card--resume" href="resume.html" role="button">
           <img class="icon" aria-hidden="true" src="images/icons/cv.png" alt="Resume Icon">
           <span class="playground-card__label">Resume</span>
         </a>
 
-        <a class="button playground-card playground-card--manifesto button-manifesto" href="manifesto.html" role="button">
+        <a class="button playground-card playground-card--manifesto" href="manifesto.html" role="button">
           <img class="icon" aria-hidden="true" src="images/icons/generic-blog.svg" alt="Manifesto Icon">
           <span class="playground-card__label">Manifesto</span>
         </a>
 
-        <a class="button playground-card playground-card--linkedin button-linked" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener" role="button">
+        <a class="button playground-card playground-card--linkedin" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener" role="button">
           <img class="icon" aria-hidden="true" src="images/icons/linkedin.svg" alt="LinkedIn Logo">
           <span class="playground-card__label">LinkedIn</span>
         </a>
 
-        <a class="button playground-card playground-card--call button-sponsors" href="#" target="_blank" rel="noopener" role="button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
+        <a class="button playground-card playground-card--call" href="#" target="_blank" rel="noopener" role="button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
           <img class="icon" aria-hidden="true" src="images/icons/calendly.svg" alt="Calendly Logo">
           <span class="playground-card__label">Book a video call</span>
         </a>
 
-        <a class="button playground-card playground-card--github button-github" href="https://github.com/jdiegosierra" target="_blank" rel="noopener" role="button">
+        <a class="button playground-card playground-card--github" href="https://github.com/jdiegosierra" target="_blank" rel="noopener" role="button">
           <img class="icon" aria-hidden="true" src="images/icons/github.svg" alt="GitHub Logo">
           <span class="playground-card__label">GitHub</span>
         </a>
 
-        <a class="button playground-card playground-card--sponsors button-github" href="https://github.com/sponsors/jdiegosierra" target="_blank" rel="noopener" role="button">
+        <a class="button playground-card playground-card--sponsors" href="https://github.com/sponsors/jdiegosierra" target="_blank" rel="noopener" role="button">
           <img class="icon" aria-hidden="true" src="images/icons/github.svg" alt="GitHub Logo">
           <span class="playground-card__label">GitHub Sponsors</span>
         </a>
 
-        <a class="button playground-card playground-card--music button-spotify-alt" href="https://open.spotify.com/user/dyeghikoo" target="_blank" rel="noopener" role="button">
+        <a class="button playground-card playground-card--music" href="https://open.spotify.com/user/dyeghikoo" target="_blank" rel="noopener" role="button">
           <img class="icon" aria-hidden="true" src="images/icons/spotify-alt.svg" alt="Spotify Logo">
           <span class="playground-card__label">My Favourite Music</span>
         </a>
 
-        <a class="button playground-card playground-card--stack button-stack-overflow" href="https://stackoverflow.com/users/9409100/diego-sierra-fernandez" target="_blank" rel="noopener" role="button">
+        <a class="button playground-card playground-card--stack" href="https://stackoverflow.com/users/9409100/diego-sierra-fernandez" target="_blank" rel="noopener" role="button">
           <img class="icon" aria-hidden="true" src="images/icons/stack-overflow.svg" alt="Stack Overflow Logo">
           <span class="playground-card__label">Stack Overflow</span>
         </a>
 
-        <a class="button playground-card playground-card--onlyfans button-onlyfans" href="https://upload.wikimedia.org/wikipedia/en/7/73/Trollface.png" target="_blank" rel="noopener" role="button">
+        <a class="button playground-card playground-card--onlyfans" href="https://upload.wikimedia.org/wikipedia/en/7/73/Trollface.png" target="_blank" rel="noopener" role="button">
           <img class="icon" aria-hidden="true" src="images/icons/onlyfans.svg" alt="OnlyFans Logo">
           <span class="playground-card__label">OnlyFans (18+)</span>
         </a>
@@ -251,10 +182,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script>
   (function () {
-    var root = document.documentElement;
-    var toggle = document.getElementById('theme-toggle');
-    var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-
     function initPlayground() {
       var shell = document.querySelector('.playground-shell');
       if (!shell || !window.gsap || !window.matchMedia) {
@@ -262,7 +189,6 @@
       }
 
       var cards = Array.prototype.slice.call(shell.querySelectorAll('.playground-card'));
-      var sparks = Array.prototype.slice.call(shell.querySelectorAll('.playground-spark'));
 
       window.gsap.from(cards, {
         opacity: 0,
@@ -294,58 +220,15 @@
           }));
         });
 
-        timelines.push(window.gsap.to(sparks, {
-          scale: 1.08,
-          opacity: 0.8,
-          duration: 6.4,
-          repeat: -1,
-          yoyo: true,
-          stagger: 1.1,
-          ease: 'sine.inOut'
-        }));
-
         return function () {
           timelines.forEach(function (animation) {
             animation.kill();
           });
-          window.gsap.set(cards.concat(sparks), { clearProps: 'x,y,scale,opacity' });
+          window.gsap.set(cards, { clearProps: 'x,y,rotation' });
         };
       });
     }
-
-    function applyTheme(theme) {
-      var isDark = theme === 'dark';
-      root.classList.remove('theme-light', 'theme-dark');
-      root.classList.add(isDark ? 'theme-dark' : 'theme-light');
-      if (toggle) {
-        toggle.setAttribute('aria-pressed', String(isDark));
-        toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-        toggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-      }
-    }
-
-    var currentTheme = root.classList.contains('theme-dark') ? 'dark' : 'light';
-    applyTheme(currentTheme);
     initPlayground();
-
-    if (toggle) {
-      toggle.addEventListener('click', function () {
-        currentTheme = root.classList.contains('theme-dark') ? 'light' : 'dark';
-        try {
-          localStorage.setItem('theme-preference', currentTheme);
-          localStorage.setItem('sun-clicked', '1');
-        } catch (error) {}
-        toggle.classList.add('has-clicked');
-        applyTheme(currentTheme);
-      });
-
-      try {
-        if (localStorage.getItem('sun-clicked')) {
-          toggle.classList.add('has-clicked');
-        }
-      } catch (error) {}
-    }
-
   })();
 </script>
 
