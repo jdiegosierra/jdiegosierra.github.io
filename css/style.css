@@ -820,12 +820,6 @@ section a {
 	text-decoration:underline;
 	text-decoration-color:rgba(var(--accent-rgb), 0.4);
 	text-underline-offset:0.15em;
-	transition:text-decoration-color 160ms ease;
-}
-
-p a:hover,
-section a:hover {
-	text-decoration-color:var(--accent);
 }
 
 .eyebrow {
