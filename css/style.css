@@ -23,8 +23,8 @@
 	--font-sans:"Open Sans", "Trebuchet MS", sans-serif;
 	--font-display:"Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 	--page-max-width:90%;
-	--surface:rgba(255, 251, 248, 0.92);
-	--surface-soft:rgba(255, 255, 255, 0.84);
+	--surface:rgba(255, 251, 248, 0.97);
+	--surface-soft:rgba(255, 255, 255, 0.95);
 	--text-main:#46384c;
 	--text-muted:#5e4f59;
 	--accent:#c47a95;
@@ -67,8 +67,8 @@
 }
 
 :root.theme-dark {
-	--surface:rgba(28, 27, 36, 0.9);
-	--surface-soft:rgba(46, 43, 57, 0.84);
+	--surface:rgba(28, 27, 36, 0.97);
+	--surface-soft:rgba(46, 43, 57, 0.96);
 	--text-main:#f4e9f0;
 	--text-muted:#cab9c5;
 	--accent:#e89aaf;
