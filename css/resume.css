@@ -172,24 +172,9 @@ html.export-pdf .landscape-scene__sun {
   border-bottom: 1px solid var(--divider);
 }
 
-.resume-header--stacked {
-  display: block;
-}
-
-.resume-summary-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 0.9fr;
-  gap: 1.5rem;
-  align-items: start;
-}
-
 .resume-header h1 {
   margin-bottom: 0.55rem;
   font-size: 2.1rem;
-}
-
-.resume-header__intro {
-  min-width: 0;
 }
 
 .resume-kicker {
@@ -344,19 +329,6 @@ html.export-pdf .landscape-scene__sun {
 
 .resume-entry--grouped::before {
   display: none;
-}
-
-.resume-entry__group-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 0.6rem;
-}
-
-.resume-entry__group-header .resume-entry__company {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-main);
 }
 
 .resume-timeline {
@@ -538,20 +510,6 @@ html.export-pdf .landscape-scene__sun {
   white-space: nowrap;
 }
 
-.resume-annotation {
-  font-style: italic;
-  font-size: 0.92rem;
-  color: var(--accent);
-  border-left: 3px solid var(--accent);
-  padding-left: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.resume-annotation a {
-  color: var(--accent);
-  font-weight: 700;
-}
-
 .resume-section p {
   margin-bottom: 0.8rem;
   font-size: 0.9rem;
@@ -574,7 +532,6 @@ html.export-pdf .landscape-scene__sun {
   .resume-toolbar,
   .resume-toolbar__actions,
   .resume-header,
-  .resume-summary-grid,
   .resume-list--grid {
     display: block;
   }
