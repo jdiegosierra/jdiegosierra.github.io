@@ -154,9 +154,8 @@
 .column {
 	width:100%;
 	box-sizing:border-box;
-	background:linear-gradient(180deg, var(--surface), rgba(255, 251, 248, 0.88));
+	background:linear-gradient(180deg, rgba(255, 251, 248, 0.97), rgba(255, 251, 248, 0.95));
 	border:1px solid var(--divider);
-	backdrop-filter:blur(24px) saturate(1.08);
 	border-radius:2rem;
 	padding:2rem 1.4rem;
 	box-shadow:var(--shadow-soft);
@@ -186,6 +185,7 @@ body {
 	pointer-events:none;
 	z-index:0;
 	background:linear-gradient(180deg, var(--scene-sky-top) 0%, var(--scene-sky-mid) 46%, var(--scene-sky-bottom) 100%);
+	contain:layout style paint;
 }
 
 .landscape-scene::before,
@@ -258,6 +258,7 @@ body {
 	cursor:pointer;
 	z-index:10;
 	transition:transform 280ms ease, box-shadow 280ms ease;
+	will-change:transform;
 }
 
 .landscape-scene__sun:hover {
@@ -289,6 +290,7 @@ body {
 	box-shadow:2rem 0 0 rgba(var(--scene-cloud-rgb), 0.4), -1.6rem 0.7rem 0 rgba(var(--scene-cloud-rgb), 0.34), 0.9rem -0.8rem 0 rgba(var(--scene-cloud-rgb), 0.42);
 	animation:cloud-drift 34s linear infinite;
 	opacity:0.8;
+	will-change:transform;
 }
 
 .landscape-scene__cloud--1 {
@@ -362,6 +364,7 @@ body {
 	height:1.6rem;
 	opacity:0.62;
 	animation:bird-drift 26s linear infinite;
+	will-change:transform;
 }
 
 .landscape-scene__birds::before,
@@ -427,6 +430,7 @@ html.export-pdf .landscape-scene {
 	width:136%;
 	border-radius:50% 50% 0 0 / 100% 100% 0 0;
 	transform-origin:center bottom;
+	will-change:transform;
 }
 
 .landscape-scene__hill--back {
@@ -474,6 +478,7 @@ html.export-pdf .landscape-scene {
 	transform-origin:center bottom;
 	animation:tree-sway 8s ease-in-out infinite alternate;
 	filter:drop-shadow(0 8px 12px rgba(0, 0, 0, 0.14));
+	will-change:transform;
 }
 
 .landscape-scene__tree::before,
@@ -682,6 +687,7 @@ html.export-pdf .landscape-scene {
 	filter:blur(0.1rem);
 	animation:firefly-glow 2.8s ease-in-out infinite, firefly-float-a 12s ease-in-out infinite;
 	transition:opacity 200ms ease;
+	will-change:transform, opacity;
 }
 
 :root.theme-dark .landscape-scene__firefly {
@@ -1549,7 +1555,6 @@ ul {
 		var(--button-background, transparent);
 	color:var(--button-text, #000000);
 	box-shadow:0 18px 34px rgba(157, 111, 124, 0.18);
-	backdrop-filter:blur(10px) saturate(1.04);
 	transform:rotate(var(--tilt, 0deg));
 	transform-origin:center bottom;
 	overflow:visible;
@@ -1694,7 +1699,7 @@ ul {
 }
 
 :root.theme-dark .column {
-	background:linear-gradient(180deg, var(--surface), rgba(28, 27, 36, 0.88));
+	background:linear-gradient(180deg, rgba(28, 27, 36, 0.97), rgba(28, 27, 36, 0.95));
 }
 
 :root.theme-dark .column--landing {
@@ -1796,6 +1801,7 @@ ul {
 	filter:blur(8px);
 	opacity:0.6;
 	animation:mist-drift 20s ease-in-out infinite alternate;
+	will-change:transform;
 }
 
 .landscape-scene__mist--1 {
@@ -1824,6 +1830,7 @@ ul {
 	pointer-events:none;
 	opacity:0;
 	animation:wind-gust 7s ease-in-out infinite;
+	will-change:transform, opacity;
 }
 
 .landscape-scene__wind--1 {
@@ -1858,6 +1865,7 @@ ul {
 	width:0.9rem;
 	height:0.7rem;
 	opacity:0.72;
+	will-change:transform;
 }
 
 .landscape-scene__butterfly::before,
@@ -1932,6 +1940,7 @@ ul {
 	background:rgba(var(--scene-tree-rgb), 0.62);
 	opacity:0.55;
 	transform:rotate(20deg);
+	will-change:transform;
 }
 
 .landscape-scene__leaf--1 {
