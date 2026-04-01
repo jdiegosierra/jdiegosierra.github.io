@@ -67,8 +67,8 @@
 }
 
 :root.theme-dark {
-	--surface:rgba(28, 27, 36, 0.97);
-	--surface-soft:rgba(46, 43, 57, 0.96);
+	--surface:rgb(28, 27, 36);
+	--surface-soft:rgb(46, 43, 57);
 	--text-main:#f4e9f0;
 	--text-muted:#cab9c5;
 	--accent:#e89aaf;
@@ -1628,7 +1628,7 @@ ul {
 }
 
 :root.theme-dark .column {
-	background:linear-gradient(180deg, rgba(28, 27, 36, 0.97), rgba(28, 27, 36, 0.95));
+	background:rgb(28, 27, 36);
 }
 
 :root.theme-dark .column--landing {
