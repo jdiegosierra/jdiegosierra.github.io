@@ -253,12 +253,42 @@ body {
 	border-radius:50%;
 	background:radial-gradient(circle, rgba(255, 255, 255, 0.98) 0%, rgba(var(--scene-glow-rgb), 0.95) 38%, rgba(var(--scene-glow-rgb), 0.24) 62%, rgba(var(--scene-glow-rgb), 0) 72%);
 	box-shadow:0 0 70px rgba(var(--scene-glow-rgb), 0.46);
-	animation:sun-drift 12s ease-in-out infinite alternate;
+	animation:sun-drift 12s ease-in-out infinite alternate, sun-breathe 2.4s ease-in-out infinite alternate;
 	pointer-events:auto;
 	cursor:pointer;
 	z-index:10;
 	transition:transform 280ms ease, box-shadow 280ms ease;
 	will-change:transform;
+}
+
+.landscape-scene__sun.has-clicked {
+	animation:sun-drift 12s ease-in-out infinite alternate;
+}
+
+.landscape-scene__sun::after {
+	content:"click me ☀";
+	position:absolute;
+	top:calc(100% + 0.5rem);
+	left:50%;
+	transform:translateX(-50%);
+	padding:0.35rem 0.7rem;
+	border-radius:0.5rem;
+	background:rgba(0, 0, 0, 0.7);
+	color:#fff;
+	font-size:0.75rem;
+	font-weight:600;
+	white-space:nowrap;
+	pointer-events:none;
+	opacity:0;
+	animation:tooltip-hint 6s ease 2s 1 both;
+}
+
+:root.theme-dark .landscape-scene__sun::after {
+	content:"click me ☾";
+}
+
+.landscape-scene__sun.has-clicked::after {
+	display:none;
 }
 
 .landscape-scene__sun:hover {
@@ -2193,6 +2223,23 @@ ul {
 	to {
 		transform:translateY(0.5rem) scale(1.03);
 	}
+}
+
+@keyframes sun-breathe {
+	from {
+		box-shadow:0 0 70px rgba(var(--scene-glow-rgb), 0.46);
+	}
+
+	to {
+		box-shadow:0 0 100px rgba(var(--scene-glow-rgb), 0.68);
+	}
+}
+
+@keyframes tooltip-hint {
+	0% { opacity:0; transform:translateX(-50%) translateY(0.3rem); }
+	15% { opacity:1; transform:translateX(-50%) translateY(0); }
+	75% { opacity:1; transform:translateX(-50%) translateY(0); }
+	100% { opacity:0; transform:translateX(-50%) translateY(0.3rem); }
 }
 
 @keyframes hill-swell {
