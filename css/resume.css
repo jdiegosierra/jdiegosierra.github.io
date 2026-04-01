@@ -56,6 +56,7 @@ html.export-pdf .resume-updated p {
 html.export-pdf .resume-entry,
 html.export-pdf .resume-section--card,
 html.export-pdf .resume-meta,
+html.export-pdf .resume-oss-card,
 html.export-pdf .resume-section--card .resume-list--grid li {
   background: none;
 }
@@ -154,7 +155,8 @@ html.export-pdf .resume-section--card .resume-list--grid li {
   padding: 1.45rem;
 }
 
-html.export-pdf .no-print {
+html.export-pdf .no-print,
+html.export-pdf .landscape-scene__sun {
   display: none !important;
 }
 
@@ -291,7 +293,7 @@ html.export-pdf .no-print {
   padding: 0.9rem 1rem;
   border: 1px solid rgba(var(--accent-rgb), 0.16);
   border-radius: 1rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.18));
+  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.1), rgba(255, 255, 255, 0.02));
 }
 
 .theme-dark .resume-section--card {
@@ -634,7 +636,8 @@ html.export-pdf .no-print {
     print-color-adjust: exact;
   }
 
-  .no-print {
+  .no-print,
+  .landscape-scene__sun {
     display: none !important;
   }
 

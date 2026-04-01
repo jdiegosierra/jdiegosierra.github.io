@@ -1150,6 +1150,8 @@ b {
 	width:22rem;
 	display:flex;
 	flex-direction:column;
+	justify-content:center;
+	gap:0.8rem;
 }
 
 .music-embed-panel--compact {
@@ -1238,11 +1240,8 @@ b {
 
 .avatar--video {
 	display:block;
-	flex:1;
-	min-height:0;
 	height:auto;
 	background:#0f1418;
-	object-fit:cover;
 }
 
 .oss-split {
