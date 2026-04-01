@@ -9,4 +9,4 @@ The animated landscape scene (`.landscape-scene` block) must be identical across
 - `manifesto.html`
 - `manifesto.es.html`
 
-When adding, removing, or modifying any element inside the landscape scene (trees, fruits, wind, clouds, birds, butterflies, leaves, fireflies, mist, flowers, hills, etc.), apply the same change to all four files.
+When adding, removing, or modifying any element inside the landscape scene (clouds, birds, balloon/planet, shooting star, sun/moon), apply the same change to all four files. The scene is sky-only — no ground elements (hills, trees, grass, flowers, etc.).
