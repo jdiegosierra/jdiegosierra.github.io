@@ -199,41 +199,50 @@
     <section class="spotlight">
       <p class="eyebrow">Links</p>
       <div class="playground-shell" role="navigation" aria-label="Profile links">
-      <a class="button playground-card playground-card--resume button-manifesto" href="resume.html" role="button">
-        <img class="icon" aria-hidden="true" src="images/icons/cv.png" alt="Resume Icon">Resume
-      </a>
+        <a class="button playground-card playground-card--resume button-manifesto" href="resume.html" role="button">
+          <img class="icon" aria-hidden="true" src="images/icons/cv.png" alt="Resume Icon">
+          <span class="playground-card__label">Resume</span>
+        </a>
 
-      <a class="button playground-card playground-card--manifesto button-manifesto" href="manifesto.html" role="button">
-        <img class="icon" aria-hidden="true" src="images/icons/generic-blog.svg" alt="Manifesto Icon">Manifesto
-      </a>
+        <a class="button playground-card playground-card--manifesto button-manifesto" href="manifesto.html" role="button">
+          <img class="icon" aria-hidden="true" src="images/icons/generic-blog.svg" alt="Manifesto Icon">
+          <span class="playground-card__label">Manifesto</span>
+        </a>
 
-      <a class="button playground-card playground-card--linkedin button-linked" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener" role="button">
-        <img class="icon" aria-hidden="true" src="images/icons/linkedin.svg" alt="LinkedIn Logo">LinkedIn
-      </a>
+        <a class="button playground-card playground-card--linkedin button-linked" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener" role="button">
+          <img class="icon" aria-hidden="true" src="images/icons/linkedin.svg" alt="LinkedIn Logo">
+          <span class="playground-card__label">LinkedIn</span>
+        </a>
 
-      <a class="button playground-card playground-card--call button-sponsors" href="#" target="_blank" rel="noopener" role="button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
-        <img class="icon" aria-hidden="true" src="images/icons/calendly.svg" alt="Calendly Logo">Book a video call
-      </a>
+        <a class="button playground-card playground-card--call button-sponsors" href="#" target="_blank" rel="noopener" role="button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
+          <img class="icon" aria-hidden="true" src="images/icons/calendly.svg" alt="Calendly Logo">
+          <span class="playground-card__label">Book a video call</span>
+        </a>
 
-      <a class="button playground-card playground-card--github button-github" href="https://github.com/jdiegosierra" target="_blank" rel="noopener" role="button">
-        <img class="icon" aria-hidden="true" src="images/icons/github.svg" alt="GitHub Logo">GitHub
-      </a>
+        <a class="button playground-card playground-card--github button-github" href="https://github.com/jdiegosierra" target="_blank" rel="noopener" role="button">
+          <img class="icon" aria-hidden="true" src="images/icons/github.svg" alt="GitHub Logo">
+          <span class="playground-card__label">GitHub</span>
+        </a>
 
-      <a class="button playground-card playground-card--sponsors button-github" href="https://github.com/sponsors/jdiegosierra" target="_blank" rel="noopener" role="button">
-        <img class="icon" aria-hidden="true" src="images/icons/github.svg" alt="GitHub Logo">GitHub Sponsors
-      </a>
+        <a class="button playground-card playground-card--sponsors button-github" href="https://github.com/sponsors/jdiegosierra" target="_blank" rel="noopener" role="button">
+          <img class="icon" aria-hidden="true" src="images/icons/github.svg" alt="GitHub Logo">
+          <span class="playground-card__label">GitHub Sponsors</span>
+        </a>
 
-      <a class="button playground-card playground-card--music button-spotify-alt" href="https://open.spotify.com/user/dyeghikoo" target="_blank" rel="noopener" role="button">
-        <img class="icon" aria-hidden="true" src="images/icons/spotify-alt.svg" alt="Spotify Logo">My Favourite Music
-      </a>
+        <a class="button playground-card playground-card--music button-spotify-alt" href="https://open.spotify.com/user/dyeghikoo" target="_blank" rel="noopener" role="button">
+          <img class="icon" aria-hidden="true" src="images/icons/spotify-alt.svg" alt="Spotify Logo">
+          <span class="playground-card__label">My Favourite Music</span>
+        </a>
 
-      <a class="button playground-card playground-card--stack button-stack-overflow" href="https://stackoverflow.com/users/9409100/diego-sierra-fernandez" target="_blank" rel="noopener" role="button">
-        <img class="icon" aria-hidden="true" src="images/icons/stack-overflow.svg" alt="Stack Overflow Logo">Stack Overflow
-      </a>
+        <a class="button playground-card playground-card--stack button-stack-overflow" href="https://stackoverflow.com/users/9409100/diego-sierra-fernandez" target="_blank" rel="noopener" role="button">
+          <img class="icon" aria-hidden="true" src="images/icons/stack-overflow.svg" alt="Stack Overflow Logo">
+          <span class="playground-card__label">Stack Overflow</span>
+        </a>
 
-      <a class="button playground-card playground-card--onlyfans button-onlyfans" href="https://upload.wikimedia.org/wikipedia/en/7/73/Trollface.png" target="_blank" rel="noopener" role="button">
-        <img class="icon" aria-hidden="true" src="images/icons/onlyfans.svg" alt="OnlyFans Logo">OnlyFans (18+)
-      </a>
+        <a class="button playground-card playground-card--onlyfans button-onlyfans" href="https://upload.wikimedia.org/wikipedia/en/7/73/Trollface.png" target="_blank" rel="noopener" role="button">
+          <img class="icon" aria-hidden="true" src="images/icons/onlyfans.svg" alt="OnlyFans Logo">
+          <span class="playground-card__label">OnlyFans (18+)</span>
+        </a>
       </div>
     </section>
   </div>
@@ -268,16 +277,20 @@
         var timelines = [];
 
         cards.forEach(function (item, index) {
-          var dx = ((index % 3) - 1) * 4;
-          var dy = index % 2 === 0 ? -9 : 9;
+          var direction = index % 2 === 0 ? -1 : 1;
+          var dx = direction * (6 + ((index % 3) * 2));
+          var dy = -14 - ((index % 3) * 3);
+          var rotation = direction * (1.6 + (index * 0.18));
+
           timelines.push(window.gsap.to(item, {
             x: dx,
             y: dy,
-            duration: 3.6 + (index * 0.22),
+            rotation: rotation,
+            duration: 4.4 + (index * 0.24),
             repeat: -1,
             yoyo: true,
             ease: 'sine.inOut',
-            delay: index * 0.1
+            delay: index * 0.12
           }));
         });
 
