@@ -29,6 +29,7 @@ html.export-pdf body {
 html.export-pdf .resume-page {
   padding: 0;
   min-height: auto;
+  font-size: 0.84rem;
 }
 
 html.export-pdf .resume-shell {
@@ -37,20 +38,91 @@ html.export-pdf .resume-shell {
 }
 
 html.export-pdf .resume-sheet {
-  border: none;
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
   border-radius: 0;
   box-shadow: none;
-  padding: 10mm;
-  background: none;
+  padding: 9mm 10mm 8mm;
+  background: rgba(255, 249, 246, 0.94) !important;
+}
+
+html.export-pdf .resume-header {
+  gap: 1rem;
+  padding-bottom: 0.7rem;
+}
+
+html.export-pdf .resume-header h1 {
+  font-size: 1.56rem;
+  margin-bottom: 0.35rem;
+}
+
+html.export-pdf .resume-role {
+  font-size: 0.82rem;
+}
+
+html.export-pdf .resume-meta {
+  padding: 0.48rem 0.62rem;
+}
+
+html.export-pdf .resume-meta p,
+html.export-pdf .resume-entry__meta,
+html.export-pdf .resume-tech {
+  font-size: 0.72rem;
+}
+
+html.export-pdf .resume-entry h3 {
+  font-size: 0.86rem;
+}
+
+html.export-pdf .resume-section h2 {
+  font-size: 0.78rem;
+  margin-bottom: 0.42rem;
+}
+
+html.export-pdf .resume-section p,
+html.export-pdf .resume-list li,
+html.export-pdf .resume-oss-card p,
+html.export-pdf .resume-oss-card .resume-list li {
+  font-size: 0.72rem;
+  line-height: 1.24;
+  orphans: 3;
+  widows: 3;
+}
+
+html.export-pdf .resume-section {
+  margin-top: 0.52rem;
+}
+
+html.export-pdf .resume-section--summary,
+html.export-pdf .resume-section--open-source,
+html.export-pdf .resume-entry,
+html.export-pdf .resume-oss-card,
+html.export-pdf .resume-timeline__role,
+html.export-pdf .resume-updated,
+html.export-pdf .resume-meta,
+html.export-pdf .resume-header,
+html.export-pdf .resume-highlights,
+html.export-pdf .resume-entry__header,
+html.export-pdf .resume-tech {
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
+html.export-pdf .resume-section h2,
+html.export-pdf .resume-entry__header,
+html.export-pdf .resume-entry h3,
+html.export-pdf .resume-oss-card h3 {
+  break-after: avoid-page;
+  page-break-after: avoid;
 }
 
 html.export-pdf .resume-updated {
-  margin-top: 0.8rem;
-  padding-top: 0.45rem;
+  margin-top: 0.62rem;
+  padding-top: 0.38rem;
 }
 
 html.export-pdf .resume-updated p {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
+  color: #46384c !important;
 }
 
 html.export-pdf .resume-entry,
@@ -61,12 +133,81 @@ html.export-pdf .resume-section--card .resume-list--grid li {
   background: none;
 }
 
+html.export-pdf .resume-section--card {
+  padding: 0.48rem 0.62rem;
+}
+
+html.export-pdf .resume-entry {
+  margin-top: 0.48rem;
+  padding: 0.42rem 0.56rem 0.42rem 0.78rem;
+}
+
+html.export-pdf .resume-list {
+  padding-left: 0;
+}
+
+html.export-pdf .resume-list li {
+  margin-bottom: 0.16rem;
+  padding-left: 0.72rem;
+}
+
+html.export-pdf .resume-entry__header {
+  margin-bottom: 0.3rem;
+}
+
+html.export-pdf .resume-highlights {
+  gap: 0.25rem;
+  margin-top: 0.45rem;
+}
+
+html.export-pdf .resume-highlight {
+  padding: 0.22rem 0.38rem;
+  font-size: 0.62rem;
+}
+
+html.export-pdf .resume-entry::before {
+  left: 0.3rem;
+  width: 0.12rem;
+}
+
+html.export-pdf .resume-section--card .resume-list--grid li {
+  padding: 0.28rem 0.34rem 0.28rem 0.82rem;
+}
+
+html.export-pdf .resume-oss-split {
+  gap: 0.55rem;
+}
+
+html.export-pdf .resume-star-count {
+  font-size: 0.68rem;
+}
+
+html.export-pdf .resume-header,
+html.export-pdf .resume-role,
+html.export-pdf .resume-meta p,
+html.export-pdf .resume-entry__company,
+html.export-pdf .resume-entry__meta,
+html.export-pdf .resume-list li,
+html.export-pdf .resume-section p,
+html.export-pdf .resume-tech {
+  color: #46384c !important;
+}
+
+html.export-pdf a {
+  color: #914f69 !important;
+  text-decoration: none;
+}
+
 .resume-toolbar {
   display: grid;
   grid-template-columns: max-content 1fr;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.page-manifesto .resume-toolbar {
+  margin-bottom: 1.4rem;
 }
 
 .resume-toolbar__actions {
@@ -83,9 +224,10 @@ html.export-pdf .resume-section--card .resume-list--grid li {
   gap: 0.25rem;
   width: 6rem;
   padding: 0.25rem;
-  border: 1px solid var(--divider);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
   border-radius: 999px;
   background: var(--surface-soft);
+  box-shadow: 0 8px 20px rgba(157, 111, 124, 0.06);
 }
 
 .language-switcher .resume-toolbar__link {
@@ -98,13 +240,13 @@ html.export-pdf .resume-section--card .resume-list--grid li {
 }
 
 .language-switcher .resume-toolbar__link[aria-current="page"] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #ffffff;
+  background: rgba(var(--accent-rgb), 0.18);
+  border-color: rgba(var(--accent-rgb), 0.24);
+  color: var(--text-main);
 }
 
 .theme-dark .language-switcher .resume-toolbar__link[aria-current="page"] {
-  color: #203049;
+  color: var(--text-main);
 }
 
 .resume-toolbar__link,
@@ -119,13 +261,25 @@ html.export-pdf .resume-section--card .resume-list--grid li {
   margin: 0;
   padding: 0.7rem 1rem;
   border-radius: 999px;
-  border: 1px solid var(--divider);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
   background: var(--surface-soft);
   color: var(--text-main);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 700;
-  box-shadow: none;
+  box-shadow: 0 8px 20px rgba(157, 111, 124, 0.06);
+  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.resume-toolbar__link:hover,
+.resume-toolbar__link:focus-visible,
+.resume-toolbar__button:hover,
+.resume-toolbar__button:focus-visible {
+  color: var(--text-main);
+  border-color: rgba(var(--accent-rgb), 0.32);
+  background: var(--surface);
+  box-shadow: 0 12px 24px rgba(157, 111, 124, 0.1);
+  transform: translateY(-1px);
 }
 
 .resume-toolbar__link--back {
@@ -135,24 +289,47 @@ html.export-pdf .resume-section--card .resume-list--grid li {
 }
 
 .resume-toolbar__button--primary {
-  background: #f3c7c7;
-  border-color: #df9b9b;
-  color: #6f3640;
+  background: rgb(249, 232, 237);
+  border-color: rgba(var(--tone-rose-rgb), 0.46);
 }
 
 .theme-dark .resume-toolbar__button--primary {
-  background: #7a4d57;
-  border-color: #b5808a;
-  color: #fff0f2;
+  background: rgb(102, 76, 89);
+  border-color: rgba(var(--tone-rose-rgb), 0.38);
+}
+
+.page-resume .language-switcher,
+.page-resume .resume-toolbar__link,
+.page-resume .resume-toolbar__button {
+  background: var(--resume-control-bg);
+  border-color: var(--resume-control-border);
+  border-radius: 0.85rem;
+  box-shadow: none;
+}
+
+.page-resume .resume-toolbar__link:hover,
+.page-resume .resume-toolbar__link:focus-visible,
+.page-resume .resume-toolbar__button:hover,
+.page-resume .resume-toolbar__button:focus-visible {
+  background: var(--resume-control-bg-hover);
+  border-color: var(--resume-control-border-strong);
+  box-shadow: none;
 }
 
 .resume-sheet {
-  background: var(--surface);
-  border: 1px solid var(--divider);
-  border-radius: 1.6rem;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
+  border-radius: 2rem;
   box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(24px) saturate(1.08);
-  padding: 1.45rem;
+  padding: 1.55rem 1.4rem;
+}
+
+.page-resume .resume-sheet {
+  background: var(--resume-shell-bg);
+  border-color: var(--resume-shell-border);
+  border-radius: 1.2rem;
+  box-shadow: 0 18px 42px rgba(157, 111, 124, 0.1);
+  padding: 1.35rem 1.25rem;
 }
 
 html.export-pdf .no-print,
@@ -168,8 +345,13 @@ html.export-pdf .landscape-scene__sun {
   display: grid;
   grid-template-columns: 1.3fr 0.9fr;
   gap: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--divider);
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+.page-resume .resume-header {
+  gap: 1.2rem;
+  padding-bottom: 0.95rem;
 }
 
 .resume-header h1 {
@@ -201,14 +383,18 @@ html.export-pdf .landscape-scene__sun {
 
 .resume-meta {
   align-self: end;
-  padding: 0.8rem 0.9rem;
-  border-radius: 1rem;
-  background: rgba(var(--accent-rgb), 0.1);
-  border: 1px solid rgba(var(--accent-rgb), 0.12);
+  padding: 0.9rem 1rem;
+  border-radius: 1.1rem;
+  background: var(--surface-soft);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
+  box-shadow: 0 8px 20px rgba(157, 111, 124, 0.06);
 }
 
-.theme-dark .resume-meta {
-  background: rgba(var(--accent-rgb), 0.1);
+.page-resume .resume-meta {
+  border-radius: 0.9rem;
+  background: var(--resume-panel-bg);
+  border-color: var(--resume-panel-border);
+  box-shadow: none;
 }
 
 .resume-meta p {
@@ -265,7 +451,7 @@ html.export-pdf .landscape-scene__sun {
 .resume-updated {
   margin-top: 1.2rem;
   padding-top: 0.8rem;
-  border-top: 1px solid var(--divider);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.2);
 }
 
 .resume-updated p {
@@ -275,34 +461,54 @@ html.export-pdf .landscape-scene__sun {
 }
 
 .resume-section--card {
-  padding: 0.9rem 1rem;
-  border: 1px solid rgba(var(--accent-rgb), 0.16);
-  border-radius: 1rem;
-  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.1), rgba(255, 255, 255, 0.02));
+  padding: 1rem 1.05rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
+  border-radius: 1.1rem;
+  background: var(--surface-soft);
+  box-shadow: 0 8px 20px rgba(157, 111, 124, 0.06);
 }
 
-.theme-dark .resume-section--card {
-  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.12), rgba(255, 255, 255, 0.03));
+.page-resume .resume-section--card {
+  border-radius: 0.9rem;
+  border-color: var(--resume-panel-border);
+  background: var(--resume-panel-bg);
+  box-shadow: none;
 }
 
 .resume-section h2 {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
+  margin-bottom: 0.9rem;
+  font-size: 1.15rem;
+  font-family: var(--font-display);
   color: var(--text-main);
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.page-resume .resume-section h2 {
+  margin-bottom: 0.72rem;
+  font-size: 0.98rem;
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .resume-section h2::before {
   content: "";
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 0.28rem;
+  height: 1.2rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb), 0.12);
+  background: rgba(var(--accent-rgb), 0.48);
+  box-shadow: none;
+}
+
+.page-resume .resume-section h2::before {
+  width: 0.72rem;
+  height: 0.72rem;
+  background: rgba(var(--accent-rgb), 0.52);
+  box-shadow: 0 0 0 0.18rem var(--resume-chip-bg);
 }
 
 .resume-entry__header {
@@ -314,9 +520,16 @@ html.export-pdf .landscape-scene__sun {
 }
 
 .resume-entry h3 {
-  margin-bottom: 0.2rem;
-  font-size: 1rem;
+  margin: 0 0 0.2rem;
+  font-size: 1.05rem;
+  font-family: var(--font-display);
   color: var(--text-main);
+}
+
+.page-resume .resume-entry h3,
+.page-resume .resume-oss-card h3 {
+  font-size: 1rem;
+  font-family: var(--font-sans);
 }
 
 .resume-entry--compact {
@@ -371,14 +584,18 @@ html.export-pdf .landscape-scene__sun {
 .resume-entry {
   position: relative;
   margin-top: 1rem;
-  padding: 0.8rem 0.95rem 0.75rem 1.2rem;
-  border-radius: 0.95rem;
-  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.1), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(var(--accent-rgb), 0.12);
+  padding: 0.95rem 1rem 0.85rem 1rem;
+  border-radius: 1.05rem;
+  background: var(--surface-soft);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
+  box-shadow: 0 8px 20px rgba(157, 111, 124, 0.06);
 }
 
-.theme-dark .resume-entry {
-  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.12), rgba(255, 255, 255, 0.03));
+.page-resume .resume-entry {
+  border-radius: 0.9rem;
+  border-color: var(--resume-panel-border);
+  background: var(--resume-panel-bg);
+  box-shadow: none;
 }
 
 .resume-entry:first-of-type {
@@ -450,15 +667,17 @@ html.export-pdf .landscape-scene__sun {
 .resume-section--card .resume-list--grid li {
   padding: 0.44rem 0.55rem 0.44rem 1.15rem;
   border-radius: 0.7rem;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.12);
+}
+
+.page-resume .resume-section--card .resume-list--grid li {
+  background: var(--resume-chip-bg);
+  border-color: var(--resume-panel-border);
 }
 
 .resume-section--card .resume-list--grid li::before {
   top: 0.48rem;
-}
-
-.theme-dark .resume-section--card .resume-list--grid li {
-  background: rgba(57, 68, 89, 0.42);
 }
 
 .resume-oss-split {
@@ -468,19 +687,29 @@ html.export-pdf .landscape-scene__sun {
 }
 
 .resume-oss-card {
-  padding: 0.8rem 0.95rem;
-  border-radius: 0.95rem;
-  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.1), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(var(--accent-rgb), 0.12);
+  padding: 0.95rem 1rem;
+  border-radius: 1.05rem;
+  background: var(--surface-soft);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
+  box-shadow: 0 8px 20px rgba(157, 111, 124, 0.06);
 }
 
-.theme-dark .resume-oss-card {
-  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.12), rgba(255, 255, 255, 0.03));
+.page-resume .resume-oss-card {
+  padding: 0.72rem 0.9rem 0.82rem;
+  border-radius: 0.9rem;
+  border-color: var(--resume-panel-border);
+  background: var(--resume-panel-bg);
+  box-shadow: none;
+}
+
+.page-resume .resume-oss-card h3 {
+  margin: 0 0 0.25rem;
 }
 
 .resume-oss-card h3 {
-  margin-bottom: 0.3rem;
-  font-size: 1rem;
+  margin-bottom: 0.45rem;
+  font-size: 1.05rem;
+  font-family: var(--font-display);
   color: var(--text-main);
 }
 
@@ -512,8 +741,188 @@ html.export-pdf .landscape-scene__sun {
 
 .resume-section p {
   margin-bottom: 0.8rem;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.5;
+}
+
+:root.theme-dark .language-switcher,
+:root.theme-dark .resume-toolbar__link,
+:root.theme-dark .resume-toolbar__button,
+:root.theme-dark .resume-meta,
+:root.theme-dark .resume-section--card,
+:root.theme-dark .resume-entry,
+:root.theme-dark .resume-oss-card {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.page-resume.theme-dark .resume-sheet {
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.page-resume.theme-dark .resume-meta,
+.page-resume.theme-dark .resume-section--card,
+.page-resume.theme-dark .resume-entry,
+.page-resume.theme-dark .resume-oss-card,
+.page-resume.theme-dark .resume-toolbar__link,
+.page-resume.theme-dark .resume-toolbar__button,
+.page-resume.theme-dark .language-switcher {
+  box-shadow: none;
+}
+
+.page-resume {
+  --resume-shell-bg: linear-gradient(180deg, rgb(251, 244, 247), rgb(255, 250, 252));
+  --resume-shell-border: rgba(var(--accent-rgb), 0.24);
+  --resume-panel-bg: var(--surface-soft);
+  --resume-panel-border: rgba(var(--accent-rgb), 0.18);
+  --resume-chip-bg: rgba(var(--accent-rgb), 0.09);
+  --resume-control-bg: rgb(255, 252, 250);
+  --resume-control-bg-hover: rgba(var(--accent-rgb), 0.08);
+  --resume-control-border: rgba(var(--accent-rgb), 0.22);
+  --resume-control-border-strong: rgba(var(--tone-rose-rgb), 0.42);
+}
+
+.page-resume.theme-dark {
+  --resume-shell-bg: linear-gradient(180deg, rgb(58, 49, 61), rgb(43, 39, 52));
+  --resume-shell-border: rgba(var(--accent-rgb), 0.24);
+  --resume-panel-bg: var(--surface-soft);
+  --resume-panel-border: rgba(var(--accent-rgb), 0.2);
+  --resume-chip-bg: rgba(var(--accent-rgb), 0.16);
+  --resume-control-bg: rgb(59, 54, 68);
+  --resume-control-bg-hover: rgb(70, 62, 82);
+  --resume-control-border: rgba(var(--accent-rgb), 0.26);
+  --resume-control-border-strong: rgba(var(--accent-rgb), 0.34);
+}
+
+.page-resume .resume-toolbar__button--primary,
+.page-resume .language-switcher .resume-toolbar__link[aria-current="page"] {
+  background: var(--resume-chip-bg);
+  border-color: var(--resume-control-border-strong);
+}
+
+.page-resume .resume-highlight {
+  background: var(--resume-chip-bg);
+  border-color: var(--resume-panel-border);
+}
+
+.page-manifesto h1 {
+  margin-bottom: 0.8rem;
+  font-size: clamp(2.5rem, 4vw, 3.2rem);
+}
+
+.page-manifesto .column > nav {
+  margin: 1.8rem 0 2.2rem;
+}
+
+.page-manifesto .manifesto-index-nav {
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(var(--accent-rgb), 0.16);
+}
+
+.page-manifesto .manifesto-index-nav__title {
+  margin: 0 0 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.page-manifesto .manifesto-index {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 1.5rem;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.page-manifesto .manifesto-index li {
+  margin: 0;
+  padding: 0;
+}
+
+.page-manifesto .manifesto-index a {
+  color: var(--text-main);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.page-manifesto .manifesto-index a:hover,
+.page-manifesto .manifesto-index a:focus-visible {
+  color: var(--link-color);
+  border-bottom-color: rgba(var(--accent-rgb), 0.35);
+}
+
+.page-manifesto section {
+  margin: 1.85rem 0;
+}
+
+.page-manifesto section > h2 {
+  margin-bottom: 0.85rem;
+}
+
+.page-manifesto section h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.85rem 0 0.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  letter-spacing: 0.06em;
+}
+
+.page-manifesto section h3::before {
+  content: "";
+  width: 0.22rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: rgba(var(--accent-rgb), 0.42);
+}
+
+.page-manifesto section > p {
+  max-width: none;
+  margin-bottom: 0.95rem;
+}
+
+.page-manifesto section h3 + p,
+.page-manifesto section h3 + p + p,
+.page-manifesto section h3 + p + p + p,
+.page-manifesto section h3 + p + p + p + p,
+.page-manifesto section h3 + p + p + p + p + p,
+.page-manifesto section h3 + p + p + p + p + p + p {
+  margin-left: 0.35rem;
+  padding-left: 0.95rem;
+  border-left: 2px solid rgba(var(--accent-rgb), 0.14);
+}
+
+.page-manifesto .column > footer {
+  margin-top: 2.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(var(--accent-rgb), 0.18);
+}
+
+.page-manifesto.theme-dark .manifesto-index {
+  box-shadow: none;
+}
+
+.page-manifesto.theme-dark section h3 {
+  background: none;
+}
+
+.page-manifesto.theme-dark section h3::before {
+  background: rgba(var(--accent-rgb), 0.5);
+}
+
+@media (max-width: 760px) {
+  .page-manifesto .manifesto-index {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
 }
 
 .resume-section p:last-child {
