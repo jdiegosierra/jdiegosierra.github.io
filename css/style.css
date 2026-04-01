@@ -624,13 +624,13 @@ html.export-pdf .landscape-scene {
 }
 
 .landscape-scene__flowers--2 {
-	left:28%;
+	left:1%;
 	bottom:7vh;
 	width:16rem;
 }
 
 .landscape-scene__flowers--3 {
-	left:52%;
+	right:1%;
 	bottom:9vh;
 	width:14rem;
 }
@@ -642,7 +642,7 @@ html.export-pdf .landscape-scene {
 }
 
 .landscape-scene__flowers--5 {
-	left:18%;
+	left:4%;
 	bottom:10vh;
 	width:12rem;
 }
@@ -654,13 +654,13 @@ html.export-pdf .landscape-scene {
 }
 
 .landscape-scene__flowers--7 {
-	left:38%;
+	right:4%;
 	bottom:11vh;
 	width:11rem;
 }
 
 .landscape-scene__flowers--8 {
-	right:22%;
+	right:6%;
 	bottom:6.5vh;
 	width:16rem;
 }
@@ -704,56 +704,56 @@ html.export-pdf .landscape-scene {
 }
 
 .landscape-scene__firefly--1 {
-	left:14%;
+	left:3%;
 	bottom:21vh;
 	animation-duration:2.4s, 10.5s;
 	animation-delay:-1.2s, -3.5s;
 }
 
 .landscape-scene__firefly--2 {
-	left:23%;
+	left:6%;
 	bottom:14vh;
 	animation-duration:3.1s, 12.2s;
 	animation-delay:-0.4s, -4.2s;
 }
 
 .landscape-scene__firefly--3 {
-	left:37%;
+	right:5%;
 	bottom:18vh;
 	animation-duration:2.8s, 11.3s;
 	animation-delay:-2.3s, -5.1s;
 }
 
 .landscape-scene__firefly--4 {
-	left:48%;
+	right:2%;
 	bottom:13vh;
 	animation-duration:3.2s, 12.8s;
 	animation-delay:-1.4s, -2.7s;
 }
 
 .landscape-scene__firefly--5 {
-	left:61%;
+	left:1%;
 	bottom:20vh;
 	animation-duration:2.6s, 10.8s;
 	animation-delay:-0.8s, -6.2s;
 }
 
 .landscape-scene__firefly--6 {
-	left:72%;
+	right:7%;
 	bottom:12vh;
 	animation-duration:3s, 13s;
 	animation-delay:-1.8s, -4.6s;
 }
 
 .landscape-scene__firefly--7 {
-	left:82%;
+	right:4%;
 	bottom:17vh;
 	animation-duration:2.7s, 11.5s;
 	animation-delay:-2.2s, -1.8s;
 }
 
 .landscape-scene__firefly--8 {
-	left:90%;
+	left:4%;
 	bottom:14vh;
 	animation-duration:3.3s, 12.4s;
 	animation-delay:-1.1s, -5.7s;
@@ -1732,7 +1732,7 @@ ul {
 .landscape-scene__balloon {
 	position:absolute;
 	top:8rem;
-	left:22%;
+	left:3%;
 	width:1.8rem;
 	height:2.4rem;
 	border-radius:50% 50% 44% 44%;
@@ -1894,27 +1894,27 @@ ul {
 
 .landscape-scene__butterfly--1 {
 	bottom:14vh;
-	left:16%;
+	left:2%;
 	animation:butterfly-path-1 14s ease-in-out infinite;
 }
 
 .landscape-scene__butterfly--2 {
 	bottom:12vh;
-	left:46%;
+	right:3%;
 	animation:butterfly-path-2 18s ease-in-out infinite;
 	animation-delay:-6s;
 }
 
 .landscape-scene__butterfly--3 {
 	bottom:15vh;
-	right:14%;
+	right:2%;
 	animation:butterfly-path-3 16s ease-in-out infinite;
 	animation-delay:-3s;
 }
 
 .landscape-scene__butterfly--4 {
 	bottom:11vh;
-	left:32%;
+	left:4%;
 	animation:butterfly-path-1 20s ease-in-out infinite;
 	animation-delay:-10s;
 	opacity:0.58;
@@ -1922,7 +1922,7 @@ ul {
 
 .landscape-scene__butterfly--5 {
 	bottom:16vh;
-	right:28%;
+	right:5%;
 	animation:butterfly-path-2 15s ease-in-out infinite;
 	animation-delay:-7s;
 	opacity:0.52;
@@ -1945,27 +1945,27 @@ ul {
 
 .landscape-scene__leaf--1 {
 	top:28vh;
-	left:12%;
+	left:3%;
 	animation:leaf-fall-1 12s ease-in-out infinite;
 }
 
 .landscape-scene__leaf--2 {
 	top:22vh;
-	left:73%;
+	right:4%;
 	animation:leaf-fall-2 16s ease-in-out infinite;
 	animation-delay:-5s;
 }
 
 .landscape-scene__leaf--3 {
 	top:25vh;
-	right:10%;
+	right:2%;
 	animation:leaf-fall-3 14s ease-in-out infinite;
 	animation-delay:-8s;
 }
 
 .landscape-scene__leaf--4 {
 	top:30vh;
-	left:68%;
+	right:6%;
 	animation:leaf-fall-1 18s ease-in-out infinite;
 	animation-delay:-12s;
 	opacity:0.4;
@@ -1973,7 +1973,7 @@ ul {
 
 .landscape-scene__leaf--5 {
 	top:20vh;
-	left:8%;
+	left:2%;
 	animation:leaf-fall-2 15s ease-in-out infinite;
 	animation-delay:-3s;
 	opacity:0.35;
@@ -1981,7 +1981,7 @@ ul {
 
 .landscape-scene__leaf--6 {
 	top:26vh;
-	left:48%;
+	left:5%;
 	animation:leaf-fall-3 13s ease-in-out infinite;
 	animation-delay:-2s;
 	opacity:0.48;
@@ -1989,7 +1989,7 @@ ul {
 
 .landscape-scene__leaf--7 {
 	top:32vh;
-	left:82%;
+	right:3%;
 	animation:leaf-fall-1 17s ease-in-out infinite;
 	animation-delay:-9s;
 	opacity:0.38;
@@ -1997,7 +1997,7 @@ ul {
 
 .landscape-scene__leaf--8 {
 	top:18vh;
-	left:28%;
+	right:1%;
 	animation:leaf-fall-2 11s ease-in-out infinite;
 	animation-delay:-6s;
 	opacity:0.42;
