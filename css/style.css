@@ -621,7 +621,8 @@ p {
 	color:var(--text-muted);
 }
 
-b {
+b,
+strong {
 	color:var(--text-main);
 }
 
