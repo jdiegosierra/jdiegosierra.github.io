@@ -42,6 +42,7 @@ jobs:
           cp -r css dist
           cp -r fonts dist
           cp -r images dist
+          cp -r scripts dist
           cp *.html dist
 
       - name: Generate resume PDF
