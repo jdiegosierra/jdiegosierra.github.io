@@ -755,17 +755,17 @@ html.export-pdf .landscape-scene__sun {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
 }
 
-.page-resume.theme-dark .resume-sheet {
+:root.theme-dark .page-resume .resume-sheet {
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
 }
 
-.page-resume.theme-dark .resume-meta,
-.page-resume.theme-dark .resume-section--card,
-.page-resume.theme-dark .resume-entry,
-.page-resume.theme-dark .resume-oss-card,
-.page-resume.theme-dark .resume-toolbar__link,
-.page-resume.theme-dark .resume-toolbar__button,
-.page-resume.theme-dark .language-switcher {
+:root.theme-dark .page-resume .resume-meta,
+:root.theme-dark .page-resume .resume-section--card,
+:root.theme-dark .page-resume .resume-entry,
+:root.theme-dark .page-resume .resume-oss-card,
+:root.theme-dark .page-resume .resume-toolbar__link,
+:root.theme-dark .page-resume .resume-toolbar__button,
+:root.theme-dark .page-resume .language-switcher {
   box-shadow: none;
 }
 
@@ -781,7 +781,7 @@ html.export-pdf .landscape-scene__sun {
   --resume-control-border-strong: rgba(var(--tone-rose-rgb), 0.42);
 }
 
-.page-resume.theme-dark {
+:root.theme-dark .page-resume {
   --resume-shell-bg: linear-gradient(180deg, rgb(58, 49, 61), rgb(43, 39, 52));
   --resume-shell-border: rgba(var(--accent-rgb), 0.24);
   --resume-panel-bg: var(--surface-soft);
@@ -906,15 +906,15 @@ html.export-pdf .landscape-scene__sun {
   border-top: 1px solid rgba(var(--accent-rgb), 0.18);
 }
 
-.page-manifesto.theme-dark .manifesto-index {
+:root.theme-dark .page-manifesto .manifesto-index {
   box-shadow: none;
 }
 
-.page-manifesto.theme-dark section h3 {
+:root.theme-dark .page-manifesto section h3 {
   background: none;
 }
 
-.page-manifesto.theme-dark section h3::before {
+:root.theme-dark .page-manifesto section h3::before {
   background: rgba(var(--accent-rgb), 0.5);
 }
 
