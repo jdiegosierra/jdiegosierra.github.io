@@ -115,6 +115,18 @@ html.export-pdf .resume-oss-card h3 {
   page-break-after: avoid;
 }
 
+html.export-pdf .resume-section--experience .resume-entry,
+html.export-pdf .resume-section--experience .resume-timeline__role {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+html.export-pdf .resume-section--experience .resume-list li,
+html.export-pdf .resume-section--experience .resume-entry__header {
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
 html.export-pdf .resume-updated {
   margin-top: 0.62rem;
   padding-top: 0.38rem;
@@ -183,14 +195,30 @@ html.export-pdf .resume-star-count {
 }
 
 html.export-pdf .resume-header,
+html.export-pdf .resume-header h1,
 html.export-pdf .resume-role,
+html.export-pdf .resume-section h2,
+html.export-pdf .resume-entry h3,
+html.export-pdf .resume-oss-card h3,
 html.export-pdf .resume-meta p,
 html.export-pdf .resume-entry__company,
 html.export-pdf .resume-entry__meta,
 html.export-pdf .resume-list li,
 html.export-pdf .resume-section p,
-html.export-pdf .resume-tech {
+html.export-pdf .resume-tech,
+html.export-pdf .resume-highlight,
+html.export-pdf .resume-tech strong,
+html.export-pdf .resume-section strong,
+html.export-pdf .resume-list strong,
+html.export-pdf .resume-meta strong {
   color: #46384c !important;
+}
+
+html.export-pdf .resume-section h2::before,
+html.export-pdf .resume-list li::before,
+html.export-pdf .resume-timeline__role::before {
+  background: rgba(196, 122, 149, 0.6) !important;
+  color: rgba(196, 122, 149, 0.85) !important;
 }
 
 html.export-pdf a {
@@ -775,6 +803,7 @@ html.export-pdf .landscape-scene__sun {
   --resume-panel-bg: var(--surface-soft);
   --resume-panel-border: rgba(var(--accent-rgb), 0.18);
   --resume-chip-bg: rgba(var(--accent-rgb), 0.09);
+  --resume-button-bg: rgb(251, 240, 245);
   --resume-control-bg: rgb(255, 252, 250);
   --resume-control-bg-hover: rgba(var(--accent-rgb), 0.08);
   --resume-control-border: rgba(var(--accent-rgb), 0.22);
@@ -784,9 +813,10 @@ html.export-pdf .landscape-scene__sun {
 :root.theme-dark .page-resume {
   --resume-shell-bg: linear-gradient(180deg, rgb(58, 49, 61), rgb(43, 39, 52));
   --resume-shell-border: rgba(var(--accent-rgb), 0.24);
-  --resume-panel-bg: var(--surface-soft);
+  --resume-panel-bg: rgb(54, 49, 65);
   --resume-panel-border: rgba(var(--accent-rgb), 0.2);
-  --resume-chip-bg: rgba(var(--accent-rgb), 0.16);
+  --resume-chip-bg: rgba(var(--accent-rgb), 0.18);
+  --resume-button-bg: rgb(82, 70, 90);
   --resume-control-bg: rgb(59, 54, 68);
   --resume-control-bg-hover: rgb(70, 62, 82);
   --resume-control-border: rgba(var(--accent-rgb), 0.26);
@@ -795,8 +825,15 @@ html.export-pdf .landscape-scene__sun {
 
 .page-resume .resume-toolbar__button--primary,
 .page-resume .language-switcher .resume-toolbar__link[aria-current="page"] {
-  background: var(--resume-chip-bg);
   border-color: var(--resume-control-border-strong);
+}
+
+.page-resume .resume-toolbar__button--primary {
+  background: var(--resume-button-bg);
+}
+
+.page-resume .language-switcher .resume-toolbar__link[aria-current="page"] {
+  background: var(--resume-chip-bg);
 }
 
 .page-resume .resume-highlight {
