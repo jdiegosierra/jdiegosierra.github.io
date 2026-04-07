@@ -9,7 +9,9 @@
     storedTheme = localStorage.getItem('theme-preference');
   } catch (error) {}
 
-  var theme = forcedTheme || storedTheme || 'light';
+  var systemPrefersDark = false;
+  try { systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) {}
+  var theme = forcedTheme || storedTheme || (systemPrefersDark ? 'dark' : 'light');
 
   root.classList.remove('theme-light', 'theme-dark');
   root.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');

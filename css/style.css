@@ -54,6 +54,8 @@
 	--shadow-soft:0 22px 60px rgba(171, 128, 140, 0.18);
 	--shadow-button:0 8px 20px rgba(171, 128, 140, 0.12);
 	--shadow-button-hover:0 12px 24px rgba(171, 128, 140, 0.18);
+	--shadow-card:0 4px 6px rgba(157, 111, 124, 0.04), 0 10px 24px rgba(157, 111, 124, 0.10);
+	--shadow-card-hover:0 6px 10px rgba(157, 111, 124, 0.06), 0 16px 36px rgba(157, 111, 124, 0.16);
 }
 
 :root.theme-dark {
@@ -88,6 +90,8 @@
 	--shadow-soft:0 22px 60px rgba(4, 8, 20, 0.34);
 	--shadow-button:0 8px 20px rgba(4, 8, 20, 0.26);
 	--shadow-button-hover:0 12px 24px rgba(4, 8, 20, 0.32);
+	--shadow-card:0 4px 6px rgba(0, 0, 0, 0.10), 0 10px 24px rgba(0, 0, 0, 0.20);
+	--shadow-card-hover:0 6px 10px rgba(0, 0, 0, 0.12), 0 16px 36px rgba(0, 0, 0, 0.30);
 }
 
 .container {
@@ -283,25 +287,25 @@ body {
 }
 
 .landscape-scene__sun::after {
-	content:"click me ☀";
+	content:"☀ / ☾";
 	position:absolute;
 	top:calc(100% + 0.5rem);
 	left:50%;
 	transform:translateX(-50%);
-	padding:0.35rem 0.7rem;
+	padding:0.3rem 0.6rem;
 	border-radius:0.5rem;
 	background:rgba(0, 0, 0, 0.7);
 	color:#fff;
-	font-size:0.75rem;
+	font-size:0.7rem;
 	font-weight:600;
 	white-space:nowrap;
 	pointer-events:none;
 	opacity:0;
-	animation:tooltip-hint 6s ease 2s 1 both;
+	animation:tooltip-hint 4s ease 1.5s 1 both;
 }
 
 :root.theme-dark .landscape-scene__sun::after {
-	content:"click me ☾";
+	content:"☾ / ☀";
 }
 
 .landscape-scene__sun.has-clicked::after {
@@ -886,15 +890,11 @@ section a {
 	border-radius:1.35rem;
 	background:var(--surface-soft);
 	border:1px solid rgba(var(--accent-rgb), 0.24);
-	box-shadow:0 12px 28px rgba(157, 111, 124, 0.08);
+	box-shadow:var(--shadow-card);
 }
 
 .oss-split__card > h3 {
 	margin:0 0 0.9rem;
-}
-
-:root.theme-dark .oss-split__card {
-	box-shadow:0 12px 28px rgba(0, 0, 0, 0.16);
 }
 
 .oss-group-title {
@@ -925,7 +925,7 @@ section a {
 	border-radius:1.1rem;
 	background:var(--surface-soft);
 	border:1px solid rgba(var(--accent-rgb), 0.24);
-	box-shadow:0 8px 20px rgba(157, 111, 124, 0.06);
+	box-shadow:var(--shadow-card);
 	text-decoration:none;
 	color:inherit;
 	cursor:pointer;
@@ -935,13 +935,8 @@ section a {
 .oss-grid__card:hover,
 .oss-grid__card:focus-visible {
 	transform:translateY(-3px);
-	box-shadow:0 14px 32px rgba(157, 111, 124, 0.14);
+	box-shadow:var(--shadow-card-hover);
 	border-color:rgba(var(--accent-rgb), 0.32);
-}
-
-:root.theme-dark .oss-grid__card:hover,
-:root.theme-dark .oss-grid__card:focus-visible {
-	box-shadow:0 14px 32px rgba(0, 0, 0, 0.28);
 }
 
 .oss-grid__card h4 {
@@ -985,10 +980,6 @@ section a {
 	white-space:nowrap;
 }
 
-:root.theme-dark .oss-grid__card {
-	box-shadow:0 8px 20px rgba(0, 0, 0, 0.14);
-}
-
 .music-embed-frame {
 	display:block;
 	width:100%;
@@ -1008,11 +999,7 @@ section a {
 	border-radius:1.1rem;
 	background:var(--surface-soft);
 	border:1px solid rgba(var(--accent-rgb), 0.24);
-	box-shadow:0 8px 20px rgba(157, 111, 124, 0.08);
-}
-
-:root.theme-dark .current-role-card {
-	box-shadow:0 8px 20px rgba(0, 0, 0, 0.16);
+	box-shadow:var(--shadow-card);
 }
 
 .column--landing > .spotlight:not(.spotlight--feature) {
@@ -1277,13 +1264,17 @@ ul {
 
 .playground-card__label {
 	display:block;
-	max-width:6rem;
+	max-width:6.5rem;
 	font-family:var(--font-display);
 	font-size:0.98rem;
 	line-height:1.05;
 	letter-spacing:0.01em;
-	text-shadow:none;
+	text-shadow:0 1px 2px rgba(0, 0, 0, 0.12);
 	text-wrap:balance;
+}
+
+:root.theme-dark .playground-card__label {
+	text-shadow:0 1px 3px rgba(0, 0, 0, 0.36);
 }
 
 .playground-shell > .playground-card .icon {
@@ -1775,9 +1766,17 @@ section {
 	}
 
 
+	.hero-main {
+		order:-1;
+	}
+
 	.hero-video {
 		max-width:14rem;
 		margin:0 auto;
+	}
+
+	.music-embed-frame {
+		height:80px;
 	}
 
 	.playground-shell {
@@ -1905,7 +1904,7 @@ section {
 	}
 
 	.playground-card__label {
-		max-width:5.1rem;
+		max-width:5.4rem;
 		font-size:0.8rem;
 	}
 
