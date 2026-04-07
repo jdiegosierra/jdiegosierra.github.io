@@ -104,6 +104,20 @@
         toggle.classList.add('has-clicked');
       }
     } catch (error) {}
+
+    try {
+      var mql = window.matchMedia('(prefers-color-scheme: dark)');
+      if (mql.addEventListener) {
+        mql.addEventListener('change', function (e) {
+          var hasManualPref = false;
+          try { hasManualPref = !!localStorage.getItem('theme-preference'); } catch (err) {}
+          if (!hasManualPref) {
+            currentTheme = e.matches ? 'dark' : 'light';
+            applyTheme(currentTheme);
+          }
+        });
+      }
+    } catch (e) {}
   }
 
   if (document.readyState === 'loading') {
