@@ -661,6 +661,10 @@ html.export-pdf .landscape-scene__sun {
   font-weight: 700;
 }
 
+.resume-section--experience strong {
+  font-weight: 400;
+}
+
 .resume-list {
   margin: 0;
   padding-left: 0;
