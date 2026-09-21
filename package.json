@@ -2,9 +2,11 @@
   "name": "jdiegosierra.github.io",
   "private": true,
   "scripts": {
-    "build:resume-pdf": "node scripts/generate-resume-pdf.mjs"
+    "content": "node scripts/sync-content.mjs",
+    "content:check": "node scripts/sync-content.mjs --check",
+    "build": "node scripts/build.mjs"
   },
   "devDependencies": {
-    "playwright": "^1.53.0"
+    "playwright": "1.58.2"
   }
 }

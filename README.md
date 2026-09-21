@@ -1,25 +1,46 @@
 # Diego Sierra Portfolio
 
-Personal portfolio and landing page for `jdiegosierra.github.io`.
+Source for [jdiegosierra.github.io](https://jdiegosierra.github.io): portfolio, resume (web and PDF), and an engineering manifesto in English and Spanish. It is a static site (plain HTML, CSS, and JavaScript, originally based on LittleLink) deployed to GitHub Pages.
 
-## Overview
+## Structure
 
-This site presents Diego Sierra's profile across platform engineering, SRE, cloud infrastructure, and AI-enabled software delivery. It is a lightweight static site based on LittleLink and customized for personal branding.
+| Path | Contents |
+| --- | --- |
+| `index.html`, `resume.html`, `manifesto.html`, `manifesto.es.html`, `404.html` | Pages |
+| `data/profile.json` | Content shared by the home page and the resume |
+| `css/`, `fonts/`, `images/`, `js/` | Static assets, published as-is |
+| `scripts/` | Build tooling (not published) |
 
-## Main updates
+## Editing shared content
 
-- refreshed positioning around platform engineering and AI enablement
-- added stronger professional messaging for production AI workflows
-- improved visual hierarchy, layout, and metadata for sharing
-- kept the site simple to host on GitHub Pages
-- removed the separate AI subsite in favor of a sharper single-page portfolio
+The summary, current role, and open source projects live in `data/profile.json`. After changing it, regenerate the pages:
+
+```bash
+npm ci
+npm run content
+```
+
+CI fails if `index.html` or `resume.html` are out of sync with the JSON.
 
 ## Local preview
 
-Because this is a static site, you can preview it with any local web server, for example:
+For a quick look at the pages, serve the repository root and open `http://localhost:8000`:
 
 ```bash
 python3 -m http.server
 ```
 
-Then open `http://localhost:8000`.
+The resume PDFs, Open Graph images, and sitemap are generated at build time, so "Download PDF" only works in the full build:
+
+```bash
+npm ci
+npx playwright install chromium
+npm run build
+python3 -m http.server -d dist
+```
+
+## Deployment
+
+Every push to `main` runs `.github/workflows/deploy.yml`. It checks the shared content, builds `dist/` in the Playwright container (live GitHub star counts, "last updated" dates from git, sitemap, Open Graph images, resume PDFs), and deploys it to GitHub Pages.
+
+`.github/workflows/links.yml` checks for broken links every week.

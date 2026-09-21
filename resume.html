@@ -9,18 +9,34 @@
   <title>Diego Sierra | Resume</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
   <meta name="description" content="Resume of Diego Sierra, focused on platform engineering, SRE, cloud architecture, and AI-enabled software delivery.">
-  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://jdiegosierra.github.io/resume.html">
+  <meta name="author" content="Juan Diego Sierra Fernández">
+  <meta property="og:title" content="Diego Sierra | Resume">
+  <meta property="og:description" content="Resume of Diego Sierra, focused on platform engineering, SRE, cloud architecture, and AI-enabled software delivery.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jdiegosierra.github.io/resume.html">
+  <meta property="og:site_name" content="Diego Sierra">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://jdiegosierra.github.io/images/og/home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Diego Sierra: Platform, SRE &amp; AI Engineering">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Diego Sierra | Resume">
+  <meta name="twitter:description" content="Resume of Diego Sierra, focused on platform engineering, SRE, cloud architecture, and AI-enabled software delivery.">
+  <meta name="twitter:image" content="https://jdiegosierra.github.io/images/og/home.jpg">
+  <meta name="twitter:image:alt" content="Diego Sierra: Platform, SRE &amp; AI Engineering">
   <meta name="theme-color" content="#f7eee8" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1d1620" media="(prefers-color-scheme: dark)">
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/resume.css">
-  <script src="scripts/theme-boot.js"></script>
+  <script src="js/theme-boot.js"></script>
 </head>
 
 <body class="page-resume">
-  <script src="scripts/site-shell.js"></script>
+  <script src="js/site-shell.js"></script>
   <main class="resume-page">
     <div class="resume-shell">
       <div class="resume-toolbar no-print">
@@ -35,7 +51,9 @@
           <div>
             <p class="resume-kicker">Resume</p>
             <h1>Juan Diego Sierra Fernández</h1>
+            <!-- content:headline -->
             <p class="resume-role">Platform Engineer Team Lead (AI Platform) | SRE / DevOps | Cloud Architect | AI Enablement</p>
+            <!-- /content:headline -->
           </div>
           <div class="resume-meta">
             <p class="resume-meta__item"><span class="resume-meta__icon" aria-hidden="true">📍</span>Madrid, Spain (UTC+2)</p>
@@ -49,25 +67,28 @@
 
         <section class="resume-section resume-section--card resume-section--summary">
           <h2>Summary</h2>
+          <!-- content:summary -->
           <p><strong>Infrastructure, platform, and site reliability engineer</strong> with 10+ years of experience building and operating scalable systems, and a track record of <strong>leading engineering teams</strong>.</p>
           <p>I have put <strong>AI tooling into production</strong> to improve how teams build and ship software, worked at <strong>early-stage startups</strong> where I standardized processes from scratch, and at <strong>large corporate environments</strong> with strict procedures and compliance requirements.</p>
           <p>Having worked as both a <strong>software developer</strong> and an <strong>infrastructure engineer</strong>, I have a thorough understanding of the entire <strong>software delivery lifecycle</strong>.</p>
           <p>Interested in leadership positions such as <strong>Team Lead</strong>, <strong>Staff Engineer</strong>, <strong>Principal Engineer</strong>, or <strong>Head of Platform</strong>.</p>
           <p>I encourage you to <a href="manifesto.html">read my manifesto</a> to see if my engineering mindset aligns with your company's values.</p>
+          <!-- /content:summary -->
         </section>
 
         <section class="resume-section resume-section--open-source">
           <h2>Open Source</h2>
           <div class="resume-oss-split">
+            <!-- content:open-source -->
             <div class="resume-oss-card">
               <h3>Contributions</h3>
               <div class="resume-oss-grid">
                 <div class="resume-oss-item">
-                  <h4><a href="https://github.com/davila7/claude-code-templates" target="_blank" rel="noopener">claude-code-templates</a> <span class="resume-star-count">+23K ★</span></h4>
+                  <h4><a href="https://github.com/davila7/claude-code-templates" target="_blank" rel="noopener">claude-code-templates</a> <span class="resume-star-count">+30K ★</span></h4>
                   <p>Claude Code community templates and reference configurations.</p>
                 </div>
                 <div class="resume-oss-item">
-                  <h4><a href="https://github.com/helm-unittest/helm-unittest" target="_blank" rel="noopener">helm-unittest</a> <span class="resume-star-count">+1.2K ★</span></h4>
+                  <h4><a href="https://github.com/helm-unittest/helm-unittest" target="_blank" rel="noopener">helm-unittest</a> <span class="resume-star-count">+1.3K ★</span></h4>
                   <p>BDD-style unit test framework for Kubernetes Helm charts.</p>
                 </div>
                 <div class="resume-oss-item">
@@ -101,12 +122,14 @@
                 </div>
               </div>
             </div>
+            <!-- /content:open-source -->
           </div>
         </section>
 
         <section class="resume-section resume-section--experience">
           <h2>Experience</h2>
 
+          <!-- content:current-role -->
           <div class="resume-entry">
             <div class="resume-entry__header">
               <div>
@@ -120,7 +143,7 @@
               <li>Own <strong>architecture decisions</strong> and lead the <strong>creation and review of RFCs</strong>.</li>
               <li>Act as an <strong>enabler for other engineering teams</strong> — reducing friction and providing the platform, tooling, and processes they need to ship faster.</li>
               <li>Drive <strong>AI adoption across the SDLC</strong>, improving engineering speed, developer productivity, and delivery quality.</li>
-              <li>Build <strong>production-grade AI workflows, agents, skills, and plugins</strong> for internal engineering use cases.</li>
+              <li>Build <strong>production-grade AI workflows</strong> with LiteLLM, Claude Code, OpenCode, and OpenClaw: agents, plugins, skills, and commands for internal engineering use cases.</li>
               <li>Develop internal tooling and services using <strong>Go</strong> and <strong>Python</strong>.</li>
               <li>Operate the platform on <strong>AWS and Azure</strong>, supporting both Maisa's own SaaS product and customer-deployed Helm chart installations.</li>
               <li>Drive <strong>FinOps and cloud cost optimization</strong>: keeping spend visible, cutting waste, and making sure infrastructure costs actually make sense.</li>
@@ -132,6 +155,7 @@
               <li>Build and operate monitoring and observability with <strong>Grafana, Mimir, Loki, Tempo, and OpenTelemetry</strong>.</li>
             </ul>
           </div>
+          <!-- /content:current-role -->
 
           <div class="resume-entry">
             <div class="resume-entry__header">
@@ -237,7 +261,7 @@
         </section>
 
         <footer class="resume-updated">
-          <p>Last updated: March 2026.</p>
+          <p>Last updated: <time data-last-updated datetime="2026-07">July 2026</time>.</p>
         </footer>
 
       </article>

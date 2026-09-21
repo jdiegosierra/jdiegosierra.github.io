@@ -21,29 +21,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    # Tag must match the Playwright version in package-lock.json.
-    # The image ships Chromium and its system libraries, so no
+    # Tag must match the exact Playwright version pinned in package.json.
+    # The image ships Chromium, its system libraries, and git, so no
     # "playwright install --with-deps" step is needed at CI time.
     container:
       image: mcr.microsoft.com/playwright:v1.58.2-noble
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          # Full history: "last updated" dates and sitemap lastmod come from git log.
+          fetch-depth: 0
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Prepare artifact
-        run: |
-          mkdir -p dist
-          cp -r css dist
-          cp -r fonts dist
-          cp -r images dist
-          cp -r scripts dist
-          cp *.html dist
+      - name: Check shared content is in sync with data/profile.json
+        run: npm run content:check
 
-      - name: Generate resume PDF
-        run: npm run build:resume-pdf
+      - name: Build site
+        run: npm run build
+        env:
+          # Authenticated requests avoid GitHub API rate limits when fetching star counts.
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v7

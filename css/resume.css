@@ -64,8 +64,7 @@ html.export-pdf .resume-meta {
 }
 
 html.export-pdf .resume-meta p,
-html.export-pdf .resume-entry__meta,
-html.export-pdf .resume-tech {
+html.export-pdf .resume-entry__meta {
   font-size: 0.72rem;
 }
 
@@ -100,9 +99,7 @@ html.export-pdf .resume-timeline__role,
 html.export-pdf .resume-updated,
 html.export-pdf .resume-meta,
 html.export-pdf .resume-header,
-html.export-pdf .resume-highlights,
-html.export-pdf .resume-entry__header,
-html.export-pdf .resume-tech {
+html.export-pdf .resume-entry__header {
   break-inside: avoid-page;
   page-break-inside: avoid;
 }
@@ -140,8 +137,7 @@ html.export-pdf .resume-updated p {
 html.export-pdf .resume-entry,
 html.export-pdf .resume-section--card,
 html.export-pdf .resume-meta,
-html.export-pdf .resume-oss-card,
-html.export-pdf .resume-section--card .resume-list--grid li {
+html.export-pdf .resume-oss-card {
   background: none;
 }
 
@@ -167,23 +163,9 @@ html.export-pdf .resume-entry__header {
   margin-bottom: 0.3rem;
 }
 
-html.export-pdf .resume-highlights {
-  gap: 0.25rem;
-  margin-top: 0.45rem;
-}
-
-html.export-pdf .resume-highlight {
-  padding: 0.22rem 0.38rem;
-  font-size: 0.62rem;
-}
-
 html.export-pdf .resume-entry::before {
   left: 0.3rem;
   width: 0.12rem;
-}
-
-html.export-pdf .resume-section--card .resume-list--grid li {
-  padding: 0.28rem 0.34rem 0.28rem 0.82rem;
 }
 
 html.export-pdf .resume-oss-split {
@@ -205,9 +187,6 @@ html.export-pdf .resume-entry__company,
 html.export-pdf .resume-entry__meta,
 html.export-pdf .resume-list li,
 html.export-pdf .resume-section p,
-html.export-pdf .resume-tech,
-html.export-pdf .resume-highlight,
-html.export-pdf .resume-tech strong,
 html.export-pdf .resume-section strong,
 html.export-pdf .resume-list strong,
 html.export-pdf .resume-meta strong {
@@ -446,32 +425,6 @@ html.export-pdf .landscape-scene__sun {
   line-height: 1;
 }
 
-
-.resume-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 0.8rem;
-}
-
-.resume-highlight {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.34rem 0.58rem;
-  border-radius: 999px;
-  background: rgba(var(--accent-rgb), 0.12);
-  border: 1px solid rgba(var(--accent-rgb), 0.16);
-  color: var(--text-main);
-  font-size: 0.78rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.theme-dark .resume-highlight {
-  background: rgba(var(--accent-rgb), 0.12);
-  border-color: rgba(var(--accent-rgb), 0.22);
-}
-
 .resume-section {
   margin-top: 1rem;
 }
@@ -646,14 +599,6 @@ html.export-pdf .landscape-scene__sun {
   padding-top: 0.12rem;
 }
 
-.resume-tech {
-  margin-top: 0.7rem;
-  color: var(--text-muted);
-  font-size: 0.84rem;
-  line-height: 1.45;
-}
-
-.resume-tech strong,
 .resume-section strong,
 .resume-list strong,
 .resume-meta strong {
@@ -683,29 +628,6 @@ html.export-pdf .landscape-scene__sun {
 	color: var(--accent);
 	font-weight: 700;
 	font-size: 0.95em;
-}
-
-.resume-list--grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 1rem;
-  row-gap: 0.15rem;
-}
-
-.resume-section--card .resume-list--grid li {
-  padding: 0.44rem 0.55rem 0.44rem 1.15rem;
-  border-radius: 0.7rem;
-  background: rgba(var(--accent-rgb), 0.08);
-  border: 1px solid rgba(var(--accent-rgb), 0.12);
-}
-
-.page-resume .resume-section--card .resume-list--grid li {
-  background: var(--resume-chip-bg);
-  border-color: var(--resume-panel-border);
-}
-
-.resume-section--card .resume-list--grid li::before {
-  top: 0.48rem;
 }
 
 .resume-oss-split {
@@ -753,11 +675,6 @@ html.export-pdf .landscape-scene__sun {
 
 .resume-oss-card .resume-list li {
   font-size: 0.88rem;
-}
-
-.resume-oss-meta {
-  font-size: 0.85rem;
-  color: var(--text-muted);
 }
 
 .resume-star-count {
@@ -834,11 +751,6 @@ html.export-pdf .landscape-scene__sun {
 
 .page-resume .language-switcher .resume-toolbar__link[aria-current="page"] {
   background: var(--resume-chip-bg);
-}
-
-.page-resume .resume-highlight {
-  background: var(--resume-chip-bg);
-  border-color: var(--resume-panel-border);
 }
 
 .page-manifesto h1 {
@@ -977,8 +889,7 @@ html.export-pdf .landscape-scene__sun {
 
   .resume-toolbar,
   .resume-toolbar__actions,
-  .resume-header,
-  .resume-list--grid {
+  .resume-header {
     display: block;
   }
 
@@ -999,10 +910,6 @@ html.export-pdf .landscape-scene__sun {
 
   .resume-sheet {
     padding: 1.25rem;
-  }
-
-  .resume-highlights {
-    margin-bottom: 0.25rem;
   }
 
   .resume-oss-split {
@@ -1066,8 +973,7 @@ html.export-pdf .landscape-scene__sun {
   }
 
   .resume-meta p,
-  .resume-entry__meta,
-  .resume-tech {
+  .resume-entry__meta {
     font-size: 0.72rem;
   }
 
@@ -1123,23 +1029,9 @@ html.export-pdf .landscape-scene__sun {
     margin-bottom: 0.3rem;
   }
 
-  .resume-highlights {
-    gap: 0.25rem;
-    margin-top: 0.45rem;
-  }
-
-  .resume-highlight {
-    padding: 0.22rem 0.38rem;
-    font-size: 0.62rem;
-  }
-
   .resume-entry::before {
     left: 0.3rem;
     width: 0.12rem;
-  }
-
-  .resume-section--card .resume-list--grid li {
-    padding: 0.28rem 0.34rem 0.28rem 0.82rem;
   }
 
   .resume-header,
@@ -1148,8 +1040,7 @@ html.export-pdf .landscape-scene__sun {
   .resume-entry__company,
   .resume-entry__meta,
   .resume-list li,
-  .resume-section p,
-  .resume-tech {
+  .resume-section p {
     color: #46384c !important;
   }
 
@@ -1165,9 +1056,7 @@ html.export-pdf .landscape-scene__sun {
 
   .resume-meta,
   .resume-header,
-  .resume-highlights,
-  .resume-entry__header,
-  .resume-tech {
+  .resume-entry__header {
     break-inside: avoid;
   }
 }

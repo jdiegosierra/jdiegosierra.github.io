@@ -1,0 +1,29 @@
+name: Check links
+
+on:
+  schedule:
+    # Mondays at 07:00 UTC.
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      # Exclusions live in .lycheeignore. --root-dir resolves the root-relative links in 404.html.
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --root-dir ${{ github.workspace }}
+            --accept 200..=299,429
+            index.html resume.html manifesto.html manifesto.es.html 404.html
+          fail: true

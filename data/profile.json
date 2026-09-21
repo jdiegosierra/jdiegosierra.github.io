@@ -1,0 +1,107 @@
+{
+  "person": {
+    "name": "Juan Diego Sierra Fernández",
+    "alternateName": "Diego Sierra",
+    "url": "https://jdiegosierra.github.io/",
+    "image": "https://jdiegosierra.github.io/images/avatar.jpeg",
+    "locality": "Madrid",
+    "country": "ES",
+    "sameAs": [
+      "https://linkedin.com/in/jdiegosierra",
+      "https://github.com/jdiegosierra",
+      "https://stackoverflow.com/users/9409100/diego-sierra-fernandez"
+    ],
+    "knowsAbout": [
+      "Platform engineering",
+      "Site reliability engineering",
+      "Cloud infrastructure",
+      "Kubernetes",
+      "DevOps",
+      "FinOps",
+      "AI engineering"
+    ]
+  },
+  "summary": [
+    "<strong>Infrastructure, platform, and site reliability engineer</strong> with 10+ years of experience building and operating scalable systems, and a track record of <strong>leading engineering teams</strong>.",
+    "I have put <strong>AI tooling into production</strong> to improve how teams build and ship software, worked at <strong>early-stage startups</strong> where I standardized processes from scratch, and at <strong>large corporate environments</strong> with strict procedures and compliance requirements.",
+    "Having worked as both a <strong>software developer</strong> and an <strong>infrastructure engineer</strong>, I have a thorough understanding of the entire <strong>software delivery lifecycle</strong>.",
+    "Interested in leadership positions such as <strong>Team Lead</strong>, <strong>Staff Engineer</strong>, <strong>Principal Engineer</strong>, or <strong>Head of Platform</strong>.",
+    "I encourage you to <a href=\"manifesto.html\">read my manifesto</a> to see if my engineering mindset aligns with your company's values."
+  ],
+  "currentRole": {
+    "title": "Platform Engineer Team Lead (AI Platform)",
+    "company": "Maisa AI",
+    "since": "May 2025",
+    "headlineTags": ["SRE / DevOps", "Cloud Architect", "AI Enablement"],
+    "highlights": [
+      "<strong>Lead a team of 6 engineers</strong> and report directly to the CTO. Own team organization, priorities, and engineering practices.",
+      "Own <strong>architecture decisions</strong> and lead the <strong>creation and review of RFCs</strong>.",
+      "Act as an <strong>enabler for other engineering teams</strong> — reducing friction and providing the platform, tooling, and processes they need to ship faster.",
+      "Drive <strong>AI adoption across the SDLC</strong>, improving engineering speed, developer productivity, and delivery quality.",
+      "Build <strong>production-grade AI workflows</strong> with LiteLLM, Claude Code, OpenCode, and OpenClaw: agents, plugins, skills, and commands for internal engineering use cases.",
+      "Develop internal tooling and services using <strong>Go</strong> and <strong>Python</strong>.",
+      "Operate the platform on <strong>AWS and Azure</strong>, supporting both Maisa's own SaaS product and customer-deployed Helm chart installations.",
+      "Drive <strong>FinOps and cloud cost optimization</strong>: keeping spend visible, cutting waste, and making sure infrastructure costs actually make sense.",
+      "Administer <strong>Jira across the organization</strong>, including project configuration, workflows, automations, and board management.",
+      "Implement security and compliance standards including <strong>SOC 2 and ISO 27001</strong>.",
+      "Collaborate with developers to design and operate the full <strong>CI/CD lifecycle with GitHub Actions</strong>.",
+      "Release and maintain a public Helm chart, and manage <strong>Kubernetes, OpenShift, Karpenter, and ArgoCD</strong> for continuous delivery.",
+      "Provision infrastructure with <strong>Terraform, Terragrunt, Pulumi, and Crossplane</strong> using a GitOps approach.",
+      "Build and operate monitoring and observability with <strong>Grafana, Mimir, Loki, Tempo, and OpenTelemetry</strong>."
+    ]
+  },
+  "openSource": {
+    "contributions": [
+      {
+        "repo": "davila7/claude-code-templates",
+        "name": "claude-code-templates",
+        "description": "Claude Code community templates and reference configurations.",
+        "stars": 30721
+      },
+      {
+        "repo": "helm-unittest/helm-unittest",
+        "name": "helm-unittest",
+        "description": "BDD-style unit test framework for Kubernetes Helm charts.",
+        "stars": 1390
+      },
+      {
+        "repo": "open-telemetry/opentelemetry-helm-charts",
+        "name": "opentelemetry-helm-charts",
+        "description": "Official OpenTelemetry Helm charts for Kubernetes.",
+        "stars": 570
+      },
+      {
+        "repo": "openfga/helm-charts",
+        "name": "openfga/helm-charts",
+        "description": "Official Helm charts for OpenFGA authorization service.",
+        "stars": 47
+      }
+    ],
+    "projects": [
+      {
+        "repo": "jdiegosierra/contributor-report",
+        "name": "contributor-report",
+        "description": "GitHub Action that evaluates contributor quality and helps teams catch spammy AI-generated PRs with objective signals.",
+        "stars": 66
+      },
+      {
+        "repo": "jdiegosierra/enterprise-agent-plugins",
+        "name": "enterprise-agent-plugins",
+        "description": "Extensible plugin system for enterprise AI agent pipelines and workflows.",
+        "stars": 1
+      },
+      {
+        "repo": "jdiegosierra/enterprise-agent-operator",
+        "name": "enterprise-agent-operator",
+        "description": "Kubernetes operator for deploying and managing enterprise AI agents at scale.",
+        "stars": 0
+      },
+      {
+        "repo": "jdiegosierra/observability-cli",
+        "name": "observability-cli",
+        "description": "CLI tool for querying and analyzing observability data across Grafana, Loki, and Mimir.",
+        "stars": 1
+      }
+    ]
+  }
+}

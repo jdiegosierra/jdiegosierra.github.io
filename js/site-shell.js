@@ -67,12 +67,12 @@
       downloadLink.textContent = 'Download PDF';
     }
 
+    // The embed URL lives in data-src so the iframe loads once, already in the right theme.
     var spotifyFrame = document.querySelector('.music-embed-frame');
     if (spotifyFrame) {
-      var src = spotifyFrame.getAttribute('src');
-      var newSrc = src.replace(/theme=[01]/, 'theme=' + (isDark ? '0' : '1'));
-      if (src !== newSrc) {
-        spotifyFrame.setAttribute('src', newSrc);
+      var themedSrc = spotifyFrame.getAttribute('data-src') + '&theme=' + (isDark ? '0' : '1');
+      if (spotifyFrame.getAttribute('src') !== themedSrc) {
+        spotifyFrame.setAttribute('src', themedSrc);
       }
     }
   }
