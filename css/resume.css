@@ -779,7 +779,7 @@ html.export-pdf .landscape-scene__sun {
 .page-manifesto .manifesto-index {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.55rem 1.5rem;
+  gap: 1rem 2rem;
   padding: 0;
   margin: 0;
   border-radius: 0;
@@ -789,11 +789,28 @@ html.export-pdf .landscape-scene__sun {
 }
 
 .page-manifesto .manifesto-index li {
+  display: grid;
+  grid-template-columns: 2.1rem minmax(0, 1fr);
+  align-content: start;
   margin: 0;
   padding: 0;
 }
 
+/* The number sits in its own column so the summary lines up under the title. */
+.page-manifesto .manifesto-index li::before {
+  grid-row: span 2;
+}
+
+.page-manifesto .manifesto-index__summary {
+  margin-top: 0.2rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
 .page-manifesto .manifesto-index a {
+  justify-self: start;
+  font-weight: 600;
   color: var(--text-main);
   text-decoration: none;
   border-bottom: 1px solid transparent;
