@@ -154,8 +154,9 @@
   --resume-shell-shadow: 0 18px 42px rgba(157, 111, 124, 0.1);
   --resume-chip-bg: rgba(var(--accent-rgb), 0.09);
   --resume-button-bg: rgb(251, 240, 245);
+  --resume-button-bg-hover: rgb(245, 219, 229);
   --resume-control-bg: rgb(255, 252, 250);
-  --resume-control-bg-hover: rgba(var(--accent-rgb), 0.08);
+  --resume-control-bg-hover: rgb(250, 236, 241);
   --resume-control-border: rgba(var(--accent-rgb), 0.22);
   --resume-control-border-strong: rgba(var(--tone-rose-rgb), 0.42);
   --resume-header-bg: linear-gradient(115deg, rgba(var(--tone-peach-rgb), 0.62), rgba(var(--tone-rose-rgb), 0.58) 50%, rgba(var(--tone-lilac-rgb), 0.72));
@@ -168,6 +169,7 @@
   --resume-shell-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
   --resume-chip-bg: rgba(var(--accent-rgb), 0.18);
   --resume-button-bg: rgb(82, 70, 90);
+  --resume-button-bg-hover: rgb(104, 82, 99);
   --resume-control-bg: rgb(59, 54, 68);
   --resume-control-bg-hover: rgb(70, 62, 82);
   --resume-control-border: rgba(var(--accent-rgb), 0.26);
@@ -460,6 +462,11 @@
 
 .page-resume .resume-toolbar__button--primary {
   background: var(--resume-button-bg);
+}
+
+.page-resume .resume-toolbar__button--primary:hover,
+.page-resume .resume-toolbar__button--primary:focus-visible {
+  background: var(--resume-button-bg-hover);
 }
 
 .page-resume .language-switcher .resume-toolbar__link[aria-current="page"] {

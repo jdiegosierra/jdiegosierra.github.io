@@ -70,7 +70,7 @@ function indentLines(lines, depth) {
 
 function renderHomeOpenSource(openSource, stars) {
   const card = (title, tone, items) => [
-    `<article class="oss-split__card tone-${tone}">`,
+    `<article class="tone-card tone-${tone}">`,
     `  <h3>${title}</h3>`,
     '  <div class="oss-list">',
     ...items.flatMap((item) => indentLines([

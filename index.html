@@ -95,6 +95,12 @@
         <p>Interested in leadership positions such as <strong>Team Lead</strong>, <strong>Staff Engineer</strong>, <strong>Principal Engineer</strong>, or <strong>Head of Platform</strong>.</p>
         <p>I encourage you to <a href="manifesto.html">read my manifesto</a> to see if my engineering mindset aligns with your company's values.</p>
         <!-- /content:summary -->
+        <div class="hero-actions">
+          <a class="hero-action hero-action--primary" href="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1" target="_blank" rel="noopener" aria-haspopup="dialog" data-calendly-url="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1">Book a video call</a>
+          <a class="hero-action" href="resume.html">Resume</a>
+          <a class="hero-action" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="hero-action" href="https://github.com/jdiegosierra" target="_blank" rel="noopener">GitHub</a>
+        </div>
       </div>
     </section>
 
@@ -136,7 +142,7 @@
       <h2 class="section-title" id="oss-heading">Open source</h2>
       <div class="oss-split">
         <!-- content:open-source -->
-        <article class="oss-split__card tone-lilac">
+        <article class="tone-card tone-lilac">
           <h3>Contributions</h3>
           <div class="oss-list">
             <a class="oss-item" href="https://github.com/davila7/claude-code-templates" target="_blank" rel="noopener">
@@ -157,7 +163,7 @@
             </a>
           </div>
         </article>
-        <article class="oss-split__card tone-sage">
+        <article class="tone-card tone-sage">
           <h3>My Projects</h3>
           <div class="oss-list">
             <a class="oss-item" href="https://github.com/jdiegosierra/contributor-report" target="_blank" rel="noopener">
@@ -184,52 +190,77 @@
 
     <section class="spotlight tone-peach" aria-labelledby="links-heading">
       <h2 class="section-title" id="links-heading">Links</h2>
-      <div class="playground-shell" role="navigation" aria-label="Profile links">
-        <a class="button playground-card playground-card--resume" href="resume.html">
-          <img class="icon" src="images/icons/cv.png" alt="">
-          <span class="playground-card__label">Resume</span>
-        </a>
-
-        <a class="button playground-card playground-card--manifesto" href="manifesto.html">
-          <img class="icon" src="images/icons/generic-blog.svg" alt="">
-          <span class="playground-card__label">Manifesto</span>
-        </a>
-
-        <a class="button playground-card playground-card--linkedin" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener">
-          <img class="icon" src="images/icons/linkedin.svg" alt="">
-          <span class="playground-card__label">LinkedIn</span>
-        </a>
-
-        <a class="button playground-card playground-card--call" id="book-call-link" href="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1" target="_blank" rel="noopener" aria-haspopup="dialog" data-calendly-url="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1">
-          <img class="icon" src="images/icons/calendly.svg" alt="">
-          <span class="playground-card__label">Book a video call</span>
-        </a>
-
-        <a class="button playground-card playground-card--github" href="https://github.com/jdiegosierra" target="_blank" rel="noopener">
-          <img class="icon" src="images/icons/github.svg" alt="">
-          <span class="playground-card__label">GitHub</span>
-        </a>
-
-        <a class="button playground-card playground-card--sponsors" href="https://github.com/sponsors/jdiegosierra" target="_blank" rel="noopener">
-          <img class="icon" src="images/icons/github.svg" alt="">
-          <span class="playground-card__label">GitHub Sponsors</span>
-        </a>
-
-        <a class="button playground-card playground-card--music" href="https://open.spotify.com/user/dyeghikoo" target="_blank" rel="noopener">
-          <img class="icon" src="images/icons/spotify-alt.svg" alt="">
-          <span class="playground-card__label">My Favourite Music</span>
-        </a>
-
-        <a class="button playground-card playground-card--stack" href="https://stackoverflow.com/users/9409100/diego-sierra-fernandez" target="_blank" rel="noopener">
-          <img class="icon" src="images/icons/stack-overflow.svg" alt="">
-          <span class="playground-card__label">Stack Overflow</span>
-        </a>
-
-        <a class="button playground-card playground-card--onlyfans" href="https://upload.wikimedia.org/wikipedia/en/7/73/Trollface.png" target="_blank" rel="noopener">
-          <img class="icon" src="images/icons/onlyfans.svg" alt="">
-          <span class="playground-card__label">OnlyFans (18+)</span>
-        </a>
-      </div>
+      <nav class="link-groups" aria-label="Profile links">
+        <div class="tone-card tone-rose">
+          <h3 id="links-work">Work with me</h3>
+          <ul class="link-list" aria-labelledby="links-work">
+            <li>
+              <a class="link-row" href="resume.html">
+                <span class="link-row__icon"><img src="images/icons/cv.png" alt=""></span>
+                <span><span class="link-row__label">Resume</span><span class="link-row__hint">Experience, open source, and a PDF</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="link-row" href="manifesto.html">
+                <span class="link-row__icon"><img src="images/icons/generic-blog.svg" alt=""></span>
+                <span><span class="link-row__label">Manifesto</span><span class="link-row__hint">How I think teams should work</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="link-row" href="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1" target="_blank" rel="noopener" aria-haspopup="dialog" data-calendly-url="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1">
+                <span class="link-row__icon"><img src="images/icons/calendly.svg" alt=""></span>
+                <span><span class="link-row__label">Book a video call</span><span class="link-row__hint">Pick a slot on Calendly</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="link-row" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener">
+                <span class="link-row__icon"><img src="images/icons/linkedin.svg" alt=""></span>
+                <span><span class="link-row__label">LinkedIn</span><span class="link-row__hint">Career and contact</span></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="tone-card tone-lilac">
+          <h3 id="links-code">Code</h3>
+          <ul class="link-list" aria-labelledby="links-code">
+            <li>
+              <a class="link-row" href="https://github.com/jdiegosierra" target="_blank" rel="noopener">
+                <span class="link-row__icon"><img src="images/icons/github.svg" alt=""></span>
+                <span><span class="link-row__label">GitHub</span><span class="link-row__hint">My repositories and contributions</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="link-row" href="https://github.com/sponsors/jdiegosierra" target="_blank" rel="noopener">
+                <span class="link-row__icon"><img src="images/icons/github.svg" alt=""></span>
+                <span><span class="link-row__label">GitHub Sponsors</span><span class="link-row__hint">Support my open source work</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="link-row" href="https://stackoverflow.com/users/9409100/diego-sierra-fernandez" target="_blank" rel="noopener">
+                <span class="link-row__icon"><img src="images/icons/stack-overflow.svg" alt=""></span>
+                <span><span class="link-row__label">Stack Overflow</span><span class="link-row__hint">My questions and answers</span></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="tone-card tone-sage">
+          <h3 id="links-off-duty">Off-duty</h3>
+          <ul class="link-list" aria-labelledby="links-off-duty">
+            <li>
+              <a class="link-row" href="https://open.spotify.com/user/dyeghikoo" target="_blank" rel="noopener">
+                <span class="link-row__icon"><img src="images/icons/spotify-alt.svg" alt=""></span>
+                <span><span class="link-row__label">My Favourite Music</span><span class="link-row__hint">My Spotify profile</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="link-row" href="https://upload.wikimedia.org/wikipedia/en/7/73/Trollface.png" target="_blank" rel="noopener">
+                <span class="link-row__icon"><img src="images/icons/onlyfans.svg" alt=""></span>
+                <span><span class="link-row__label">OnlyFans (18+)</span><span class="link-row__hint">Exactly what you think it is</span></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </section>
   </div>
 </main>

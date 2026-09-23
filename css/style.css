@@ -859,8 +859,8 @@ section a {
 	align-items:stretch;
 }
 
-/* Open source: one tinted card per list, one row per repository. */
-.oss-split__card {
+/* A tinted card with an uppercase heading in its tone: open source lists and link groups. */
+.tone-card {
 	display:flex;
 	flex-direction:column;
 	text-align:left;
@@ -870,7 +870,7 @@ section a {
 	border:1px solid rgba(var(--tone-rgb), var(--tone-edge));
 }
 
-.oss-split__card > h3 {
+.tone-card > h3 {
 	margin:0 0 0.4rem;
 	padding:0 0.7rem;
 	color:var(--tone-ink);
@@ -895,7 +895,9 @@ section a {
 }
 
 .oss-item:hover,
-.oss-item:focus-visible {
+.oss-item:focus-visible,
+.link-row:hover,
+.link-row:focus-visible {
 	background:rgba(var(--tone-rgb), 0.45);
 }
 
@@ -925,6 +927,128 @@ section a {
 	line-height:1.55;
 	vertical-align:0.1em;
 	white-space:nowrap;
+}
+
+/* Main calls to action, at the bottom of the intro. */
+.hero-actions {
+	display:flex;
+	flex-wrap:wrap;
+	gap:0.4rem;
+	margin-top:auto;
+	padding-top:0.3rem;
+}
+
+.hero-action {
+	display:inline-flex;
+	align-items:center;
+	padding:0.42rem 0.7rem;
+	border:1px solid rgba(var(--tone-rose-rgb), 0.95);
+	border-radius:999px;
+	background:var(--surface-soft);
+	color:var(--text-main);
+	font-size:0.9rem;
+	font-weight:700;
+	text-decoration:none;
+	transition:background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.hero-action:hover,
+.hero-action:focus-visible {
+	background:rgba(var(--tone-rose-rgb), 0.45);
+	color:var(--text-main);
+	transform:translateY(-1px);
+}
+
+.hero-action--primary,
+.hero-action--primary:hover,
+.hero-action--primary:focus-visible {
+	border-color:transparent;
+	background:var(--ink-rose);
+	color:#ffffff;
+}
+
+.hero-action--primary:hover,
+.hero-action--primary:focus-visible {
+	box-shadow:0 6px 16px rgba(var(--tone-rose-rgb), 0.9);
+}
+
+:root.theme-dark .hero-action--primary {
+	background:rgb(var(--tone-rose-rgb));
+}
+
+:root.theme-dark .hero-action--primary:hover,
+:root.theme-dark .hero-action--primary:focus-visible {
+	box-shadow:0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Links: one tinted card per group, one row per link with its icon in a tone badge. */
+/* Two columns: the first group (the longest) on the left, the other two stacked on the right. */
+.link-groups {
+	display:grid;
+	grid-template-columns:repeat(2, minmax(0, 1fr));
+	gap:1rem;
+	align-items:start;
+}
+
+.link-groups > :first-child {
+	grid-row:span 2;
+}
+
+.link-list {
+	display:grid;
+	gap:0.15rem;
+	margin:0;
+}
+
+.link-row {
+	display:flex;
+	align-items:center;
+	gap:0.75rem;
+	padding:0.55rem 0.6rem;
+	border-radius:0.8rem;
+	color:inherit;
+	text-decoration:none;
+	transition:background-color 160ms ease;
+}
+
+.link-row__icon {
+	display:grid;
+	flex:none;
+	place-items:center;
+	width:2.2rem;
+	height:2.2rem;
+	border-radius:50%;
+	background:var(--tone-ink);
+}
+
+:root.theme-dark .link-row__icon {
+	background:rgb(var(--tone-rgb));
+}
+
+.link-row__icon img {
+	width:1.15rem;
+	height:1.15rem;
+}
+
+.link-row__label {
+	display:block;
+	color:var(--text-main);
+	font-weight:700;
+	line-height:1.3;
+}
+
+/* External links get an arrow; the empty alt text keeps screen readers from announcing it. */
+.link-row[target="_blank"] .link-row__label::after {
+	content:"\00a0\2197";
+	content:"\00a0\2197" / "";
+	color:var(--tone-ink);
+}
+
+.link-row__hint {
+	display:block;
+	color:var(--text-muted);
+	font-size:0.86rem;
+	line-height:1.35;
 }
 
 .music-embed-frame {
@@ -1043,349 +1167,6 @@ ul {
 	margin:2rem 0;
 }
 
-.playground-shell {
-	position:relative;
-	isolation:isolate;
-	display:grid;
-	grid-template-columns:repeat(3, minmax(0, 1fr));
-	grid-auto-rows:auto;
-	justify-items:center;
-	align-items:end;
-	gap:1.65rem 1rem;
-	padding:1.75rem 1.1rem 4.2rem;
-	overflow:hidden;
-	border-radius:1.75rem;
-	background:linear-gradient(180deg, var(--surface-soft) 0%, var(--surface) 100%);
-	border:1px solid rgba(var(--accent-rgb), 0.24);
-}
-
-
-.playground-shell::before,
-.playground-shell::after {
-	content:none;
-	position:absolute;
-	inset:0;
-	border-radius:inherit;
-	pointer-events:none;
-}
-
-
-.playground-shell > .playground-card {
-	--planet-text:var(--text-main);
-	--planet-base:linear-gradient(180deg, #dfe5f2 0%, #cfd6e4 100%);
-	--planet-feature-1:linear-gradient(180deg, transparent, transparent);
-	--planet-feature-2:linear-gradient(180deg, transparent, transparent);
-	--planet-overlay:linear-gradient(0deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16));
-	position:relative;
-	z-index:1;
-	width:100%;
-	max-width:8.9rem;
-	aspect-ratio:1;
-	margin:0;
-	padding:0.95rem 0.85rem 1rem;
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	justify-content:center;
-	gap:0.42rem;
-	text-align:center;
-	font-size:0.86rem;
-	font-weight:800;
-	line-height:1.12;
-	text-decoration:none;
-	border:none;
-	border-radius:50%;
-	background:
-		var(--planet-overlay),
-		var(--planet-feature-2),
-		var(--planet-feature-1),
-		var(--planet-base);
-	color:var(--planet-text);
-	box-shadow:
-		inset 0 0 0 1px rgba(255, 255, 255, 0.16),
-		0 6px 12px rgba(10, 10, 26, 0.06);
-	transform:rotate(var(--tilt, 0deg));
-	transform-origin:center center;
-	overflow:visible;
-	isolation:isolate;
-	filter:none;
-	will-change:transform;
-}
-
-.playground-shell > .playground-card::before {
-	content:none;
-	position:absolute;
-	inset:-7%;
-	border-radius:50%;
-	pointer-events:none;
-	z-index:-1;
-}
-
-.playground-shell > .playground-card::after {
-	content:none;
-}
-
-
-.playground-card__label {
-	display:block;
-	max-width:6.5rem;
-	font-family:var(--font-sans);
-	font-size:0.92rem;
-	font-weight:700;
-	line-height:1.05;
-	letter-spacing:0.01em;
-	text-shadow:0 1px 2px rgba(0, 0, 0, 0.12);
-	text-wrap:balance;
-}
-
-:root.theme-dark .playground-card__label {
-	text-shadow:0 1px 3px rgba(0, 0, 0, 0.36);
-}
-
-.playground-shell > .playground-card .icon {
-	position:static;
-	width:1.25rem;
-	height:1.25rem;
-	padding:0;
-	margin-right:0;
-	border-radius:0;
-	background:none;
-	border:none;
-	box-shadow:none;
-	backdrop-filter:none;
-}
-
-.playground-shell > .playground-card:hover,
-.playground-shell > .playground-card:focus-visible {
-	color:var(--planet-text);
-	filter:none;
-	box-shadow:
-		inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-		0 8px 16px rgba(10, 10, 26, 0.08);
-}
-
-/* Links: the cards rise in one after another, then drift gently on wide screens.
-   Entrance and drift both use the translate property, so the drift starts once the entrance ends. */
-.playground-shell > .playground-card:nth-child(1) {
-	--enter-delay:0s;
-	--float-x:-6px;
-	--float-y:-14px;
-	--float-rotate:-1.6deg;
-	--float-duration:4.4s;
-}
-
-.playground-shell > .playground-card:nth-child(2) {
-	--enter-delay:0.06s;
-	--float-x:8px;
-	--float-y:-17px;
-	--float-rotate:1.78deg;
-	--float-duration:4.64s;
-}
-
-.playground-shell > .playground-card:nth-child(3) {
-	--enter-delay:0.12s;
-	--float-x:-10px;
-	--float-y:-20px;
-	--float-rotate:-1.96deg;
-	--float-duration:4.88s;
-}
-
-.playground-shell > .playground-card:nth-child(4) {
-	--enter-delay:0.18s;
-	--float-x:6px;
-	--float-y:-14px;
-	--float-rotate:2.14deg;
-	--float-duration:5.12s;
-}
-
-.playground-shell > .playground-card:nth-child(5) {
-	--enter-delay:0.24s;
-	--float-x:-8px;
-	--float-y:-17px;
-	--float-rotate:-2.32deg;
-	--float-duration:5.36s;
-}
-
-.playground-shell > .playground-card:nth-child(6) {
-	--enter-delay:0.3s;
-	--float-x:10px;
-	--float-y:-20px;
-	--float-rotate:2.5deg;
-	--float-duration:5.6s;
-}
-
-.playground-shell > .playground-card:nth-child(7) {
-	--enter-delay:0.36s;
-	--float-x:-6px;
-	--float-y:-14px;
-	--float-rotate:-2.68deg;
-	--float-duration:5.84s;
-}
-
-.playground-shell > .playground-card:nth-child(8) {
-	--enter-delay:0.42s;
-	--float-x:8px;
-	--float-y:-17px;
-	--float-rotate:2.86deg;
-	--float-duration:6.08s;
-}
-
-.playground-shell > .playground-card:nth-child(9) {
-	--enter-delay:0.48s;
-	--float-x:-10px;
-	--float-y:-20px;
-	--float-rotate:-3.04deg;
-	--float-duration:6.32s;
-}
-
-@media (prefers-reduced-motion:no-preference) {
-	.playground-shell > .playground-card {
-		animation:playground-card-enter 720ms cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--enter-delay) backwards;
-	}
-}
-
-@media (min-width:981px) and (prefers-reduced-motion:no-preference) {
-	.playground-shell > .playground-card {
-		animation:
-			playground-card-enter 720ms cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--enter-delay) backwards,
-			playground-card-float var(--float-duration) cubic-bezier(0.37, 0, 0.63, 1) calc(var(--enter-delay) + 720ms) infinite alternate;
-	}
-}
-
-@keyframes playground-card-enter {
-	from {
-		opacity:0;
-		translate:0 22px;
-	}
-}
-
-@keyframes playground-card-float {
-	to {
-		translate:var(--float-x) var(--float-y);
-		rotate:var(--float-rotate);
-	}
-}
-
-/* Resume: warm Saturn with a visible ring. */
-:root .playground-shell > .playground-card.playground-card--resume {
-	--planet-base:linear-gradient(180deg, #e1c99f 0%, #d2b07c 100%);
-	--planet-feature-1:repeating-linear-gradient(0deg, rgba(155, 118, 67, 0.12) 0 4px, transparent 4px 10px, rgba(255, 241, 210, 0.08) 10px 13px, transparent 13px 18px);
-	--planet-feature-2:linear-gradient(180deg, transparent 0%, rgba(255, 250, 235, 0.05) 100%);
-	grid-column:1;
-	grid-row:1;
-	--tilt:-0.6deg;
-	margin-top:0.7rem;
-}
-
-.playground-card--resume::after {
-	content:"";
-	position:absolute;
-	top:50%;
-	left:-14%;
-	width:128%;
-	height:26%;
-	border-radius:50%;
-	background:none;
-	border:1px solid rgba(193, 151, 86, 0.44);
-	transform:translateY(-50%) rotate(-12deg);
-	pointer-events:none;
-	box-shadow:none;
-	z-index:-1;
-	opacity:0.75;
-}
-
-/* Manifesto: dusty world with canyons and craters. */
-:root .playground-shell > .playground-card.playground-card--manifesto {
-	--planet-base:linear-gradient(180deg, #e5bfd0 0%, #cf9fb0 100%);
-	--planet-feature-1:radial-gradient(circle at 62% 52%, rgba(116, 34, 67, 0.12) 0 8%, transparent 12%), radial-gradient(circle at 34% 70%, rgba(135, 50, 84, 0.1) 0 6%, transparent 10%);
-	--planet-feature-2:linear-gradient(145deg, transparent 42%, rgba(130, 39, 77, 0.1) 42% 48%, transparent 48% 100%);
-	grid-column:2;
-	grid-row:1;
-	--tilt:0.5deg;
-}
-
-/* LinkedIn: luminous ice giant with a storm eye. */
-:root .playground-shell > .playground-card.playground-card--linkedin {
-	--planet-base:linear-gradient(180deg, #8ec0df 0%, #6189b5 100%);
-	--planet-feature-1:repeating-linear-gradient(-6deg, rgba(236, 248, 255, 0.12) 0 5px, transparent 5px 12px, rgba(64, 120, 208, 0.08) 12px 16px, transparent 16px 22px);
-	--planet-feature-2:radial-gradient(circle at 58% 48%, rgba(31, 92, 177, 0.1) 0 12%, transparent 18%);
-	grid-column:3;
-	grid-row:1;
-	--tilt:-0.5deg;
-	margin-top:1rem;
-}
-
-/* Call: friendly Jupiter with strong cloud bands. */
-:root .playground-shell > .playground-card.playground-card--call {
-	--planet-base:linear-gradient(180deg, #dfc1a6 0%, #cda186 100%);
-	--planet-feature-1:repeating-linear-gradient(-3deg, rgba(168, 118, 83, 0.12) 0 6px, transparent 6px 12px, rgba(243, 220, 192, 0.08) 12px 15px, transparent 15px 21px);
-	--planet-feature-2:radial-gradient(ellipse at 63% 60%, rgba(171, 78, 50, 0.14) 0 8%, transparent 14%);
-	grid-column:1;
-	grid-row:2;
-	--tilt:0.5deg;
-}
-
-/* GitHub: cratered moon. */
-:root .playground-shell > .playground-card.playground-card--github {
-	--planet-base:linear-gradient(180deg, #d7d4db 0%, #beb9c7 100%);
-	--planet-feature-1:radial-gradient(circle at 28% 34%, rgba(78, 72, 90, 0.16) 0 8%, rgba(245, 244, 248, 0.1) 8% 10%, transparent 10.5%), radial-gradient(circle at 62% 28%, rgba(78, 72, 90, 0.18) 0 9%, rgba(245, 244, 248, 0.1) 9% 11%, transparent 11.5%), radial-gradient(circle at 58% 68%, rgba(78, 72, 90, 0.14) 0 7%, rgba(245, 244, 248, 0.1) 7% 9%, transparent 9.5%);
-	--planet-feature-2:radial-gradient(circle at 74% 54%, rgba(78, 72, 90, 0.12) 0 5%, rgba(245, 244, 248, 0.08) 5% 7%, transparent 7.5%), radial-gradient(circle at 22% 58%, rgba(78, 72, 90, 0.1) 0 4%, rgba(245, 244, 248, 0.08) 4% 6%, transparent 6.5%);
-	grid-column:2;
-	grid-row:2;
-	--tilt:-0.4deg;
-	margin-top:0.85rem;
-}
-
-.playground-card--github::after {
-	content:none;
-}
-
-/* Sponsors: lush habitable world with cloud cover. */
-:root .playground-shell > .playground-card.playground-card--sponsors {
-	--planet-base:linear-gradient(180deg, #9bbdbc 0%, #90ad8a 100%);
-	--planet-feature-1:radial-gradient(ellipse at 40% 38%, rgba(83, 147, 67, 0.18) 0 14%, transparent 20%), radial-gradient(ellipse at 66% 58%, rgba(56, 120, 61, 0.16) 0 11%, transparent 16%);
-	--planet-feature-2:linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 22%);
-	grid-column:3;
-	grid-row:2;
-	--tilt:0.4deg;
-}
-
-/* Music: neon world with sound-wave bands. */
-:root .playground-shell > .playground-card.playground-card--music {
-	--planet-base:linear-gradient(180deg, #9cc7a3 0%, #6ea07a 100%);
-	--planet-feature-1:repeating-linear-gradient(18deg, rgba(26, 104, 45, 0.1) 0 5px, transparent 5px 12px, rgba(221, 255, 228, 0.08) 12px 15px, transparent 15px 20px);
-	--planet-feature-2:radial-gradient(circle at 65% 38%, rgba(160, 255, 178, 0.1) 0 10%, transparent 16%);
-	grid-column:1;
-	grid-row:3;
-	--tilt:-0.5deg;
-	margin-top:0.8rem;
-}
-
-/* Stack Overflow: layered copper desert. */
-:root .playground-shell > .playground-card.playground-card--stack {
-	--planet-base:linear-gradient(180deg, #dcb596 0%, #c48e72 100%);
-	--planet-feature-1:repeating-linear-gradient(-4deg, rgba(170, 100, 56, 0.12) 0 6px, transparent 6px 12px, rgba(255, 237, 208, 0.08) 12px 15px, transparent 15px 21px);
-	--planet-feature-2:linear-gradient(180deg, transparent 34%, rgba(122, 63, 36, 0.08) 34% 40%, transparent 40% 100%);
-	grid-column:2;
-	grid-row:3;
-	--tilt:0.4deg;
-}
-
-/* OnlyFans: playful pearlescent exoplanet. */
-:root .playground-shell > .playground-card.playground-card--onlyfans {
-	--planet-base:linear-gradient(180deg, #e6c3d2 0%, #c99bb3 100%);
-	--planet-feature-1:repeating-linear-gradient(8deg, rgba(202, 95, 151, 0.1) 0 6px, transparent 6px 12px, rgba(255, 239, 247, 0.08) 12px 15px, transparent 15px 20px);
-	--planet-feature-2:radial-gradient(circle at 68% 70%, rgba(113, 224, 230, 0.1) 0 10%, transparent 16%);
-	grid-column:3;
-	grid-row:3;
-	--tilt:-0.4deg;
-	margin-top:0.95rem;
-}
-
-.playground-card--onlyfans::after {
-	content:none;
-}
-
 :root.theme-dark .column {
 	background:rgb(28, 27, 36);
 }
@@ -1398,27 +1179,6 @@ ul {
 	border-color:rgba(255, 255, 255, 0.14);
 	box-shadow:0 24px 50px rgba(0, 0, 0, 0.24);
 }
-
-:root.theme-dark .playground-shell > .playground-card {
-	--planet-overlay:linear-gradient(0deg, rgba(24, 22, 30, 0.42), rgba(24, 22, 30, 0.42));
-	--planet-text:#f3edf2;
-	box-shadow:
-		inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-		0 8px 16px rgba(0, 0, 0, 0.18);
-}
-
-:root.theme-dark .playground-card--resume::after {
-	border-color:rgba(148, 117, 76, 0.4);
-	opacity:0.72;
-}
-
-
-:root.theme-dark .playground-shell {
-	background:linear-gradient(180deg, var(--surface-soft) 0%, var(--surface) 100%);
-	border-color:rgba(var(--accent-rgb), 0.24);
-	box-shadow:none;
-}
-
 
 .landscape-scene__shooting-star {
 	position:absolute;
@@ -1668,14 +1428,6 @@ button:hover {
 	color:var(--text-main);
 }
 
-:root.theme-dark a:not(.button) {
-	color:var(--link-color);
-}
-
-:root.theme-dark a:not(.button):hover {
-	color:var(--link-hover);
-}
-
 
 :root.theme-light {
 	color-scheme:light;
@@ -1718,10 +1470,14 @@ section {
 
 @media (max-width:62rem) {
 	.hero-shell,
-	.oss-split {
+	.oss-split,
+	.link-groups {
 		grid-template-columns:1fr;
 	}
 
+	.link-groups > :first-child {
+		grid-row:auto;
+	}
 
 	.hero-main {
 		order:-1;
@@ -1734,41 +1490,6 @@ section {
 
 	.music-embed-frame {
 		height:80px;
-	}
-
-	.playground-shell {
-		min-height:auto;
-		display:grid;
-		grid-template-columns:repeat(2, minmax(0, 1fr));
-		gap:1.4rem 0.85rem;
-		padding:1.45rem 0.95rem 3.5rem;
-		padding-bottom:3.5rem;
-	}
-
-	.playground-shell > .playground-card {
-		position:relative;
-		width:100%;
-		max-width:7rem;
-		padding:0.85rem 0.75rem 0.85rem;
-		margin-top:0;
-		transform:none;
-	}
-
-	.playground-card__label {
-		font-size:0.9rem;
-	}
-
-	.playground-card--resume,
-	.playground-card--manifesto,
-	.playground-card--linkedin,
-	.playground-card--call,
-	.playground-card--github,
-	.playground-card--sponsors,
-	.playground-card--music,
-	.playground-card--stack,
-	.playground-card--onlyfans {
-		grid-column:auto;
-		grid-row:auto;
 	}
 
 	.landscape-scene__sun {
@@ -1822,24 +1543,6 @@ section {
 		gap:1.1rem;
 	}
 
-	.playground-shell {
-		grid-template-columns:1fr;
-		gap:1.25rem;
-		padding:1.25rem 0.75rem 3rem;
-		padding-bottom:3rem;
-	}
-
-	.playground-shell > .playground-card {
-		max-width:6rem;
-		font-size:0.78rem;
-		padding:0.78rem 0.58rem 0.75rem;
-	}
-
-	.playground-card__label {
-		max-width:5.4rem;
-		font-size:0.8rem;
-	}
-
 	.landscape-scene__sun {
 		top:0.6rem;
 		right:0.6rem;
@@ -1883,7 +1586,7 @@ section {
 		padding:1.15rem;
 	}
 
-	.oss-split__card {
+	.tone-card {
 		padding:0.8rem 0.3rem 0.4rem;
 	}
 

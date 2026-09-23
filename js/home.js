@@ -30,13 +30,8 @@
   }
 
   // Calendly's widget is only downloaded once someone shows interest in booking a call.
-  function initCalendlyLink() {
-    var bookCallLink = document.getElementById('book-call-link');
-    if (!bookCallLink) {
-      return;
-    }
-
-    var calendlyUrl = bookCallLink.getAttribute('data-calendly-url');
+  function initCalendlyLinks() {
+    var bookCallLinks = document.querySelectorAll('a[data-calendly-url]');
     var calendlyLoading = null;
 
     function loadCalendly() {
@@ -65,24 +60,28 @@
       return calendlyLoading;
     }
 
-    bookCallLink.addEventListener('pointerenter', loadCalendly, { once: true });
-    bookCallLink.addEventListener('focus', loadCalendly, { once: true });
+    Array.prototype.forEach.call(bookCallLinks, function (bookCallLink) {
+      var calendlyUrl = bookCallLink.getAttribute('data-calendly-url');
 
-    bookCallLink.addEventListener('click', function (event) {
-      // Let modified clicks (new tab, new window) behave like a normal link.
-      if (!calendlyUrl || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-        return;
-      }
+      bookCallLink.addEventListener('pointerenter', loadCalendly, { once: true });
+      bookCallLink.addEventListener('focus', loadCalendly, { once: true });
 
-      event.preventDefault();
-      loadCalendly().then(function (Calendly) {
-        Calendly.initPopupWidget({ url: calendlyUrl });
-      }).catch(function () {
-        window.open(bookCallLink.href, '_blank', 'noopener');
+      bookCallLink.addEventListener('click', function (event) {
+        // Let modified clicks (new tab, new window) behave like a normal link.
+        if (!calendlyUrl || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
+
+        event.preventDefault();
+        loadCalendly().then(function (Calendly) {
+          Calendly.initPopupWidget({ url: calendlyUrl });
+        }).catch(function () {
+          window.open(bookCallLink.href, '_blank', 'noopener');
+        });
       });
     });
   }
 
   initHeroVideo();
-  initCalendlyLink();
+  initCalendlyLinks();
 })();
