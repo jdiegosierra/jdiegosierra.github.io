@@ -309,7 +309,7 @@
   background: rgba(var(--tone-rgb), var(--tone-tint));
 }
 
-/* A tinted card with an uppercase heading in its tone: open source lists, education, and so on. */
+/* A tinted card with an uppercase heading in its tone. */
 .resume-oss-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -323,9 +323,7 @@
   background: rgba(var(--tone-rgb), var(--tone-tint));
 }
 
-/* Open source cards use h3 under their section title; the education cards are top-level, so h2. */
-.resume-sheet .resume-card h3,
-.resume-sheet .resume-extras h2 {
+.resume-sheet .resume-card h3 {
   margin: 0 0 0.55rem;
   color: var(--tone-ink);
   font-family: var(--font-sans);
@@ -337,35 +335,6 @@
 .resume-oss-grid {
   display: grid;
   gap: 0.5rem;
-}
-
-/* Education, certifications, and languages: three cards side by side, education the widest. */
-.resume-extras {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr) minmax(0, 1fr);
-  gap: 0.8rem;
-}
-
-.resume-facts {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.resume-facts li {
-  margin-bottom: 0.25rem;
-  color: var(--text-main);
-  font-size: 0.86rem;
-  line-height: 1.4;
-}
-
-.resume-facts li:last-child {
-  margin-bottom: 0;
-}
-
-.resume-facts__detail {
-  display: block;
-  color: var(--text-muted);
 }
 
 .resume-oss-item h4 {
@@ -684,8 +653,7 @@
     margin-top: 0.85rem;
   }
 
-  .resume-oss-split,
-  .resume-extras {
+  .resume-oss-split {
     grid-template-columns: 1fr;
   }
 
@@ -698,7 +666,7 @@
 /* PDF export: set by ?pdf=1 (scripts/build.mjs) and while printing the resume from the browser.
    The layout is the screen one on a smaller root size, one A4 sheet wide. */
 :root.export-pdf {
-  font-size: 11.5px;
+  font-size: 11.8px;
 }
 
 html.export-pdf {
@@ -728,7 +696,7 @@ html.export-pdf .resume-shell {
 /* Cloning the padding onto every page fragment gives each page its own top and bottom margin,
    while the page background stays full bleed. */
 html.export-pdf .resume-sheet {
-  padding: 9.5mm 12mm;
+  padding: 10mm 12mm;
   border: 0;
   border-radius: 0;
   background: none;
@@ -743,7 +711,7 @@ html.export-pdf .resume-sheet a {
 
 /* Tighter vertical rhythm than on screen, so the resume fits on two pages. */
 html.export-pdf .resume-section {
-  margin-top: 0.85rem;
+  margin-top: 1rem;
 }
 
 html.export-pdf .resume-section p {
@@ -766,14 +734,6 @@ html.export-pdf .tag-list {
 html.export-pdf .resume-list li {
   margin-bottom: 0.16rem;
   line-height: 1.36;
-}
-
-html.export-pdf .resume-extras .resume-card {
-  padding: 0.6rem 0.8rem 0.7rem;
-}
-
-html.export-pdf .resume-extras h2 {
-  margin-bottom: 0.35rem;
 }
 
 html.export-pdf .resume-header,
