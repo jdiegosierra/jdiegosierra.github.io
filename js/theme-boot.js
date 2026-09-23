@@ -19,4 +19,16 @@
   if (isPdfExport) {
     root.classList.add('export-pdf');
   }
+
+  // Printing the resume from the browser uses the same layout as the generated PDF.
+  window.addEventListener('beforeprint', function () {
+    if (document.body.classList.contains('page-resume')) {
+      root.classList.add('export-pdf');
+    }
+  });
+  window.addEventListener('afterprint', function () {
+    if (!isPdfExport) {
+      root.classList.remove('export-pdf');
+    }
+  });
 })();

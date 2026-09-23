@@ -3,7 +3,9 @@
 //   2. renders the shared sections with live GitHub star counts,
 //   3. stamps "last updated" dates and sitemap.xml from git history,
 //   4. renders the Open Graph images and resume PDFs with Playwright.
-// Usage: node scripts/build.mjs  (set GITHUB_TOKEN to avoid GitHub API rate limits)
+// Usage: node scripts/build.mjs [--resume]  (set GITHUB_TOKEN to avoid GitHub API rate limits)
+//   --resume  only build resume.html and its PDFs, offline, with the star counts from profile.json
+//             (npm run resume runs this inside the Playwright container CI uses).
 import { execFileSync } from 'node:child_process';
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -14,6 +16,7 @@ import { allRepos, applyRegions, escapeHtml, fetchStars, loadProfile, renderRegi
 const SITE_URL = 'https://jdiegosierra.github.io/';
 const rootDir = path.resolve(import.meta.dirname, '..');
 const distDir = path.join(rootDir, 'dist');
+const resumeOnly = process.argv.includes('--resume');
 
 const STATIC_ENTRIES = ['css', 'fonts', 'images', 'js', '404.html', 'robots.txt'];
 
@@ -157,13 +160,16 @@ async function renderResumePdf(browser, theme, fileName) {
     });
   }, SITE_URL);
 
-  await page.pdf({
+  const pdf = await page.pdf({
     path: path.join(distDir, fileName),
     format: 'A4',
     printBackground: true,
     margin: { top: '0', right: '0', bottom: '0', left: '0' },
   });
   await page.close();
+
+  const pageCount = pdf.toString('latin1').match(/\/Type\s*\/Page\b/g)?.length ?? 0;
+  console.log(`Rendered ${path.relative(process.cwd(), path.join(distDir, fileName))} (${pageCount} pages).`);
 }
 
 await rm(distDir, { recursive: true, force: true });
@@ -174,12 +180,17 @@ for (const entry of STATIC_ENTRIES) {
 
 const profile = await loadProfile(rootDir);
 const repos = allRepos(profile);
-const stars = await fetchStars(repos, process.env.GITHUB_TOKEN);
-console.log(`Live star counts for ${Object.keys(stars).length}/${repos.length} repositories.`);
+let stars = {};
+if (resumeOnly) {
+  console.log('Resume only: using the star counts from profile.json.');
+} else {
+  stars = await fetchStars(repos, process.env.GITHUB_TOKEN);
+  console.log(`Live star counts for ${Object.keys(stars).length}/${repos.length} repositories.`);
+}
 const regions = renderRegions(profile, { stars });
 
 const sitemapPages = [];
-for (const page of PAGES) {
+for (const page of PAGES.filter(({ file }) => !resumeOnly || file === 'resume.html')) {
   let html = await readFile(path.join(rootDir, page.file), 'utf8');
   if (regions[page.file]) {
     html = applyRegions(html, regions[page.file], page.file);
@@ -188,11 +199,15 @@ for (const page of PAGES) {
   await writeFile(path.join(distDir, page.file), stampLastUpdated(html, updated));
   sitemapPages.push({ ...page, lastmod: updated?.toISOString().slice(0, 10) });
 }
-await writeFile(path.join(distDir, 'sitemap.xml'), renderSitemap(sitemapPages));
+if (!resumeOnly) {
+  await writeFile(path.join(distDir, 'sitemap.xml'), renderSitemap(sitemapPages));
+}
 
 const browser = await chromium.launch();
 try {
-  await renderOgImages(browser);
+  if (!resumeOnly) {
+    await renderOgImages(browser);
+  }
   await renderResumePdf(browser, 'light', 'resume.pdf');
   await renderResumePdf(browser, 'dark', 'resume-dark.pdf');
 } finally {

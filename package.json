@@ -4,7 +4,8 @@
   "scripts": {
     "content": "node scripts/sync-content.mjs",
     "content:check": "node scripts/sync-content.mjs --check",
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "resume": "node scripts/resume.mjs"
   },
   "devDependencies": {
     "playwright": "1.58.2"

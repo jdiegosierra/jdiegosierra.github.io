@@ -5,6 +5,7 @@
 - Static site on GitHub Pages. Pages: `index.html`, `resume.html`, `manifesto.html`, `manifesto.es.html`, `404.html`.
 - `css/`, `fonts/`, `images/`, and `js/` are published as-is. `scripts/` is build tooling and is never published.
 - `npm run build` writes the deployable site to `dist/`. The resume PDFs, Open Graph images, and `sitemap.xml` only exist there.
+- `npm run resume` renders only `dist/resume.pdf` and `dist/resume-dark.pdf`, inside the same Playwright container CI uses (needs Docker), so they match the deployed PDFs.
 
 ## Shared content
 
@@ -13,6 +14,11 @@ The summary, current role, and open source sections appear on both `index.html` 
 - Change `data/profile.json` and run `npm run content`. Never edit inside the markers by hand: CI runs `npm run content:check` and fails when a page drifts.
 - `stars` in the JSON are fallbacks. The build fetches live counts from the GitHub API.
 - `<time data-last-updated>` dates and the sitemap `lastmod` are stamped by the build from git history, so don't bump them by hand.
+
+## Resume
+
+- Every section, card, and role on `resume.html` has a `tone-*` class (`rose`, `peach`, `sage`, `lilac`, `butter`) that sets its colors. Give a new role a different tone from its neighbours; a second role at the same company keeps the tone and adds `resume-entry--continued`.
+- The PDFs are the same page with `html.export-pdf` (rules at the end of `css/resume.css`). After changing the resume, run `npm run resume` and check it still reports 2 pages.
 
 ## Landscape scene
 

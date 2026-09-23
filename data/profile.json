@@ -33,6 +33,7 @@
     "company": "Maisa AI",
     "since": "May 2025",
     "headlineTags": ["SRE / DevOps", "Cloud Architect", "AI Enablement"],
+    "stack": ["Kubernetes", "AWS", "Azure", "Terraform", "ArgoCD", "Helm", "Go", "Python", "GitHub Actions", "OpenTelemetry", "Claude Code"],
     "highlights": [
       "<strong>Lead a team of 6 engineers</strong> and report directly to the CTO. Own team organization, priorities, and engineering practices.",
       "Own <strong>architecture decisions</strong> and lead the <strong>creation and review of RFCs</strong>.",

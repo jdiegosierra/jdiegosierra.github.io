@@ -84,8 +84,8 @@ function renderHomeOpenSource(openSource, stars) {
 }
 
 function renderResumeOpenSource(openSource, stars) {
-  const card = (title, items) => [
-    '<div class="resume-oss-card">',
+  const card = (title, tone, items) => [
+    `<div class="resume-oss-card tone-${tone}">`,
     `  <h3>${title}</h3>`,
     '  <div class="resume-oss-grid">',
     ...items.flatMap((item) => indentLines([
@@ -98,7 +98,7 @@ function renderResumeOpenSource(openSource, stars) {
     '</div>',
   ];
 
-  return [...card('Contributions', openSource.contributions), ...card('My Projects', openSource.projects)];
+  return [...card('Contributions', 'lilac', openSource.contributions), ...card('My Projects', 'sage', openSource.projects)];
 }
 
 function renderPersonJsonLd({ person, currentRole }) {
@@ -142,7 +142,7 @@ export function renderRegions(profile, { stars = {} } = {}) {
       summary: summary.map((paragraph) => `<p>${paragraph}</p>`),
       'open-source': renderResumeOpenSource(openSource, stars),
       'current-role': [
-        '<div class="resume-entry">',
+        '<div class="resume-entry tone-rose">',
         '  <div class="resume-entry__header">',
         '    <div>',
         `      <h3>${currentRole.title}</h3>`,
@@ -150,6 +150,9 @@ export function renderRegions(profile, { stars = {} } = {}) {
         '    </div>',
         `    <p class="resume-entry__meta">${currentRole.since} - Present</p>`,
         '  </div>',
+        '  <ul class="resume-stack">',
+        ...currentRole.stack.map((item) => `    <li>${escapeHtml(item)}</li>`),
+        '  </ul>',
         '  <ul class="resume-list">',
         ...indentLines(highlights, 1),
         '  </ul>',
