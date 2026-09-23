@@ -35,6 +35,10 @@ The home page links are plain `<a class="link-pill">` elements that `js/home.js`
 
 The animated landscape scene and the theme toggle (sun/moon) are injected on every page by `js/site-shell.js`. Change them there, not in the HTML. The scene is sky-only — no ground elements (hills, trees, grass, flowers, etc.).
 
+- Sky and cloud colors live in the `--sky-*` and `--cloud-*` palette at the top of `css/style.css`. A theme switch animates through dusk or dawn (`sky-dusk`, `sky-dawn`); a page load does not.
+- The moon shows the real phase of the day, computed in `moonSvg`.
+- The night-sky constellations react to hover through the empty sides of the page wrappers (`.container`, `.container-left`, `.resume-page` set `pointer-events:none` and give it back to their children). Do the same for any new full-width wrapper.
+
 ## Manifesto
 
 `manifesto.html` and `manifesto.es.html` are translations of each other: keep their sections, heading ids, and order in sync.

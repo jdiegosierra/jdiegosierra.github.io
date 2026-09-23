@@ -4,6 +4,11 @@
   min-height: 100vh;
   padding: 2rem 5% 3rem;
   font-size: 1.05rem;
+  pointer-events: none; /* like .container: the sides stay hoverable for the night sky */
+}
+
+.resume-page > * {
+  pointer-events: auto;
 }
 
 @media (min-width: 48rem) {
@@ -705,7 +710,8 @@ html.export-pdf body {
 }
 
 html.export-pdf .no-print,
-html.export-pdf .landscape-scene__sun {
+html.export-pdf .landscape-scene__toggle,
+html.export-pdf .landscape-scene__hint {
   display: none !important;
 }
 

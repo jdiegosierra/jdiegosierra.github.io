@@ -36,14 +36,14 @@
 	--tone-lilac-rgb:221, 213, 240;
 	--tone-sage-rgb:214, 230, 199;
 	--tone-butter-rgb:244, 231, 187;
-	--scene-sky-top:#b9e6ff;
-	--scene-sky-mid:#f4efb6;
-	--scene-sky-bottom:#e8d5a3;
-	--scene-glow-rgb:255, 237, 168;
-	--scene-cloud-rgb:255, 255, 255;
+	--scene-sky-top:var(--sky-day-top);
+	--scene-sky-mid:var(--sky-day-mid);
+	--scene-sky-bottom:var(--sky-day-bottom);
+	--scene-cloud-light:var(--cloud-day-light);
+	--scene-cloud-shade:var(--cloud-day-shade);
 	--divider:rgba(196, 122, 149, 0.28);
-	--page-bg:#f0e6d0;
-	--page-bg-image:linear-gradient(180deg, #b9e6ff 0%, #f6efbe 48%, #e8d5a3 100%);
+	--page-bg:var(--sky-day-bottom);
+	--page-bg-image:linear-gradient(180deg, var(--sky-day-top) 0%, var(--sky-day-mid) 52%, var(--sky-day-bottom) 100%);
 	--link-color:#a8607e;
 	--link-hover:#864a64;
 	--panel-bg:rgba(255, 252, 249, 0.8);
@@ -72,14 +72,14 @@
 	--tone-lilac-rgb:118, 104, 147;
 	--tone-sage-rgb:111, 141, 103;
 	--tone-butter-rgb:150, 132, 90;
-	--scene-sky-top:#091427;
-	--scene-sky-mid:#17304c;
-	--scene-sky-bottom:#1a1a2e;
-	--scene-glow-rgb:230, 238, 255;
-	--scene-cloud-rgb:182, 199, 230;
+	--scene-sky-top:var(--sky-night-top);
+	--scene-sky-mid:var(--sky-night-mid);
+	--scene-sky-bottom:var(--sky-night-bottom);
+	--scene-cloud-light:var(--cloud-night-light);
+	--scene-cloud-shade:var(--cloud-night-shade);
 	--divider:rgba(232, 154, 175, 0.26);
-	--page-bg:#08111c;
-	--page-bg-image:linear-gradient(180deg, #091427 0%, #17304c 44%, #1a1a2e 100%);
+	--page-bg:var(--sky-night-top);
+	--page-bg-image:linear-gradient(180deg, var(--sky-night-top) 0%, var(--sky-night-mid) 52%, var(--sky-night-bottom) 100%);
 	--link-color:#f2bfd0;
 	--link-hover:#ffd9e4;
 	--panel-bg:rgb(42, 39, 52);
@@ -92,6 +92,67 @@
 	--shadow-button-hover:0 12px 24px rgba(4, 8, 20, 0.32);
 	--shadow-card:0 4px 6px rgba(0, 0, 0, 0.10), 0 10px 24px rgba(0, 0, 0, 0.20);
 	--shadow-card-hover:0 6px 10px rgba(0, 0, 0, 0.12), 0 16px 36px rgba(0, 0, 0, 0.30);
+}
+
+/* Sky palette. The theme picks day or night; dusk and dawn only show while the sky animates
+   between them after a theme switch (sky-dusk and sky-dawn below). The celestial variables
+   place the sun and moon, and the glows around them follow. */
+:root {
+	--sky-day-top:#aee0fb;
+	--sky-day-mid:#e7e1f7;
+	--sky-day-bottom:#fbdccb;
+	--sky-dusk-top:#6f74b4;
+	--sky-dusk-mid:#e9a2b6;
+	--sky-dusk-bottom:#f8bf93;
+	--sky-dawn-top:#8b9bd3;
+	--sky-dawn-mid:#f2b6c6;
+	--sky-dawn-bottom:#fbd3a6;
+	--sky-night-top:#0a1329;
+	--sky-night-mid:#1a2448;
+	--sky-night-bottom:#2a2143;
+	--cloud-day-light:#ffffff;
+	--cloud-day-shade:#e3daf1;
+	--cloud-dusk-light:#ffd6c4;
+	--cloud-dusk-shade:#b98fb8;
+	--cloud-dawn-light:#ffe3d4;
+	--cloud-dawn-shade:#c9a9cb;
+	--cloud-night-light:#4b577c;
+	--cloud-night-shade:#1d2240;
+	--celestial-size:7.5rem;
+	--moon-size:5.5rem;
+	--celestial-top:1.2rem;
+	--celestial-right:1.5rem;
+}
+
+/* Registered so the sky gradient and the clouds can animate between colors. */
+@property --sky-top {
+	syntax:"<color>";
+	inherits:false;
+	initial-value:#aee0fb;
+}
+
+@property --sky-mid {
+	syntax:"<color>";
+	inherits:false;
+	initial-value:#e7e1f7;
+}
+
+@property --sky-bottom {
+	syntax:"<color>";
+	inherits:false;
+	initial-value:#fbdccb;
+}
+
+@property --cloud-light {
+	syntax:"<color>";
+	inherits:true;
+	initial-value:#ffffff;
+}
+
+@property --cloud-shade {
+	syntax:"<color>";
+	inherits:true;
+	initial-value:#e3daf1;
 }
 
 /* Tones. A section, card, or item sets one of the site's tones (tone-rose, tone-peach,
@@ -216,6 +277,18 @@
 	}
 }
 
+/* The page wrappers span the full width. Their empty sides let the pointer through to the
+   constellations in the night sky; the content inside still takes clicks. */
+.container,
+.container-left {
+	pointer-events:none;
+}
+
+.container > *,
+.container-left > * {
+	pointer-events:auto;
+}
+
 .container-left {
 	position:relative;
 	z-index:1;
@@ -266,401 +339,643 @@ body {
 	transition:background-color 180ms ease, color 180ms ease;
 }
 
+/* Landscape scene, injected by js/site-shell.js. Back to front: sky, glows, stars, aurora and
+   constellations, shooting stars, then far, mid, and near clouds with the birds among them. */
 .landscape-scene {
+	--sky-top:var(--scene-sky-top);
+	--sky-mid:var(--scene-sky-mid);
+	--sky-bottom:var(--scene-sky-bottom);
+	--cloud-light:var(--scene-cloud-light);
+	--cloud-shade:var(--scene-cloud-shade);
 	position:fixed;
 	inset:0;
 	overflow:hidden;
 	pointer-events:none;
 	z-index:0;
-	background:linear-gradient(180deg, var(--scene-sky-top) 0%, var(--scene-sky-mid) 46%, var(--scene-sky-bottom) 100%);
+	background:linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 52%, var(--sky-bottom) 100%);
 	contain:layout style paint;
 }
 
-.landscape-scene::before,
-.landscape-scene::after {
-	content:"";
+.landscape-scene--dusk {
+	animation:sky-dusk 2.4s ease-in-out;
+}
+
+.landscape-scene--dawn {
+	animation:sky-dawn 2.4s ease-in-out;
+}
+
+.landscape-scene__layer,
+.landscape-scene__glow,
+.landscape-scene__meteors,
+.landscape-scene__preview {
 	position:absolute;
 	inset:0;
-	pointer-events:none;
 }
 
-.landscape-scene::before {
-	background-image:
-		radial-gradient(circle at 2% 4%, rgba(255, 255, 255, 0.9) 0 1.3px, transparent 1.8px),
-		radial-gradient(circle at 5% 12%, rgba(255, 255, 255, 0.6) 0 0.8px, transparent 1.2px),
-		radial-gradient(circle at 3% 28%, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.4px),
-		radial-gradient(circle at 7% 38%, rgba(255, 255, 255, 0.55) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 4% 52%, rgba(255, 255, 255, 0.75) 0 0.9px, transparent 1.3px),
-		radial-gradient(circle at 6% 66%, rgba(255, 255, 255, 0.65) 0 0.8px, transparent 1.1px),
-		radial-gradient(circle at 2% 78%, rgba(255, 255, 255, 0.85) 0 1.1px, transparent 1.5px),
-		radial-gradient(circle at 8% 85%, rgba(255, 255, 255, 0.5) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 5% 94%, rgba(255, 255, 255, 0.7) 0 0.9px, transparent 1.2px),
-		radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.92) 0 1.2px, transparent 1.6px),
-		radial-gradient(circle at 15% 22%, rgba(255, 255, 255, 0.5) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 11% 42%, rgba(255, 255, 255, 0.72) 0 0.9px, transparent 1.3px),
-		radial-gradient(circle at 14% 58%, rgba(255, 255, 255, 0.6) 0 0.8px, transparent 1.1px),
-		radial-gradient(circle at 10% 72%, rgba(255, 255, 255, 0.82) 0 1px, transparent 1.4px),
-		radial-gradient(circle at 16% 88%, rgba(255, 255, 255, 0.48) 0 0.6px, transparent 0.9px),
-		radial-gradient(circle at 20% 6%, rgba(255, 255, 255, 0.78) 0 1px, transparent 1.5px),
-		radial-gradient(circle at 23% 18%, rgba(255, 255, 255, 0.55) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 18% 34%, rgba(255, 255, 255, 0.88) 0 1.1px, transparent 1.5px),
-		radial-gradient(circle at 22% 50%, rgba(255, 255, 255, 0.45) 0 0.6px, transparent 0.9px),
-		radial-gradient(circle at 19% 68%, rgba(255, 255, 255, 0.7) 0 0.9px, transparent 1.2px),
-		radial-gradient(circle at 25% 82%, rgba(255, 255, 255, 0.58) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 30% 3%, rgba(255, 255, 255, 0.86) 0 1px, transparent 1.5px),
-		radial-gradient(circle at 35% 15%, rgba(255, 255, 255, 0.48) 0 0.6px, transparent 0.9px),
-		radial-gradient(circle at 33% 32%, rgba(255, 255, 255, 0.62) 0 0.8px, transparent 1.2px),
-		radial-gradient(circle at 38% 48%, rgba(255, 255, 255, 0.52) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 32% 64%, rgba(255, 255, 255, 0.74) 0 0.9px, transparent 1.3px),
-		radial-gradient(circle at 36% 80%, rgba(255, 255, 255, 0.56) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 42% 10%, rgba(255, 255, 255, 0.62) 0 0.8px, transparent 1.2px),
-		radial-gradient(circle at 50% 5%, rgba(255, 255, 255, 0.9) 0 1.2px, transparent 1.6px),
-		radial-gradient(circle at 48% 26%, rgba(255, 255, 255, 0.52) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 55% 44%, rgba(255, 255, 255, 0.68) 0 0.8px, transparent 1.2px),
-		radial-gradient(circle at 52% 62%, rgba(255, 255, 255, 0.46) 0 0.6px, transparent 0.9px),
-		radial-gradient(circle at 58% 78%, rgba(255, 255, 255, 0.72) 0 0.9px, transparent 1.3px),
-		radial-gradient(circle at 64% 8%, rgba(255, 255, 255, 0.74) 0 0.9px, transparent 1.3px),
-		radial-gradient(circle at 68% 20%, rgba(255, 255, 255, 0.56) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 65% 38%, rgba(255, 255, 255, 0.82) 0 1px, transparent 1.4px),
-		radial-gradient(circle at 70% 56%, rgba(255, 255, 255, 0.5) 0 0.6px, transparent 0.9px),
-		radial-gradient(circle at 66% 74%, rgba(255, 255, 255, 0.68) 0 0.8px, transparent 1.1px),
-		radial-gradient(circle at 72% 90%, rgba(255, 255, 255, 0.58) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 78% 6%, rgba(255, 255, 255, 0.5) 0 0.6px, transparent 0.9px),
-		radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.88) 0 1px, transparent 1.5px),
-		radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.54) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 84% 46%, rgba(255, 255, 255, 0.78) 0 1px, transparent 1.4px),
-		radial-gradient(circle at 79% 60%, rgba(255, 255, 255, 0.62) 0 0.8px, transparent 1.2px),
-		radial-gradient(circle at 85% 76%, rgba(255, 255, 255, 0.48) 0 0.6px, transparent 0.9px),
-		radial-gradient(circle at 88% 3%, rgba(255, 255, 255, 0.54) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 91% 14%, rgba(255, 255, 255, 0.92) 0 1.2px, transparent 1.6px),
-		radial-gradient(circle at 93% 28%, rgba(255, 255, 255, 0.62) 0 0.8px, transparent 1.1px),
-		radial-gradient(circle at 90% 44%, rgba(255, 255, 255, 0.7) 0 0.9px, transparent 1.3px),
-		radial-gradient(circle at 95% 58%, rgba(255, 255, 255, 0.52) 0 0.7px, transparent 1px),
-		radial-gradient(circle at 92% 72%, rgba(255, 255, 255, 0.84) 0 1px, transparent 1.4px),
-		radial-gradient(circle at 96% 86%, rgba(255, 255, 255, 0.6) 0 0.8px, transparent 1.1px),
-		radial-gradient(circle at 98% 96%, rgba(255, 255, 255, 0.76) 0 0.9px, transparent 1.3px);
-	opacity:0;
-	transition:opacity 220ms ease;
-}
-
-.landscape-scene::after {
-	background:radial-gradient(circle at 70% 18%, rgba(var(--scene-glow-rgb), 0.28), transparent 18%), radial-gradient(circle at 18% 12%, rgba(var(--tone-peach-rgb), 0.2), transparent 22%), linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 42%);
-}
-
-:root.theme-dark .landscape-scene::before {
-	opacity:0.88;
-}
-
-.landscape-scene__sun {
+/* Sun and moon: one button, two bodies. On a switch, the outgoing one sets while the incoming
+   one rises a moment later. The drift animation uses transform, and setting uses the separate
+   translate and scale properties, so the two combine. */
+.landscape-scene__toggle {
 	position:fixed;
-	top:1.2rem;
-	right:1.5rem;
-	width:7.5rem;
-	height:7.5rem;
-	border:none;
-	padding:0;
-	border-radius:50%;
-	background:radial-gradient(circle, rgba(255, 255, 255, 0.98) 0%, rgba(var(--scene-glow-rgb), 0.95) 38%, rgba(var(--scene-glow-rgb), 0.24) 62%, rgba(var(--scene-glow-rgb), 0) 72%);
-	box-shadow:0 0 70px rgba(var(--scene-glow-rgb), 0.46);
-	animation:sun-drift 12s ease-in-out infinite alternate, sun-breathe 2.4s ease-in-out infinite alternate;
-	pointer-events:auto;
-	cursor:pointer;
+	top:var(--celestial-top);
+	right:var(--celestial-right);
 	z-index:10;
-	transition:transform 280ms ease, box-shadow 280ms ease;
-	will-change:transform;
-}
-
-.landscape-scene__sun::before {
-	content:"";
-	position:absolute;
-	inset:16%;
+	width:var(--celestial-size);
+	height:var(--celestial-size);
+	min-height:0;
+	margin:0;
+	padding:0;
+	border:none;
 	border-radius:50%;
-	background:
-		radial-gradient(circle at 26% 34%, rgba(18, 16, 24, 0.34) 0 10%, rgba(235, 231, 243, 0.16) 10% 13%, transparent 13.5%),
-		radial-gradient(circle at 62% 26%, rgba(16, 14, 22, 0.32) 0 9%, rgba(236, 232, 244, 0.15) 9% 12%, transparent 12.5%),
-		radial-gradient(circle at 56% 64%, rgba(18, 16, 24, 0.28) 0 8%, rgba(232, 228, 241, 0.14) 8% 10.5%, transparent 11%),
-		radial-gradient(circle at 38% 66%, rgba(20, 18, 25, 0.22) 0 6%, rgba(230, 226, 239, 0.12) 6% 8.5%, transparent 9%),
-		radial-gradient(circle at 74% 54%, rgba(16, 14, 21, 0.24) 0 5%, rgba(234, 230, 243, 0.12) 5% 7%, transparent 7.5%);
-	opacity:0;
-	pointer-events:none;
-	transition:opacity 180ms ease;
+	background:transparent;
+	box-shadow:none;
+	cursor:pointer;
+	transition:transform 280ms ease;
 }
 
-.landscape-scene__sun.has-clicked {
-	animation:sun-drift 12s ease-in-out infinite alternate;
+.landscape-scene__toggle:hover {
+	transform:scale(1.06);
+	box-shadow:none;
 }
 
-.landscape-scene__sun::after {
-	content:"☀ / ☾";
-	position:absolute;
-	top:calc(100% + 0.5rem);
-	left:50%;
-	transform:translateX(-50%);
-	padding:0.3rem 0.6rem;
-	border-radius:0.5rem;
-	background:rgba(0, 0, 0, 0.7);
-	color:#fff;
-	font-size:0.7rem;
-	font-weight:600;
-	white-space:nowrap;
-	pointer-events:none;
-	opacity:0;
-	animation:tooltip-hint 4s ease 1.5s 1 both;
-}
-
-:root.theme-dark .landscape-scene__sun::after {
-	content:"☾ / ☀";
-}
-
-.landscape-scene__sun.has-clicked::after {
-	display:none;
-}
-
-.landscape-scene__sun:hover {
-	transform:scale(1.08);
-	box-shadow:0 0 90px rgba(var(--scene-glow-rgb), 0.62);
-}
-
-.landscape-scene__sun:active {
+.landscape-scene__toggle:active {
 	transform:scale(0.95);
 }
 
-:root.theme-dark .landscape-scene__sun {
-	width:5.5rem;
-	height:5.5rem;
-	top:2.2rem;
-	right:2.5rem;
-	border:1px solid rgba(255, 255, 255, 0.08);
-	background:radial-gradient(circle at 30% 28%, #f7f5fb 0%, #ddd8e6 18%, #b2aabb 44%, #746c81 72%, #4a4555 100%);
-	box-shadow:0 0 30px rgba(var(--scene-glow-rgb), 0.14), inset -10px -12px 18px rgba(20, 18, 28, 0.34), inset 6px 6px 10px rgba(255, 255, 255, 0.16);
+.landscape-scene__sun,
+.landscape-scene__moon {
+	position:absolute;
+	border-radius:50%;
+	pointer-events:none;
+	transition:translate 1s ease-in, scale 1s ease-in, opacity 0.9s ease-in, filter 1s ease-in;
 }
 
-:root.theme-dark .landscape-scene__sun::before {
-	inset:14%;
+.landscape-scene__sun {
+	inset:0;
+	background:radial-gradient(circle, rgba(255, 255, 255, 0.98) 0%, rgba(255, 237, 168, 0.95) 38%, rgba(255, 237, 168, 0.4) 62%, rgba(255, 237, 168, 0.2) 100%);
+	box-shadow:0 0 70px rgba(255, 237, 168, 0.46);
+	animation:celestial-drift 12s ease-in-out infinite alternate;
+	transition-delay:0.7s;
+	transition-timing-function:ease-out;
+}
+
+.landscape-scene__toggle:hover .landscape-scene__sun {
+	box-shadow:0 0 90px rgba(255, 237, 168, 0.62);
+}
+
+.landscape-scene__moon {
+	top:calc(50% - var(--moon-size) / 2);
+	left:calc(50% - var(--moon-size) / 2);
+	width:var(--moon-size);
+	height:var(--moon-size);
+	box-shadow:0 0 30px rgba(214, 224, 255, 0.16);
+	opacity:0;
+	translate:0 70%;
+	scale:0.85;
+	animation:celestial-drift 12s ease-in-out infinite alternate;
+}
+
+.landscape-scene__toggle:hover .landscape-scene__moon {
+	box-shadow:0 0 42px rgba(214, 224, 255, 0.26);
+}
+
+.landscape-scene__moon svg {
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+.landscape-scene__moon-dark {
+	fill:#2b2d45;
+}
+
+.landscape-scene__moon-maria {
+	fill:#7c7590;
+	opacity:0.38;
+}
+
+.landscape-scene__moon-maria--dark {
+	fill:#8b90b8;
+	opacity:0.1;
+}
+
+.landscape-scene__moon-crater {
+	fill:rgba(96, 88, 118, 0.28);
+	stroke:rgba(255, 255, 255, 0.55);
+	stroke-width:0.7;
+}
+
+.landscape-scene__moon-rim {
+	fill:none;
+	stroke:rgba(220, 226, 255, 0.18);
+	stroke-width:1;
+}
+
+:root.theme-dark .landscape-scene__sun {
+	opacity:0;
+	translate:0 70%;
+	scale:0.85;
+	filter:saturate(1.6) hue-rotate(-22deg);
+	transition-delay:0s;
+	transition-timing-function:ease-in;
+}
+
+:root.theme-dark .landscape-scene__moon {
+	opacity:1;
+	translate:0 0;
+	scale:1;
+	transition-delay:0.7s;
+	transition-timing-function:ease-out;
+}
+
+/* Telling people the sun is a button, until they first click it (has-clicked, remembered):
+   a ring ripples out of the sun or moon every few seconds, and once per visit a label points at
+   it. Hovering previews the switch: the sun or moon dips and the sky tints toward dusk or dawn
+   (.landscape-scene__preview). is-switching holds that preview back until the pointer leaves. */
+.landscape-scene__toggle::before {
+	content:"";
+	position:absolute;
+	inset:18%;
+	border:2px solid rgba(255, 206, 110, 0.9);
+	border-radius:50%;
+	opacity:0;
+	pointer-events:none;
+	animation:toggle-ripple 9s ease-out 2s infinite;
+}
+
+:root.theme-dark .landscape-scene__toggle::before {
+	inset:calc(50% - var(--moon-size) / 2);
+	border-color:rgba(214, 224, 255, 0.8);
+}
+
+.landscape-scene__toggle.has-clicked::before {
+	display:none;
+}
+
+.landscape-scene__hint {
+	position:fixed;
+	top:calc(var(--celestial-top) + var(--celestial-size) + 0.5rem);
+	right:var(--celestial-right);
+	z-index:10;
+	max-width:11rem;
+	padding:0.35rem 0.7rem;
+	border:1px solid var(--divider);
+	border-radius:0.75rem;
+	background:var(--pill-bg);
+	box-shadow:var(--shadow-button);
+	color:var(--text-main);
+	font-size:0.78rem;
+	font-weight:600;
+	line-height:1.35;
+	text-align:center;
+	pointer-events:none;
+	opacity:0;
+	visibility:hidden;
+}
+
+.landscape-scene__hint::before {
+	content:"";
+	position:absolute;
+	bottom:calc(100% + 0.1rem);
+	right:calc(var(--celestial-size) / 2 - 0.25rem);
+	width:1.1rem;
+	height:1.5rem;
+	background:var(--link-color);
+	-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 30C3 19 9 9 18 5'/%3E%3Cpath d='M12 3.5 18 5 15.5 10.5'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 30C3 19 9 9 18 5'/%3E%3Cpath d='M12 3.5 18 5 15.5 10.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.landscape-scene__hint--visible {
+	visibility:visible;
+	animation:hint-show 11s ease 3s 1 both;
+}
+
+.landscape-scene__toggle.has-clicked ~ .landscape-scene__hint {
+	display:none;
+}
+
+.landscape-scene__preview {
+	opacity:0;
+	background:linear-gradient(180deg, rgba(111, 116, 180, 0.3) 0%, rgba(233, 162, 182, 0.32) 55%, rgba(248, 191, 147, 0.42) 100%);
+	transition:opacity 0.6s ease;
+}
+
+:root.theme-dark .landscape-scene__preview {
+	background:linear-gradient(180deg, rgba(139, 155, 211, 0) 30%, rgba(242, 182, 198, 0.16) 70%, rgba(251, 211, 166, 0.3) 100%);
+}
+
+@media (hover:hover) {
+	.landscape-scene__toggle:hover:not(.is-switching) {
+		transform:translateY(8%) scale(1.06);
+	}
+
+	.landscape-scene__toggle:hover:not(.is-switching):active {
+		transform:translateY(8%) scale(0.95);
+	}
+
+	.landscape-scene__toggle:hover:not(.is-switching) ~ .landscape-scene .landscape-scene__preview {
+		opacity:1;
+	}
+}
+
+/* Glows centered on the sun or moon: a warm halo and a rose blush on the horizon by day, a cool
+   halo by night. */
+.landscape-scene__glow {
+	--celestial-x:calc(100% - var(--celestial-right) - var(--celestial-size) / 2);
+	--celestial-y:calc(var(--celestial-top) + var(--celestial-size) / 2);
+	transition:opacity 1.4s ease;
+}
+
+.landscape-scene__glow--day {
+	transition-delay:0.9s;
+	background:
+		radial-gradient(circle 24rem at var(--celestial-x) var(--celestial-y), rgba(255, 249, 238, 0.6), rgba(255, 249, 238, 0) 70%),
+		radial-gradient(120% 50% at 50% 108%, rgba(247, 196, 206, 0.45), rgba(247, 196, 206, 0) 70%);
+}
+
+.landscape-scene__glow--night {
+	opacity:0;
+	background:
+		radial-gradient(circle 16rem at var(--celestial-x) var(--celestial-y), rgba(214, 224, 255, 0.16), rgba(214, 224, 255, 0) 70%),
+		radial-gradient(110% 40% at 50% 110%, rgba(195, 180, 242, 0.12), rgba(195, 180, 242, 0) 70%);
+}
+
+:root.theme-dark .landscape-scene__glow--day {
+	opacity:0;
+	transition-delay:0s;
+}
+
+:root.theme-dark .landscape-scene__glow--night {
+	opacity:1;
+	transition-delay:1s;
+}
+
+/* Stars. Each layer is one dot repeated with box-shadows; the layers fade in one after another
+   at nightfall (--layer), and a few larger stars twinkle. */
+.landscape-scene__stars {
+	position:absolute;
+	top:0;
+	left:0;
+	width:var(--star-size);
+	height:var(--star-size);
+	border-radius:50%;
+	opacity:0;
+	transition:opacity 0.5s ease;
+}
+
+.landscape-scene__twinkle {
+	position:absolute;
+	width:2px;
+	height:2px;
+	opacity:0;
+	transition:opacity 0.5s ease;
+}
+
+.landscape-scene__twinkle::before {
+	content:"";
+	position:absolute;
+	inset:0;
+	border-radius:50%;
+	background:#fff;
+	box-shadow:0 0 5px 1px rgba(214, 224, 255, 0.75);
+	animation:twinkle var(--twinkle-duration) ease-in-out var(--twinkle-delay) infinite alternate;
+	animation-play-state:paused;
+}
+
+:root.theme-dark .landscape-scene__stars,
+:root.theme-dark .landscape-scene__twinkle {
+	opacity:1;
+	transition:opacity 0.9s ease calc(1s + var(--layer) * 0.16s);
+}
+
+:root.theme-dark .landscape-scene__twinkle::before {
+	animation-play-state:running;
+}
+
+/* Aurora in the site's rose, lilac, and sage, streaked into curtains by the mask. */
+.landscape-scene__aurora {
+	position:absolute;
+	top:-6vh;
+	left:-10vw;
+	width:120vw;
+	height:62vh;
+	opacity:0;
+	mix-blend-mode:screen;
+	transition:opacity 0.8s ease;
+}
+
+.landscape-scene__aurora::before,
+.landscape-scene__aurora::after {
+	content:"";
+	position:absolute;
+	inset:0;
+	-webkit-mask-image:repeating-linear-gradient(94deg, #000 0 8px, rgba(0, 0, 0, 0.76) 16px, #000 24px);
+	mask-image:repeating-linear-gradient(94deg, #000 0 8px, rgba(0, 0, 0, 0.76) 16px, #000 24px);
+	animation:aurora-sway 19s ease-in-out infinite alternate;
+	animation-play-state:paused;
+}
+
+.landscape-scene__aurora::before {
+	background:
+		radial-gradient(ellipse 26% 26% at 16% 44%, rgba(126, 224, 168, 0.3), transparent 70%),
+		radial-gradient(ellipse 30% 14% at 46% 32%, rgba(158, 140, 255, 0.26), transparent 70%),
+		radial-gradient(ellipse 24% 24% at 84% 42%, rgba(255, 138, 186, 0.24), transparent 70%);
+}
+
+.landscape-scene__aurora::after {
+	background:
+		radial-gradient(ellipse 20% 16% at 26% 26%, rgba(255, 138, 186, 0.2), transparent 70%),
+		radial-gradient(ellipse 28% 16% at 64% 50%, rgba(126, 224, 168, 0.2), transparent 70%),
+		radial-gradient(ellipse 18% 22% at 94% 24%, rgba(158, 140, 255, 0.26), transparent 70%);
+	animation-duration:27s;
+	animation-direction:alternate-reverse;
+}
+
+:root.theme-dark .landscape-scene__aurora {
+	opacity:1;
+	transition:opacity 2s ease 1.2s;
+}
+
+:root.theme-dark .landscape-scene__aurora::before,
+:root.theme-dark .landscape-scene__aurora::after {
+	animation-play-state:running;
+}
+
+/* Constellations in the side margins, only where the margins are wide enough; js/site-shell.js
+   places each one. After nightfall they appear one after another (--c) and draw their lines, and
+   hovering one brightens its lines and name. The page wrappers let the pointer through their
+   empty sides for this (see .container). The size keeps five of them within a column's height. */
+.landscape-scene__constellation {
+	position:absolute;
+	display:none;
+	width:min(8.5vw, 13vh, 10rem);
+	overflow:visible;
+	opacity:0;
+	transition:opacity 0.6s ease;
+}
+
+.landscape-scene__constellation path {
+	fill:none;
+	stroke:rgba(214, 224, 255, 0.5);
+	stroke-width:0.6;
+	stroke-linecap:round;
+	stroke-dasharray:1;
+	stroke-dashoffset:1;
+	opacity:0.55;
+	transition:stroke-dashoffset 0.4s ease, opacity 0.3s ease;
+}
+
+.landscape-scene__constellation circle {
+	fill:#f4f6ff;
+}
+
+.landscape-scene__constellation text {
+	fill:rgba(224, 230, 255, 0.9);
+	font-family:var(--font-sans);
+	font-size:6.5px;
+	font-weight:600;
+	letter-spacing:0.18em;
+	text-transform:uppercase;
+	opacity:0.45;
+	transition:opacity 0.3s ease;
+}
+
+:root.theme-dark .landscape-scene__constellation {
+	opacity:1;
+	pointer-events:auto;
+	transition:opacity 1s ease calc(1.4s + var(--c) * 0.12s);
+}
+
+:root.theme-dark .landscape-scene__constellation path {
+	stroke-dashoffset:0;
+	transition:stroke-dashoffset 1.2s ease calc(2s + var(--c) * 0.12s + var(--i) * 0.06s), opacity 0.3s ease;
+}
+
+.landscape-scene__constellation:hover path,
+.landscape-scene__constellation:hover text {
 	opacity:1;
 }
 
-:root.theme-dark .landscape-scene__sun:hover {
-	box-shadow:0 0 42px rgba(var(--scene-glow-rgb), 0.22), inset -10px -12px 18px rgba(20, 18, 28, 0.34), inset 6px 6px 10px rgba(255, 255, 255, 0.16);
+@media (min-width:64rem) {
+	.landscape-scene__constellation {
+		display:block;
+	}
+}
+
+/* Shooting stars, only at night. */
+.landscape-scene__meteors {
+	opacity:0;
+	transition:opacity 0.5s ease;
+}
+
+:root.theme-dark .landscape-scene__meteors {
+	opacity:1;
+	transition-delay:2s;
+}
+
+.landscape-scene__shooting-star {
+	position:absolute;
+	width:2.5rem;
+	height:2px;
+	border-radius:2px;
+	background:linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0));
+	opacity:0;
+	animation:shooting-star 8s ease-in infinite backwards;
+	animation-play-state:paused;
+}
+
+:root.theme-dark .landscape-scene__shooting-star {
+	animation-play-state:running;
+}
+
+.landscape-scene__shooting-star--1 {
+	top:8%;
+	left:5%;
+	--star-angle:-35deg;
+	animation-delay:4s;
+}
+
+.landscape-scene__shooting-star--2 {
+	top:14%;
+	right:8%;
+	left:auto;
+	width:3rem;
+	--star-angle:-145deg;
+	animation-delay:11s;
+	animation-duration:12s;
+}
+
+.landscape-scene__shooting-star--3 {
+	top:22%;
+	left:2%;
+	width:2rem;
+	--star-angle:-28deg;
+	animation-delay:18s;
+	animation-duration:15s;
+}
+
+.landscape-scene__shooting-star--4 {
+	top:6%;
+	right:3%;
+	left:auto;
+	width:2.5rem;
+	--star-angle:-155deg;
+	animation-delay:7s;
+	animation-duration:10s;
+}
+
+.landscape-scene__shooting-star--5 {
+	top:18%;
+	left:8%;
+	width:1.8rem;
+	--star-angle:-40deg;
+	animation-delay:25s;
+	animation-duration:14s;
+}
+
+.landscape-scene__shooting-star--6 {
+	top:12%;
+	right:2%;
+	left:auto;
+	width:3.2rem;
+	--star-angle:-130deg;
+	animation-delay:32s;
+	animation-duration:11s;
+}
+
+.landscape-scene__shooting-star--7 {
+	top:3%;
+	left:1%;
+	width:2rem;
+	--star-angle:-50deg;
+	animation-delay:40s;
+	animation-duration:16s;
+}
+
+/* Clouds. The SVG shapes in js/site-shell.js share one gradient, lit on top and shaded
+   underneath with --cloud-light and --cloud-shade. Far clouds are hazier. */
+.landscape-scene__defs {
+	position:absolute;
+	width:0;
+	height:0;
+	overflow:hidden;
+}
+
+.landscape-scene__cloud-light {
+	stop-color:var(--cloud-light);
+}
+
+.landscape-scene__cloud-shade {
+	stop-color:var(--cloud-shade);
+}
+
+.landscape-scene__layer {
+	transition:opacity 1.2s ease;
+}
+
+:root.theme-dark .landscape-scene__layer--far,
+:root.theme-dark .landscape-scene__layer--mid,
+:root.theme-dark .landscape-scene__layer--near {
+	opacity:0.6;
 }
 
 .landscape-scene__cloud {
 	position:absolute;
-	height:3.8rem;
-	border-radius:999px;
-	background:rgba(var(--scene-cloud-rgb), 0.72);
-	filter:blur(0.5px);
-	box-shadow:2rem 0 0 rgba(var(--scene-cloud-rgb), 0.58), -1.6rem 0.7rem 0 rgba(var(--scene-cloud-rgb), 0.5), 0.9rem -0.8rem 0 rgba(var(--scene-cloud-rgb), 0.56);
-	animation:cloud-drift 34s linear infinite;
-	opacity:0.9;
+	left:0;
+	overflow:visible;
+	transform:translateX(var(--rest-x));
+	animation:cloud-drift var(--drift) linear var(--delay) infinite;
 	will-change:transform;
 }
 
-.landscape-scene__cloud--1 {
-	top:7.8rem;
-	left:-10rem;
-	width:8rem;
-	animation-duration:38s;
+.landscape-scene__layer--far .landscape-scene__cloud {
+	opacity:0.72;
+	filter:blur(0.6px);
 }
 
-.landscape-scene__cloud--2 {
-	top:11.5rem;
-	left:-16rem;
-	width:11rem;
-	animation-duration:54s;
-	animation-delay:-10s;
-	opacity:0.75;
-}
-
-.landscape-scene__cloud--3 {
-	top:5.5rem;
-	left:-22rem;
-	width:6rem;
-	animation-duration:44s;
-	animation-delay:-18s;
-	opacity:0.62;
-}
-
-.landscape-scene__cloud--4 {
-	top:15.5rem;
-	left:-26rem;
-	width:13rem;
-	height:4.6rem;
-	animation-duration:62s;
-	animation-delay:-24s;
-	opacity:0.6;
-}
-
-.landscape-scene__cloud--5 {
-	top:3.8rem;
-	left:-32rem;
-	width:9rem;
-	height:3.2rem;
-	animation-duration:58s;
-	animation-delay:-32s;
-	opacity:0.52;
-}
-
-.landscape-scene__cloud--6 {
-	top:9.5rem;
-	left:-20rem;
-	width:7rem;
-	height:3rem;
-	animation-duration:48s;
-	animation-delay:-6s;
-	opacity:0.55;
-}
-
-.landscape-scene__cloud--7 {
-	top:13rem;
-	left:-28rem;
-	width:10rem;
-	height:4rem;
-	animation-duration:66s;
-	animation-delay:-40s;
-	opacity:0.48;
-}
-
-.landscape-scene__cloud--8 {
-	bottom:22vh;
-	left:-18rem;
-	width:14rem;
-	height:5rem;
-	animation-duration:72s;
-	animation-delay:-15s;
-	opacity:0.55;
-}
-
-.landscape-scene__cloud--9 {
-	bottom:14vh;
-	left:-24rem;
-	width:18rem;
-	height:6rem;
-	animation-duration:80s;
-	animation-delay:-35s;
-	opacity:0.45;
-	filter:blur(1.5px);
-}
-
-.landscape-scene__cloud--10 {
-	bottom:8vh;
-	left:-30rem;
-	width:22rem;
-	height:7rem;
-	animation-duration:90s;
-	animation-delay:-50s;
-	opacity:0.38;
-	filter:blur(2px);
-}
-
-.landscape-scene__cloud--11 {
-	bottom:18vh;
-	left:-14rem;
-	width:10rem;
-	height:4.2rem;
-	animation-duration:56s;
-	animation-delay:-20s;
-	opacity:0.5;
-}
-
-.landscape-scene__cloud--12 {
-	bottom:4vh;
-	left:-36rem;
-	width:26rem;
-	height:8rem;
-	animation-duration:100s;
-	animation-delay:-60s;
-	opacity:0.3;
-	filter:blur(3px);
-}
-
-.landscape-scene__birds {
+/* Birds fly in flocks: each flock drifts across in a gentle wave, each bird bobs, and its wings
+   flap around the body, slightly out of step with the others. */
+.landscape-scene__flock {
 	position:absolute;
-	width:3.8rem;
-	height:1.6rem;
-	opacity:0.62;
-	animation:bird-drift 26s linear infinite;
+	left:0;
+	width:6.5rem;
+	height:3.5rem;
+	transform:translateX(var(--rest-x));
+	animation:flock-drift var(--drift) linear var(--delay) infinite;
+	transition:opacity 0.8s ease 1.4s;
 	will-change:transform;
 }
 
-.landscape-scene__birds::before,
-.landscape-scene__birds::after {
+:root.theme-dark .landscape-scene__flock {
+	opacity:0;
+	transition-delay:0s;
+}
+
+.landscape-scene__bird {
+	position:absolute;
+	left:var(--x);
+	top:var(--y);
+	width:1.5rem;
+	height:0.55rem;
+	animation:bird-bob 2.8s ease-in-out var(--flap-delay) infinite alternate;
+}
+
+.landscape-scene__flock--far .landscape-scene__bird {
+	scale:0.7;
+	opacity:0.7;
+}
+
+.landscape-scene__bird::before,
+.landscape-scene__bird::after {
 	content:"";
 	position:absolute;
-	top:0.55rem;
-	width:1.8rem;
-	height:0.8rem;
-	border-top:2.5px solid rgba(55, 70, 80, 0.74);
+	top:0;
+	width:50%;
+	height:100%;
+	box-sizing:border-box;
+	border-top:2px solid rgba(74, 66, 98, 0.62);
 	border-radius:100% 100% 0 0;
+	animation:wing-flap 0.75s ease-in-out var(--flap-delay) infinite alternate;
 }
 
-.landscape-scene__birds::before {
+.landscape-scene__bird::before {
+	--wing:1;
 	left:0;
-	transform:rotate(-8deg);
+	transform-origin:100% 100%;
 }
 
-.landscape-scene__birds::after {
+.landscape-scene__bird::after {
+	--wing:-1;
 	right:0;
-	transform:scaleX(-1) rotate(-8deg);
+	transform-origin:0 100%;
 }
 
-.landscape-scene__birds--1 {
-	top:3.2rem;
-	left:-6rem;
-	animation-duration:32s;
+/* Parallax: while the page scrolls, nearer layers rise faster than farther ones. */
+.landscape-scene__layer--sky {
+	--parallax:-3vh;
 }
 
-.landscape-scene__birds--2 {
-	top:5.8rem;
-	left:-8rem;
-	transform:scale(0.78);
-	animation-duration:40s;
-	animation-delay:-14s;
+.landscape-scene__layer--far {
+	--parallax:-7vh;
 }
 
-.landscape-scene__birds--3 {
-	top:4.4rem;
-	left:-12rem;
-	transform:scale(0.65);
-	animation-duration:36s;
-	animation-delay:-24s;
-	opacity:0.42;
+.landscape-scene__layer--mid {
+	--parallax:-14vh;
 }
 
-.landscape-scene__birds--4 {
-	top:8.5rem;
-	left:-18rem;
-	transform:scale(0.55);
-	animation-duration:44s;
-	animation-delay:-8s;
-	opacity:0.36;
+.landscape-scene__layer--near {
+	--parallax:-24vh;
 }
 
-.landscape-scene__birds--5 {
-	top:2rem;
-	left:-24rem;
-	transform:scale(0.9);
-	animation-duration:28s;
-	animation-delay:-18s;
-	opacity:0.52;
-}
-
-.landscape-scene__birds--6 {
-	top:6.5rem;
-	left:-30rem;
-	transform:scale(0.48);
-	animation-duration:50s;
-	animation-delay:-30s;
-	opacity:0.3;
-}
-
-:root.theme-dark .landscape-scene__cloud {
-	opacity:0.2;
-	filter:blur(6px);
-}
-
-:root.theme-dark .landscape-scene__birds {
-	opacity:0;
+@supports (animation-timeline:scroll()) {
+	.landscape-scene__layer {
+		animation-name:scene-parallax;
+		animation-duration:1ms;
+		animation-duration:auto;
+		animation-timing-function:linear;
+		animation-fill-mode:both;
+		animation-timeline:scroll(root);
+	}
 }
 
 html.export-pdf .landscape-scene {
@@ -1333,105 +1648,129 @@ ul {
 	box-shadow:0 24px 50px rgba(0, 0, 0, 0.24);
 }
 
-.landscape-scene__shooting-star {
-	position:absolute;
-	width:2.5rem;
-	height:2px;
-	border-radius:2px;
-	background:linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0));
-	opacity:0;
-	animation:shooting-star 8s ease-in infinite backwards;
+@keyframes sky-dusk {
+	0% {
+		--sky-top:var(--sky-day-top);
+		--sky-mid:var(--sky-day-mid);
+		--sky-bottom:var(--sky-day-bottom);
+		--cloud-light:var(--cloud-day-light);
+		--cloud-shade:var(--cloud-day-shade);
+	}
+
+	45% {
+		--sky-top:var(--sky-dusk-top);
+		--sky-mid:var(--sky-dusk-mid);
+		--sky-bottom:var(--sky-dusk-bottom);
+		--cloud-light:var(--cloud-dusk-light);
+		--cloud-shade:var(--cloud-dusk-shade);
+	}
+
+	100% {
+		--sky-top:var(--sky-night-top);
+		--sky-mid:var(--sky-night-mid);
+		--sky-bottom:var(--sky-night-bottom);
+		--cloud-light:var(--cloud-night-light);
+		--cloud-shade:var(--cloud-night-shade);
+	}
 }
 
-.landscape-scene__shooting-star--1 {
-	top:8%;
-	left:5%;
-	--star-angle:-35deg;
-	animation-delay:4s;
-}
+@keyframes sky-dawn {
+	0% {
+		--sky-top:var(--sky-night-top);
+		--sky-mid:var(--sky-night-mid);
+		--sky-bottom:var(--sky-night-bottom);
+		--cloud-light:var(--cloud-night-light);
+		--cloud-shade:var(--cloud-night-shade);
+	}
 
-.landscape-scene__shooting-star--2 {
-	top:14%;
-	right:8%;
-	left:auto;
-	width:3rem;
-	--star-angle:-145deg;
-	animation-delay:11s;
-	animation-duration:12s;
-}
+	55% {
+		--sky-top:var(--sky-dawn-top);
+		--sky-mid:var(--sky-dawn-mid);
+		--sky-bottom:var(--sky-dawn-bottom);
+		--cloud-light:var(--cloud-dawn-light);
+		--cloud-shade:var(--cloud-dawn-shade);
+	}
 
-.landscape-scene__shooting-star--3 {
-	top:22%;
-	left:2%;
-	width:2rem;
-	--star-angle:-28deg;
-	animation-delay:18s;
-	animation-duration:15s;
+	100% {
+		--sky-top:var(--sky-day-top);
+		--sky-mid:var(--sky-day-mid);
+		--sky-bottom:var(--sky-day-bottom);
+		--cloud-light:var(--cloud-day-light);
+		--cloud-shade:var(--cloud-day-shade);
+	}
 }
-
-.landscape-scene__shooting-star--4 {
-	top:6%;
-	right:3%;
-	left:auto;
-	width:2.5rem;
-	--star-angle:-155deg;
-	animation-delay:7s;
-	animation-duration:10s;
-}
-
-.landscape-scene__shooting-star--5 {
-	top:18%;
-	left:8%;
-	width:1.8rem;
-	--star-angle:-40deg;
-	animation-delay:25s;
-	animation-duration:14s;
-}
-
-.landscape-scene__shooting-star--6 {
-	top:12%;
-	right:2%;
-	left:auto;
-	width:3.2rem;
-	--star-angle:-130deg;
-	animation-delay:32s;
-	animation-duration:11s;
-}
-
-.landscape-scene__shooting-star--7 {
-	top:3%;
-	left:1%;
-	width:2rem;
-	--star-angle:-50deg;
-	animation-delay:40s;
-	animation-duration:16s;
-}
-
-:root.theme-dark .landscape-scene__shooting-star {
-	opacity:1;
-}
-
 
 @keyframes cloud-drift {
 	from {
-		transform:translateX(0);
+		transform:translateX(-100%);
 	}
 
 	to {
-		transform:translateX(125vw);
+		transform:translateX(100vw);
 	}
 }
 
-@keyframes bird-drift {
+@keyframes flock-drift {
+	0% {
+		transform:translate(-100%, 0);
+	}
+
+	30% {
+		transform:translate(calc(30vw - 70%), -1.4rem);
+	}
+
+	65% {
+		transform:translate(calc(65vw - 35%), 0.6rem);
+	}
+
+	100% {
+		transform:translate(100vw, 0);
+	}
+}
+
+@keyframes bird-bob {
+	to {
+		translate:0 -0.4rem;
+	}
+}
+
+@keyframes wing-flap {
 	from {
-		transform:translateX(0);
+		transform:rotate(calc(var(--wing) * -22deg));
 	}
 
 	to {
-		transform:translateX(115vw);
+		transform:rotate(calc(var(--wing) * 16deg));
 	}
 }
 
+@keyframes twinkle {
+	from {
+		opacity:0.25;
+		transform:scale(0.7);
+	}
+
+	to {
+		opacity:1;
+		transform:scale(1.25);
+	}
+}
+
+@keyframes aurora-sway {
+	from {
+		transform:translateX(-3vw) skewX(-8deg) scaleY(0.9);
+	}
+
+	to {
+		transform:translateX(3vw) skewX(6deg) scaleY(1.15);
+	}
+}
+
+@keyframes scene-parallax {
+	to {
+		transform:translateY(var(--parallax));
+	}
+}
 
 @keyframes shooting-star {
 	0%,
@@ -1452,8 +1791,7 @@ ul {
 	}
 }
 
-
-@keyframes sun-drift {
+@keyframes celestial-drift {
 	from {
 		transform:translateY(0) scale(1);
 	}
@@ -1463,21 +1801,36 @@ ul {
 	}
 }
 
-@keyframes sun-breathe {
-	from {
-		box-shadow:0 0 70px rgba(var(--scene-glow-rgb), 0.46);
+@keyframes toggle-ripple {
+	0% {
+		opacity:0;
+		transform:scale(0.9);
 	}
 
-	to {
-		box-shadow:0 0 100px rgba(var(--scene-glow-rgb), 0.68);
+	3% {
+		opacity:0.9;
+	}
+
+	20%,
+	100% {
+		opacity:0;
+		transform:scale(1.9);
 	}
 }
 
-@keyframes tooltip-hint {
-	0% { opacity:0; transform:translateX(-50%) translateY(0.3rem); }
-	15% { opacity:1; transform:translateX(-50%) translateY(0); }
-	75% { opacity:1; transform:translateX(-50%) translateY(0); }
-	100% { opacity:0; transform:translateX(-50%) translateY(0.3rem); }
+@keyframes hint-show {
+	0% {
+		opacity:0;
+	}
+
+	5%,
+	92% {
+		opacity:1;
+	}
+
+	100% {
+		opacity:0;
+	}
 }
 
 
@@ -1509,11 +1862,15 @@ ul {
 		animation:none;
 	}
 
-	.landscape-scene__sun,
-	.landscape-scene__cloud,
-	.landscape-scene__birds,
-	.landscape-scene__shooting-star {
-		animation:none;
+	/* The scene holds still: clouds and birds rest at --rest-x, and a theme switch is instant. */
+	.landscape-scene,
+	.landscape-scene *,
+	.landscape-scene *::before,
+	.landscape-scene *::after,
+	.landscape-scene__toggle *,
+	.landscape-scene__toggle::before {
+		animation:none !important;
+		transition:none !important;
 	}
 
 	.button,
@@ -1650,17 +2007,10 @@ section {
 		height:80px;
 	}
 
-	.landscape-scene__sun {
-		right:8%;
-		width:6rem;
-		height:6rem;
-	}
-
-	:root.theme-dark .landscape-scene__sun {
-		width:4rem;
-		height:4rem;
-		right:calc(8% + 1rem);
-		top:calc(1.2rem + 1rem);
+	:root {
+		--celestial-size:6rem;
+		--moon-size:4rem;
+		--celestial-right:8%;
 	}
 }
 
@@ -1701,37 +2051,14 @@ section {
 		gap:1.1rem;
 	}
 
-	.landscape-scene__sun {
-		top:0.6rem;
-		right:0.6rem;
-		width:4.2rem;
-		height:4.2rem;
+	:root {
+		--celestial-size:4.2rem;
+		--moon-size:2.8rem;
+		--celestial-top:0.6rem;
+		--celestial-right:0.6rem;
 	}
 
-	:root.theme-dark .landscape-scene__sun {
-		width:2.8rem;
-		height:2.8rem;
-		top:1.3rem;
-		right:1.3rem;
-	}
-
-	.landscape-scene__cloud--2,
-	.landscape-scene__cloud--3,
-	.landscape-scene__cloud--5,
-	.landscape-scene__cloud--9,
-	.landscape-scene__cloud--11,
-	.landscape-scene__birds--2,
-	.landscape-scene__birds--4,
-	.landscape-scene__birds--6 {
-		display:none;
-	}
-
-	.landscape-scene__cloud--6,
-	.landscape-scene__cloud--7,
-	.landscape-scene__cloud--10,
-	.landscape-scene__cloud--12,
-	.landscape-scene__birds--3,
-	.landscape-scene__birds--5,
+	.landscape-scene__wide-only,
 	.landscape-scene__shooting-star--2,
 	.landscape-scene__shooting-star--3,
 	.landscape-scene__shooting-star--5,
