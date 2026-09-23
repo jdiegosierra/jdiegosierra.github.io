@@ -33,7 +33,7 @@ The home page links are plain `<a class="link-pill">` elements that `js/home.js`
 
 ## Landscape scene
 
-The animated landscape scene and the theme toggle (sun/moon) are injected on every page by `js/site-shell.js`. Change them there, not in the HTML. The scene is sky-only — no ground elements (hills, trees, grass, flowers, etc.).
+The animated landscape scene and the theme toggle (sun/moon) are injected on every page by `js/site-shell.js`. Night (the dark theme) is the default, set in `js/theme-boot.js`; the toggle remembers the visitor's choice. Change them there, not in the HTML. The scene is sky-only — no ground elements (hills, trees, grass, flowers, etc.).
 
 - Sky and cloud colors live in the `--sky-*` and `--cloud-*` palette at the top of `css/style.css`. A theme switch animates through dusk or dawn (`sky-dusk`, `sky-dawn`); a page load does not.
 - The moon shows the real phase of the day, computed in `moonSvg`.

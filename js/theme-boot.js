@@ -9,9 +9,8 @@
     storedTheme = localStorage.getItem('theme-preference');
   } catch (error) {}
 
-  var systemPrefersDark = false;
-  try { systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) {}
-  var theme = forcedTheme || storedTheme || (systemPrefersDark ? 'dark' : 'light');
+  // Night is the default; the sun/moon toggle stores the visitor's choice.
+  var theme = forcedTheme || storedTheme || 'dark';
 
   root.classList.remove('theme-light', 'theme-dark');
   root.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');

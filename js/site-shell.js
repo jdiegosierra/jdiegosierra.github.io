@@ -402,20 +402,6 @@
     if (hint && !hintShown && !toggle.classList.contains('has-clicked')) {
       hint.classList.add('landscape-scene__hint--visible');
     }
-
-    try {
-      var mql = window.matchMedia('(prefers-color-scheme: dark)');
-      if (mql.addEventListener) {
-        mql.addEventListener('change', function (e) {
-          var hasManualPref = false;
-          try { hasManualPref = !!localStorage.getItem('theme-preference'); } catch (err) {}
-          if (!hasManualPref) {
-            currentTheme = e.matches ? 'dark' : 'light';
-            switchTheme(currentTheme);
-          }
-        });
-      }
-    } catch (e) {}
   }
 
   if (document.readyState === 'loading') {
