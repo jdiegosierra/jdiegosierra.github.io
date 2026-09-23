@@ -3,3 +3,4 @@
 .devcontainer
 node_modules
 dist
+*.swp
