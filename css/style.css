@@ -859,7 +859,7 @@ section a {
 	align-items:stretch;
 }
 
-/* A tinted card with an uppercase heading in its tone: open source lists and link groups. */
+/* A tinted card with an uppercase heading in its tone: the open source lists. */
 .tone-card {
 	display:flex;
 	flex-direction:column;
@@ -895,9 +895,7 @@ section a {
 }
 
 .oss-item:hover,
-.oss-item:focus-visible,
-.link-row:hover,
-.link-row:focus-visible {
+.oss-item:focus-visible {
 	background:rgba(var(--tone-rgb), 0.45);
 }
 
@@ -981,74 +979,229 @@ section a {
 	box-shadow:0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
-/* Links: one tinted card per group, one row per link with its icon in a tone badge. */
-/* Two columns: the first group (the longest) on the left, the other two stacked on the right. */
-.link-groups {
-	display:grid;
-	grid-template-columns:repeat(2, minmax(0, 1fr));
-	gap:1rem;
-	align-items:start;
-}
-
-.link-groups > :first-child {
-	grid-row:span 2;
-}
-
-.link-list {
-	display:grid;
-	gap:0.15rem;
-	margin:0;
-}
-
-.link-row {
+/* Links: a physics toy. Without JavaScript, or with reduced motion, the pills just wrap.
+   js/home.js turns the arena into a box where they pile up, can be dragged and thrown, and
+   Sync puts them back like a GitOps controller would. It owns the pills' transforms. */
+.link-lab__bar {
 	display:flex;
+	flex-wrap:wrap;
 	align-items:center;
-	gap:0.75rem;
-	padding:0.55rem 0.6rem;
-	border-radius:0.8rem;
-	color:inherit;
-	text-decoration:none;
-	transition:background-color 160ms ease;
+	justify-content:space-between;
+	gap:0.6rem 1rem;
+	margin-bottom:0.8rem;
 }
 
-.link-row__icon {
-	display:grid;
-	flex:none;
-	place-items:center;
-	width:2.2rem;
-	height:2.2rem;
+.link-lab__bar[hidden] {
+	display:none;
+}
+
+.link-lab__status {
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	gap:0.35rem 0.6rem;
+	margin:0;
+	font-size:0.9rem;
+}
+
+.link-lab__state {
+	--tone-rgb:var(--tone-sage-rgb);
+	--tone-ink:var(--ink-sage);
+	display:inline-flex;
+	align-items:center;
+	gap:0.4rem;
+	margin-right:0.35rem;
+	padding:0.1rem 0.65rem;
+	border:1px solid rgba(var(--tone-rgb), var(--tone-edge));
+	border-radius:999px;
+	background:rgba(var(--tone-rgb), 0.5);
+	color:var(--text-main);
+	font-weight:700;
+}
+
+.link-lab__state::before {
+	content:"";
+	width:0.55rem;
+	height:0.55rem;
 	border-radius:50%;
 	background:var(--tone-ink);
 }
 
-:root.theme-dark .link-row__icon {
+.link-lab[data-state="out-of-sync"] .link-lab__state {
+	--tone-rgb:var(--tone-rose-rgb);
+	--tone-ink:var(--ink-rose);
+}
+
+.link-lab[data-state="syncing"] .link-lab__state {
+	--tone-rgb:var(--tone-lilac-rgb);
+	--tone-ink:var(--ink-lilac);
+}
+
+.link-lab[data-state="out-of-sync"] .link-lab__state::before,
+.link-lab[data-state="syncing"] .link-lab__state::before {
+	animation:lab-pulse 900ms ease-in-out infinite alternate;
+}
+
+.link-lab__detail {
+	color:var(--text-muted);
+}
+
+.link-lab__clock {
+	color:var(--ink-rose);
+	font-weight:700;
+	font-variant-numeric:tabular-nums;
+}
+
+.link-lab__actions {
+	display:flex;
+	flex-wrap:wrap;
+	gap:0.4rem;
+}
+
+.link-lab__button {
+	gap:0.35rem;
+	min-height:0;
+	margin:0;
+	padding:0.38rem 0.8rem;
+	border:1px solid rgba(var(--tone-rgb), var(--tone-edge));
+	border-radius:999px;
+	background:var(--surface-soft);
+	box-shadow:none;
+	color:var(--text-main);
+	font-family:inherit;
+	font-size:0.88rem;
+	font-weight:700;
+	line-height:1.2;
+	transition:background-color 160ms ease, transform 160ms ease;
+}
+
+.link-lab__button:hover {
+	background:rgba(var(--tone-rgb), 0.45);
+	box-shadow:none;
+	color:var(--text-main);
+}
+
+.link-lab__button:disabled {
+	cursor:default;
+	opacity:0.5;
+	transform:none;
+}
+
+.link-lab__button:disabled:hover {
+	background:var(--surface-soft);
+}
+
+.link-lab__button--sync:not(:disabled),
+.link-lab__button--sync:not(:disabled):hover {
+	border-color:transparent;
+	background:var(--tone-ink);
+	color:#ffffff;
+}
+
+:root.theme-dark .link-lab__button--sync:not(:disabled) {
 	background:rgb(var(--tone-rgb));
 }
 
-.link-row__icon img {
-	width:1.15rem;
-	height:1.15rem;
+.link-lab__arena {
+	position:relative;
+	margin:0;
+	padding:1rem;
+	border:1px solid rgba(var(--tone-rgb), var(--tone-edge));
+	border-radius:1rem;
+	background-color:rgba(var(--tone-rgb), var(--tone-tint));
+	background-image:radial-gradient(rgba(var(--tone-rgb), var(--tone-edge)) 1px, transparent 1.5px);
+	background-size:1.1rem 1.1rem;
 }
 
-.link-row__label {
-	display:block;
+.link-pile {
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+	gap:0.6rem;
+	margin:0;
+}
+
+.link-pile li {
+	margin:0;
+}
+
+.link-pill {
+	display:inline-flex;
+	align-items:center;
+	gap:0.55rem;
+	padding:0.3rem 0.95rem 0.3rem 0.3rem;
+	border:1px solid rgba(var(--tone-rgb), var(--tone-edge));
+	border-radius:999px;
+	background:linear-gradient(rgba(var(--tone-rgb), 0.55), rgba(var(--tone-rgb), 0.55)), var(--surface-soft);
+	box-shadow:var(--shadow-card);
 	color:var(--text-main);
 	font-weight:700;
-	line-height:1.3;
+	line-height:1.2;
+	text-decoration:none;
+	white-space:nowrap;
+	-webkit-user-select:none;
+	user-select:none;
+	-webkit-touch-callout:none;
+	-webkit-user-drag:none;
+}
+
+.link-pill:hover,
+.link-pill:focus-visible {
+	background:linear-gradient(rgba(var(--tone-rgb), 0.9), rgba(var(--tone-rgb), 0.9)), var(--surface-soft);
+	color:var(--text-main);
+}
+
+.link-pill__icon {
+	display:grid;
+	flex:none;
+	place-items:center;
+	width:2rem;
+	height:2rem;
+	border-radius:50%;
+	background:var(--tone-ink);
+}
+
+:root.theme-dark .link-pill__icon {
+	background:rgb(var(--tone-rgb));
+}
+
+.link-pill__icon img {
+	width:1.05rem;
+	height:1.05rem;
+	pointer-events:none;
+	-webkit-user-drag:none;
 }
 
 /* External links get an arrow; the empty alt text keeps screen readers from announcing it. */
-.link-row[target="_blank"] .link-row__label::after {
-	content:"\00a0\2197";
-	content:"\00a0\2197" / "";
+.link-pill[target="_blank"]::after {
+	content:"\2197";
+	content:"\2197" / "";
+	margin-left:-0.3rem;
 	color:var(--tone-ink);
 }
 
-.link-row__hint {
-	display:block;
-	color:var(--text-muted);
-	font-size:0.86rem;
-	line-height:1.35;
+.link-lab.is-live .link-lab__arena {
+	overflow:hidden;
+	padding:0;
+}
+
+.link-lab.is-live .link-pill {
+	position:absolute;
+	top:0;
+	left:0;
+	cursor:grab;
+	touch-action:none;
+	will-change:transform;
+}
+
+.link-lab.is-live .link-pill:focus-visible {
+	z-index:2;
+}
+
+.link-lab.is-live .link-pill.is-grabbed {
+	z-index:3;
+	cursor:grabbing;
+	box-shadow:var(--shadow-card-hover);
 }
 
 .music-embed-frame {
@@ -1328,6 +1481,16 @@ ul {
 }
 
 
+@keyframes lab-pulse {
+	from {
+		opacity:1;
+	}
+
+	to {
+		opacity:0.3;
+	}
+}
+
 @keyframes rise-in {
 	from {
 		opacity:0;
@@ -1470,13 +1633,8 @@ section {
 
 @media (max-width:62rem) {
 	.hero-shell,
-	.oss-split,
-	.link-groups {
+	.oss-split {
 		grid-template-columns:1fr;
-	}
-
-	.link-groups > :first-child {
-		grid-row:auto;
 	}
 
 	.hero-main {

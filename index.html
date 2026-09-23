@@ -186,77 +186,31 @@
 
     <section class="spotlight tone-peach" aria-labelledby="links-heading">
       <h2 class="section-title" id="links-heading">Links</h2>
-      <nav class="link-groups" aria-label="Profile links">
-        <div class="tone-card tone-rose">
-          <h3 id="links-work">Work with me</h3>
-          <ul class="link-list" aria-labelledby="links-work">
-            <li>
-              <a class="link-row" href="resume.html">
-                <span class="link-row__icon"><img src="images/icons/cv.png" alt=""></span>
-                <span><span class="link-row__label">Resume</span><span class="link-row__hint">Experience, open source, and a PDF</span></span>
-              </a>
-            </li>
-            <li>
-              <a class="link-row" href="manifesto.html">
-                <span class="link-row__icon"><img src="images/icons/generic-blog.svg" alt=""></span>
-                <span><span class="link-row__label">Manifesto</span><span class="link-row__hint">How I think teams should work</span></span>
-              </a>
-            </li>
-            <li>
-              <a class="link-row" href="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1" target="_blank" rel="noopener" aria-haspopup="dialog" data-calendly-url="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1">
-                <span class="link-row__icon"><img src="images/icons/calendly.svg" alt=""></span>
-                <span><span class="link-row__label">Book a video call</span><span class="link-row__hint">Pick a slot on Calendly</span></span>
-              </a>
-            </li>
-            <li>
-              <a class="link-row" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener">
-                <span class="link-row__icon"><img src="images/icons/linkedin.svg" alt=""></span>
-                <span><span class="link-row__label">LinkedIn</span><span class="link-row__hint">Career and contact</span></span>
-              </a>
-            </li>
-          </ul>
+      <div class="link-lab">
+        <div class="link-lab__bar" hidden>
+          <p class="link-lab__status">
+            <span class="link-lab__readout" aria-live="polite"><span class="link-lab__state">Synced</span> <span class="link-lab__detail">Grab a link and throw it.</span></span>
+            <span class="link-lab__clock" aria-hidden="true" hidden></span>
+          </p>
+          <div class="link-lab__actions">
+            <button class="link-lab__button tone-rose" type="button" data-lab-action="chaos"><span aria-hidden="true">🐒</span> Chaos monkey</button>
+            <button class="link-lab__button link-lab__button--sync tone-sage" type="button" data-lab-action="sync" disabled><span aria-hidden="true">↻</span> Sync</button>
+          </div>
         </div>
-        <div class="tone-card tone-lilac">
-          <h3 id="links-code">Code</h3>
-          <ul class="link-list" aria-labelledby="links-code">
-            <li>
-              <a class="link-row" href="https://github.com/jdiegosierra" target="_blank" rel="noopener">
-                <span class="link-row__icon"><img src="images/icons/github.svg" alt=""></span>
-                <span><span class="link-row__label">GitHub</span><span class="link-row__hint">My repositories and contributions</span></span>
-              </a>
-            </li>
-            <li>
-              <a class="link-row" href="https://github.com/sponsors/jdiegosierra" target="_blank" rel="noopener">
-                <span class="link-row__icon"><img src="images/icons/github.svg" alt=""></span>
-                <span><span class="link-row__label">GitHub Sponsors</span><span class="link-row__hint">Support my open source work</span></span>
-              </a>
-            </li>
-            <li>
-              <a class="link-row" href="https://stackoverflow.com/users/9409100/diego-sierra-fernandez" target="_blank" rel="noopener">
-                <span class="link-row__icon"><img src="images/icons/stack-overflow.svg" alt=""></span>
-                <span><span class="link-row__label">Stack Overflow</span><span class="link-row__hint">My questions and answers</span></span>
-              </a>
-            </li>
+        <nav class="link-lab__arena" aria-label="Profile links">
+          <ul class="link-pile">
+            <li><a class="link-pill tone-rose" href="resume.html"><span class="link-pill__icon"><img src="images/icons/cv.png" alt=""></span>Resume</a></li>
+            <li><a class="link-pill tone-lilac" href="manifesto.html"><span class="link-pill__icon"><img src="images/icons/generic-blog.svg" alt=""></span>Manifesto</a></li>
+            <li><a class="link-pill tone-sage" href="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1" target="_blank" rel="noopener" aria-haspopup="dialog" data-calendly-url="https://calendly.com/juandiegosierrafernandez/consultoria?hide_event_type_details=1&hide_gdpr_banner=1"><span class="link-pill__icon"><img src="images/icons/calendly.svg" alt=""></span>Book a video call</a></li>
+            <li><a class="link-pill tone-butter" href="https://linkedin.com/in/jdiegosierra" target="_blank" rel="noopener"><span class="link-pill__icon"><img src="images/icons/linkedin.svg" alt=""></span>LinkedIn</a></li>
+            <li><a class="link-pill tone-peach" href="https://github.com/jdiegosierra" target="_blank" rel="noopener"><span class="link-pill__icon"><img src="images/icons/github.svg" alt=""></span>GitHub</a></li>
+            <li><a class="link-pill tone-rose" href="https://github.com/sponsors/jdiegosierra" target="_blank" rel="noopener"><span class="link-pill__icon"><img src="images/icons/github.svg" alt=""></span>GitHub Sponsors</a></li>
+            <li><a class="link-pill tone-lilac" href="https://stackoverflow.com/users/9409100/diego-sierra-fernandez" target="_blank" rel="noopener"><span class="link-pill__icon"><img src="images/icons/stack-overflow.svg" alt=""></span>Stack Overflow</a></li>
+            <li><a class="link-pill tone-sage" href="https://open.spotify.com/user/dyeghikoo" target="_blank" rel="noopener"><span class="link-pill__icon"><img src="images/icons/spotify-alt.svg" alt=""></span>My Favourite Music</a></li>
+            <li><a class="link-pill tone-butter" href="https://upload.wikimedia.org/wikipedia/en/7/73/Trollface.png" target="_blank" rel="noopener"><span class="link-pill__icon"><img src="images/icons/onlyfans.svg" alt=""></span>OnlyFans (18+)</a></li>
           </ul>
-        </div>
-        <div class="tone-card tone-sage">
-          <h3 id="links-off-duty">Off-duty</h3>
-          <ul class="link-list" aria-labelledby="links-off-duty">
-            <li>
-              <a class="link-row" href="https://open.spotify.com/user/dyeghikoo" target="_blank" rel="noopener">
-                <span class="link-row__icon"><img src="images/icons/spotify-alt.svg" alt=""></span>
-                <span><span class="link-row__label">My Favourite Music</span><span class="link-row__hint">My Spotify profile</span></span>
-              </a>
-            </li>
-            <li>
-              <a class="link-row" href="https://upload.wikimedia.org/wikipedia/en/7/73/Trollface.png" target="_blank" rel="noopener">
-                <span class="link-row__icon"><img src="images/icons/onlyfans.svg" alt=""></span>
-                <span><span class="link-row__label">OnlyFans (18+)</span><span class="link-row__hint">Exactly what you think it is</span></span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </section>
   </div>
 </main>

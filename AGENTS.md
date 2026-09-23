@@ -27,6 +27,10 @@ The summary, current role, and open source sections appear on both `index.html` 
 
 - The PDFs are the same page with `html.export-pdf` (rules at the end of `css/resume.css`). After changing the resume, run `npm run resume` and check it still reports 2 pages.
 
+## Links playground
+
+The home page links are plain `<a class="link-pill">` elements that `js/home.js` turns into a physics toy with Matter.js (vendored unmodified in `js/vendor/`, don't edit it). The script measures the pills, stacks them in a pile, and owns their `transform`. Without JavaScript, or with reduced motion, they stay a wrapped list, so each one must still work as a plain link. The first links in the HTML end up on top of the pile.
+
 ## Landscape scene
 
 The animated landscape scene and the theme toggle (sun/moon) are injected on every page by `js/site-shell.js`. Change them there, not in the HTML. The scene is sky-only — no ground elements (hills, trees, grass, flowers, etc.).
