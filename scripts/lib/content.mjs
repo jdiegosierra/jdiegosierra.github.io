@@ -3,7 +3,10 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
-const CARD_TONES = ['peach', 'rose', 'sage', 'lilac'];
+// The home page lists only the first highlights of the current role; the resume has them all.
+const HOME_HIGHLIGHTS = 5;
+// Tone of each open source card, the same on both pages.
+const OSS_TONES = { contributions: 'lilac', projects: 'sage' };
 
 export async function loadProfile(rootDir) {
   return JSON.parse(await readFile(path.join(rootDir, 'data', 'profile.json'), 'utf8'));
@@ -66,12 +69,12 @@ function indentLines(lines, depth) {
 }
 
 function renderHomeOpenSource(openSource, stars) {
-  const card = (title, items) => [
-    '<article class="oss-split__card">',
+  const card = (title, tone, items) => [
+    `<article class="oss-split__card tone-${tone}">`,
     `  <h3>${title}</h3>`,
-    '  <div class="oss-grid">',
-    ...items.flatMap((item, index) => indentLines([
-      `<a class="oss-grid__card oss-grid__card--${CARD_TONES[index % CARD_TONES.length]}" href="https://github.com/${item.repo}" target="_blank" rel="noopener">`,
+    '  <div class="oss-list">',
+    ...items.flatMap((item) => indentLines([
+      `<a class="oss-item" href="https://github.com/${item.repo}" target="_blank" rel="noopener">`,
       `  <h4>${escapeHtml(item.name)}${starLabel(item, stars, 'star-count')}</h4>`,
       `  <p>${escapeHtml(item.description)}</p>`,
       '</a>',
@@ -80,7 +83,10 @@ function renderHomeOpenSource(openSource, stars) {
     '</article>',
   ];
 
-  return [...card('Contributions', openSource.contributions), ...card('My Projects', openSource.projects)];
+  return [
+    ...card('Contributions', OSS_TONES.contributions, openSource.contributions),
+    ...card('My Projects', OSS_TONES.projects, openSource.projects),
+  ];
 }
 
 function renderResumeOpenSource(openSource, stars) {
@@ -98,7 +104,10 @@ function renderResumeOpenSource(openSource, stars) {
     '</div>',
   ];
 
-  return [...card('Contributions', 'lilac', openSource.contributions), ...card('My Projects', 'sage', openSource.projects)];
+  return [
+    ...card('Contributions', OSS_TONES.contributions, openSource.contributions),
+    ...card('My Projects', OSS_TONES.projects, openSource.projects),
+  ];
 }
 
 function renderPersonJsonLd({ person, currentRole }) {
@@ -124,16 +133,27 @@ function renderPersonJsonLd({ person, currentRole }) {
 export function renderRegions(profile, { stars = {} } = {}) {
   const { summary, currentRole, openSource } = profile;
   const highlights = currentRole.highlights.map((item) => `  <li>${item}</li>`);
+  const stack = currentRole.stack.map((item) => `  <li>${escapeHtml(item)}</li>`);
 
   return {
     'index.html': {
       'person-jsonld': renderPersonJsonLd(profile),
       summary: summary.map((paragraph) => `<p>${paragraph}</p>`),
       'current-role': [
-        `<h2 id="current-heading">${currentRole.title} at ${currentRole.company}</h2>`,
-        '<ul class="feature-list">',
-        ...highlights,
+        '<div class="role-header">',
+        '  <div>',
+        `    <h2 class="role-title" id="current-heading">${currentRole.title}</h2>`,
+        `    <p class="role-company">${currentRole.company}</p>`,
+        '  </div>',
+        `  <p class="role-dates">${currentRole.since} - Present</p>`,
+        '</div>',
+        '<ul class="tag-list">',
+        ...stack,
         '</ul>',
+        '<ul class="feature-list">',
+        ...highlights.slice(0, HOME_HIGHLIGHTS),
+        '</ul>',
+        '<a class="role-more" href="resume.html">See the full resume →</a>',
       ],
       'open-source': renderHomeOpenSource(openSource, stars),
     },
@@ -150,8 +170,8 @@ export function renderRegions(profile, { stars = {} } = {}) {
         '    </div>',
         `    <p class="resume-entry__meta">${currentRole.since} - Present</p>`,
         '  </div>',
-        '  <ul class="resume-stack">',
-        ...currentRole.stack.map((item) => `    <li>${escapeHtml(item)}</li>`),
+        '  <ul class="tag-list">',
+        ...indentLines(stack, 1),
         '  </ul>',
         '  <ul class="resume-list">',
         ...indentLines(highlights, 1),

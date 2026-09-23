@@ -137,56 +137,15 @@
   box-shadow: none;
 }
 
-/* Resume palette. Every section, card, and role sets one of the site's tones
-   (tone-rose, tone-peach, tone-sage, tone-lilac, tone-butter): --tone-rgb tints
-   backgrounds and borders, --tone-ink colors dots, company names, and links. */
+/* Resume-only tokens; the tones (tone-*, --tone-rgb, --tone-ink) come from style.css. */
 :root {
   --resume-paper: rgb(255, 250, 252);
-  --ink-rose: #a4546f;
-  --ink-peach: #a95d35;
-  --ink-sage: #4f7d41;
-  --ink-lilac: #6a57a8;
-  --ink-butter: #86670f;
-  --resume-tint: 0.3;
-  --resume-edge: 0.95;
   --resume-rail: rgba(196, 122, 149, 0.24);
 }
 
 :root.theme-dark {
   --resume-paper: rgb(43, 39, 52);
-  --ink-rose: #f0a6ba;
-  --ink-peach: #f2b893;
-  --ink-sage: #b3d8a1;
-  --ink-lilac: #c3b4f2;
-  --ink-butter: #e9d18f;
-  --resume-tint: 0.24;
-  --resume-edge: 0.7;
   --resume-rail: rgba(232, 154, 175, 0.22);
-}
-
-.tone-rose {
-  --tone-rgb: var(--tone-rose-rgb);
-  --tone-ink: var(--ink-rose);
-}
-
-.tone-peach {
-  --tone-rgb: var(--tone-peach-rgb);
-  --tone-ink: var(--ink-peach);
-}
-
-.tone-sage {
-  --tone-rgb: var(--tone-sage-rgb);
-  --tone-ink: var(--ink-sage);
-}
-
-.tone-lilac {
-  --tone-rgb: var(--tone-lilac-rgb);
-  --tone-ink: var(--ink-lilac);
-}
-
-.tone-butter {
-  --tone-rgb: var(--tone-butter-rgb);
-  --tone-ink: var(--ink-butter);
 }
 
 .page-resume {
@@ -230,8 +189,6 @@
 }
 
 .resume-sheet {
-  --tone-rgb: var(--tone-rose-rgb);
-  --tone-ink: var(--ink-rose);
   padding: 1.35rem 1.25rem;
   border: 1px solid var(--resume-shell-border);
   border-radius: 1.2rem;
@@ -323,39 +280,8 @@
   line-height: 1;
 }
 
-/* Sections: a tone dot, the uppercase title, and a rule that fades out to the right. */
 .resume-section {
   margin: 1.25rem 0 0;
-}
-
-.resume-section h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin: 0 0 0.75rem;
-  color: var(--text-main);
-  font-family: var(--font-sans);
-  font-size: 0.98rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.resume-section h2::before {
-  content: "";
-  flex: none;
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  background: var(--tone-ink);
-  box-shadow: 0 0 0 0.2rem rgba(var(--tone-rgb), 0.6);
-}
-
-.resume-section h2::after {
-  content: "";
-  flex: 1;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(var(--tone-rgb), var(--resume-edge)), transparent);
 }
 
 .resume-section p {
@@ -371,9 +297,9 @@
 
 .resume-section--summary {
   padding: 1rem 1.1rem 1.05rem;
-  border: 1px solid rgba(var(--tone-rgb), var(--resume-edge));
+  border: 1px solid rgba(var(--tone-rgb), var(--tone-edge));
   border-radius: 0.9rem;
-  background: rgba(var(--tone-rgb), var(--resume-tint));
+  background: rgba(var(--tone-rgb), var(--tone-tint));
 }
 
 /* Open source: one tinted card per list. */
@@ -385,15 +311,13 @@
 
 .resume-oss-card {
   padding: 0.85rem 0.95rem 0.95rem;
-  border: 1px solid rgba(var(--tone-rgb), var(--resume-edge));
+  border: 1px solid rgba(var(--tone-rgb), var(--tone-edge));
   border-radius: 0.9rem;
-  background: rgba(var(--tone-rgb), var(--resume-tint));
+  background: rgba(var(--tone-rgb), var(--tone-tint));
 }
 
 .resume-sheet .resume-oss-card h3 {
   margin: 0 0 0.55rem;
-  padding: 0;
-  border: 0;
   color: var(--tone-ink);
   font-family: var(--font-sans);
   font-size: 0.86rem;
@@ -476,13 +400,9 @@
 
 .resume-sheet .resume-entry h3 {
   margin: 0 0 0.1rem;
-  padding: 0;
-  border: 0;
   color: var(--text-main);
   font-family: var(--font-sans);
   font-size: 1rem;
-  letter-spacing: 0;
-  text-transform: none;
 }
 
 .resume-section .resume-entry__company {
@@ -501,27 +421,6 @@
   font-size: 0.8rem;
   font-weight: 600;
   white-space: nowrap;
-}
-
-.resume-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin: 0 0 0.55rem;
-  padding: 0;
-  list-style: none;
-}
-
-.resume-stack li {
-  margin: 0;
-  padding: 0.05rem 0.5rem;
-  border: 1px solid rgba(var(--tone-rgb), var(--resume-edge));
-  border-radius: 0.4rem;
-  background: rgba(var(--tone-rgb), var(--resume-tint));
-  color: var(--text-main);
-  font-size: 0.76rem;
-  font-weight: 600;
-  line-height: 1.5;
 }
 
 .resume-list {
@@ -650,10 +549,11 @@
   align-items: center;
   gap: 0.55rem;
   margin: 0.85rem 0 0.5rem;
-  padding: 0;
-  border: none;
-  background: none;
+  color: var(--tone-ink);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
   letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .page-manifesto section h3::before {
@@ -661,7 +561,7 @@
   width: 0.22rem;
   height: 1.35rem;
   border-radius: 999px;
-  background: rgba(var(--accent-rgb), 0.42);
+  background: var(--tone-ink);
 }
 
 .page-manifesto section > p {
@@ -680,6 +580,15 @@
   border-left: 2px solid rgba(var(--accent-rgb), 0.14);
 }
 
+/* Paragraphs under "Mistakes I have seen" (tone-peach) and "How I think it should work" (tone-sage). */
+.page-manifesto section .tone-peach ~ p {
+  border-left-color: rgba(var(--tone-peach-rgb), 0.9);
+}
+
+.page-manifesto section .tone-sage ~ p {
+  border-left-color: rgba(var(--tone-sage-rgb), 0.9);
+}
+
 .page-manifesto .column > footer {
   margin-top: 2.2rem;
   padding-top: 1rem;
@@ -688,14 +597,6 @@
 
 :root.theme-dark .page-manifesto .manifesto-index {
   box-shadow: none;
-}
-
-:root.theme-dark .page-manifesto section h3 {
-  background: none;
-}
-
-:root.theme-dark .page-manifesto section h3::before {
-  background: rgba(var(--accent-rgb), 0.5);
 }
 
 @media (max-width: 760px) {
@@ -813,7 +714,7 @@ html.export-pdf .resume-entry__header {
   margin-bottom: 0.35rem;
 }
 
-html.export-pdf .resume-stack {
+html.export-pdf .tag-list {
   margin-bottom: 0.4rem;
 }
 
@@ -826,14 +727,14 @@ html.export-pdf .resume-header,
 html.export-pdf .resume-section--summary,
 html.export-pdf .resume-oss-card,
 html.export-pdf .resume-entry__header,
-html.export-pdf .resume-stack,
+html.export-pdf .tag-list,
 html.export-pdf .resume-list li {
   break-inside: avoid;
 }
 
-html.export-pdf .resume-section h2,
+html.export-pdf .section-title,
 html.export-pdf .resume-entry__header,
-html.export-pdf .resume-stack {
+html.export-pdf .tag-list {
   break-after: avoid;
 }
 

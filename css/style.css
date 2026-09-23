@@ -94,6 +94,110 @@
 	--shadow-card-hover:0 6px 10px rgba(0, 0, 0, 0.12), 0 16px 36px rgba(0, 0, 0, 0.30);
 }
 
+/* Tones. A section, card, or item sets one of the site's tones (tone-rose, tone-peach,
+   tone-sage, tone-lilac, tone-butter): --tone-rgb tints backgrounds and borders, and
+   --tone-ink colors dots, headings, and links. Rose is the default. */
+:root {
+	--ink-rose:#a4546f;
+	--ink-peach:#a95d35;
+	--ink-sage:#4f7d41;
+	--ink-lilac:#6a57a8;
+	--ink-butter:#86670f;
+	--tone-tint:0.3;
+	--tone-edge:0.95;
+	--tone-rgb:var(--tone-rose-rgb);
+	--tone-ink:var(--ink-rose);
+}
+
+:root.theme-dark {
+	--ink-rose:#f0a6ba;
+	--ink-peach:#f2b893;
+	--ink-sage:#b3d8a1;
+	--ink-lilac:#c3b4f2;
+	--ink-butter:#e9d18f;
+	--tone-tint:0.24;
+	--tone-edge:0.7;
+}
+
+.tone-rose {
+	--tone-rgb:var(--tone-rose-rgb);
+	--tone-ink:var(--ink-rose);
+}
+
+.tone-peach {
+	--tone-rgb:var(--tone-peach-rgb);
+	--tone-ink:var(--ink-peach);
+}
+
+.tone-sage {
+	--tone-rgb:var(--tone-sage-rgb);
+	--tone-ink:var(--ink-sage);
+}
+
+.tone-lilac {
+	--tone-rgb:var(--tone-lilac-rgb);
+	--tone-ink:var(--ink-lilac);
+}
+
+.tone-butter {
+	--tone-rgb:var(--tone-butter-rgb);
+	--tone-ink:var(--ink-butter);
+}
+
+/* Section title: a tone dot, the uppercase label, and a rule that fades out to the right. */
+.section-title {
+	display:flex;
+	align-items:center;
+	gap:0.65rem;
+	margin:0 0 0.75rem;
+	color:var(--text-main);
+	font-family:var(--font-sans);
+	font-size:0.98rem;
+	font-weight:700;
+	letter-spacing:0.1em;
+	text-transform:uppercase;
+}
+
+.section-title::before {
+	content:"";
+	flex:none;
+	width:0.7rem;
+	height:0.7rem;
+	border-radius:50%;
+	background:var(--tone-ink);
+	box-shadow:0 0 0 0.2rem rgba(var(--tone-rgb), 0.6);
+}
+
+.section-title::after {
+	content:"";
+	flex:1;
+	height:2px;
+	border-radius:999px;
+	background:linear-gradient(90deg, rgba(var(--tone-rgb), var(--tone-edge)), transparent);
+}
+
+/* Technology chips. */
+.tag-list {
+	display:flex;
+	flex-wrap:wrap;
+	gap:0.3rem;
+	margin:0 0 0.55rem;
+	padding:0;
+	list-style:none;
+}
+
+.tag-list li {
+	margin:0;
+	padding:0.05rem 0.5rem;
+	border:1px solid rgba(var(--tone-rgb), var(--tone-edge));
+	border-radius:0.4rem;
+	background:rgba(var(--tone-rgb), var(--tone-tint));
+	color:var(--text-main);
+	font-size:0.76rem;
+	font-weight:600;
+	line-height:1.5;
+}
+
 .container {
 	position:relative;
 	z-index:1;
@@ -606,17 +710,6 @@ h3 {
 	margin:0 0 var(--spacing-s);
 }
 
-section h3 {
-	font-size:0.85rem;
-	font-weight:700;
-	text-transform:uppercase;
-	letter-spacing:0.06em;
-	color:var(--accent);
-	border-left:3px solid rgba(var(--accent-rgb), 0.5);
-	padding-left:0.75rem;
-	margin:2rem 0 0.75rem;
-}
-
 p {
 	margin:0 0 1.5rem;
 	color:var(--text-muted);
@@ -766,86 +859,71 @@ section a {
 	align-items:stretch;
 }
 
+/* Open source: one tinted card per list, one row per repository. */
 .oss-split__card {
 	display:flex;
 	flex-direction:column;
 	text-align:left;
-	padding:1rem;
-	border-radius:1.35rem;
-	background:var(--surface-soft);
-	border:1px solid rgba(var(--accent-rgb), 0.24);
-	box-shadow:var(--shadow-card);
+	padding:1rem 0.8rem 0.8rem;
+	border-radius:1.2rem;
+	background:rgba(var(--tone-rgb), var(--tone-tint));
+	border:1px solid rgba(var(--tone-rgb), var(--tone-edge));
 }
 
 .oss-split__card > h3 {
-	margin:0 0 0.9rem;
+	margin:0 0 0.4rem;
+	padding:0 0.7rem;
+	color:var(--tone-ink);
+	font-family:var(--font-sans);
+	font-size:0.86rem;
+	letter-spacing:0.1em;
+	text-transform:uppercase;
 }
 
-.oss-grid {
+.oss-list {
 	display:grid;
-	grid-template-columns:repeat(2, 1fr);
-	align-items:stretch;
-	gap:1rem;
+	gap:0.15rem;
 }
 
-.oss-grid__card {
-	display:flex;
-	flex-direction:column;
-	justify-content:flex-start;
-	text-align:left;
-	padding:1.1rem 1.2rem;
-	min-height:14rem;
-	border-radius:1.1rem;
-	background:var(--surface-soft);
-	border:1px solid rgba(var(--accent-rgb), 0.24);
-	box-shadow:var(--shadow-card);
-	text-decoration:none;
+.oss-item {
+	display:block;
+	padding:0.6rem 0.7rem;
+	border-radius:0.8rem;
 	color:inherit;
-	cursor:pointer;
-	transition:transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+	text-decoration:none;
+	transition:background-color 160ms ease;
 }
 
-.oss-grid__card:hover,
-.oss-grid__card:focus-visible {
-	transform:translateY(-3px);
-	box-shadow:var(--shadow-card-hover);
-	border-color:rgba(var(--accent-rgb), 0.32);
+.oss-item:hover,
+.oss-item:focus-visible {
+	background:rgba(var(--tone-rgb), 0.45);
 }
 
-.oss-grid__card h4 {
+.oss-item h4 {
+	margin:0 0 0.2rem;
+	color:var(--tone-ink);
 	font-size:1.02rem;
 	font-weight:700;
-	margin:0 0 0.35rem;
-	color:var(--text-main);
 }
 
-.oss-grid__card p {
-	font-size:0.88rem;
-	line-height:1.45;
-	color:var(--text-muted);
+.oss-item p {
 	margin:0;
-}
-
-.oss-grid__card--peach {
-	border-color:rgba(var(--tone-peach-rgb), 0.36);
-}
-
-.oss-grid__card--rose {
-	border-color:rgba(var(--tone-rose-rgb), 0.34);
-}
-
-.oss-grid__card--sage {
-	border-color:rgba(var(--tone-sage-rgb), 0.34);
-}
-
-.oss-grid__card--lilac {
-	border-color:rgba(var(--tone-lilac-rgb), 0.34);
+	color:var(--text-muted);
+	font-size:0.9rem;
+	line-height:1.45;
 }
 
 .star-count {
-	font-size:0.82rem;
-	font-weight:600;
-	color:var(--text-muted);
+	display:inline-block;
+	margin-left:0.25rem;
+	padding:0 0.45rem;
+	border-radius:999px;
+	background:rgba(var(--tone-rgb), 0.75);
+	color:var(--text-main);
+	font-size:0.75rem;
+	font-weight:700;
+	line-height:1.55;
+	vertical-align:0.1em;
 	white-space:nowrap;
 }
 
@@ -863,6 +941,61 @@ section a {
 	background:var(--surface-soft);
 	border:1px solid rgba(var(--accent-rgb), 0.24);
 	box-shadow:var(--shadow-card);
+}
+
+/* Current role on the home page: the same header as a resume role. */
+.role-header {
+	display:grid;
+	grid-template-columns:minmax(0, 1fr) auto;
+	align-items:start;
+	gap:1rem;
+	margin-bottom:0.75rem;
+}
+
+.role-title {
+	margin:0 0 0.15rem;
+	color:var(--text-main);
+	font-family:var(--font-sans);
+	font-size:1.35rem;
+	line-height:1.3;
+}
+
+.role-company {
+	margin:0;
+	color:var(--tone-ink);
+	font-weight:700;
+}
+
+.role-dates {
+	margin:0;
+	padding:0.15rem 0.7rem;
+	border-radius:999px;
+	background:rgba(var(--tone-rgb), 0.5);
+	color:var(--text-main);
+	font-size:0.85rem;
+	font-weight:600;
+	white-space:nowrap;
+}
+
+.spotlight .tag-list {
+	margin-bottom:1rem;
+}
+
+.spotlight .tag-list li {
+	font-size:0.82rem;
+}
+
+.role-more {
+	display:inline-block;
+	margin-top:0.2rem;
+	color:var(--tone-ink);
+	font-weight:700;
+	text-decoration:none;
+}
+
+.role-more:hover,
+.role-more:focus-visible {
+	text-decoration:underline;
 }
 
 .column--landing > .spotlight:not(.spotlight--feature) {
@@ -902,8 +1035,8 @@ ul {
 	width:0.45rem;
 	height:0.45rem;
 	border-radius:50%;
-	background:linear-gradient(135deg, var(--accent), var(--accent-strong));
-	box-shadow:0 0 12px rgba(var(--accent-strong-rgb), 0.45);
+	background:var(--tone-ink);
+	box-shadow:0 0 0 0.18rem rgba(var(--tone-rgb), 0.45);
 }
 
 .closing {
@@ -996,8 +1129,9 @@ ul {
 .playground-card__label {
 	display:block;
 	max-width:6.5rem;
-	font-family:var(--font-display);
-	font-size:0.98rem;
+	font-family:var(--font-sans);
+	font-size:0.92rem;
+	font-weight:700;
 	line-height:1.05;
 	letter-spacing:0.01em;
 	text-shadow:0 1px 2px rgba(0, 0, 0, 0.12);
@@ -1584,8 +1718,7 @@ section {
 
 @media (max-width:62rem) {
 	.hero-shell,
-	.oss-split,
-	.oss-grid {
+	.oss-split {
 		grid-template-columns:1fr;
 	}
 
@@ -1636,10 +1769,6 @@ section {
 	.playground-card--onlyfans {
 		grid-column:auto;
 		grid-row:auto;
-	}
-
-	.oss-grid__card {
-		min-height:auto;
 	}
 
 	.landscape-scene__sun {
@@ -1752,6 +1881,19 @@ section {
 
 	.spotlight {
 		padding:1.15rem;
+	}
+
+	.oss-split__card {
+		padding:0.8rem 0.3rem 0.4rem;
+	}
+
+	.role-header {
+		display:block;
+	}
+
+	.role-dates {
+		display:inline-block;
+		margin-top:0.5rem;
 	}
 }
 

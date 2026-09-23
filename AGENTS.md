@@ -13,11 +13,18 @@ The summary, current role, and open source sections appear on both `index.html` 
 
 - Change `data/profile.json` and run `npm run content`. Never edit inside the markers by hand: CI runs `npm run content:check` and fails when a page drifts.
 - `stars` in the JSON are fallbacks. The build fetches live counts from the GitHub API.
+- The home page shows only the first 5 `currentRole.highlights` and links to the resume for the rest, so keep the most important ones first.
 - `<time data-last-updated>` dates and the sitemap `lastmod` are stamped by the build from git history, so don't bump them by hand.
+
+## Colors
+
+- Sections, cards, and items take one of the site's tones with a `tone-*` class (`rose`, `peach`, `sage`, `lilac`, `butter`, defined in `css/style.css`). `--tone-rgb` tints backgrounds and borders; `--tone-ink` colors dots, headings, and links. Rose is the default.
+- Give neighbouring blocks different tones. On the resume, a second role at the same company keeps the tone and adds `resume-entry--continued`.
+- Section headings use `.section-title` and technology chips use `.tag-list`, on every page.
+- On the manifesto, "Mistakes I have seen" is `tone-peach` and "How I think it should work" is `tone-sage`, in both languages.
 
 ## Resume
 
-- Every section, card, and role on `resume.html` has a `tone-*` class (`rose`, `peach`, `sage`, `lilac`, `butter`) that sets its colors. Give a new role a different tone from its neighbours; a second role at the same company keeps the tone and adds `resume-entry--continued`.
 - The PDFs are the same page with `html.export-pdf` (rules at the end of `css/resume.css`). After changing the resume, run `npm run resume` and check it still reports 2 pages.
 
 ## Landscape scene
