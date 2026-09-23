@@ -91,7 +91,7 @@ function renderHomeOpenSource(openSource, stars) {
 
 function renderResumeOpenSource(openSource, stars) {
   const card = (title, tone, items) => [
-    `<div class="resume-oss-card tone-${tone}">`,
+    `<div class="resume-card tone-${tone}">`,
     `  <h3>${title}</h3>`,
     '  <div class="resume-oss-grid">',
     ...items.flatMap((item) => indentLines([
@@ -158,7 +158,7 @@ export function renderRegions(profile, { stars = {} } = {}) {
       'open-source': renderHomeOpenSource(openSource, stars),
     },
     'resume.html': {
-      headline: [`<p class="resume-role">${[currentRole.title, ...currentRole.headlineTags].join(' | ')}</p>`],
+      headline: [`<p class="resume-role">${profile.person.headline}</p>`],
       summary: summary.map((paragraph) => `<p>${paragraph}</p>`),
       'open-source': renderResumeOpenSource(openSource, stars),
       'current-role': [
