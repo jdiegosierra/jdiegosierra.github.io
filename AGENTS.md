@@ -28,7 +28,7 @@ The summary, current role, experience, and open source sections (plus the JSON-L
 ## Languages
 
 - Every page except the 404 exists in English (`NAME.html`) and Spanish (`NAME.es.html`). Keep each pair's hand-written parts in sync (sections, heading ids, order, links), and point Spanish pages at Spanish pages.
-- Both pages of a pair carry the `hreflang` alternates and the EN | ES `.language-switcher` in their toolbar. The build lists the alternates in `sitemap.xml` (`PAGES` in `scripts/build.mjs`).
+- Both pages of a pair carry the `hreflang` alternates and the EN | ES `.language-switcher` as the first item of their toolbar, so it sits in the same place on every page. Its links use `language-switcher__link`, not the toolbar link classes, so page-specific toolbar styles never change it. The page wrappers (`.container`, `.container-left`, `.resume-page`) share the same box for the same reason. The build lists the alternates in `sitemap.xml` (`PAGES` in `scripts/build.mjs`).
 - Scripts read `document.documentElement.lang` for their visible text (`js/site-shell.js`, `js/home.js`). The link-playground states keep Argo CD's English names in both languages.
 - The site never picks a language for the visitor: the URL decides, and the switcher changes it.
 

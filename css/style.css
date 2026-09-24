@@ -259,14 +259,14 @@
 	line-height:1.5;
 }
 
-/* Page toolbar: the back link on the left, the language switcher and actions on the right.
-   The home has no back link, so resume-toolbar--home shows only the switcher, on the left,
-   clear of the sun and moon in the top right corner. */
+/* Page toolbar: the language switcher first, then the back link, and the page actions pushed to
+   the right. The switcher stays in the same place on every page, clear of the sun and moon in
+   the top right corner. */
 .resume-toolbar {
-	display:grid;
-	grid-template-columns:max-content 1fr;
+	display:flex;
+	flex-wrap:wrap;
 	align-items:center;
-	gap:1rem;
+	gap:0.75rem;
 	margin-bottom:1.2rem;
 }
 
@@ -277,11 +277,12 @@
 .resume-toolbar__actions {
 	display:flex;
 	align-items:center;
-	justify-content:flex-end;
 	gap:0.75rem;
+	margin-left:auto;
 	min-width:0;
 }
 
+/* The language switcher has its own link class, so page-specific toolbar styles never change it. */
 .language-switcher {
 	display:grid;
 	grid-template-columns:repeat(2, minmax(0, 1fr));
@@ -294,23 +295,27 @@
 	box-shadow:0 8px 20px rgba(157, 111, 124, 0.06);
 }
 
-.language-switcher .resume-toolbar__link {
-	width:100%;
-	min-width:0;
+.language-switcher__link {
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
 	min-height:2.5rem;
-	padding:0;
-	border:0;
-	background:transparent;
+	border-radius:999px;
+	color:var(--text-main);
+	font-size:0.95rem;
+	font-weight:700;
+	text-decoration:none;
+	transition:background-color 160ms ease;
 }
 
-.language-switcher .resume-toolbar__link[aria-current="page"] {
-	background:rgba(var(--accent-rgb), 0.18);
-	border-color:rgba(var(--accent-rgb), 0.24);
+.language-switcher__link:hover,
+.language-switcher__link:focus-visible {
 	color:var(--text-main);
+	background:rgba(var(--accent-rgb), 0.1);
 }
 
-.theme-dark .language-switcher .resume-toolbar__link[aria-current="page"] {
-	color:var(--text-main);
+.language-switcher__link[aria-current="page"] {
+	background:rgba(var(--accent-rgb), 0.22);
 }
 
 .resume-toolbar__link,
@@ -362,34 +367,21 @@
 	border-color:rgba(var(--tone-rose-rgb), 0.38);
 }
 
-.resume-toolbar--home {
-	grid-template-columns:1fr;
-}
-
-.resume-toolbar--home .resume-toolbar__actions {
-	justify-content:flex-start;
-}
-
 :root.theme-dark .language-switcher,
 :root.theme-dark .resume-toolbar__link,
 :root.theme-dark .resume-toolbar__button {
 	box-shadow:0 8px 20px rgba(0, 0, 0, 0.16);
 }
 
+/* On phones the page actions (the resume download) take their own row, below the sun. */
 @media (max-width:760px) {
-	.resume-toolbar:not(.resume-toolbar--home),
-	.resume-toolbar:not(.resume-toolbar--home) .resume-toolbar__actions {
-		display:block;
+	.resume-toolbar__actions {
+		flex-basis:100%;
+		margin-left:0;
 	}
 
-	.resume-toolbar:not(.resume-toolbar--home) .language-switcher {
-		width:100%;
-	}
-
-	.resume-toolbar:not(.resume-toolbar--home) .resume-toolbar__link,
-	.resume-toolbar:not(.resume-toolbar--home) .resume-toolbar__button {
-		width:100%;
-		margin-bottom:0.75rem;
+	.resume-toolbar__actions .resume-toolbar__button {
+		flex:1;
 	}
 }
 
@@ -2165,7 +2157,8 @@ section {
 		font-size:var(--scale-0);
 	}
 
-	.container {
+	.container,
+	.container-left {
 		padding-top:1.5rem;
 	}
 
