@@ -132,7 +132,23 @@
     var WALL = 200;
     var MAX_SPEED = 32;
     var DRAG_THRESHOLD = 6;
+    // The states keep Argo CD's names in both languages; the details follow the page language.
     var STATES = { synced: 'Synced', 'out-of-sync': 'OutOfSync', syncing: 'Syncing' };
+    var TEXT = document.documentElement.lang.indexOf('es') === 0
+      ? {
+          drifted: 'Los enlaces se han desviado del estado deseado.',
+          deploying: 'Desplegando los enlaces.',
+          restoring: 'Devolviendo cada enlace a su sitio.',
+          ready: 'Coge un enlace y lánzalo.',
+          recovered: function (seconds) { return 'MTTR ' + seconds + ' s. ¿Lo rompes otra vez?'; }
+        }
+      : {
+          drifted: 'The links drifted from the desired state.',
+          deploying: 'Deploying the links.',
+          restoring: 'Putting every link back in its place.',
+          ready: 'Grab a link and throw it.',
+          recovered: function (seconds) { return 'MTTR ' + seconds + 's. Break it again?'; }
+        };
 
     var arena = lab.querySelector('.link-lab__arena');
     var bar = lab.querySelector('.link-lab__bar');
@@ -296,7 +312,7 @@
         return;
       }
       incidentStart = performance.now();
-      setState('out-of-sync', 'The links drifted from the desired state.');
+      setState('out-of-sync', TEXT.drifted);
     }
 
     // Moves every pill to its place, bottom row first, without simulating the trip there.
@@ -329,7 +345,7 @@
         drag.pill.el.classList.remove('is-grabbed');
         drag = null;
       }
-      setState('syncing', entrance ? 'Deploying the links.' : 'Putting every link back in its place.');
+      setState('syncing', entrance ? TEXT.deploying : TEXT.restoring);
       run();
     }
 
@@ -363,9 +379,9 @@
       animation = null;
       settle();
       if (wasEntrance) {
-        setState('synced', 'Grab a link and throw it.');
+        setState('synced', TEXT.ready);
       } else {
-        setState('synced', 'MTTR ' + ((performance.now() - incidentStart) / 1000).toFixed(1) + 's. Break it again?');
+        setState('synced', TEXT.recovered(((performance.now() - incidentStart) / 1000).toFixed(1)));
       }
     }
 

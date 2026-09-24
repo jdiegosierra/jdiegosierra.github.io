@@ -316,10 +316,11 @@
       hint.textContent = isDark ? labels.hintNight : labels.hintDay;
     }
 
+    // data-pdf names the PDF of the page's language (resume, resume-es); dark adds "-dark".
     if (downloadLink) {
-      downloadLink.setAttribute('href', isDark ? 'resume-dark.pdf' : 'resume.pdf');
-      downloadLink.setAttribute('download', isDark ? 'diego-sierra-resume-dark.pdf' : 'diego-sierra-resume.pdf');
-      downloadLink.textContent = 'Download PDF';
+      var pdf = (downloadLink.getAttribute('data-pdf') || 'resume') + (isDark ? '-dark' : '');
+      downloadLink.setAttribute('href', pdf + '.pdf');
+      downloadLink.setAttribute('download', 'diego-sierra-' + pdf + '.pdf');
     }
 
     // The embed URL lives in data-src so the iframe loads once, already in the right theme.

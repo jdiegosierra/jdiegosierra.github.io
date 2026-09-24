@@ -2,18 +2,20 @@
 
 ## Structure
 
-- Static site on GitHub Pages. Pages: `index.html`, `resume.html`, `manifesto.html`, `manifesto.es.html`, `404.html`.
+- Static site on GitHub Pages. Pages: `index.html`, `resume.html`, and `manifesto.html`, each with a Spanish `.es.html` twin, plus `404.html` (English only).
 - `css/`, `fonts/`, `images/`, and `js/` are published as-is. `scripts/` is build tooling and is never published.
 - `npm run build` writes the deployable site to `dist/`. The resume PDFs, Open Graph images, and `sitemap.xml` only exist there.
-- `npm run resume` renders only `dist/resume.pdf` and `dist/resume-dark.pdf`, inside the same Playwright container CI uses (needs Docker), so they match the deployed PDFs.
+- `npm run resume` renders only the resume PDFs (`resume.pdf`, `resume-dark.pdf`, `resume-es.pdf`, `resume-es-dark.pdf`) into `dist/`, inside the same Playwright container CI uses (needs Docker), so they match the deployed PDFs.
 
 ## Shared content
 
-The summary, current role, and open source sections appear on both `index.html` and `resume.html` (plus the JSON-LD in the home page head). They are generated from `data/profile.json` between `<!-- content:NAME -->` and `<!-- /content:NAME -->` markers.
+The summary, current role, experience, and open source sections (plus the JSON-LD in the home page head) are generated from `data/profile.json` into the home and resume pages of both languages, between `<!-- content:NAME -->` and `<!-- /content:NAME -->` markers.
 
 - Change `data/profile.json` and run `npm run content`. Never edit inside the markers by hand: CI runs `npm run content:check` and fails when a page drifts.
 - `stars` in the JSON are fallbacks. The build fetches live counts from the GitHub API.
-- The home page shows only the first 5 `currentRole.highlights` and links to the resume for the rest, so keep the most important ones first.
+- `roles` lists every job, newest first; the first one is the current role on the home page. Dates are `YYYY-MM` (`end: null` while current) and are formatted per language.
+- Texts that change with the language are `{ "en": …, "es": … }` objects. Job titles, company names, the headline, and technology chips stay in English on both.
+- The home page shows only the first 5 highlights of the current role and links to the resume for the rest, so keep the most important ones first.
 - `<time data-last-updated>` dates and the sitemap `lastmod` are stamped by the build from git history, so don't bump them by hand.
 
 ## Colors
@@ -23,9 +25,16 @@ The summary, current role, and open source sections appear on both `index.html` 
 - Section headings use `.section-title` and technology chips use `.tag-list`, on every page.
 - On the manifesto, "Mistakes I have seen" is `tone-peach` and "How I think it should work" is `tone-sage`, in both languages.
 
+## Languages
+
+- Every page except the 404 exists in English (`NAME.html`) and Spanish (`NAME.es.html`). Keep each pair's hand-written parts in sync (sections, heading ids, order, links), and point Spanish pages at Spanish pages.
+- Both pages of a pair carry the `hreflang` alternates and the EN | ES `.language-switcher` in their toolbar. The build lists the alternates in `sitemap.xml` (`PAGES` in `scripts/build.mjs`).
+- Scripts read `document.documentElement.lang` for their visible text (`js/site-shell.js`, `js/home.js`). The link-playground states keep Argo CD's English names in both languages.
+- The site never picks a language for the visitor: the URL decides, and the switcher changes it.
+
 ## Resume
 
-- The PDFs are the same page with `html.export-pdf` (rules at the end of `css/resume.css`). After changing the resume, run `npm run resume` and check it still reports 2 pages.
+- The PDFs are the resume pages with `html.export-pdf` (rules at the end of `css/resume.css`), one per language and theme; the download button's `data-pdf` names the language's file. After changing the resume, run `npm run resume` and check that all four PDFs still report 2 pages. Spanish runs longer, so check it first.
 
 ## Links playground
 
@@ -41,7 +50,7 @@ The animated landscape scene and the theme toggle (sun/moon) are injected on eve
 
 ## Manifesto
 
-`manifesto.html` and `manifesto.es.html` are translations of each other: keep their sections, heading ids, and order in sync.
+`manifesto.html` and `manifesto.es.html` are translations of each other (see Languages).
 
 ## 404 page
 

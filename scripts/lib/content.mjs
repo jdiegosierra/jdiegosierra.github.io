@@ -1,5 +1,5 @@
-// Renders the sections shared by index.html and resume.html from data/profile.json.
-// Each section lives between <!-- content:NAME --> and <!-- /content:NAME --> markers.
+// Renders the sections shared by the home and resume pages, in English and Spanish, from
+// data/profile.json. Each section lives between <!-- content:NAME --> and <!-- /content:NAME --> markers.
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -7,6 +7,28 @@ import path from 'node:path';
 const HOME_HIGHLIGHTS = 5;
 // Tone of each open source card, the same on both pages.
 const OSS_TONES = { contributions: 'lilac', projects: 'sage' };
+
+// The pages of each language, and the few interface strings the generated sections use.
+const LANGUAGES = {
+  en: {
+    home: 'index.html',
+    resume: 'resume.html',
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    present: 'Present',
+    contributions: 'Contributions',
+    projects: 'My Projects',
+    fullResume: 'See the full resume →',
+  },
+  es: {
+    home: 'index.es.html',
+    resume: 'resume.es.html',
+    months: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'],
+    present: 'Actualidad',
+    contributions: 'Contribuciones',
+    projects: 'Mis proyectos',
+    fullResume: 'Ver el currículum completo →',
+  },
+};
 
 export async function loadProfile(rootDir) {
   return JSON.parse(await readFile(path.join(rootDir, 'data', 'profile.json'), 'utf8'));
@@ -68,7 +90,20 @@ function indentLines(lines, depth) {
   return lines.map((line) => '  '.repeat(depth) + line);
 }
 
-function renderHomeOpenSource(openSource, stars) {
+function formatMonth(value, text) {
+  const [year, month] = value.split('-');
+  return `${text.months[Number(month) - 1]} ${year}`;
+}
+
+function roleDates(role, text) {
+  return `${formatMonth(role.start, text)} - ${role.end ? formatMonth(role.end, text) : text.present}`;
+}
+
+function tagList(items) {
+  return ['<ul class="tag-list">', ...items.map((item) => `  <li>${escapeHtml(item)}</li>`), '</ul>'];
+}
+
+function renderHomeOpenSource(openSource, stars, lang, text) {
   const card = (title, tone, items) => [
     `<article class="tone-card tone-${tone}">`,
     `  <h3>${title}</h3>`,
@@ -76,7 +111,7 @@ function renderHomeOpenSource(openSource, stars) {
     ...items.flatMap((item) => indentLines([
       `<a class="oss-item" href="https://github.com/${item.repo}" target="_blank" rel="noopener">`,
       `  <h4>${escapeHtml(item.name)}${starLabel(item, stars, 'star-count')}</h4>`,
-      `  <p>${escapeHtml(item.description)}</p>`,
+      `  <p>${escapeHtml(item.description[lang])}</p>`,
       '</a>',
     ], 2)),
     '  </div>',
@@ -84,12 +119,12 @@ function renderHomeOpenSource(openSource, stars) {
   ];
 
   return [
-    ...card('Contributions', OSS_TONES.contributions, openSource.contributions),
-    ...card('My Projects', OSS_TONES.projects, openSource.projects),
+    ...card(text.contributions, OSS_TONES.contributions, openSource.contributions),
+    ...card(text.projects, OSS_TONES.projects, openSource.projects),
   ];
 }
 
-function renderResumeOpenSource(openSource, stars) {
+function renderResumeOpenSource(openSource, stars, lang, text) {
   const card = (title, tone, items) => [
     `<div class="resume-card tone-${tone}">`,
     `  <h3>${title}</h3>`,
@@ -97,7 +132,7 @@ function renderResumeOpenSource(openSource, stars) {
     ...items.flatMap((item) => indentLines([
       '<div class="resume-oss-item">',
       `  <h4><a href="https://github.com/${item.repo}" target="_blank" rel="noopener">${escapeHtml(item.name)}</a>${starLabel(item, stars, 'resume-star-count')}</h4>`,
-      `  <p>${escapeHtml(item.description)}</p>`,
+      `  <p>${escapeHtml(item.description[lang])}</p>`,
       '</div>',
     ], 2)),
     '  </div>',
@@ -105,12 +140,51 @@ function renderResumeOpenSource(openSource, stars) {
   ];
 
   return [
-    ...card('Contributions', OSS_TONES.contributions, openSource.contributions),
-    ...card('My Projects', OSS_TONES.projects, openSource.projects),
+    ...card(text.contributions, OSS_TONES.contributions, openSource.contributions),
+    ...card(text.projects, OSS_TONES.projects, openSource.projects),
   ];
 }
 
-function renderPersonJsonLd({ person, currentRole }) {
+// The current role on the home page: the first role, with only its first highlights.
+function renderHomeCurrentRole(role, lang, text) {
+  return [
+    '<div class="role-header">',
+    '  <div>',
+    `    <h2 class="role-title" id="current-heading">${role.title}</h2>`,
+    `    <p class="role-company">${role.company}</p>`,
+    '  </div>',
+    `  <p class="role-dates">${roleDates(role, text)}</p>`,
+    '</div>',
+    ...tagList(role.stack),
+    '<ul class="feature-list">',
+    ...role.highlights[lang].slice(0, HOME_HIGHLIGHTS).map((item) => `  <li>${item}</li>`),
+    '</ul>',
+    `<a class="role-more" href="${text.resume}">${text.fullResume}</a>`,
+  ];
+}
+
+// Every role on the resume, as a timeline. A second role at the same company is "continued".
+function renderExperience(roles, lang, text) {
+  return roles.flatMap((role, index) => [
+    ...(index ? [''] : []),
+    `<div class="resume-entry${role.continued ? ' resume-entry--continued' : ''} tone-${role.tone}">`,
+    '  <div class="resume-entry__header">',
+    '    <div>',
+    `      <h3>${role.title}</h3>`,
+    `      <p class="resume-entry__company">${role.company}</p>`,
+    '    </div>',
+    `    <p class="resume-entry__meta">${roleDates(role, text)}</p>`,
+    '  </div>',
+    ...(role.stack.length ? indentLines(tagList(role.stack), 1) : []),
+    '  <ul class="resume-list">',
+    ...role.highlights[lang].map((item) => `    <li>${item}</li>`),
+    '  </ul>',
+    '</div>',
+  ]);
+}
+
+function renderPersonJsonLd({ person, roles }) {
+  const [currentRole] = roles;
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -129,57 +203,24 @@ function renderPersonJsonLd({ person, currentRole }) {
   return ['<script type="application/ld+json">', ...json.split('\n'), '</script>'];
 }
 
-// Returns { "page.html": { regionName: [lines] } } with the given live star counts.
+// Returns { "page.html": { regionName: [lines] } } for every language, with the given live star counts.
 export function renderRegions(profile, { stars = {} } = {}) {
-  const { summary, currentRole, openSource } = profile;
-  const highlights = currentRole.highlights.map((item) => `  <li>${item}</li>`);
-  const stack = currentRole.stack.map((item) => `  <li>${escapeHtml(item)}</li>`);
+  const { person, summary, roles, openSource } = profile;
 
-  return {
-    'index.html': {
+  return Object.fromEntries(Object.entries(LANGUAGES).flatMap(([lang, text]) => [
+    [text.home, {
       'person-jsonld': renderPersonJsonLd(profile),
-      summary: summary.map((paragraph) => `<p>${paragraph}</p>`),
-      'current-role': [
-        '<div class="role-header">',
-        '  <div>',
-        `    <h2 class="role-title" id="current-heading">${currentRole.title}</h2>`,
-        `    <p class="role-company">${currentRole.company}</p>`,
-        '  </div>',
-        `  <p class="role-dates">${currentRole.since} - Present</p>`,
-        '</div>',
-        '<ul class="tag-list">',
-        ...stack,
-        '</ul>',
-        '<ul class="feature-list">',
-        ...highlights.slice(0, HOME_HIGHLIGHTS),
-        '</ul>',
-        '<a class="role-more" href="resume.html">See the full resume →</a>',
-      ],
-      'open-source': renderHomeOpenSource(openSource, stars),
-    },
-    'resume.html': {
-      headline: [`<p class="resume-role">${profile.person.headline}</p>`],
-      summary: summary.map((paragraph) => `<p>${paragraph}</p>`),
-      'open-source': renderResumeOpenSource(openSource, stars),
-      'current-role': [
-        '<div class="resume-entry tone-rose">',
-        '  <div class="resume-entry__header">',
-        '    <div>',
-        `      <h3>${currentRole.title}</h3>`,
-        `      <p class="resume-entry__company">${currentRole.company}</p>`,
-        '    </div>',
-        `    <p class="resume-entry__meta">${currentRole.since} - Present</p>`,
-        '  </div>',
-        '  <ul class="tag-list">',
-        ...indentLines(stack, 1),
-        '  </ul>',
-        '  <ul class="resume-list">',
-        ...indentLines(highlights, 1),
-        '  </ul>',
-        '</div>',
-      ],
-    },
-  };
+      summary: summary[lang].map((paragraph) => `<p>${paragraph}</p>`),
+      'current-role': renderHomeCurrentRole(roles[0], lang, text),
+      'open-source': renderHomeOpenSource(openSource, stars, lang, text),
+    }],
+    [text.resume, {
+      headline: [`<p class="resume-role">${person.headline}</p>`],
+      summary: summary[lang].map((paragraph) => `<p>${paragraph}</p>`),
+      'open-source': renderResumeOpenSource(openSource, stars, lang, text),
+      experience: renderExperience(roles, lang, text),
+    }],
+  ]));
 }
 
 // Replaces every marked region in html, keeping the indentation of its start marker.
@@ -191,7 +232,7 @@ export function applyRegions(html, regions, fileName) {
     }
     return result.replace(pattern, (match, indent) => [
       `${indent}<!-- content:${name} -->`,
-      ...lines.map((line) => indent + line),
+      ...lines.map((line) => (line ? indent + line : '')),
       `${indent}<!-- /content:${name} -->`,
     ].join('\n'));
   }, html);

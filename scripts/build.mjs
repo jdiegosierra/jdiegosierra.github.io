@@ -4,8 +4,8 @@
 //   3. stamps "last updated" dates and sitemap.xml from git history,
 //   4. renders the Open Graph images and resume PDFs with Playwright.
 // Usage: node scripts/build.mjs [--resume]  (set GITHUB_TOKEN to avoid GitHub API rate limits)
-//   --resume  only build resume.html and its PDFs, offline, with the star counts from profile.json
-//             (npm run resume runs this inside the Playwright container CI uses).
+//   --resume  only build the resume pages (English and Spanish) and their PDFs, offline, with the
+//             star counts from profile.json (npm run resume runs this inside the Playwright container CI uses).
 import { execFileSync } from 'node:child_process';
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -21,12 +21,26 @@ const resumeOnly = process.argv.includes('--resume');
 const STATIC_ENTRIES = ['css', 'fonts', 'images', 'js', '404.html', 'robots.txt'];
 
 // A page's "last updated" date is the latest commit touching any of its sources.
+// alternates lists the page in each language, for the sitemap.
+const HOME_ALTERNATES = { en: '', es: 'index.es.html' };
+const RESUME_ALTERNATES = { en: 'resume.html', es: 'resume.es.html' };
 const MANIFESTO_ALTERNATES = { en: 'manifesto.html', es: 'manifesto.es.html' };
 const PAGES = [
-  { file: 'index.html', url: SITE_URL, sources: ['index.html', 'data/profile.json'] },
-  { file: 'resume.html', url: `${SITE_URL}resume.html`, sources: ['resume.html', 'data/profile.json'] },
+  { file: 'index.html', url: SITE_URL, sources: ['index.html', 'data/profile.json'], alternates: HOME_ALTERNATES },
+  { file: 'index.es.html', url: `${SITE_URL}index.es.html`, sources: ['index.es.html', 'data/profile.json'], alternates: HOME_ALTERNATES },
+  { file: 'resume.html', url: `${SITE_URL}resume.html`, sources: ['resume.html', 'data/profile.json'], alternates: RESUME_ALTERNATES },
+  { file: 'resume.es.html', url: `${SITE_URL}resume.es.html`, sources: ['resume.es.html', 'data/profile.json'], alternates: RESUME_ALTERNATES },
   { file: 'manifesto.html', url: `${SITE_URL}manifesto.html`, sources: ['manifesto.html'], alternates: MANIFESTO_ALTERNATES },
   { file: 'manifesto.es.html', url: `${SITE_URL}manifesto.es.html`, sources: ['manifesto.es.html'], alternates: MANIFESTO_ALTERNATES },
+];
+const RESUME_PAGES = Object.values(RESUME_ALTERNATES);
+
+// Each resume page in both themes; site-shell.js builds the same names from the link's data-pdf.
+const RESUME_PDFS = [
+  { page: 'resume.html', theme: 'light', file: 'resume.pdf' },
+  { page: 'resume.html', theme: 'dark', file: 'resume-dark.pdf' },
+  { page: 'resume.es.html', theme: 'light', file: 'resume-es.pdf' },
+  { page: 'resume.es.html', theme: 'dark', file: 'resume-es-dark.pdf' },
 ];
 
 const OG_IMAGES = [
@@ -144,9 +158,9 @@ async function renderOgImages(browser) {
   await page.close();
 }
 
-async function renderResumePdf(browser, theme, fileName) {
+async function renderResumePdf(browser, { page: pageFile, theme, file: fileName }) {
   const page = await browser.newPage({ colorScheme: theme });
-  await page.goto(`${pathToFileURL(path.join(distDir, 'resume.html')).href}?theme=${theme}&pdf=1`, { waitUntil: 'load' });
+  await page.goto(`${pathToFileURL(path.join(distDir, pageFile)).href}?theme=${theme}&pdf=1`, { waitUntil: 'load' });
   await page.emulateMedia({ media: 'screen', colorScheme: theme });
   await page.evaluate(() => document.fonts.ready);
 
@@ -190,7 +204,7 @@ if (resumeOnly) {
 const regions = renderRegions(profile, { stars });
 
 const sitemapPages = [];
-for (const page of PAGES.filter(({ file }) => !resumeOnly || file === 'resume.html')) {
+for (const page of PAGES.filter(({ file }) => !resumeOnly || RESUME_PAGES.includes(file))) {
   let html = await readFile(path.join(rootDir, page.file), 'utf8');
   if (regions[page.file]) {
     html = applyRegions(html, regions[page.file], page.file);
@@ -208,8 +222,9 @@ try {
   if (!resumeOnly) {
     await renderOgImages(browser);
   }
-  await renderResumePdf(browser, 'light', 'resume.pdf');
-  await renderResumePdf(browser, 'dark', 'resume-dark.pdf');
+  for (const pdf of RESUME_PDFS) {
+    await renderResumePdf(browser, pdf);
+  }
 } finally {
   await browser.close();
 }

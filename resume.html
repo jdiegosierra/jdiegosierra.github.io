@@ -10,6 +10,8 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <meta name="description" content="Resume of Diego Sierra, focused on platform engineering, SRE, cloud architecture, and AI-enabled software delivery.">
   <link rel="canonical" href="https://jdiegosierra.github.io/resume.html">
+  <link rel="alternate" hreflang="en" href="https://jdiegosierra.github.io/resume.html">
+  <link rel="alternate" hreflang="es" href="https://jdiegosierra.github.io/resume.es.html">
   <meta name="author" content="Juan Diego Sierra Fernández">
   <meta property="og:title" content="Diego Sierra | Resume">
   <meta property="og:description" content="Resume of Diego Sierra, focused on platform engineering, SRE, cloud architecture, and AI-enabled software delivery.">
@@ -17,6 +19,7 @@
   <meta property="og:url" content="https://jdiegosierra.github.io/resume.html">
   <meta property="og:site_name" content="Diego Sierra">
   <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
   <meta property="og:image" content="https://jdiegosierra.github.io/images/og/home.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -41,7 +44,11 @@
       <div class="resume-toolbar no-print">
         <a class="resume-toolbar__link" href="index.html">Back to portfolio</a>
         <div class="resume-toolbar__actions">
-          <a class="resume-toolbar__button resume-toolbar__button--primary" id="resume-download" href="resume.pdf" download>Download PDF</a>
+          <div class="language-switcher" role="navigation" aria-label="Language selector">
+            <a class="resume-toolbar__link" href="resume.html" lang="en" hreflang="en" aria-current="page">EN</a>
+            <a class="resume-toolbar__link" href="resume.es.html" lang="es" hreflang="es">ES</a>
+          </div>
+          <a class="resume-toolbar__button resume-toolbar__button--primary" id="resume-download" href="resume.pdf" data-pdf="resume" download>Download PDF</a>
         </div>
       </div>
 
@@ -128,7 +135,7 @@
         <section class="resume-section resume-section--experience tone-rose">
           <h2 class="section-title">Experience</h2>
 
-          <!-- content:current-role -->
+          <!-- content:experience -->
           <div class="resume-entry tone-rose">
             <div class="resume-entry__header">
               <div>
@@ -157,7 +164,6 @@
               <li>Ensure the <strong>reliability, performance, and stability of critical platforms</strong> under demanding traffic conditions.</li>
             </ul>
           </div>
-          <!-- /content:current-role -->
 
           <div class="resume-entry tone-peach">
             <div class="resume-entry__header">
@@ -304,6 +310,7 @@
               <li>Gained hands-on experience with protocols and technologies including Bluetooth, RabbitMQ, ThingWorx, Sigfox, LoRa, RFID, and WiFi.</li>
             </ul>
           </div>
+          <!-- /content:experience -->
         </section>
 
       </article>
